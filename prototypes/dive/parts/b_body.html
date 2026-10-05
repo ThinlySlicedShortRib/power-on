@@ -1,0 +1,35 @@
+
+<div class="prog" id="prog" aria-hidden="true"><div class="fill"></div></div>
+<div class="hint" id="hint"><span class="long">Scroll to move ·</span><kbd>Space</kbd><span>next beat</span></div>
+<div class="hud" id="hud"><button id="autoplay" type="button" aria-pressed="false">▶ Play</button><button id="snd" type="button" aria-pressed="false">Sound off</button></div>
+
+<div id="track">
+<div id="stage">
+  <!-- scene 1: title + modern app -->
+  <section class="scene" id="s-app" aria-label="murmur, a modern social app you can play with">
+    <header class="titlebar" id="titlebar">
+      <div>
+        <h1>Do you know how this is <i>built</i>?</h1>
+        <p>Play with it. Then look inside.</p>
+      </div>
+      <div class="tgo"><span class="kb">or press <kbd>Space</kbd></span><button class="showme" id="show" type="button">Show me ↓</button></div>
+    </header>
+    <div class="browser" id="browser">
+      <div class="chrome">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span id="urlpath">murmur.app/home</span></div>
+      </div>
+      <div class="app-wrap" id="appw" data-theme="light">
+        <div class="app">
+          <aside class="side" id="side"></aside>
+          <div class="mtop" id="mtop"></div>
+          <main class="view" id="view" aria-live="off"></main>
+          <aside class="rail" id="rail"></aside>
+          <nav class="tabbar" id="tabbar" aria-label="App sections"></nav>
+        </div>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="cue" id="cue"><span>Scroll to look inside</span><span class="arr">↓</span></div>
+  </section>
+

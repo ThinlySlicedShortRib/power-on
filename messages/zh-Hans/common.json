@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "title": "Power On",
+    "description": "一段互动故事：网站如何诞生，从 CERN 的一台电脑，一路走到 AI 智能体。"
+  },
+  "language": {
+    "label": "语言",
+    "en": "English",
+    "zh-Hant": "繁體中文",
+    "zh-Hans": "简体中文",
+    "es": "Español"
+  }
+}

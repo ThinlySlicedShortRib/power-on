@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "title": "Power On",
+    "description": "Una historia interactiva de cómo nacieron los sitios web, desde un ordenador en el CERN hasta los agentes de IA."
+  },
+  "language": {
+    "label": "Idioma",
+    "en": "English",
+    "zh-Hant": "繁體中文",
+    "zh-Hans": "简体中文",
+    "es": "Español"
+  }
+}

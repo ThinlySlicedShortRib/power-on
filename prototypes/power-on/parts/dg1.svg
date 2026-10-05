@@ -1,0 +1,43 @@
+<svg class="dg" viewBox="0 0 640 300" role="img" aria-label="Diagram: the first web server was a single NeXTcube on Tim Berners-Lee's desk at CERN, reached over the CERN Ethernet by terminals running the line-mode browser and over slow leased lines by a few dozen labs and universities, including SLAC in California." data-dur="2600">
+          <rect class="zone" x="16" y="16" width="384" height="268" rx="14"/>
+          <text class="t" x="32" y="40">CERN · Geneva</text>
+          <path class="route" d="M460 112 H430 V262 H76 V206"/>
+          <!-- sticker callout -->
+          <text class="ts" x="32" y="66">sticker on the cube:</text>
+          <text class="t" x="32" y="84">“This machine is a server.</text>
+          <text class="t" x="32" y="100">DO NOT POWER IT DOWN!!”</text>
+          <path class="ln" d="M70 106 L70 152"/>
+          <!-- desk + NeXTcube -->
+          <path class="ln thick" d="M32 206 H172"/>
+          <rect class="solid" x="50" y="152" width="52" height="52" rx="2" opacity=".85"/>
+          <rect class="note" x="58" y="158" width="26" height="14" transform="rotate(-6 71 165)"/>
+          <rect class="bx" x="112" y="150" width="50" height="38" rx="3"/>
+          <path class="ln" d="M137 188 V206"/>
+          <text class="t" x="100" y="228" text-anchor="middle">NeXTcube</text>
+          <text class="ts" x="100" y="243" text-anchor="middle">Tim's desk · httpd</text>
+          <path class="ln" d="M76 206 V262"/>
+          <!-- terminals -->
+          <text class="t" x="290" y="124" text-anchor="middle">terminals with the</text>
+          <text class="t" x="290" y="139" text-anchor="middle">line-mode browser</text>
+          <rect class="bx" x="214" y="150" width="64" height="46" rx="4"/>
+          <path class="ln" d="M222 162 h34 M222 172 h44 M222 182 h24"/>
+          <rect class="bx" x="304" y="150" width="64" height="46" rx="4"/>
+          <path class="ln" d="M312 162 h40 M312 172 h28 M312 182 h44"/>
+          <path class="ln" d="M246 196 V262 M336 196 V262"/>
+          <!-- network -->
+          <path class="ln thick" d="M76 262 H430"/>
+          <text class="ts" x="160" y="278">CERN Ethernet</text>
+          <text class="tl" x="268" y="278">~1 ms</text>
+          <!-- outside -->
+          <path class="ln" d="M430 262 V112 H460 M430 212 H460"/>
+          <text class="ts" x="438" y="160">leased</text>
+          <text class="ts" x="438" y="174">lines</text>
+          <text class="tl" x="438" y="190">~0.5 s</text>
+          <rect class="bx" x="460" y="86" width="170" height="52" rx="6"/>
+          <text class="t" x="472" y="108">SLAC · Stanford</text>
+          <text class="ts" x="472" y="126">1st US server, Dec 1991</text>
+          <rect class="bx" x="460" y="186" width="170" height="52" rx="6"/>
+          <text class="t" x="472" y="208">Labs &amp; universities</text>
+          <text class="ts" x="472" y="226">~50 servers by Jan 1993</text>
+          <circle class="packet" r="6" cx="460" cy="112"/>
+        </svg>

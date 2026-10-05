@@ -1,0 +1,69 @@
+  <!-- scene 2: code layers -->
+  <section class="scene" id="s-layers" aria-hidden="true">
+    <div class="layer" data-i="0"><header><span>LikeButton.jsx</span><b>React · 2013</b></header><pre><span class="k">export function</span> <span class="f">LikeButton</span>({ count }) {
+  <span class="k">const</span> [liked, setLiked] = <span class="f">useState</span>(<span class="n">false</span>);
+  <span class="k">return</span> (
+    &lt;<span class="t">button</span> <span class="a">onClick</span>={() =&gt; <span class="f">setLiked</span>(!liked)}&gt;
+      ♥ {count + (liked ? <span class="n">1</span> : <span class="n">0</span>)}
+    &lt;/<span class="t">button</span>&gt;
+  );
+}</pre></div>
+    <div class="layer" data-i="1"><header><span>bundle.js</span><b>JavaScript · 1995</b></header><pre><span class="k">function</span> <span class="f">LikeButton</span>(e){<span class="k">var</span> t=<span class="f">useState</span>(<span class="n">!1</span>),
+n=t[<span class="n">0</span>],r=t[<span class="n">1</span>];<span class="k">return</span> <span class="f">jsx</span>(<span class="s">"button"</span>,
+{onClick:<span class="k">function</span>(){<span class="f">r</span>(!n)},
+children:[<span class="s">"♥ "</span>,e.count+(n?<span class="n">1</span>:<span class="n">0</span>)]})}
+<span class="c">// minified, bundled, shipped to your browser</span></pre></div>
+    <div class="layer" data-i="2"><header><span>The DOM</span><b>HTML · 1991</b></header><pre>&lt;<span class="t">article</span> <span class="a">class</span>=<span class="s">"post"</span>&gt;
+  &lt;<span class="t">p</span>&gt;Shipped my first side project…&lt;/<span class="t">p</span>&gt;
+  &lt;<span class="t">button</span> <span class="a">class</span>=<span class="s">"like on"</span>&gt;
+    ♥ <span class="n">1,285</span>
+  &lt;/<span class="t">button</span>&gt;
+&lt;/<span class="t">article</span>&gt;</pre></div>
+    <div class="layer" data-i="3"><header><span>styles.css</span><b>CSS · 1996</b></header><pre>.<span class="f">like</span> {
+  <span class="a">border-radius</span>: <span class="n">99px</span>;
+  <span class="a">transition</span>: transform <span class="n">.25s</span>;
+}
+.<span class="f">like</span>.<span class="f">on</span> { <span class="a">color</span>: <span class="s">#ff3d6e</span>; }</pre></div>
+    <div class="layer http" data-i="4"><header><span>The request</span><b>HTTP · 1991</b></header><pre>POST /api/posts/8812/like HTTP/1.1
+Host: murmur.app
+Content-Type: application/json
+
+{ "liked": true }
+
+<span class="c">→ 200 OK  ·  38 ms</span></pre></div>
+    <div class="wire" id="wire">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs><linearGradient id="wg" x1="0" x2="1"><stop offset="0" stop-color="#ffc874" stop-opacity="0"/><stop offset=".5" stop-color="#ffc874"/><stop offset="1" stop-color="#ffc874" stop-opacity="0"/></linearGradient></defs>
+        <path id="wpath" d="M-50 300 C 200 120, 380 480, 500 300 S 820 120, 1050 300" fill="none" stroke="url(#wg)" stroke-width="3"/>
+        <path d="M-50 300 C 200 120, 380 480, 500 300 S 820 120, 1050 300" fill="none" stroke="#ffc874" stroke-opacity=".12" stroke-width="22"/>
+        <circle id="pkt" r="9" fill="#ffc874"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- scene 3: tunnel -->
+  <section class="scene" id="s-tunnel" aria-hidden="true"><div id="world"></div></section>
+  <div class="year" id="year">2026</div>
+
+  <!-- scene 4: 1989 desk -->
+  <section class="scene" id="s-desk" aria-label="CERN, 1989: a NeXT computer on a desk">
+    <div class="desk-wrap">
+      <div class="desk-copy">
+        <div class="top">CERN · Geneva · March 1989</div>
+        <h1>Every website you ship started on <i>one</i> computer.</h1>
+        <p>This one. Let's turn it on.</p>
+        <div class="ctas">
+          <a class="power" id="power" href="https://claude.ai/artifact/EpRJLL6DiVtCEdBZcEs6V2" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v8"/><path d="M6.3 6.6a8 8 0 1 0 11.4 0"/></svg>Power on →</a>
+          <button class="ghost" id="replay" type="button">↺ Replay intro</button>
+        </div>
+      </div>
+      <div class="rig" aria-hidden="true">
+        <div class="lampglow"></div>
+        <div class="desktop"></div>
+        <div class="cube"><div class="note">This machine is a server. DO NOT POWER IT DOWN!!</div></div>
+        <div class="mon"><div class="screen"></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+</div>

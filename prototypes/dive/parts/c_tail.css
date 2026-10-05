@@ -1,0 +1,41 @@
+.cap p { background: rgba(11,14,23,.6); padding: 4px 14px 8px; border-radius: 14px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.cap p:empty { display: none; }
+html.play .prog, html.play .hint, html.play .hud { opacity: 0; pointer-events: none; }
+.hint, .hud { transition: opacity .3s; }
+body.diving .app-wrap { pointer-events: none; }
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ---------- narrow ---------- */
+@media (max-width: 1000px) {
+  .app { grid-template-columns: 200px minmax(0, 1fr); grid-template-areas: "side view"; }
+  .rail { display: none; }
+}
+@media (max-width: 700px) {
+  .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; grid-template-areas: "top" "view" "tab"; }
+  .side, .rail { display: none; }
+  .mtop { display: flex; grid-area: top; align-items: center; justify-content: space-between; padding: 8px 12px 8px 14px; border-bottom: 1px solid var(--a-line); }
+  .mtop .logo { margin: 0; font-size: 1.45rem; }
+  .mtop .iconbtn { color: var(--a-ink); }
+  .tabbar { display: flex; grid-area: tab; border-top: 1px solid var(--a-line); background: var(--a-bg); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .tabbar .navb { flex: 1; justify-content: center; padding: 12px 0; border-radius: 0; background: none; color: var(--a-mute); }
+  .tabbar .navb.on { color: var(--a-acc2); background: none; }
+  .tabbar .bdg { position: absolute; top: 5px; left: calc(50% + 3px); margin: 0; font-size: .6rem; min-width: 16px; padding: 0 4px; }
+  .vhead { padding: 10px 14px; }
+  .post, .compose, .pad, .stories, .chips, .sect, .notif, .chatrow, .prof { padding-inline: 14px; }
+  .newpill { top: 50px; }
+  .thread { margin-left: 0; }
+  .titlebar p, .kb { display: none; }
+  .showme { padding: 9px 14px; font-size: .74rem; letter-spacing: .1em; }
+  .browser { max-height: none; border-radius: 12px; }
+  .cue { min-height: 44px; }
+  #s-app { gap: 8px; }
+  .chrome { padding: 6px 10px; } .dots { display: none; }
+  .desk-wrap { grid-template-columns: 1fr; }
+  .rig { order: -1; height: 200px; }
+  .hint .long { display: none; }
+}
+</style>

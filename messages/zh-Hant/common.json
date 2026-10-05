@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "title": "Power On",
+    "description": "一段互動故事：網站如何誕生，從 CERN 的一台電腦，一路走到 AI 代理。"
+  },
+  "language": {
+    "label": "語言",
+    "en": "English",
+    "zh-Hant": "繁體中文",
+    "zh-Hans": "简体中文",
+    "es": "Español"
+  }
+}

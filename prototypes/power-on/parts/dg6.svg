@@ -1,0 +1,11 @@
+<svg class="dg" viewBox="0 0 640 280" role="img" aria-label="Diagram: a person sends an intent to their AI agent. The agent passes a signed request through a bot gate to a shop's WebMCP tools, reads a news site's llms.txt, and sends a payment token to a bank." data-dur="3200">
+<path class="route" d="M70 200 C110 130 150 120 190 140 C260 90 320 90 380 110 L470 80"/>
+<circle class="bx" cx="70" cy="200" r="16"/><text class="t" x="70" y="236" text-anchor="middle">you</text>
+<circle class="accfill" cx="190" cy="140" r="22"/><text class="t" x="190" y="186" text-anchor="middle">your agent</text>
+<rect class="bx" x="370" y="80" width="8" height="70"/><rect class="bx" x="410" y="80" width="8" height="70"/><rect class="bx" x="366" y="74" width="56" height="8"/><text class="ts" x="394" y="168" text-anchor="middle">bot gate · signed request</text>
+<rect class="bx" x="470" y="50" width="110" height="60" rx="6"/><text class="t" x="525" y="78" text-anchor="middle">shop</text><text class="ts" x="525" y="96" text-anchor="middle">WebMCP tools</text>
+<rect class="bx" x="470" y="140" width="110" height="50" rx="6"/><text class="t" x="525" y="162" text-anchor="middle">news</text><text class="ts" x="525" y="178" text-anchor="middle">llms.txt</text>
+<rect class="bx" x="470" y="210" width="110" height="50" rx="6"/><text class="t" x="525" y="232" text-anchor="middle">bank</text><text class="ts" x="525" y="248" text-anchor="middle">payment token</text>
+<path class="ln dash" d="M212 146 L470 165 M212 152 L470 232"/>
+<circle class="packet" r="6" cx="70" cy="200"/>
+</svg>
