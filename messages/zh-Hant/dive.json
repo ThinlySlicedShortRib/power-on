@@ -1,61 +1,85 @@
 {
   "title": {
-    "headline": "Do you know how this is <i>built</i>?",
-    "sub": "Play with it. Then look inside.",
-    "orPress": "or press <kbd>Space</kbd>",
-    "showMe": "Show me ↓",
-    "sceneLabel": "murmur, a modern social app you can play with"
+    "headline": "你知道這是怎麼<i>做出來</i>的嗎？",
+    "sub": "先玩玩看，再看看裡面。",
+    "orPress": "或按 <kbd>空白鍵</kbd>",
+    "showMe": "帶我看 ↓",
+    "sceneLabel": "murmur，一個可以隨便玩的現代社群 App"
   },
-  "cue": "Scroll to look inside",
+  "cue": "往下捲，看看裡面",
   "hint": {
-    "scroll": "Scroll to move ·",
-    "space": "Space",
-    "next": "next beat",
-    "touch": "Swipe outside the app to move"
+    "scroll": "捲動前進 ·",
+    "space": "空白鍵",
+    "next": "下一步",
+    "touch": "在 App 外滑動即可前進"
   },
   "hud": {
-    "label": "Dive controls",
-    "play": "▶ Play",
-    "pause": "❚❚ Pause",
-    "soundOn": "Sound on",
-    "soundOff": "Sound off"
+    "label": "導覽控制",
+    "play": "▶ 播放",
+    "pause": "❚❚ 暫停",
+    "soundOn": "音效開",
+    "soundOff": "音效關"
   },
   "captions": {
-    "hook1": "This app? <i>React</i>, JavaScript, HTML, CSS.",
-    "hook2": "But how did we get here?",
-    "zoom": "Let's open the like button.",
-    "jsx": "A React component…",
-    "js": "…compiled to plain JavaScript.",
-    "html": "It builds HTML in the page.",
-    "css": "CSS makes it pretty.",
-    "http": "Then a request crosses the internet.",
-    "wire": "Follow the wire. <i>Backwards.</i>"
+    "hook1": "這個 App？<i>React</i>、JavaScript、HTML、CSS。",
+    "hook2": "但我們是怎麼走到這一步的？",
+    "zoom": "來拆開這顆讚按鈕。",
+    "jsx": "一個 React 元件……",
+    "js": "……編譯成純 JavaScript。",
+    "html": "它在頁面裡長出 HTML。",
+    "css": "CSS 負責顏值。",
+    "http": "接著，一個請求穿越網際網路。",
+    "wire": "順著網路線，<i>倒著走。</i>"
   },
   "layers": {
-    "jsx": { "file": "LikeButton.jsx", "era": "React · 2013" },
-    "js": { "file": "bundle.js", "era": "JavaScript · 1995" },
-    "dom": { "file": "The DOM", "era": "HTML · 1991" },
-    "css": { "file": "styles.css", "era": "CSS · 1996" },
-    "http": { "file": "The request", "era": "HTTP · 1991" }
+    "jsx": {
+      "file": "LikeButton.jsx",
+      "era": "React · 2013"
+    },
+    "js": {
+      "file": "bundle.js",
+      "era": "JavaScript · 1995"
+    },
+    "dom": {
+      "file": "DOM",
+      "era": "HTML · 1991"
+    },
+    "css": {
+      "file": "styles.css",
+      "era": "CSS · 1996"
+    },
+    "http": {
+      "file": "請求",
+      "era": "HTTP · 1991"
+    }
   },
   "eras": {
-    "e2016": { "tag": "React (2013)", "app": "☰ tasks" },
-    "e2010": {
-      "tag": "Bootstrap · mobile web",
-      "brand": "Brand",
-      "home": "Home",
-      "about": "About",
-      "contact": "Contact",
-      "hello": "Hello, world!",
-      "lead": "A responsive template for a simple marketing site.",
-      "more": "Learn more »"
+    "e2016": {
+      "tag": "React (2013)",
+      "app": "☰ 待辦事項"
     },
-    "e2006": { "tag": "jQuery · Ajax", "name": "Timelinr", "beta": "BETA", "signup": "Sign up free!", "cloud": "ajax,web2.0,rss,tags,social" },
+    "e2010": {
+      "tag": "Bootstrap · 行動網頁",
+      "brand": "品牌",
+      "home": "首頁",
+      "about": "關於我們",
+      "contact": "聯絡我們",
+      "hello": "Hello, world!",
+      "lead": "簡單行銷網站的響應式範本。",
+      "more": "了解更多 »"
+    },
+    "e2006": {
+      "tag": "jQuery · Ajax",
+      "name": "Timelinr",
+      "beta": "BETA",
+      "signup": "免費註冊！",
+      "cloud": "ajax,web2.0,rss,標籤,社群"
+    },
     "e1997": {
       "tag": "JavaScript (1995) · CSS (1996)",
-      "welcome": "~*~ Welcome 2 My Homepage ~*~",
-      "new": "NEW!!",
-      "guestbook": "Sign my guestbook!"
+      "welcome": "~*~ 歡迎光臨我的網站 ~*~",
+      "new": "最新!!",
+      "guestbook": "快來簽我的留言板！"
     },
     "e1991": {
       "tag": "HTML · HTTP",
@@ -65,108 +89,108 @@
     }
   },
   "desk": {
-    "label": "CERN, 1989: a NeXT computer on a desk",
-    "top": "CERN · Geneva · March 1989",
-    "headline": "Every website you ship started on <i>one</i> computer.",
-    "lead": "This one. Let's turn it on.",
-    "power": "Power on →",
-    "replay": "↺ Replay intro",
+    "label": "CERN，1989：桌上的一台 NeXT 電腦",
+    "top": "CERN · 日內瓦 · 1989 年 3 月",
+    "headline": "每個網站，都從<i>一台</i>電腦開始。",
+    "lead": "就是這台。來開機吧。",
+    "power": "開機 →",
+    "replay": "↺ 重播開場",
     "note": "This machine is a server. DO NOT POWER IT DOWN!!"
   },
   "app": {
-    "sections": "App sections",
+    "sections": "App 分區",
     "nav": {
-      "home": "Home",
-      "explore": "Explore",
-      "notifs": "Notifications",
-      "messages": "Messages",
-      "profile": "Profile"
+      "home": "首頁",
+      "explore": "探索",
+      "notifs": "通知",
+      "messages": "訊息",
+      "profile": "個人檔案"
     },
-    "post": "Post",
-    "lightMode": "Light mode",
-    "darkMode": "Dark mode",
-    "toLight": "Switch to light mode",
-    "toDark": "Switch to dark mode",
-    "trending": "Trending",
-    "tagPosts": "{count} posts",
-    "whoToFollow": "Who to follow",
-    "follow": "Follow",
-    "following": "Following",
-    "composePlaceholder": "What’s happening on the web?",
-    "composeLabel": "Write a post",
-    "addEmoji": "Add emoji",
-    "insertEmoji": "Insert {emoji}",
-    "newPosts": "↑ {count, plural, one {# new post} other {# new posts}}",
-    "pullToRefresh": "Pull to refresh",
-    "releaseToRefresh": "Release to refresh",
-    "underConstruction": "~*~ under construction ~*~",
+    "post": "發文",
+    "lightMode": "淺色模式",
+    "darkMode": "深色模式",
+    "toLight": "切換到淺色模式",
+    "toDark": "切換到深色模式",
+    "trending": "熱門話題",
+    "tagPosts": "{count} 則貼文",
+    "whoToFollow": "推薦追蹤",
+    "follow": "追蹤",
+    "following": "追蹤中",
+    "composePlaceholder": "網路上有什麼新鮮事？",
+    "composeLabel": "撰寫貼文",
+    "addEmoji": "加入表情符號",
+    "insertEmoji": "插入 {emoji}",
+    "newPosts": "↑ {count, plural, other {# 則新貼文}}",
+    "pullToRefresh": "下拉重新整理",
+    "releaseToRefresh": "放開即可重新整理",
+    "underConstruction": "~*~ 施工中 ~*~",
     "act": {
-      "reply": "Reply",
-      "repost": "Repost",
-      "like": "Like",
-      "bookmark": "Bookmark",
-      "share": "Share"
+      "reply": "回覆",
+      "repost": "轉發",
+      "like": "讚",
+      "bookmark": "收藏",
+      "share": "分享"
     },
-    "replyPlaceholder": "Write a reply…",
-    "replyLabel": "Write a reply",
-    "replySubmit": "Reply",
-    "openStory": "Open {name}’s story",
-    "story": "Story",
-    "closeStory": "Close story",
-    "prev": "Previous",
-    "next": "Next",
-    "storyTip": "Tap left or right · Esc to close",
-    "caughtUp": "You’re all caught up ✓",
-    "explore": "Explore",
-    "searchPlaceholder": "Search murmur",
-    "searchLabel": "Search posts",
-    "popular": "Popular",
-    "results": "{count, plural, one {# result} other {# results}}",
-    "noMatch": "No posts match “{q}”.",
-    "notifsEmpty": "Nothing yet. Post, reply or follow someone.",
+    "replyPlaceholder": "寫下回覆…",
+    "replyLabel": "撰寫回覆",
+    "replySubmit": "回覆",
+    "openStory": "查看 {name} 的限時動態",
+    "story": "限時動態",
+    "closeStory": "關閉限時動態",
+    "prev": "上一則",
+    "next": "下一則",
+    "storyTip": "點左右兩側切換 · Esc 關閉",
+    "caughtUp": "全部看完了 ✓",
+    "explore": "探索",
+    "searchPlaceholder": "搜尋 murmur",
+    "searchLabel": "搜尋貼文",
+    "popular": "熱門",
+    "results": "{count, plural, other {# 筆結果}}",
+    "noMatch": "沒有符合「{q}」的貼文。",
+    "notifsEmpty": "還沒有動靜。發個文、回覆或追蹤別人吧。",
     "notif": {
-      "likedPost": "{name} liked your post",
-      "likedReply": "{name} liked your reply",
-      "followedBack": "{name} followed you back",
-      "repostedLaunch": "{name} reposted Mika’s launch",
-      "startedFollowing": "{name} started following you",
-      "mentioned": "{name} mentioned you: “have you seen this?”"
+      "likedPost": "{name} 說你的貼文讚",
+      "likedReply": "{name} 說你的回覆讚",
+      "followedBack": "{name} 也追蹤了你",
+      "repostedLaunch": "{name} 轉發了 Mika 的上線貼文",
+      "startedFollowing": "{name} 開始追蹤你",
+      "mentioned": "{name} 提到了你：「你看過這個嗎？」"
     },
-    "youPrefix": "You: ",
-    "unread": "unread",
-    "isTyping": "{name} is typing",
-    "backToMessages": "Back to messages",
-    "messagePlaceholder": "Message {name}…",
-    "messageLabel": "Message",
-    "send": "Send",
-    "editProfile": "Edit profile",
-    "statPosts": "{count, plural, one {<b>#</b> post} other {<b>#</b> posts}}",
-    "statFollowing": "<b>{count}</b> following",
-    "statFollowers": "<b>{count}</b> followers",
-    "displayName": "Display name",
-    "avatarColour": "Avatar colour",
-    "colour": "Colour {c}",
-    "cancel": "Cancel",
-    "save": "Save",
-    "noPosts": "No posts yet. Say hi on Home.",
-    "defaultName": "You",
-    "now": "now",
-    "minutes": "{n}m",
-    "hours": "{n}h",
-    "days": "{n}d",
+    "youPrefix": "你：",
+    "unread": "未讀",
+    "isTyping": "{name} 正在輸入",
+    "backToMessages": "返回訊息",
+    "messagePlaceholder": "傳訊息給 {name}…",
+    "messageLabel": "訊息",
+    "send": "傳送",
+    "editProfile": "編輯個人檔案",
+    "statPosts": "{count, plural, other {<b>#</b> 則貼文}}",
+    "statFollowing": "<b>{count}</b> 追蹤中",
+    "statFollowers": "<b>{count}</b> 位粉絲",
+    "displayName": "顯示名稱",
+    "avatarColour": "頭像顏色",
+    "colour": "顏色 {c}",
+    "cancel": "取消",
+    "save": "儲存",
+    "noPosts": "還沒有貼文。去首頁打聲招呼吧。",
+    "defaultName": "你",
+    "now": "剛剛",
+    "minutes": "{n} 分鐘",
+    "hours": "{n} 小時",
+    "days": "{n} 天",
     "toast": {
-      "posted": "Posted ✓",
-      "reposted": "Reposted",
-      "repostRemoved": "Repost removed",
-      "bookmarked": "Saved to bookmarks",
-      "unbookmarked": "Removed from bookmarks",
-      "linkCopied": "Link copied",
-      "link": "Link: {url}",
-      "following": "Following {name}",
-      "profileSaved": "Profile saved",
-      "replySent": "Reply sent",
-      "messaged": "{name} sent you a message",
-      "refreshed": "Feed refreshed"
+      "posted": "已發佈 ✓",
+      "reposted": "已轉發",
+      "repostRemoved": "已取消轉發",
+      "bookmarked": "已加入收藏",
+      "unbookmarked": "已從收藏移除",
+      "linkCopied": "已複製連結",
+      "link": "連結：{url}",
+      "following": "已追蹤 {name}",
+      "profileSaved": "個人檔案已儲存",
+      "replySent": "回覆已送出",
+      "messaged": "{name} 傳了訊息給你",
+      "refreshed": "動態已更新"
     }
   },
   "content": {
@@ -179,48 +203,98 @@
       "ravi": "Ravi P."
     },
     "posts": {
-      "p1": "Shipped my first side project tonight. It's a website. It's live. Strangers are using it. 🤯 #ShipIt",
-      "p2": "Hot take: the best feature is the one that loads instantly. #WebPerf",
-      "p3": "TIL the first website is still online. Plain HTML from 1991. Still loads. #ViewSource",
-      "p4": "Me: I'll just add one npm package.\nnode_modules: 🫠 #JavaScript",
-      "p5": "Who else learned HTML by hitting View Source on someone's GeoCities page? #ViewSource",
-      "p6": "Dial-up sound is an ASMR genre and I won't be taking questions. #DialUpSounds"
+      "p1": "今晚把我的第一個 side project 上線了。一個網站。真的上線了。還有陌生人在用。🤯 #上線啦",
+      "p2": "危險發言：最好的功能，就是瞬間載入。#網頁效能",
+      "p3": "今天才知道，世界上第一個網站到現在還在線上。1991 年的純 HTML，照樣開得起來。#檢視原始碼",
+      "p4": "我：就裝一個 npm 套件而已。\nnode_modules：🫠 #JavaScript",
+      "p5": "有誰跟我一樣，是在別人的 GeoCities 網頁按「檢視原始碼」學會 HTML 的？#檢視原始碼",
+      "p6": "撥接的聲音就是一種 ASMR，不接受反駁。#撥接音效"
     },
     "seedReplies": {
-      "p1a": "Congrats!! Link?",
-      "p1b": "Best feeling in the world."
+      "p1a": "恭喜！！連結呢？",
+      "p1b": "這感覺真的無敵。"
     },
     "pool": [
-      "TIL the <blink> tag never worked in Internet Explorer. #WebHistory",
-      "Hydration error is my villain origin story. #React",
-      "Rebuilt my portfolio in plain HTML and CSS. Loads in 40ms. #TinyWebsites",
-      "A coffee pot at Cambridge was one of the first webcams. Priorities. ☕ #WebHistory",
-      "Remember when Web 2.0 meant glossy buttons and a BETA badge? #Web20",
-      "CSS grid made me cry happy tears today. #CSS",
-      "Every framework is a fancier way to make a <div>. #JavaScript",
-      "My modem made that noise so you didn't have to. #DialUpSounds",
-      "JavaScript was written in about 10 days. It shows. It works. #JavaScript",
-      "Edge functions: your code runs in a city near you. Wild. #WebPerf",
-      "View Source is still the best teacher on the web. #ViewSource",
-      "Measure first. Then optimise. Then measure again. #WebPerf"
+      "今天才知道 <blink> 標籤在 Internet Explorer 從來沒效過。#網路考古",
+      "Hydration error 是我黑化的起點。#React",
+      "用純 HTML 和 CSS 重做了作品集。40ms 載完。#迷你網站",
+      "劍橋有一台咖啡壺，是史上最早的網路攝影機之一。人類的優先順序很清楚。☕ #網路考古",
+      "還記得 Web 2.0 就等於亮晶晶的按鈕加一個 BETA 標籤嗎？#Web20",
+      "CSS grid 今天讓我感動到哭。#CSS",
+      "每個框架，都只是做 <div> 的更花俏方法。#JavaScript",
+      "我的數據機替你們把那個聲音叫完了。#撥接音效",
+      "JavaScript 大約 10 天就寫出來了。看得出來。但它會動。#JavaScript",
+      "Edge functions：你的程式碼就在你附近的城市執行。太扯了。#網頁效能",
+      "「檢視原始碼」到現在還是網路上最好的老師。#檢視原始碼",
+      "先量測。再最佳化。然後再量一次。#網頁效能"
     ],
     "stories": {
-      "ana": ["Coffee ☕ + View Source", "The first website still loads. 1991!"],
-      "mika": ["Launch day 🚀", "42 users. 41 are my mum."],
-      "jo": ["Lighthouse score: 100 💯"],
-      "sam": ["npm install…", "…still installing 🫠"],
-      "lee": ["Dial-up remix out now 📞"],
-      "ravi": ["GeoCities never dies ✨"]
+      "ana": [
+        "咖啡 ☕ + 檢視原始碼",
+        "第一個網站還開得起來。1991 年耶！"
+      ],
+      "mika": [
+        "上線日 🚀",
+        "42 個使用者，41 個是我媽。"
+      ],
+      "jo": [
+        "Lighthouse 分數：100 💯"
+      ],
+      "sam": [
+        "npm install…",
+        "…還在裝 🫠"
+      ],
+      "lee": [
+        "撥接音效 remix 上架囉 📞"
+      ],
+      "ravi": [
+        "GeoCities 永垂不朽 ✨"
+      ]
     },
     "chats": {
-      "ana": ["did you know the first website is still online?"],
-      "mika": ["thanks for the likes on my launch post!!"],
-      "jo": ["hot take incoming", "go on", "speed is a feature"]
+      "ana": [
+        "你知道第一個網站到現在還在線上嗎？"
+      ],
+      "mika": [
+        "謝謝你幫我的上線貼文按讚！！"
+      ],
+      "jo": [
+        "危險發言預告",
+        "說吧",
+        "速度就是一種功能"
+      ]
     },
     "botReplies": {
-      "ana": ["haha yes", "wait, really?", "ok but have you seen the coffee pot cam?", "sending you a link 👀"],
-      "mika": ["thank you!! 🎉", "it's just HTML, CSS and a bit of React", "you should ship one too", "deploys in 30 seconds now. wild."],
-      "jo": ["fair", "measure it first 😄", "TTFB or it didn't happen", "agree. ship it."]
+      "ana": [
+        "哈哈對啊",
+        "等等，真的假的？",
+        "好啦，但你看過那個咖啡壺攝影機嗎？",
+        "傳連結給你 👀"
+      ],
+      "mika": [
+        "謝謝！！🎉",
+        "就只是 HTML、CSS 加一點 React",
+        "你也該上線一個",
+        "現在 30 秒就部署完。太扯。"
+      ],
+      "jo": [
+        "有道理",
+        "先量了再說 😄",
+        "沒有 TTFB 數據就不算數",
+        "同意。上線吧。"
+      ]
+    },
+    "tags": {
+      "ViewSource": "檢視原始碼",
+      "WebHistory": "網路考古",
+      "DialUpSounds": "撥接音效",
+      "JavaScript": "JavaScript",
+      "ShipIt": "上線啦",
+      "WebPerf": "網頁效能",
+      "CSS": "CSS",
+      "React": "React",
+      "TinyWebsites": "迷你網站",
+      "Web20": "Web20"
     }
   }
 }

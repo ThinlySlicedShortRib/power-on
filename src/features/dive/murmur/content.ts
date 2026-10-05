@@ -12,6 +12,8 @@ export interface Content {
   stories: Record<UserKey, string[]>;
   chats: Record<string, string[]>;
   botReplies: Record<string, string[]>;
+  /** Hashtag labels (no '#') per tag id, so trending counts line up with localized posts. */
+  tags: Record<string, string>;
 }
 
 export interface Author {

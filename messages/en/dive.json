@@ -32,14 +32,32 @@
     "wire": "Follow the wire. <i>Backwards.</i>"
   },
   "layers": {
-    "jsx": { "file": "LikeButton.jsx", "era": "React · 2013" },
-    "js": { "file": "bundle.js", "era": "JavaScript · 1995" },
-    "dom": { "file": "The DOM", "era": "HTML · 1991" },
-    "css": { "file": "styles.css", "era": "CSS · 1996" },
-    "http": { "file": "The request", "era": "HTTP · 1991" }
+    "jsx": {
+      "file": "LikeButton.jsx",
+      "era": "React · 2013"
+    },
+    "js": {
+      "file": "bundle.js",
+      "era": "JavaScript · 1995"
+    },
+    "dom": {
+      "file": "The DOM",
+      "era": "HTML · 1991"
+    },
+    "css": {
+      "file": "styles.css",
+      "era": "CSS · 1996"
+    },
+    "http": {
+      "file": "The request",
+      "era": "HTTP · 1991"
+    }
   },
   "eras": {
-    "e2016": { "tag": "React (2013)", "app": "☰ tasks" },
+    "e2016": {
+      "tag": "React (2013)",
+      "app": "☰ tasks"
+    },
     "e2010": {
       "tag": "Bootstrap · mobile web",
       "brand": "Brand",
@@ -50,7 +68,13 @@
       "lead": "A responsive template for a simple marketing site.",
       "more": "Learn more »"
     },
-    "e2006": { "tag": "jQuery · Ajax", "name": "Timelinr", "beta": "BETA", "signup": "Sign up free!", "cloud": "ajax,web2.0,rss,tags,social" },
+    "e2006": {
+      "tag": "jQuery · Ajax",
+      "name": "Timelinr",
+      "beta": "BETA",
+      "signup": "Sign up free!",
+      "cloud": "ajax,web2.0,rss,tags,social"
+    },
     "e1997": {
       "tag": "JavaScript (1995) · CSS (1996)",
       "welcome": "~*~ Welcome 2 My Homepage ~*~",
@@ -205,22 +229,72 @@
       "Measure first. Then optimise. Then measure again. #WebPerf"
     ],
     "stories": {
-      "ana": ["Coffee ☕ + View Source", "The first website still loads. 1991!"],
-      "mika": ["Launch day 🚀", "42 users. 41 are my mum."],
-      "jo": ["Lighthouse score: 100 💯"],
-      "sam": ["npm install…", "…still installing 🫠"],
-      "lee": ["Dial-up remix out now 📞"],
-      "ravi": ["GeoCities never dies ✨"]
+      "ana": [
+        "Coffee ☕ + View Source",
+        "The first website still loads. 1991!"
+      ],
+      "mika": [
+        "Launch day 🚀",
+        "42 users. 41 are my mum."
+      ],
+      "jo": [
+        "Lighthouse score: 100 💯"
+      ],
+      "sam": [
+        "npm install…",
+        "…still installing 🫠"
+      ],
+      "lee": [
+        "Dial-up remix out now 📞"
+      ],
+      "ravi": [
+        "GeoCities never dies ✨"
+      ]
     },
     "chats": {
-      "ana": ["did you know the first website is still online?"],
-      "mika": ["thanks for the likes on my launch post!!"],
-      "jo": ["hot take incoming", "go on", "speed is a feature"]
+      "ana": [
+        "did you know the first website is still online?"
+      ],
+      "mika": [
+        "thanks for the likes on my launch post!!"
+      ],
+      "jo": [
+        "hot take incoming",
+        "go on",
+        "speed is a feature"
+      ]
     },
     "botReplies": {
-      "ana": ["haha yes", "wait, really?", "ok but have you seen the coffee pot cam?", "sending you a link 👀"],
-      "mika": ["thank you!! 🎉", "it's just HTML, CSS and a bit of React", "you should ship one too", "deploys in 30 seconds now. wild."],
-      "jo": ["fair", "measure it first 😄", "TTFB or it didn't happen", "agree. ship it."]
+      "ana": [
+        "haha yes",
+        "wait, really?",
+        "ok but have you seen the coffee pot cam?",
+        "sending you a link 👀"
+      ],
+      "mika": [
+        "thank you!! 🎉",
+        "it's just HTML, CSS and a bit of React",
+        "you should ship one too",
+        "deploys in 30 seconds now. wild."
+      ],
+      "jo": [
+        "fair",
+        "measure it first 😄",
+        "TTFB or it didn't happen",
+        "agree. ship it."
+      ]
+    },
+    "tags": {
+      "ViewSource": "ViewSource",
+      "WebHistory": "WebHistory",
+      "DialUpSounds": "DialUpSounds",
+      "JavaScript": "JavaScript",
+      "ShipIt": "ShipIt",
+      "WebPerf": "WebPerf",
+      "CSS": "CSS",
+      "React": "React",
+      "TinyWebsites": "TinyWebsites",
+      "Web20": "Web20"
     }
   }
 }

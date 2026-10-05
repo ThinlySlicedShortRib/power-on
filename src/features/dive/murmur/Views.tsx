@@ -21,7 +21,8 @@ interface ViewProps {
 /* ---------- shared by Explore and the right rail ---------- */
 
 export function trending(s: MurmurState, r: Resolver): Array<[string, number]> {
-  const c: Record<string, number> = { ...TAG_BASE };
+  const c: Record<string, number> = {};
+  for (const [id, n] of Object.entries(TAG_BASE)) c[r.content.tags[id] ?? id] = n;
   for (const p of s.posts) for (const tag of hashtags(r.postText(p))) c[tag] = (c[tag] ?? 0) + 1;
   return Object.entries(c)
     .sort((a, b) => b[1] - a[1])
