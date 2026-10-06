@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useState } from "react";
+import { peekResume } from "@/features/power-on/engine/storage";
 
 // Both features are browser-only (WebGL, WebAudio, scroll timelines), so skip SSR.
 const Dive = dynamic(() => import("@/features/dive/Dive").then((m) => m.Dive), { ssr: false });
@@ -13,7 +14,8 @@ const PowerOn = dynamic(() => import("@/features/power-on/PowerOn").then((m) => 
  * gesture that unlocks audio).
  */
 export function Experience() {
-  const [phase, setPhase] = useState<"dive" | "story">("dive");
+  // After a locale switch mid-story, go straight back to the story (PowerOn restores the line).
+  const [phase, setPhase] = useState<"dive" | "story">(() => (typeof window !== "undefined" && peekResume() ? "story" : "dive"));
 
   if (phase === "story") return <PowerOn bootImmediately onReplayIntro={() => setPhase("dive")} />;
   return <Dive onPowerOn={() => setPhase("story")} />;

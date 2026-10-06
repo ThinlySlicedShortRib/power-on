@@ -1,1 +1,1077 @@
-{}
+{
+  "_person": "person",
+  "a2a": {
+    "term": "Agent2Agent (A2A)",
+    "year": "2025",
+    "def": "Google's open protocol for AI agents to find and message each other. Introduced April 2025, now at the Linux Foundation.",
+    "kind": "term"
+  },
+  "signedoffer": {
+    "term": "Signed offer",
+    "year": "",
+    "def": "An offer both sides sign with keys, so the promise can be proved later. Illustrative; no standard yet.",
+    "kind": "term"
+  },
+  "pKarpathy": {
+    "term": "Andrej Karpathy",
+    "year": "",
+    "def": "AI researcher, an OpenAI founding member and former head of AI at Tesla, who coined “vibe coding” in February 2025.",
+    "kind": "person"
+  },
+  "pHoward": {
+    "term": "Jeremy Howard",
+    "year": "",
+    "def": "Co-founder of fast.ai and Answer.AI, who proposed llms.txt in September 2024.",
+    "kind": "person"
+  },
+  "computeruse": {
+    "term": "Computer use",
+    "year": "2024",
+    "def": "An AI model operating a computer: reading the screen, clicking, typing. Anthropic, public beta, October 2024.",
+    "kind": "term"
+  },
+  "operator": {
+    "term": "Operator",
+    "year": "2025",
+    "def": "OpenAI's browser-using agent, launched as a research preview on 23 January 2025.",
+    "kind": "term"
+  },
+  "webmcp": {
+    "term": "WebMCP",
+    "year": "2026",
+    "def": "Proposed standard letting a page hand agents named tools to call. Early preview in Chrome 146, origin trial in 149.",
+    "kind": "term"
+  },
+  "mcp": {
+    "term": "MCP",
+    "year": "2024",
+    "def": "Model Context Protocol: Anthropic's open standard (Nov 2024) for plugging AI models into tools and data.",
+    "kind": "term"
+  },
+  "llmstxt": {
+    "term": "llms.txt",
+    "year": "2024",
+    "def": "A markdown map of a site for AI models, at /llms.txt. Proposed 2024; big AI firms haven't committed to it.",
+    "kind": "term"
+  },
+  "aiov": {
+    "term": "AI Overviews",
+    "year": "2024",
+    "def": "AI-written summaries at the top of Google results, rolled out to everyone in the US from 14 May 2024.",
+    "kind": "term"
+  },
+  "zeroclick": {
+    "term": "Zero-click search",
+    "year": "",
+    "def": "A search that ends on the results page because the answer is already there, so no site gets a visit.",
+    "kind": "term"
+  },
+  "acp": {
+    "term": "Agentic Commerce Protocol",
+    "year": "2025",
+    "def": "Agentic Commerce Protocol, from OpenAI and Stripe: lets an AI agent check out for you. Powers Instant Checkout.",
+    "kind": "term"
+  },
+  "ap2": {
+    "term": "AP2",
+    "year": "2025",
+    "def": "Agent Payments Protocol, Google, September 2025. Signed “mandates” prove what you let an agent buy.",
+    "kind": "term"
+  },
+  "x402": {
+    "term": "x402",
+    "year": "2025",
+    "def": "Coinbase's protocol (May 2025) that revives HTTP 402 so agents can pay per request.",
+    "kind": "term"
+  },
+  "h402": {
+    "term": "HTTP 402",
+    "year": "1997",
+    "def": "“Payment Required”: an HTTP status code reserved since the 1990s and barely used, until now.",
+    "kind": "term"
+  },
+  "webbotauth": {
+    "term": "Web Bot Auth",
+    "year": "2025",
+    "def": "Bots sign their requests with a published key, so sites can check who's really knocking.",
+    "kind": "term"
+  },
+  "payperCrawl": {
+    "term": "Pay per crawl",
+    "year": "2025",
+    "def": "Cloudflare's private beta (1 July 2025) letting sites allow, block or charge AI crawlers, using HTTP 402 responses.",
+    "kind": "term"
+  },
+  "robots": {
+    "term": "robots.txt",
+    "year": "1994",
+    "def": "A text file telling crawlers what they may fetch. A 1994 convention, an official standard since 2022.",
+    "kind": "term"
+  },
+  "aicrawler": {
+    "term": "AI crawler",
+    "year": "",
+    "def": "A bot that downloads pages to train or feed AI models, not to send you visitors.",
+    "kind": "term"
+  },
+  "ondevice": {
+    "term": "On-device model",
+    "year": "",
+    "def": "An AI model running on your own machine, so your data never leaves it.",
+    "kind": "term"
+  },
+  "nano": {
+    "term": "Gemini Nano",
+    "year": "",
+    "def": "Google's smallest Gemini model, downloaded by Chrome to run its built-in AI APIs locally.",
+    "kind": "term"
+  },
+  "builtinai": {
+    "term": "Built-in AI APIs",
+    "year": "2025",
+    "def": "Chrome APIs such as Summarizer, Translator and Language Detector, available in stable Chrome from version 138 (mid-2025).",
+    "kind": "term"
+  },
+  "genui": {
+    "term": "Generative UI",
+    "year": "",
+    "def": "Screens assembled by a model on the fly, for one person and one task.",
+    "kind": "term"
+  },
+  "vibecoding": {
+    "term": "Vibe coding",
+    "year": "2025",
+    "def": "Describing an app and letting AI write the code, mostly unread. Named by Andrej Karpathy, February 2025.",
+    "kind": "term"
+  },
+  "agent": {
+    "term": "AI agent",
+    "year": "",
+    "def": "An AI that takes actions, not just answers: it plans, uses tools or a browser, and keeps going.",
+    "kind": "term"
+  },
+  "llm": {
+    "term": "LLM",
+    "year": "",
+    "def": "Large language model: a neural network trained on huge amounts of text. The engine inside chatbots and agents.",
+    "kind": "term"
+  },
+  "aibrowser": {
+    "term": "AI browser",
+    "year": "2025",
+    "def": "A browser built around an assistant that can read the open tabs and act on pages for you.",
+    "kind": "term"
+  },
+  "promptinj": {
+    "term": "Prompt injection",
+    "year": "",
+    "def": "Hidden text on a page that tries to give an AI agent new orders. Why agents ask before risky steps.",
+    "kind": "term"
+  },
+  "a11ytree": {
+    "term": "Accessibility tree",
+    "year": "",
+    "def": "The browser's structured view of a page (roles, names, states) built for screen readers. Agents often read it too.",
+    "kind": "term"
+  },
+  "origintrial": {
+    "term": "Origin trial",
+    "year": "",
+    "def": "A way for sites to try an experimental Chrome feature in production for a limited time.",
+    "kind": "term"
+  },
+  "instantcheckout": {
+    "term": "Instant Checkout",
+    "year": "2025",
+    "def": "Buying inside ChatGPT, launched 29 September 2025 for US users, starting with Etsy sellers. Built on the Agentic Commerce Protocol.",
+    "kind": "term"
+  },
+  "comet": {
+    "term": "Comet",
+    "year": "2025",
+    "def": "Perplexity's AI browser, released 9 July 2025 for top-tier subscribers and made free for everyone on 2 October 2025.",
+    "kind": "term"
+  },
+  "atlas": {
+    "term": "ChatGPT Atlas",
+    "year": "2025",
+    "def": "OpenAI's AI browser, launched for macOS on 21 October 2025.",
+    "kind": "term"
+  },
+  "dia": {
+    "term": "Dia",
+    "year": "2025",
+    "def": "An AI browser from The Browser Company, early access from June 2025. Atlassian bought the company.",
+    "kind": "term"
+  },
+  "autobrowse": {
+    "term": "Auto browse",
+    "year": "2026",
+    "def": "Gemini in Chrome's agent mode (2026). It clicks through sites in its own tab and pauses before buying.",
+    "kind": "term"
+  },
+  "claudechrome": {
+    "term": "Claude in Chrome",
+    "year": "2025",
+    "def": "Anthropic's extension that lets Claude read and act on web pages. Generally available since August 2026.",
+    "kind": "term"
+  },
+  "anthropic": {
+    "term": "Anthropic",
+    "year": "2021",
+    "def": "An AI company that makes the Claude models; it introduced computer use and MCP.",
+    "kind": "term"
+  },
+  "openai": {
+    "term": "OpenAI",
+    "year": "2015",
+    "def": "The AI company behind ChatGPT; it launched Operator and Instant Checkout.",
+    "kind": "term"
+  },
+  "perplexity": {
+    "term": "Perplexity",
+    "year": "2022",
+    "def": "An AI answer-engine company; it makes the Comet browser.",
+    "kind": "term"
+  },
+  "cloudflare": {
+    "term": "Cloudflare",
+    "year": "2009",
+    "def": "A huge network in front of millions of sites, so its defaults decide how bots get treated.",
+    "kind": "term"
+  },
+  "stripe": {
+    "term": "Stripe",
+    "year": "2010",
+    "def": "A payments company; it co-developed the Agentic Commerce Protocol with OpenAI.",
+    "kind": "term"
+  },
+  "coinbase": {
+    "term": "Coinbase",
+    "year": "2012",
+    "def": "A cryptocurrency exchange; it published the x402 payment protocol in May 2025.",
+    "kind": "term"
+  },
+  "pew": {
+    "term": "Pew Research Center",
+    "year": "",
+    "def": "A nonpartisan US research organisation. Its July 2025 study tracked 68,879 real Google searches by 900 adults.",
+    "kind": "term"
+  },
+  "pTBL": {
+    "term": "Tim Berners-Lee",
+    "year": "",
+    "def": "British computer scientist who invented the web at CERN in 1989–90 and founded the W3C in 1994.",
+    "kind": "person"
+  },
+  "pSendall": {
+    "term": "Mike Sendall",
+    "year": "",
+    "def": "Tim's manager at CERN. He wrote “vague but exciting” on the proposal and let Tim build it anyway.",
+    "kind": "person"
+  },
+  "pCailliau": {
+    "term": "Robert Cailliau",
+    "year": "",
+    "def": "Belgian engineer at CERN who co-wrote the 1990 web proposal and championed it inside the lab.",
+    "kind": "person"
+  },
+  "pPellow": {
+    "term": "Nicola Pellow",
+    "year": "",
+    "def": "Maths student on placement at CERN who wrote the line-mode browser in 1990–91.",
+    "kind": "person"
+  },
+  "pKunz": {
+    "term": "Paul Kunz",
+    "year": "",
+    "def": "SLAC physicist who set up the first web server in North America, in December 1991.",
+    "kind": "person"
+  },
+  "pAndreessen": {
+    "term": "Marc Andreessen",
+    "year": "",
+    "def": "Co-wrote Mosaic at NCSA as a student, then co-founded Netscape. Later a venture capitalist.",
+    "kind": "person"
+  },
+  "pBina": {
+    "term": "Eric Bina",
+    "year": "",
+    "def": "NCSA programmer who co-wrote Mosaic with Marc Andreessen and then co-founded Netscape.",
+    "kind": "person"
+  },
+  "pLerdorf": {
+    "term": "Rasmus Lerdorf",
+    "year": "",
+    "def": "Danish-Canadian programmer who created PHP in 1995.",
+    "kind": "person"
+  },
+  "pEich": {
+    "term": "Brendan Eich",
+    "year": "",
+    "def": "Created JavaScript at Netscape in 1995. Later co-founded Mozilla and Brave.",
+    "kind": "person"
+  },
+  "pLie": {
+    "term": "Håkon Wium Lie",
+    "year": "",
+    "def": "Norwegian web pioneer who proposed CSS at CERN in 1994, later CTO of the Opera browser.",
+    "kind": "person"
+  },
+  "pGarrett": {
+    "term": "Jesse James Garrett",
+    "year": "",
+    "def": "User-experience designer at Adaptive Path who named Ajax in a February 2005 essay.",
+    "kind": "person"
+  },
+  "pResig": {
+    "term": "John Resig",
+    "year": "",
+    "def": "Created jQuery in 2006, then worked at Mozilla and Khan Academy.",
+    "kind": "person"
+  },
+  "pDHH": {
+    "term": "David Heinemeier Hansson",
+    "year": "",
+    "def": "Danish programmer, known as DHH, who created Ruby on Rails at 37signals.",
+    "kind": "person"
+  },
+  "pDahl": {
+    "term": "Ryan Dahl",
+    "year": "",
+    "def": "Created Node.js in 2009, then Deno in 2018 to fix what he regretted about Node.",
+    "kind": "person"
+  },
+  "pWalke": {
+    "term": "Jordan Walke",
+    "year": "",
+    "def": "Facebook engineer who created React.",
+    "kind": "person"
+  },
+  "pYou": {
+    "term": "Evan You",
+    "year": "",
+    "def": "Independent developer who created Vue (2014) and the Vite build tool (2020).",
+    "kind": "person"
+  },
+  "pRauch": {
+    "term": "Guillermo Rauch",
+    "year": "",
+    "def": "Created Socket.IO and founded Vercel, the company behind Next.js.",
+    "kind": "person"
+  },
+  "pHarris": {
+    "term": "Rich Harris",
+    "year": "",
+    "def": "Created Svelte and the Rollup bundler while building interactive news graphics.",
+    "kind": "person"
+  },
+  "pQSF": {
+    "term": "Quentin Stafford-Fraser",
+    "year": "",
+    "def": "Cambridge computer scientist who, with Paul Jardetzky, wired up the Trojan Room coffee-pot camera in 1991.",
+    "kind": "person"
+  },
+  "homepage": {
+    "term": "Homepage",
+    "year": "",
+    "def": "A personal website, usually a few hand-written HTML pages about you, your pets and your favourite links.",
+    "kind": "term"
+  },
+  "sharedhost": {
+    "term": "Shared hosting",
+    "year": "",
+    "def": "One server shared by hundreds of sites, each in a folder. Cheap, and home to most 90s pages.",
+    "kind": "term"
+  },
+  "crawler": {
+    "term": "Search crawler",
+    "year": "",
+    "def": "A search engine's program that downloads pages to index them. Early crawlers didn't run JavaScript, so client-rendered pages looked empty.",
+    "kind": "term"
+  },
+  "infinite": {
+    "term": "Infinite scroll",
+    "year": "",
+    "def": "Loading more items automatically as you near the bottom, so the page never ends. Everywhere from about 2010.",
+    "kind": "term"
+  },
+  "production": {
+    "term": "Production",
+    "year": "",
+    "def": "The live environment real users hit, as opposed to a staging or preview deployment.",
+    "kind": "term"
+  },
+  "trojan": {
+    "term": "Trojan Room coffee pot",
+    "year": "1991",
+    "def": "A coffee pot at Cambridge University's Computer Lab. On camera from 1991, on the web 1993–2001.",
+    "kind": "term"
+  },
+  "webcam": {
+    "term": "Webcam",
+    "year": "",
+    "def": "A camera that publishes images to the web. The Trojan Room coffee pot is usually called the first famous one.",
+    "kind": "term"
+  },
+  "nextstep": {
+    "term": "NeXTSTEP",
+    "year": "1989",
+    "def": "The operating system on NeXT computers. It later became the core of Mac OS X.",
+    "kind": "term"
+  },
+  "nextcube": {
+    "term": "NeXTcube",
+    "year": "1990",
+    "def": "A black workstation from NeXT, Steve Jobs' company after Apple. The first web server ran on one.",
+    "kind": "term"
+  },
+  "wwwapp": {
+    "term": "WorldWideWeb (the app)",
+    "year": "1990",
+    "def": "The first browser, which could also edit pages. Written by Tim Berners-Lee in 1990.",
+    "kind": "term"
+  },
+  "linemode": {
+    "term": "Line-mode browser",
+    "year": "1991",
+    "def": "A text-only browser by Nicola Pellow that ran on any terminal. Links were numbers you typed.",
+    "kind": "term"
+  },
+  "terminal": {
+    "term": "Terminal",
+    "year": "",
+    "def": "A screen and keyboard with no real computer inside. It showed text from a shared machine.",
+    "kind": "term"
+  },
+  "cern": {
+    "term": "CERN",
+    "year": "1954",
+    "def": "The European Organization for Nuclear Research, the particle physics lab near Geneva where the web was invented.",
+    "kind": "term"
+  },
+  "slac": {
+    "term": "SLAC",
+    "year": "",
+    "def": "Stanford Linear Accelerator Center in California. It ran the first web server outside Europe, from December 1991.",
+    "kind": "term"
+  },
+  "w3c": {
+    "term": "W3C",
+    "year": "1994",
+    "def": "The World Wide Web Consortium, founded by Tim Berners-Lee to write the web's standards.",
+    "kind": "term"
+  },
+  "arpanet": {
+    "term": "ARPANET",
+    "year": "1969",
+    "def": "The US research network that grew into the internet. It sent its first message in 1969.",
+    "kind": "term"
+  },
+  "httpd": {
+    "term": "httpd",
+    "year": "1990",
+    "def": "HTTP daemon: the web server program. CERN httpd came first; NCSA HTTPd followed and Apache grew out of it.",
+    "kind": "term"
+  },
+  "ncsa": {
+    "term": "NCSA",
+    "year": "",
+    "def": "National Center for Supercomputing Applications at the University of Illinois. It built Mosaic and the NCSA HTTPd server.",
+    "kind": "term"
+  },
+  "netscape": {
+    "term": "Netscape Navigator",
+    "year": "1994",
+    "def": "The browser that ruled the mid-90s. Netscape's 1995 IPO kicked off the dot-com boom.",
+    "kind": "term"
+  },
+  "ie": {
+    "term": "Internet Explorer",
+    "year": "1995",
+    "def": "Microsoft's browser. Bundled with Windows, it won the first browser war, then stood still for years. Retired in 2022.",
+    "kind": "term"
+  },
+  "browserwars": {
+    "term": "Browser wars",
+    "year": "1995",
+    "def": "Netscape against Internet Explorer, roughly 1995–2001. Both raced to add incompatible features; IE won by shipping with Windows.",
+    "kind": "term"
+  },
+  "sun": {
+    "term": "Sun Microsystems",
+    "year": "",
+    "def": "Sun Microsystems, maker of Java. The JavaScript name came from a deal with Sun.",
+    "kind": "term"
+  },
+  "geocities": {
+    "term": "GeoCities",
+    "year": "1994",
+    "def": "Free homepages sorted into themed “neighbourhoods”. Yahoo bought it in 1999 and shut it down in 2009.",
+    "kind": "term"
+  },
+  "webring": {
+    "term": "Webring",
+    "year": "",
+    "def": "A loop of sites on one topic, linked by prev and next buttons. 90s discovery, before good search.",
+    "kind": "term"
+  },
+  "guestbook": {
+    "term": "Guestbook",
+    "year": "",
+    "def": "A page where visitors left a public message, usually run by a CGI script.",
+    "kind": "term"
+  },
+  "hitcounter": {
+    "term": "Hit counter",
+    "year": "",
+    "def": "A CGI script that counted page loads and showed the total as odometer digits.",
+    "kind": "term"
+  },
+  "y2k": {
+    "term": "Y2K",
+    "year": "2000",
+    "def": "The fear that two-digit years would break software on 1 January 2000. Years of fixes meant little did.",
+    "kind": "term"
+  },
+  "dotcom": {
+    "term": "Dot-com bubble",
+    "year": "2000",
+    "def": "The late-90s internet investment frenzy. Tech stocks peaked in March 2000, then lost about 78%.",
+    "kind": "term"
+  },
+  "flash": {
+    "term": "Flash",
+    "year": "1996",
+    "def": "A browser plug-in for animation, games and video, huge in the 2000s. Adobe ended support at the end of 2020.",
+    "kind": "term"
+  },
+  "gmail": {
+    "term": "Gmail",
+    "year": "2004",
+    "def": "Google's webmail, launched 1 April 2004 with 1 GB of storage and a no-reload interface.",
+    "kind": "term"
+  },
+  "gmaps": {
+    "term": "Google Maps",
+    "year": "2005",
+    "def": "Google's 2005 map you could drag smoothly, loading tiles in the background with Ajax.",
+    "kind": "term"
+  },
+  "web20": {
+    "term": "Web 2.0",
+    "year": "2004",
+    "def": "A label, popularised by Tim O'Reilly's 2004 conference, for sites built on user content, sharing and rich in-browser interaction.",
+    "kind": "term"
+  },
+  "beta": {
+    "term": "Perpetual beta",
+    "year": "",
+    "def": "In the 2000s products stayed labelled “beta” for years. Gmail only dropped the badge in July 2009.",
+    "kind": "term"
+  },
+  "blog": {
+    "term": "Blog",
+    "year": "1999",
+    "def": "Short for weblog: a personal site of dated posts, newest first.",
+    "kind": "term"
+  },
+  "rss": {
+    "term": "RSS",
+    "year": "1999",
+    "def": "An XML feed of a site's latest posts that readers could subscribe to in a feed reader.",
+    "kind": "term"
+  },
+  "django": {
+    "term": "Django",
+    "year": "2005",
+    "def": "A Python web framework built at the Lawrence Journal-World newspaper in Kansas.",
+    "kind": "term"
+  },
+  "aws": {
+    "term": "AWS",
+    "year": "2006",
+    "def": "Amazon Web Services: renting Amazon's infrastructure by the hour. S3 and EC2 launched in 2006.",
+    "kind": "term"
+  },
+  "useast": {
+    "term": "us-east-1",
+    "year": "",
+    "def": "AWS's oldest, busiest region, in Virginia. When it has a bad day, the internet notices.",
+    "kind": "term"
+  },
+  "iphone": {
+    "term": "iPhone",
+    "year": "2007",
+    "def": "Apple's 2007 phone with a full web browser. It made the mobile web mainstream, and never supported Flash.",
+    "kind": "term"
+  },
+  "heroku": {
+    "term": "Heroku",
+    "year": "2007",
+    "def": "A platform where deploying meant running git push heroku master. It made PaaS popular.",
+    "kind": "term"
+  },
+  "backbone": {
+    "term": "Backbone.js",
+    "year": "2010",
+    "def": "A small library by Jeremy Ashkenas that gave browser apps models, views and a router.",
+    "kind": "term"
+  },
+  "angularjs": {
+    "term": "AngularJS",
+    "year": "2010",
+    "def": "Google's framework with two-way data binding and templates full of '{{' '}}'. Rewritten from scratch as Angular in 2016.",
+    "kind": "term"
+  },
+  "jsconf": {
+    "term": "JSConf",
+    "year": "2009",
+    "def": "A community-run series of JavaScript conferences, where Node.js and React were both first shown.",
+    "kind": "term"
+  },
+  "jsx": {
+    "term": "JSX",
+    "year": "2013",
+    "def": "React's syntax for writing HTML-like tags inside JavaScript. It compiles to plain function calls.",
+    "kind": "term"
+  },
+  "leftpad": {
+    "term": "left-pad",
+    "year": "2016",
+    "def": "An 11-line npm package. Unpublished in March 2016, it broke thousands of builds.",
+    "kind": "term"
+  },
+  "responsive": {
+    "term": "Responsive design",
+    "year": "2010",
+    "def": "One layout that adapts to any screen with CSS media queries. Named by Ethan Marcotte in 2010.",
+    "kind": "term"
+  },
+  "flat": {
+    "term": "Flat design",
+    "year": "",
+    "def": "The early-2010s move from glossy, realistic textures to plain shapes and colour. Google's Material Design (2014) added paper-like shadows back.",
+    "kind": "term"
+  },
+  "kubernetes": {
+    "term": "Kubernetes",
+    "year": "2014",
+    "def": "Google's open-source system for running containers across a cluster: scheduling, restarts and scaling.",
+    "kind": "term"
+  },
+  "deno": {
+    "term": "Deno",
+    "year": "2018",
+    "def": "A JavaScript and TypeScript runtime by Ryan Dahl: secure by default, with TypeScript built in.",
+    "kind": "term"
+  },
+  "vue": {
+    "term": "Vue",
+    "year": "2014",
+    "def": "A front-end framework by Evan You: HTML templates plus reactive data, adoptable one page at a time.",
+    "kind": "term"
+  },
+  "nextjs": {
+    "term": "Next.js",
+    "year": "2016",
+    "def": "Vercel's React framework for server rendering, routing and static generation.",
+    "kind": "term"
+  },
+  "svelte": {
+    "term": "Svelte",
+    "year": "2016",
+    "def": "A framework by Rich Harris that compiles components to plain JavaScript at build time, with no runtime library.",
+    "kind": "term"
+  },
+  "socketio": {
+    "term": "Socket.IO",
+    "year": "2010",
+    "def": "A library by Guillermo Rauch for real-time two-way messages between browser and server.",
+    "kind": "term"
+  },
+  "rollup": {
+    "term": "Rollup",
+    "year": "2015",
+    "def": "A JavaScript module bundler by Rich Harris, known for tree-shaking unused code.",
+    "kind": "term"
+  },
+  "vite": {
+    "term": "Vite",
+    "year": "2020",
+    "def": "Evan You's build tool (2020) with a near-instant dev server.",
+    "kind": "term"
+  },
+  "typescript": {
+    "term": "TypeScript",
+    "year": "2012",
+    "def": "Microsoft's typed superset of JavaScript. It compiles to plain JS and became the default for large front-end codebases.",
+    "kind": "term"
+  },
+  "monorepo": {
+    "term": "Monorepo",
+    "year": "",
+    "def": "One repository holding many apps and packages, so they share code and change together.",
+    "kind": "term"
+  },
+  "jamstack": {
+    "term": "JAMstack",
+    "year": "2015",
+    "def": "JavaScript, APIs and Markup: pre-built pages on a CDN, with dynamic parts handled by APIs. Coined at Netlify.",
+    "kind": "term"
+  },
+  "postgres": {
+    "term": "Postgres",
+    "year": "1996",
+    "def": "PostgreSQL, an open-source relational database descended from Berkeley's POSTGRES project.",
+    "kind": "term"
+  },
+  "edgefn": {
+    "term": "Edge function",
+    "year": "",
+    "def": "A small serverless function deployed to many locations at once, run in whichever one is closest to the user.",
+    "kind": "term"
+  },
+  "rsc": {
+    "term": "Server Components",
+    "year": "2020s",
+    "def": "React components that run only on the server and ship none of their own code to the browser.",
+    "kind": "term"
+  },
+  "xhr": {
+    "term": "XMLHttpRequest",
+    "year": "1999",
+    "def": "The browser API behind Ajax. Microsoft shipped it in Internet Explorer 5; the other browsers copied it.",
+    "kind": "term"
+  },
+  "tcpip": {
+    "term": "TCP/IP",
+    "year": "1983",
+    "def": "The internet's base protocols: IP moves packets, TCP makes them a reliable stream. Standard since 1983.",
+    "kind": "term"
+  },
+  "lamp": {
+    "term": "LAMP",
+    "year": "1998",
+    "def": "Linux, Apache, MySQL and PHP (or Perl, or Python). The free default stack for 2000s websites.",
+    "kind": "term"
+  },
+  "node": {
+    "term": "Node.js",
+    "year": "2009",
+    "def": "JavaScript outside the browser, on Chrome's V8 engine, with non-blocking I/O. One language on both sides of the wire.",
+    "kind": "term"
+  },
+  "rails": {
+    "term": "Ruby on Rails",
+    "year": "2004",
+    "def": "A full-stack MVC framework in Ruby. Made “convention over configuration” and database migrations mainstream.",
+    "kind": "term"
+  },
+  "jquery": {
+    "term": "jQuery",
+    "year": "2006",
+    "def": "A library that hid browser differences behind one $() function for selecting elements, events, animation and Ajax.",
+    "kind": "term"
+  },
+  "js": {
+    "term": "JavaScript",
+    "year": "1995",
+    "def": "The browser's scripting language, written by Brendan Eich at Netscape. Standardised as ECMAScript in 1997.",
+    "kind": "term"
+  },
+  "ajax": {
+    "term": "Ajax",
+    "year": "2005",
+    "def": "Asynchronous JavaScript and XML: fetch data in the background and update part of the page without a full reload.",
+    "kind": "term"
+  },
+  "json": {
+    "term": "JSON",
+    "year": "~2001",
+    "def": "A small text format for data, popularised by Douglas Crockford. It replaced XML for most APIs.",
+    "kind": "term"
+  },
+  "rest": {
+    "term": "REST",
+    "year": "2000",
+    "def": "A style for APIs: resources live at URLs, and you act on them with GET, POST and DELETE.",
+    "kind": "term"
+  },
+  "http": {
+    "term": "HTTP",
+    "year": "1991",
+    "def": "HyperText Transfer Protocol. How browsers and servers talk: GET a URL, get back a status code, headers and a body.",
+    "kind": "term"
+  },
+  "html": {
+    "term": "HTML",
+    "year": "1991",
+    "def": "HyperText Markup Language. Plain text with tags like '<'h1> and '<'a> that give a page its structure and its links.",
+    "kind": "term"
+  },
+  "url": {
+    "term": "URL",
+    "year": "1990",
+    "def": "Uniform Resource Locator. An address like https://example.com/page: the protocol, the host, then the path.",
+    "kind": "term"
+  },
+  "hypertext": {
+    "term": "Hypertext",
+    "year": "1965",
+    "def": "Text with links you can follow to other text. Ted Nelson coined the word; the web made it global.",
+    "kind": "term"
+  },
+  "newsgroup": {
+    "term": "Newsgroup",
+    "year": "1980",
+    "def": "A Usenet discussion group, the internet's message boards since 1980. alt.hypertext was one of thousands.",
+    "kind": "term"
+  },
+  "mosaic": {
+    "term": "Mosaic",
+    "year": "1993",
+    "def": "The 1993 NCSA browser that put images inline with text and made the web popular.",
+    "kind": "term"
+  },
+  "cgi": {
+    "term": "CGI",
+    "year": "1993",
+    "def": "Common Gateway Interface. The web server starts a program for each request and sends back whatever it prints.",
+    "kind": "term"
+  },
+  "perl": {
+    "term": "Perl",
+    "year": "1987",
+    "def": "Larry Wall's text-processing language, the default choice for CGI scripts in the 90s.",
+    "kind": "term"
+  },
+  "php": {
+    "term": "PHP",
+    "year": "1995",
+    "def": "Rasmus Lerdorf's 1995 language: code mixed into HTML, run by the server on every request.",
+    "kind": "term"
+  },
+  "isp": {
+    "term": "ISP",
+    "year": "",
+    "def": "Internet service provider. The company whose modems you dialled into to get online.",
+    "kind": "term"
+  },
+  "dialup": {
+    "term": "Dial-up",
+    "year": "",
+    "def": "Getting online with a phone call. Nobody could use the phone while you surfed.",
+    "kind": "term"
+  },
+  "baud": {
+    "term": "kbps / baud",
+    "year": "",
+    "def": "Kilobits per second. A 28.8k modem moved about 3.6 KB a second, on a good day.",
+    "kind": "term"
+  },
+  "modem": {
+    "term": "Modem",
+    "year": "",
+    "def": "Modulator-demodulator. Turns digital data into audio tones that travel down a phone line, and back again.",
+    "kind": "term"
+  },
+  "colo": {
+    "term": "Colocation",
+    "year": "",
+    "def": "Renting rack space, power and bandwidth in someone else's data center for servers you bought and own.",
+    "kind": "term"
+  },
+  "apache": {
+    "term": "Apache",
+    "year": "1995",
+    "def": "Grew out of patches to the NCSA web server and was the most-used web server from 1996 into the 2010s.",
+    "kind": "term"
+  },
+  "mysql": {
+    "term": "MySQL",
+    "year": "1995",
+    "def": "A fast, free relational database. The M in LAMP.",
+    "kind": "term"
+  },
+  "memcached": {
+    "term": "memcached",
+    "year": "2003",
+    "def": "An in-memory key-value cache written for LiveJournal. It saves the database from answering the same query again and again.",
+    "kind": "term"
+  },
+  "lb": {
+    "term": "Load balancer",
+    "year": "",
+    "def": "A box or program that spreads incoming requests across several identical servers.",
+    "kind": "term"
+  },
+  "css": {
+    "term": "CSS",
+    "year": "1996",
+    "def": "Cascading Style Sheets: rules for how HTML should look, kept apart from the content. Proposed in 1994, CSS1 in 1996.",
+    "kind": "term"
+  },
+  "mvc": {
+    "term": "MVC",
+    "year": "1979",
+    "def": "Model–View–Controller. Split an app into data, display, and the code connecting them. From Smalltalk.",
+    "kind": "term"
+  },
+  "vps": {
+    "term": "VPS",
+    "year": "",
+    "def": "Virtual private server. One physical machine split into several virtual ones, each with its own OS and root access.",
+    "kind": "term"
+  },
+  "ec2": {
+    "term": "EC2",
+    "year": "2006",
+    "def": "Amazon's rentable virtual servers, started with an API call. Launched 2006.",
+    "kind": "term"
+  },
+  "s3": {
+    "term": "S3",
+    "year": "2006",
+    "def": "Amazon Simple Storage Service. Put any file at a URL and pay per gigabyte. Launched March 2006.",
+    "kind": "term"
+  },
+  "paas": {
+    "term": "PaaS",
+    "year": "",
+    "def": "Platform as a service: you push code, the platform runs it. Heroku made it famous.",
+    "kind": "term"
+  },
+  "cdn": {
+    "term": "CDN",
+    "year": "",
+    "def": "Content delivery network: copies of your files around the world, served from the closest one.",
+    "kind": "term"
+  },
+  "spa": {
+    "term": "SPA",
+    "year": "",
+    "def": "Single-page app: one HTML page whose JavaScript draws every screen and fetches its own data.",
+    "kind": "term"
+  },
+  "csr": {
+    "term": "CSR",
+    "year": "",
+    "def": "Client-side rendering: the browser builds the page with JavaScript. Fast later, slow to start.",
+    "kind": "term"
+  },
+  "ssr": {
+    "term": "SSR",
+    "year": "",
+    "def": "Server-side rendering: the server sends finished HTML. Fast first paint, easy for search engines.",
+    "kind": "term"
+  },
+  "ssg": {
+    "term": "SSG",
+    "year": "",
+    "def": "Static site generation. Pages are rendered to HTML files at build time and served from a CDN.",
+    "kind": "term"
+  },
+  "isr": {
+    "term": "ISR",
+    "year": "2020",
+    "def": "Incremental static regeneration. Static pages rebuilt in the background after a time limit or on demand, without a full redeploy.",
+    "kind": "term"
+  },
+  "hydration": {
+    "term": "Hydration",
+    "year": "",
+    "def": "Running a server-rendered page's JavaScript in the browser so it attaches event handlers and becomes interactive.",
+    "kind": "term"
+  },
+  "bundle": {
+    "term": "Bundle",
+    "year": "",
+    "def": "All of an app's JavaScript squashed into a few files by a build tool.",
+    "kind": "term"
+  },
+  "npm": {
+    "term": "npm",
+    "year": "2010",
+    "def": "The Node package manager and registry. One command installs a package and everything it depends on.",
+    "kind": "term"
+  },
+  "v8": {
+    "term": "V8",
+    "year": "2008",
+    "def": "Chrome's JavaScript engine. It compiles JS to machine code, which made JavaScript fast enough for big apps and servers.",
+    "kind": "term"
+  },
+  "react": {
+    "term": "React",
+    "year": "2013",
+    "def": "A UI library from Facebook. Describe the UI for a given state and React works out the DOM changes.",
+    "kind": "term"
+  },
+  "docker": {
+    "term": "Containers / Docker",
+    "year": "2013",
+    "def": "Packages an app with its whole environment into an image that runs the same on any machine.",
+    "kind": "term"
+  },
+  "serverless": {
+    "term": "Serverless / Lambda",
+    "year": "2014",
+    "def": "Upload a function; the platform runs it per request and bills per call. Servers still exist, unseen.",
+    "kind": "term"
+  },
+  "git": {
+    "term": "git push / CI",
+    "year": "2005",
+    "def": "Sending commits to a shared repository. Platforms hook in so every push triggers a build, tests and a deploy.",
+    "kind": "term"
+  },
+  "api": {
+    "term": "API",
+    "year": "",
+    "def": "A defined way for one program to ask another for data or actions. On the web, usually HTTP.",
+    "kind": "term"
+  },
+  "dns": {
+    "term": "DNS",
+    "year": "1983",
+    "def": "Domain Name System. Turns names like example.com into IP addresses via a worldwide hierarchy of servers.",
+    "kind": "term"
+  },
+  "ttfb": {
+    "term": "TTFB",
+    "year": "",
+    "def": "Time to first byte: how long after the request the first byte of the response arrives.",
+    "kind": "term"
+  },
+  "latency": {
+    "term": "Latency",
+    "year": "",
+    "def": "How long a round trip takes. Light in fibre covers about 200 km per millisecond, so distance always costs something.",
+    "kind": "term"
+  },
+  "streaming": {
+    "term": "Streaming",
+    "year": "",
+    "def": "Sending a response in pieces as they're ready, so the browser can show the first parts early.",
+    "kind": "term"
+  },
+  "edge": {
+    "term": "Edge",
+    "year": "",
+    "def": "Running code in data centers close to users, instead of in one central region.",
+    "kind": "term"
+  },
+  "browser": {
+    "term": "Browser",
+    "year": "1990",
+    "def": "The program that fetches pages over HTTP and draws them. The first one, WorldWideWeb, was also an editor.",
+    "kind": "term"
+  },
+  "server": {
+    "term": "Server",
+    "year": "1990",
+    "def": "A program, and the machine running it, that answers requests. The first web server was CERN httpd.",
+    "kind": "term"
+  }
+}
