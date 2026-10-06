@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { Autoplay } from "@/features/controls/autoplay";
 import { Advance } from "@/features/controls/Advance";
 import { Controls } from "@/features/controls/Controls";
+import type { LikeCarry } from "@/features/experience/like";
 import { Music } from "@/features/power-on/engine/music";
 import { AudioEngine } from "@/features/power-on/engine/sfx";
 import { DiveAudio } from "./engine/audio";
@@ -28,7 +29,15 @@ const LANDING_ERA_MUSIC = 5;
  * (engine/diveEngine.ts) which writes styles straight to the DOM in rAF. Sound, music and volume share
  * Power On's engines and saved settings, so the control bar behaves the same across the handoff.
  */
-export function Dive({ onEnd, startAtEnd = false, autoplay }: { onEnd: () => void; startAtEnd?: boolean; autoplay: Autoplay }) {
+export function Dive({ onEnd, onLike, like, startAtEnd = false, autoplay }: {
+  onEnd: () => void;
+  /** the like button the dive opens (carried into the story) */
+  onLike: (like: LikeCarry) => void;
+  /** the carried like, shown on murmur's era skins in the tunnel */
+  like: LikeCarry;
+  startAtEnd?: boolean;
+  autoplay: Autoplay;
+}) {
   const t = useTranslations("dive");
   const rootRef = useRef<HTMLDivElement>(null);
   const appRef = useRef<AppBridge>(null);
@@ -44,7 +53,8 @@ export function Dive({ onEnd, startAtEnd = false, autoplay }: { onEnd: () => voi
   const [vol, setVol] = useState(music.vol);
   const { playing, setPlaying, speed, cycleSpeed } = autoplay;
   const onEndRef = useRef(onEnd);
-  useEffect(() => { onEndRef.current = onEnd; });
+  const onLikeRef = useRef(onLike);
+  useEffect(() => { onEndRef.current = onEnd; onLikeRef.current = onLike; });
 
   useEffect(() => {
     const root = rootRef.current;
@@ -72,6 +82,7 @@ export function Dive({ onEnd, startAtEnd = false, autoplay }: { onEnd: () => voi
       reduce,
       onCaption: setCaption,
       onAutoplay: setPlaying,
+      onLike: (l) => onLikeRef.current(l),
       onEnd: () => onEndRef.current(),
       startAtEnd,
     });
@@ -144,7 +155,7 @@ export function Dive({ onEnd, startAtEnd = false, autoplay }: { onEnd: () => voi
           </section>
 
           <CodeLayers />
-          <Tunnel />
+          <Tunnel like={like} />
           <div className="year">2026</div>
         </div>
       </div>

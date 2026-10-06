@@ -1,9 +1,10 @@
 {
   "title": {
     "headline": "¿Sabes cómo está <i>hecho</i> este sitio web?",
-    "sub": "Juega un rato. Luego mira por dentro.",
+    "sub": "Dale me gusta a una publicación. Luego sigue su camino.",
     "sceneLabel": "murmur, una red social moderna con la que puedes jugar"
   },
+  "chapter": "Capítulo 0 · Hoy",
   "captions": {
     "hook1": "¿Esta app? <i>React</i>, JavaScript, HTML, CSS.",
     "hook2": "Pero ¿cómo llegamos hasta aquí?",
@@ -39,37 +40,28 @@
   },
   "eras": {
     "e2016": {
-      "tag": "React (2013)",
-      "app": "☰ tareas"
+      "tag": "React (2013)"
     },
     "e2010": {
       "tag": "Bootstrap · web móvil",
-      "brand": "Marca",
       "home": "Inicio",
-      "about": "Nosotros",
-      "contact": "Contacto",
-      "hello": "Hello, world!",
-      "lead": "Una plantilla responsive para un sitio de marketing sencillo.",
-      "more": "Más info »"
+      "profile": "Perfil",
+      "like": "Me gusta"
     },
     "e2006": {
       "tag": "jQuery · Ajax",
-      "name": "Timelinr",
       "beta": "BETA",
-      "signup": "¡Regístrate gratis!",
-      "cloud": "ajax,web2.0,rss,etiquetas,social"
+      "like": "¡Me encanta!"
     },
     "e1997": {
       "tag": "JavaScript (1995) · CSS (1996)",
-      "welcome": "~*~ Bienvenidos a mi Página ~*~",
-      "new": "¡¡NUEVO!!",
+      "welcome": "~*~ Bienvenidos a murmur ~*~",
+      "visitors": "Visitantes:",
       "guestbook": "¡Firma mi libro de visitas!"
     },
     "e1991": {
       "tag": "HTML · HTTP",
-      "title": "World Wide Web",
-      "body": "The WorldWideWeb (W3) is a wide-area <a>hypermedia</a> information retrieval initiative aiming to give universal access to a large universe of documents.",
-      "more": "Everything there is online about W3 is linked directly or indirectly to this document."
+      "link": "No hay botón de me gusta. ¿Te gustó? <a>Enlázalo</a> desde tu página."
     }
   },
   "app": {

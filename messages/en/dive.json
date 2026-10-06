@@ -1,9 +1,10 @@
 {
   "title": {
     "headline": "Do you know how this website is <i>built</i>?",
-    "sub": "Play with it. Then look inside.",
+    "sub": "Like a post. Then follow where it goes.",
     "sceneLabel": "murmur, a modern social app you can play with"
   },
+  "chapter": "Chapter 0 · Today",
   "captions": {
     "hook1": "This app? <i>React</i>, JavaScript, HTML, CSS.",
     "hook2": "But how did we get here?",
@@ -39,37 +40,28 @@
   },
   "eras": {
     "e2016": {
-      "tag": "React (2013)",
-      "app": "☰ tasks"
+      "tag": "React (2013)"
     },
     "e2010": {
       "tag": "Bootstrap · mobile web",
-      "brand": "Brand",
       "home": "Home",
-      "about": "About",
-      "contact": "Contact",
-      "hello": "Hello, world!",
-      "lead": "A responsive template for a simple marketing site.",
-      "more": "Learn more »"
+      "profile": "Profile",
+      "like": "Like"
     },
     "e2006": {
       "tag": "jQuery · Ajax",
-      "name": "Timelinr",
       "beta": "BETA",
-      "signup": "Sign up free!",
-      "cloud": "ajax,web2.0,rss,tags,social"
+      "like": "Love it!"
     },
     "e1997": {
       "tag": "JavaScript (1995) · CSS (1996)",
-      "welcome": "~*~ Welcome 2 My Homepage ~*~",
-      "new": "NEW!!",
+      "welcome": "~*~ Welcome 2 murmur ~*~",
+      "visitors": "Visitors:",
       "guestbook": "Sign my guestbook!"
     },
     "e1991": {
       "tag": "HTML · HTTP",
-      "title": "World Wide Web",
-      "body": "The WorldWideWeb (W3) is a wide-area <a>hypermedia</a> information retrieval initiative aiming to give universal access to a large universe of documents.",
-      "more": "Everything there is online about W3 is linked directly or indirectly to this document."
+      "link": "No like button. Liked it? <a>Link to it</a> from your page."
     }
   },
   "app": {

@@ -234,6 +234,11 @@ export function Murmur({ ref, reduce }: { ref: Ref<AppBridge>; reduce: boolean }
       setLive(live) {
         liveRef.current = live;
       },
+      likeOf(btn) {
+        const s = stateRef.current;
+        const post = s.posts.find((p) => p.id === btn.dataset.like);
+        return post ? { id: post.id, likes: post.likes, liked: !!post.liked, theme: s.theme } : null;
+      },
     }),
     [actions],
   );
@@ -288,6 +293,7 @@ export function Murmur({ ref, reduce }: { ref: Ref<AppBridge>; reduce: boolean }
         className="app-wrap"
         data-theme={s.theme}
         data-murmur=""
+        data-liked={s.lastLike ? "" : undefined}
         ref={appRef}
         onFocus={(e) => {
           if (isField(e.target)) typingRef.current = true;

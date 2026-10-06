@@ -1,9 +1,10 @@
 {
   "title": {
     "headline": "你知道這個網站是怎麼<i>做出來</i>的嗎？",
-    "sub": "先玩玩看，再看看裡面。",
+    "sub": "按個讚。然後跟著它走。",
     "sceneLabel": "murmur，一個可以隨便玩的現代社群 App"
   },
+  "chapter": "第 0 章 · 今天",
   "captions": {
     "hook1": "這個 App？<i>React</i>、JavaScript、HTML、CSS。",
     "hook2": "但我們是怎麼走到這一步的？",
@@ -39,37 +40,28 @@
   },
   "eras": {
     "e2016": {
-      "tag": "React (2013)",
-      "app": "☰ 待辦事項"
+      "tag": "React (2013)"
     },
     "e2010": {
       "tag": "Bootstrap · 行動網頁",
-      "brand": "品牌",
       "home": "首頁",
-      "about": "關於我們",
-      "contact": "聯絡我們",
-      "hello": "Hello, world!",
-      "lead": "簡單行銷網站的響應式範本。",
-      "more": "了解更多 »"
+      "profile": "個人檔案",
+      "like": "讚"
     },
     "e2006": {
       "tag": "jQuery · Ajax",
-      "name": "Timelinr",
       "beta": "BETA",
-      "signup": "免費註冊！",
-      "cloud": "ajax,web2.0,rss,標籤,社群"
+      "like": "超愛！"
     },
     "e1997": {
       "tag": "JavaScript (1995) · CSS (1996)",
-      "welcome": "~*~ 歡迎光臨我的網站 ~*~",
-      "new": "最新!!",
+      "welcome": "~*~ 歡迎光臨 murmur ~*~",
+      "visitors": "訪客人數：",
       "guestbook": "快來簽我的留言板！"
     },
     "e1991": {
       "tag": "HTML · HTTP",
-      "title": "World Wide Web",
-      "body": "The WorldWideWeb (W3) is a wide-area <a>hypermedia</a> information retrieval initiative aiming to give universal access to a large universe of documents.",
-      "more": "Everything there is online about W3 is linked directly or indirectly to this document."
+      "link": "沒有按讚鈕。喜歡嗎？從你的網頁<a>連過來</a>。"
     }
   },
   "app": {

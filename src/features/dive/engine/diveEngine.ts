@@ -1,3 +1,4 @@
+import type { LikeCarry } from "@/features/experience/like";
 import type { DiveAudio } from "./audio";
 import { clamp, ease, lerp, seg } from "./math";
 import { captionAt, HOLD_AT, T, toP, TOTAL, type CaptionKey } from "./timeline";
@@ -15,6 +16,8 @@ export interface AppBridge {
   handleKey(e: KeyboardEvent): boolean;
   /** Ambient activity and toasts only run while the app is live (not diving). */
   setLive(live: boolean): void;
+  /** The post behind a like button, as the reader left it (carried into the story). */
+  likeOf(btn: HTMLElement): LikeCarry | null;
 }
 
 export interface DiveDom {
@@ -76,6 +79,8 @@ export interface DiveEngineOptions {
   reduce: boolean;
   onCaption: (key: CaptionKey | null) => void;
   onAutoplay: (playing: boolean) => void;
+  /** The like the dive opened: the story carries it to the end. */
+  onLike: (like: LikeCarry) => void;
   /** The tunnel has landed in 1989: Power On's desk takes over from here. */
   onEnd: () => void;
   /** Open on the last tunnel beat (coming back up from the desk) instead of the top. */
@@ -161,6 +166,8 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
     const theme = h.closest<HTMLElement>(".app-wrap")?.dataset.theme;
     if (theme) likeCard.dataset.theme = theme;
     else delete likeCard.dataset.theme;
+    const like = o.getApp()?.likeOf(h);
+    if (like) o.onLike(like);
   }
 
   /* ---------- render one timeline position ---------- */
