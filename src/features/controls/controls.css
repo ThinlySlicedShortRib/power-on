@@ -1,0 +1,50 @@
+/*
+ * The one control bar (Controls.tsx). Same controls in the same place on every screen; only the costume
+ * changes with the era (data-era: 0 = the landing and the 1989 desk, 1–6 = the story's eras).
+ * Global stylesheet, so every rule is scoped under .ctl.
+ */
+.ctl {
+  --ctl-bg: rgba(16,13,10,.72); --ctl-fg: #f1e6d0; --ctl-line: rgba(241,230,208,.18); --ctl-acc: #ffc874; --ctl-hover: rgba(255,255,255,.08);
+  --ctl-font: var(--f-mono); --ctl-radius: 999px;
+  position: fixed; z-index: 7; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  display: flex; align-items: center; gap: 2px; padding: 4px 8px; max-width: calc(100vw - 32px);
+  font: .72rem/1 var(--ctl-font); letter-spacing: .08em; color: var(--ctl-fg); background: var(--ctl-bg);
+  border: 1px solid var(--ctl-line); border-radius: var(--ctl-radius); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.ctl button { display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px; border: 0; border-radius: var(--ctl-radius); background: none;
+  font: inherit; letter-spacing: inherit; color: inherit; cursor: pointer; white-space: nowrap; }
+.ctl button:hover { background: var(--ctl-hover); }
+.ctl button[aria-pressed="false"] { opacity: .55; }
+.ctl button[aria-pressed="true"]:first-child { color: var(--ctl-acc); }
+.ctl .ctl-speed { min-width: 3.4em; justify-content: center; font-variant-numeric: tabular-nums; }
+.ctl .ctl-sep { width: 1px; height: 16px; margin: 0 4px; background: var(--ctl-line); }
+.ctl .ctl-vol { width: 72px; margin: 0 4px; accent-color: var(--ctl-acc); }
+.ctl .ctl-vol:disabled { opacity: .35; }
+.ctl :focus-visible { outline: 2px solid var(--ctl-acc); outline-offset: 2px; }
+.ctl .ctl-lang, .ctl .ctl-langsw { display: inline-flex; align-items: center; }
+.ctl .ctl-langsw select { appearance: none; -webkit-appearance: none; max-width: 9.5em; padding: 4px 10px; cursor: pointer;
+  font: inherit; letter-spacing: inherit; color: inherit; background: transparent; border: 1px solid var(--ctl-line); border-radius: var(--ctl-radius); }
+.ctl .ctl-langsw select:hover { background: var(--ctl-hover); }
+.ctl .ctl-langsw option { color: #111; background: #f1e6d0; }
+
+/* era costumes */
+.ctl[data-era="1"] { --ctl-bg: rgba(2,8,3,.85); --ctl-fg: #3dff72; --ctl-line: rgba(61,255,114,.4); --ctl-acc: #b6ffca; --ctl-hover: rgba(61,255,114,.12);
+  --ctl-font: var(--f-term); --ctl-radius: 0; font-size: .95rem; letter-spacing: .04em; }
+.ctl[data-era="2"] { --ctl-bg: #c0c0c0; --ctl-fg: #000; --ctl-line: #808080; --ctl-acc: #000080; --ctl-hover: #d4d4d4;
+  --ctl-font: var(--f-90s); --ctl-radius: 0; font-weight: 700; letter-spacing: 0; border: 2px outset #eee; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.ctl[data-era="3"] { --ctl-bg: linear-gradient(#ffffff, #e2eef9); --ctl-fg: #17324d; --ctl-line: #a9c4dd; --ctl-acc: #ff6a00; --ctl-hover: rgba(42,124,200,.1);
+  --ctl-font: var(--f-aqua); letter-spacing: 0; box-shadow: 0 6px 18px rgba(23,50,77,.22), inset 0 1px 0 #fff; }
+.ctl[data-era="4"] { --ctl-bg: #2c3e50; --ctl-fg: #ecf0f1; --ctl-line: rgba(236,240,241,.25); --ctl-acc: #1abc9c; --ctl-hover: rgba(26,188,156,.18);
+  --ctl-font: var(--f-flat); --ctl-radius: 2px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.ctl[data-era="5"] { --ctl-bg: rgba(20,20,24,.72); --ctl-fg: #ededed; --ctl-line: rgba(255,255,255,.14); --ctl-acc: #ff9a4d;
+  --ctl-font: var(--f-now); --ctl-radius: 12px; letter-spacing: 0; }
+.ctl[data-era="6"] { --ctl-bg: rgba(255,255,255,.9); --ctl-fg: #141a17; --ctl-line: #d5ddd8; --ctl-acc: #0fa3a3; --ctl-hover: rgba(15,163,163,.1);
+  --ctl-font: var(--f-now); --ctl-radius: 14px; letter-spacing: 0; box-shadow: 0 0 0 3px rgba(15,163,163,.08), 0 10px 30px rgba(20,26,23,.12); }
+
+@media (max-width: 760px) {
+  .ctl { gap: 0; padding: 3px 6px; }
+  .ctl .ctl-lbl { display: none; }
+  .ctl .ctl-vol { width: 44px; }
+  .ctl .ctl-sep { margin: 0 2px; }
+  .ctl .ctl-langsw select { max-width: 6.5em; padding: 3px 6px; }
+}

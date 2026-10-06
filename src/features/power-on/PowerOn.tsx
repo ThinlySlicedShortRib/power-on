@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import type { Autoplay } from "@/features/controls/autoplay";
+import { Controls } from "@/features/controls/Controls";
 import { AdvanceHint, flashKey } from "./components/AdvanceHint";
 import { PowerOnContext, type PowerOnCtx } from "./components/context";
 import { EraFx } from "./components/EraFx";
@@ -30,6 +32,8 @@ const FWD = new Set([" ", "ArrowRight", "ArrowDown", "Enter", "PageDown"]);
 const BACK = new Set(["ArrowLeft", "ArrowUp", "PageUp"]);
 
 export interface PowerOnProps {
+  /** shared with the landing so it carries on across the handoff */
+  autoplay: Autoplay;
   /** scrolling up from the desk (intro) goes back into the landing's time tunnel */
   onBack?: () => void;
   /** "Replay intro" and "Power off & start again" hand back to the top of the landing instead of the local intro */
@@ -41,7 +45,7 @@ export interface PowerOnProps {
  * Three.js desk, WebAudio music and SFX, and scroll tracking run as imperative engines driven through refs;
  * React renders only when the line, era or mode changes.
  */
-export function PowerOn({ onBack, onReplayIntro }: PowerOnProps) {
+export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   const text = useStoryText();
   const { t } = text;
 
@@ -69,7 +73,8 @@ export function PowerOn({ onBack, onReplayIntro }: PowerOnProps) {
   const posRef = useRef(pos);
   const keysOpenRef = useRef(false);
   const onBackRef = useRef(onBack);
-  useEffect(() => { posRef.current = pos; keysOpenRef.current = keysOpen; onBackRef.current = onBack; });
+  const autoRef = useRef(autoplay);
+  useEffect(() => { posRef.current = pos; keysOpenRef.current = keysOpen; onBackRef.current = onBack; autoRef.current = autoplay; });
 
   const [dioramas] = useState(() => new Dioramas());
   const ctx = useMemo<PowerOnCtx>(() => ({ audio, music, dioramas, reduce, touch }), [audio, music, dioramas, reduce, touch]);
@@ -87,7 +92,7 @@ export function PowerOn({ onBack, onReplayIntro }: PowerOnProps) {
 
   /** imperative controller, built once per mount; JSX handlers call through this ref */
   const ctl = useRef<{
-    startPower: () => void; powerOff: () => void; advance: (d: 1 | -1) => void; toggleSound: () => void; toggleMusic: () => void;
+    startPower: () => void; powerOff: () => void; advance: (d: 1 | -1) => boolean; toggleSound: () => void; toggleMusic: () => void;
     setVolume: (v: number) => void; desk: Desk | null; beforeLocale: () => void;
   } | null>(null);
 
@@ -207,10 +212,13 @@ export function PowerOn({ onBack, onReplayIntro }: PowerOnProps) {
     };
 
     const advance = (dir: 1 | -1) => {
-      if (modeNow !== "story") return;
-      scroll.advance(dir, reduce);
+      if (modeNow !== "story") return false;
+      const moved = scroll.advance(dir, reduce);
       if (!advUsed) { advUsed = true; save(KEYS.adv, "1"); hintRef.current?.classList.remove("po-on"); }
+      return moved;
     };
+    // the reader taking over (scroll, swipe, keys, clicks) pauses autoplay
+    const takeOver = () => { if (modeNow === "story") autoRef.current.setPlaying(false); };
 
     const c = {
       desk,
@@ -238,7 +246,7 @@ export function PowerOn({ onBack, onReplayIntro }: PowerOnProps) {
 
     // --- input
     const onScroll = () => requestAnimationFrame(update);
-    const onCancel = () => scroll.cancel();
+    const onCancel = () => { scroll.cancel(); takeOver(); };
     const onResize = () => {
       desk?.resize();
       if (modeNow === "story" && (innerWidth !== lastW || Math.abs(innerHeight - scroll.vh) > 140)) {
@@ -270,8 +278,8 @@ export function PowerOn({ onBack, onReplayIntro }: PowerOnProps) {
       const activation = (e.key === " " || e.key === "Enter") && (tag === "button" || tag === "a" || tag === "summary" || tgt.classList?.contains("po-gl-term"));
       if (activation) return;
       if (KEYMAP[e.key]) flashKey(hintRef.current, KEYMAP[e.key], flashTimer);
-      if (FWD.has(e.key)) { e.preventDefault(); advance(1); }
-      else if (BACK.has(e.key)) { e.preventDefault(); advance(-1); }
+      if (FWD.has(e.key)) { e.preventDefault(); takeOver(); advance(1); }
+      else if (BACK.has(e.key)) { e.preventDefault(); takeOver(); advance(-1); }
     };
     const onVisibility = () => {
       if (document.hidden) audio.suspend();
@@ -289,7 +297,7 @@ export function PowerOn({ onBack, onReplayIntro }: PowerOnProps) {
     const host = glHost.current!;
     const onHostMove = (e: PointerEvent) => { if (desk) host.style.cursor = desk.hitPower(e.clientX, e.clientY) ? "pointer" : ""; };
     const onHostClick = (e: MouseEvent) => {
-      if (modeNow === "story") { advance(1); return; }
+      if (modeNow === "story") { takeOver(); advance(1); return; }
       if (desk?.hitPower(e.clientX, e.clientY)) startPower();
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -352,6 +360,22 @@ export function PowerOn({ onBack, onReplayIntro }: PowerOnProps) {
     ctl.current?.desk?.repaint(deskText);
   }, [deskText]);
 
+  // autoplay: on the desk, press power after a beat; in the story, read one line at a time
+  const { playing, setPlaying, speed, cycleSpeed } = autoplay;
+  useEffect(() => {
+    if (!playing || keysOpen) return;
+    const c = ctl.current;
+    if (!c) return;
+    if (mode === "intro") {
+      const id = window.setTimeout(() => c.startPower(), 2600 / speed);
+      return () => clearTimeout(id);
+    }
+    if (mode !== "story") return;
+    const ms = (pos.beat < 0 ? 3200 : 4600) / speed;
+    const id = window.setTimeout(() => { if (!c.advance(1)) setPlaying(false); }, ms);
+    return () => clearTimeout(id);
+  }, [playing, speed, mode, pos.era, pos.beat, keysOpen, setPlaying]);
+
   // music follows the era
   useEffect(() => {
     if (mode === "story" && music.started) music.era(ERAS[pos.era].n);
@@ -366,6 +390,7 @@ export function PowerOn({ onBack, onReplayIntro }: PowerOnProps) {
     const el = e.target as Element;
     if (el.closest("a, button, input, textarea, select, label, .po-gl-term, .po-tip, [data-interactive]")) return;
     if (String(window.getSelection?.() ?? "")) return;
+    autoplay.setPlaying(false);
     ctl.current?.advance(1);
   };
 
@@ -405,9 +430,10 @@ export function PowerOn({ onBack, onReplayIntro }: PowerOnProps) {
           </div>
         </div>
 
-        <Hud on={mode === "story"} era={pos.era} soundOn={soundOn} musicOn={musicOn} vol={vol} touch={touch}
-          onSound={() => ctl.current?.toggleSound()} onMusic={() => ctl.current?.toggleMusic()} onVol={(v) => ctl.current?.setVolume(v)}
-          onKeys={() => setKeysOpen(!keysOpen)} onBeforeLocale={() => ctl.current?.beforeLocale()} />
+        <Hud on={mode === "story"} era={pos.era} />
+        <Controls era={mode === "story" ? era.n : 0} playing={playing} onPlay={() => setPlaying(!playing)} speed={speed} onSpeed={cycleSpeed}
+          soundOn={soundOn} onSound={() => ctl.current?.toggleSound()} musicOn={musicOn} onMusic={() => ctl.current?.toggleMusic()}
+          vol={vol} onVol={(v) => ctl.current?.setVolume(v)} onBeforeLocale={() => ctl.current?.beforeLocale()} />
         <Shortcuts open={keysOpen} era={era.n} intro={mode !== "story"} touch={touch} onClose={() => setKeysOpen(false)} />
       </div>
     </PowerOnContext.Provider>

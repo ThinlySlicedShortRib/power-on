@@ -1,6 +1,6 @@
 {
   "title": {
-    "headline": "Do you know how this is <i>built</i>?",
+    "headline": "Do you know how this website is <i>built</i>?",
     "sub": "Play with it. Then look inside.",
     "orPress": "or press <kbd>Space</kbd>",
     "showMe": "Show me ↓",
@@ -12,13 +12,6 @@
     "space": "Space",
     "next": "next beat",
     "touch": "Swipe outside the app to move"
-  },
-  "hud": {
-    "label": "Dive controls",
-    "play": "▶ Play",
-    "pause": "❚❚ Pause",
-    "soundOn": "Sound on",
-    "soundOff": "Sound off"
   },
   "captions": {
     "hook1": "This app? <i>React</i>, JavaScript, HTML, CSS.",

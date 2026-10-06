@@ -167,13 +167,6 @@
     "touch": "點一下繼續 · 捲動前進"
   },
   "hud": {
-    "soundOn": "音效開",
-    "soundOff": "音效關",
-    "soundAria": "音效",
-    "musicOn": "音樂開",
-    "musicOff": "音樂關",
-    "musicAria": "音樂",
-    "volume": "音樂音量",
     "keysAria": "鍵盤快捷鍵",
     "eraAria": "目前時代"
   },

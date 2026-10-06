@@ -9,5 +9,18 @@
     "zh-Hant": "繁體中文",
     "zh-Hans": "简体中文",
     "es": "Español"
+  },
+  "controls": {
+    "label": "控制",
+    "play": "自动播放",
+    "pause": "暂停",
+    "speedAria": "自动播放速度",
+    "soundOn": "音效开",
+    "soundOff": "音效关",
+    "soundAria": "音效",
+    "musicOn": "音乐开",
+    "musicOff": "音乐关",
+    "musicAria": "音乐",
+    "volume": "音乐音量"
   }
 }

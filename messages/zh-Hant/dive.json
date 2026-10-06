@@ -1,6 +1,6 @@
 {
   "title": {
-    "headline": "你知道這是怎麼<i>做出來</i>的嗎？",
+    "headline": "你知道這個網站是怎麼<i>做出來</i>的嗎？",
     "sub": "先玩玩看，再看看裡面。",
     "orPress": "或按 <kbd>空白鍵</kbd>",
     "showMe": "帶我看 ↓",
@@ -12,13 +12,6 @@
     "space": "空白鍵",
     "next": "下一步",
     "touch": "在 App 外滑動即可前進"
-  },
-  "hud": {
-    "label": "導覽控制",
-    "play": "▶ 播放",
-    "pause": "❚❚ 暫停",
-    "soundOn": "音效開",
-    "soundOff": "音效關"
   },
   "captions": {
     "hook1": "這個 App？<i>React</i>、JavaScript、HTML、CSS。",

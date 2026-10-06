@@ -2,7 +2,10 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import type { Autoplay } from "@/features/controls/autoplay";
+import { Controls } from "@/features/controls/Controls";
+import { Music } from "@/features/power-on/engine/music";
+import { AudioEngine } from "@/features/power-on/engine/sfx";
 import { DiveAudio } from "./engine/audio";
 import { collectDom, createDiveEngine, type AppBridge, type DiveEngine } from "./engine/diveEngine";
 import { HOLD_AT, TOTAL, type CaptionKey } from "./engine/timeline";
@@ -12,26 +15,20 @@ import { CodeLayers } from "./scenes/CodeLayers";
 import { Tunnel } from "./scenes/Tunnel";
 import "./dive.css";
 
-const SOUND_KEY = "dive.sound.v1";
 const i = (c: ReactNode) => <i>{c}</i>;
 const kbd = (c: ReactNode) => <kbd>{c}</kbd>;
-
-function readSound() {
-  try {
-    return window.localStorage.getItem(SOUND_KEY) === "1";
-  } catch {
-    return false;
-  }
-}
+/** the landing is "today": it plays era 5's music */
+const LANDING_ERA_MUSIC = 5;
 
 /**
  * The landing: "murmur", a playable modern social app, then a scroll-driven dive through its
  * like button → code layers → the wire → a time tunnel to 1989, where Power On's desk takes over (onEnd).
  *
  * React renders structure and text. The scroll timeline is driven imperatively by the dive engine
- * (engine/diveEngine.ts) which writes styles straight to the DOM in rAF.
+ * (engine/diveEngine.ts) which writes styles straight to the DOM in rAF. Sound, music and volume share
+ * Power On's engines and saved settings, so the control bar behaves the same across the handoff.
  */
-export function Dive({ onEnd, startAtEnd = false }: { onEnd: () => void; startAtEnd?: boolean }) {
+export function Dive({ onEnd, startAtEnd = false, autoplay }: { onEnd: () => void; startAtEnd?: boolean; autoplay: Autoplay }) {
   const t = useTranslations("dive");
   const rootRef = useRef<HTMLDivElement>(null);
   const appRef = useRef<AppBridge>(null);
@@ -40,8 +37,12 @@ export function Dive({ onEnd, startAtEnd = false }: { onEnd: () => void; startAt
   const [reduce] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   const [touch] = useState(() => window.matchMedia("(hover: none)").matches);
   const [caption, setCaption] = useState<CaptionKey | null>(null);
-  const [playing, setPlaying] = useState(false);
-  const [sound, setSound] = useState(readSound);
+  const [sfx] = useState(() => new AudioEngine());
+  const [music] = useState(() => new Music(sfx));
+  const [soundOn, setSoundOn] = useState(sfx.soundOn);
+  const [musicOn, setMusicOn] = useState(music.on);
+  const [vol, setVol] = useState(music.vol);
+  const { playing, setPlaying, speed, cycleSpeed } = autoplay;
   const onEndRef = useRef(onEnd);
   useEffect(() => { onEndRef.current = onEnd; });
 
@@ -51,8 +52,19 @@ export function Dive({ onEnd, startAtEnd = false }: { onEnd: () => void; startAt
     const prevRestoration = window.history.scrollRestoration;
     window.history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
+    sfx.revive();
     const audio = new DiveAudio();
+    audio.enabled = sfx.soundOn;
     audioRef.current = audio;
+    // audio may only start after a user gesture
+    const onGesture = () => {
+      audio.ensure();
+      sfx.ensure();
+      if (!music.started) music.start(LANDING_ERA_MUSIC);
+      music.applyLevel();
+    };
+    window.addEventListener("pointerdown", onGesture, { passive: true });
+    window.addEventListener("keydown", onGesture);
     const engine = createDiveEngine({
       dom: collectDom(root),
       getApp: () => appRef.current,
@@ -65,8 +77,12 @@ export function Dive({ onEnd, startAtEnd = false }: { onEnd: () => void; startAt
     });
     engineRef.current = engine;
     return () => {
+      window.removeEventListener("pointerdown", onGesture);
+      window.removeEventListener("keydown", onGesture);
       engine.destroy();
       audio.dispose();
+      music.dispose();
+      sfx.dispose();
       engineRef.current = null;
       audioRef.current = null;
       window.history.scrollRestoration = prevRestoration;
@@ -75,19 +91,23 @@ export function Dive({ onEnd, startAtEnd = false }: { onEnd: () => void; startAt
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reduce]);
 
-  useEffect(() => {
-    if (audioRef.current) audioRef.current.enabled = sound;
-  }, [sound]);
+  // the control bar drives the engine's glide
+  useEffect(() => { engineRef.current?.setSpeed(speed); }, [speed]);
+  useEffect(() => { engineRef.current?.setPlaying(playing); }, [playing]);
 
   const toggleSound = () => {
-    const next = !sound;
-    setSound(next);
-    try {
-      window.localStorage.setItem(SOUND_KEY, next ? "1" : "0");
-    } catch {
-      /* ignore */
-    }
-    if (next) audioRef.current?.ensure();
+    sfx.ensure();
+    sfx.setSound(!sfx.soundOn);
+    setSoundOn(sfx.soundOn);
+    if (audioRef.current) { audioRef.current.enabled = sfx.soundOn; if (sfx.soundOn) audioRef.current.ensure(); }
+    music.applyLevel();
+  };
+  const toggleMusic = () => {
+    sfx.ensure();
+    music.setOn(!music.on);
+    setMusicOn(music.on);
+    if (music.on && !music.started) music.start(LANDING_ERA_MUSIC);
+    music.applyLevel();
   };
 
   return (
@@ -109,35 +129,27 @@ export function Dive({ onEnd, startAtEnd = false }: { onEnd: () => void; startAt
           </>
         )}
       </div>
-      {/* bottom row, same on every screen: the next action on the left, controls on the right */}
-      <div className="dock">
-        <button className="showme" type="button" onClick={() => engineRef.current?.showMe()}>
-          {t("title.showMe")}
-        </button>
-        {touch ? (
-          <span className="cue">{t("cue")}</span>
-        ) : (
-          <span className="kb">{t.rich("title.orPress", { kbd })}</span>
-        )}
-      </div>
-      <div className="hud" role="group" aria-label={t("hud.label")}>
-        <button type="button" aria-pressed={playing} onClick={() => engineRef.current?.toggleAutoplay()}>
-          {playing ? t("hud.pause") : t("hud.play")}
-        </button>
-        <button type="button" aria-pressed={sound} onClick={toggleSound}>
-          {sound ? t("hud.soundOn") : t("hud.soundOff")}
-        </button>
-        <LanguageSwitcher className="langsw" />
-      </div>
+      <Controls era={0} playing={playing} onPlay={() => setPlaying(!playing)} speed={speed} onSpeed={cycleSpeed}
+        soundOn={soundOn} onSound={toggleSound} musicOn={musicOn} onMusic={toggleMusic} vol={vol}
+        onVol={(v) => { music.setVolume(v); setVol(music.vol); }} />
 
       <div className="track">
         <div className="stage">
-          {/* scene 1: title + modern app */}
-          {/* copy on the left, the app on the right (stacked on narrow screens) */}
+          {/* scene 1: copy on the left, the app on the right (stacked on narrow screens) */}
           <section className="scene s-app" aria-label={t("title.sceneLabel")}>
             <header className="titlebar">
               <h1>{t.rich("title.headline", { i })}</h1>
               <p>{t("title.sub")}</p>
+              <div className="tgo">
+                <button className="showme" type="button" onClick={() => engineRef.current?.showMe()}>
+                  {t("title.showMe")}
+                </button>
+                {!touch && <span className="kb">{t.rich("title.orPress", { kbd })}</span>}
+              </div>
+              <div className="cue">
+                <span>{t("cue")}</span>
+                <span className="arr">↓</span>
+              </div>
             </header>
             <div className="browser">
               <Murmur ref={appRef} reduce={reduce} />

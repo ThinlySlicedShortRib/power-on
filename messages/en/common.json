@@ -9,5 +9,18 @@
     "zh-Hant": "繁體中文",
     "zh-Hans": "简体中文",
     "es": "Español"
+  },
+  "controls": {
+    "label": "Controls",
+    "play": "Autoplay",
+    "pause": "Pause",
+    "speedAria": "Autoplay speed",
+    "soundOn": "Sound on",
+    "soundOff": "Sound off",
+    "soundAria": "Sound effects",
+    "musicOn": "Music on",
+    "musicOff": "Music off",
+    "musicAria": "Music",
+    "volume": "Music volume"
   }
 }

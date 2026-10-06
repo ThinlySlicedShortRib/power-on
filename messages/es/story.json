@@ -167,13 +167,6 @@
     "touch": "Toca para seguir · desplázate para avanzar"
   },
   "hud": {
-    "soundOn": "Con sonido",
-    "soundOff": "Sin sonido",
-    "soundAria": "Efectos de sonido",
-    "musicOn": "Con música",
-    "musicOff": "Sin música",
-    "musicAria": "Música",
-    "volume": "Volumen de la música",
     "keysAria": "Atajos de teclado",
     "eraAria": "Era actual"
   },

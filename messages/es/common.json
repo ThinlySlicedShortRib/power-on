@@ -9,5 +9,18 @@
     "zh-Hant": "繁體中文",
     "zh-Hans": "简体中文",
     "es": "Español"
+  },
+  "controls": {
+    "label": "Controles",
+    "play": "Automático",
+    "pause": "Pausa",
+    "speedAria": "Velocidad de reproducción automática",
+    "soundOn": "Con sonido",
+    "soundOff": "Sin sonido",
+    "soundAria": "Efectos de sonido",
+    "musicOn": "Con música",
+    "musicOff": "Sin música",
+    "musicAria": "Música",
+    "volume": "Volumen de la música"
   }
 }

@@ -1,6 +1,6 @@
 {
   "title": {
-    "headline": "¿Sabes cómo está <i>hecho</i> esto?",
+    "headline": "¿Sabes cómo está <i>hecho</i> este sitio web?",
     "sub": "Juega un rato. Luego mira por dentro.",
     "orPress": "o presiona <kbd>Espacio</kbd>",
     "showMe": "Muéstrame ↓",
@@ -12,13 +12,6 @@
     "space": "Espacio",
     "next": "siguiente paso",
     "touch": "Desliza fuera de la app para avanzar"
-  },
-  "hud": {
-    "label": "Controles del recorrido",
-    "play": "▶ Reproducir",
-    "pause": "❚❚ Pausa",
-    "soundOn": "Con sonido",
-    "soundOff": "Sin sonido"
   },
   "captions": {
     "hook1": "¿Esta app? <i>React</i>, JavaScript, HTML, CSS.",

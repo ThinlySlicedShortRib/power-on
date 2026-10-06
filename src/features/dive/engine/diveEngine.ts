@@ -83,7 +83,9 @@ export interface DiveEngineOptions {
 export interface DiveEngine {
   showMe(): void;
   replay(): void;
-  toggleAutoplay(): void;
+  /** hands-free glide (idempotent); the engine reports its own stops through onAutoplay(false) */
+  setPlaying(on: boolean): void;
+  setSpeed(speed: number): void;
   destroy(): void;
 }
 
@@ -277,7 +279,7 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
     // once the tunnel has faded out, hand over to the desk (once per arrival)
     if (p >= T.end && !ended) {
       ended = true;
-      stop();
+      stop(true); // autoplay carries on into the desk
       o.onEnd();
     } else if (p < T.end) ended = false;
     setStyle(dom.progFill, "width", `${s * 100}%`);
@@ -329,24 +331,22 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
 
   /* ---------- optional hands-free play: glides through the whole track ---------- */
   let auto = 0; // rAF id while playing; -1 = starting
-  function stop() {
+  let speed = 1;
+  /** silent: the glide ends but autoplay stays on (handing over to the desk, or restarting at a new speed) */
+  function stop(silent = false) {
     if (!auto) return;
     if (auto > 0) cancelAnimationFrame(auto);
     auto = 0;
-    o.onAutoplay(false);
+    if (!silent) o.onAutoplay(false);
   }
   function play() {
     audio.ensure();
-    if (auto) {
-      stop();
-      return;
-    }
+    if (auto) return;
     const startSc = screensNow() >= TOTAL - 0.01 ? 0 : screensNow();
     if (startSc === 0) window.scrollTo(0, 0);
     const t0 = performance.now();
-    const dur = (TOTAL - startSc) * (reduce ? 700 : 1700);
+    const dur = ((TOTAL - startSc) * (reduce ? 700 : 1700)) / speed;
     auto = -1;
-    o.onAutoplay(true);
     const step = (now: number) => {
       if (!auto) return;
       const t = clamp((now - t0) / dur, 0, 1);
@@ -399,7 +399,17 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
       stop();
       scrollToScreens(0, true);
     },
-    toggleAutoplay: play,
+    setPlaying(on: boolean) {
+      if (on) play();
+      else stop(true);
+    },
+    setSpeed(s: number) {
+      speed = s;
+      if (auto) {
+        stop(true);
+        play();
+      }
+    },
     destroy() {
       stop();
       if (raf) cancelAnimationFrame(raf);

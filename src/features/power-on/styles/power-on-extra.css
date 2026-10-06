@@ -2,22 +2,6 @@
 .po-root { min-height: 100vh; }
 .po-root .po-glhost { position: fixed; inset: 0; z-index: 0; }
 
-/* language switcher, in the HUD next to the sound controls */
-.po-root .po-lang { display: inline-flex; align-items: center; }
-.po-root .po-langsw select {
-  font: inherit; color: inherit; letter-spacing: inherit; background: transparent; border: 1px solid var(--hud-line);
-  border-radius: 999px; padding: 3px 8px; max-width: 9.5em; cursor: pointer; appearance: none; -webkit-appearance: none;
-}
-.po-root .po-langsw select:hover { background: rgba(255,255,255,.08); }
-.po-root .po-langsw option { color: #111; background: #f1e6d0; }
-.po-root .po-audioctl[data-era="1"] .po-langsw select { font-family: var(--f-term); font-size: .95rem; border-radius: 0; color: #3dff72; border-color: rgba(61,255,114,.5); }
-.po-root .po-audioctl[data-era="2"] .po-langsw select { font-family: var(--f-90s); font-weight: 700; border-radius: 0; color: #ffff66; }
-.po-root .po-audioctl[data-era="3"] .po-langsw select { font-family: var(--f-aqua); color: #ffb15c; }
-.po-root .po-audioctl[data-era="4"] .po-langsw select { font-family: var(--f-flat); border-radius: 2px; color: #1abc9c; border-color: rgba(26,188,156,.6); }
-.po-root .po-audioctl[data-era="5"] .po-langsw select { font-family: var(--f-now); border-radius: 8px; }
-.po-root .po-audioctl[data-era="6"] .po-langsw select { font-family: var(--f-now); color: #7fe0d6; border-color: rgba(15,163,163,.6); }
-@media (max-width: 760px) { .po-root .po-langsw select { max-width: 6.5em; padding: 2px 6px; } }
-
 /* hidden stage props stay mounted (state survives) but leave the layout and the tab order */
 .po-root .po-prop[hidden] { display: none !important; }
 .po-root .po-tip:not(.po-on) { visibility: hidden; }
