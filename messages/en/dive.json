@@ -88,15 +88,6 @@
       "more": "Everything there is online about W3 is linked directly or indirectly to this document."
     }
   },
-  "desk": {
-    "label": "CERN, 1989: a NeXT computer on a desk",
-    "top": "CERN · Geneva · March 1989",
-    "headline": "Every website you ship started on <i>one</i> computer.",
-    "lead": "This one. Let's turn it on.",
-    "power": "Power on →",
-    "replay": "↺ Replay intro",
-    "note": "This machine is a server. DO NOT POWER IT DOWN!!"
-  },
   "app": {
     "sections": "App sections",
     "nav": {

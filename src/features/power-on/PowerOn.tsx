@@ -30,9 +30,9 @@ const FWD = new Set([" ", "ArrowRight", "ArrowDown", "Enter", "PageDown"]);
 const BACK = new Set(["ArrowLeft", "ArrowUp", "PageUp"]);
 
 export interface PowerOnProps {
-  /** the landing's "Power on" click already happened: skip the intro and boot straight away */
-  bootImmediately?: boolean;
-  /** "Power off & start again" hands back to the landing instead of the local intro */
+  /** scrolling up from the desk (intro) goes back into the landing's time tunnel */
+  onBack?: () => void;
+  /** "Replay intro" and "Power off & start again" hand back to the top of the landing instead of the local intro */
   onReplayIntro?: () => void;
 }
 
@@ -41,7 +41,7 @@ export interface PowerOnProps {
  * Three.js desk, WebAudio music and SFX, and scroll tracking run as imperative engines driven through refs;
  * React renders only when the line, era or mode changes.
  */
-export function PowerOn({ bootImmediately = false, onReplayIntro }: PowerOnProps) {
+export function PowerOn({ onBack, onReplayIntro }: PowerOnProps) {
   const text = useStoryText();
   const { t } = text;
 
@@ -50,7 +50,7 @@ export function PowerOn({ bootImmediately = false, onReplayIntro }: PowerOnProps
   const [audio] = useState(() => new AudioEngine());
   const [music] = useState(() => new Music(audio));
   const [mode, setMode] = useState<Mode>("intro");
-  const [introGone, setIntroGone] = useState(bootImmediately);
+  const [introGone, setIntroGone] = useState(false);
   const [pos, setPos] = useState<StoryPos>({ era: 0, beat: -1, typed: false });
   const [transIdx, setTransIdx] = useState(0);
   const [keysOpen, setKeysOpen] = useState(false);
@@ -68,7 +68,8 @@ export function PowerOn({ bootImmediately = false, onReplayIntro }: PowerOnProps
   const hintRef = useRef<HTMLDivElement>(null);
   const posRef = useRef(pos);
   const keysOpenRef = useRef(false);
-  useEffect(() => { posRef.current = pos; keysOpenRef.current = keysOpen; });
+  const onBackRef = useRef(onBack);
+  useEffect(() => { posRef.current = pos; keysOpenRef.current = keysOpen; onBackRef.current = onBack; });
 
   const [dioramas] = useState(() => new Dioramas());
   const ctx = useMemo<PowerOnCtx>(() => ({ audio, music, dioramas, reduce, touch }), [audio, music, dioramas, reduce, touch]);
@@ -227,7 +228,11 @@ export function PowerOn({ bootImmediately = false, onReplayIntro }: PowerOnProps
         music.applyLevel();
       },
       setVolume: (v: number) => { music.setVolume(v); setVol(music.vol); },
-      beforeLocale: () => { if (modeNow === "story") saveResume({ era: posRef.current.era, beat: posRef.current.beat }); },
+      // era -1 = the desk (intro), so the landing reopens here rather than at the top
+      beforeLocale: () => {
+        if (modeNow === "story") saveResume({ era: posRef.current.era, beat: posRef.current.beat });
+        else if (modeNow === "intro") saveResume({ era: -1, beat: -1 });
+      },
     };
     ctl.current = c;
 
@@ -258,6 +263,7 @@ export function PowerOn({ bootImmediately = false, onReplayIntro }: PowerOnProps
       if (e.key === "s" || e.key === "S") { c.toggleSound(); return; }
       if (modeNow === "intro") {
         if ((e.key === "Enter" || e.key === " ") && (document.activeElement === body || document.activeElement === root || !document.activeElement)) { e.preventDefault(); startPower(); }
+        else if ((e.key === "ArrowUp" || e.key === "PageUp") && onBackRef.current) { e.preventDefault(); onBackRef.current(); }
         return;
       }
       if (modeNow !== "story") return;
@@ -272,6 +278,14 @@ export function PowerOn({ bootImmediately = false, onReplayIntro }: PowerOnProps
       else if (modeNow !== "intro" || audio.humming) audio.resume();
     };
     const onFirstGesture = () => audio.resume();
+    // on the desk, scrolling or swiping up goes back into the landing's tunnel
+    let touchY = -1;
+    const onIntroWheel = (e: WheelEvent) => { if (modeNow === "intro" && e.deltaY < -4 && !keysOpenRef.current) onBackRef.current?.(); };
+    const onIntroTouchStart = (e: TouchEvent) => { touchY = modeNow === "intro" ? e.touches[0].clientY : -1; };
+    const onIntroTouchMove = (e: TouchEvent) => {
+      if (touchY < 0 || modeNow !== "intro" || keysOpenRef.current) return;
+      if (e.touches[0].clientY - touchY > 60) { touchY = -1; onBackRef.current?.(); }
+    };
     const host = glHost.current!;
     const onHostMove = (e: PointerEvent) => { if (desk) host.style.cursor = desk.hitPower(e.clientX, e.clientY) ? "pointer" : ""; };
     const onHostClick = (e: MouseEvent) => {
@@ -284,20 +298,23 @@ export function PowerOn({ bootImmediately = false, onReplayIntro }: PowerOnProps
     window.addEventListener("resize", onResize);
     window.addEventListener("keydown", onKey, true);
     window.addEventListener("pointerdown", onFirstGesture, { passive: true });
+    window.addEventListener("wheel", onIntroWheel, { passive: true });
+    window.addEventListener("touchstart", onIntroTouchStart, { passive: true });
+    window.addEventListener("touchmove", onIntroTouchMove, { passive: true });
     document.addEventListener("visibilitychange", onVisibility);
     host.addEventListener("pointermove", onHostMove);
     host.addEventListener("click", onHostClick);
 
-    // --- entry: resume after a locale switch, boot straight away, or wait on the intro
+    // --- entry: resume mid-story after a locale switch, or wait on the intro (the desk)
     // Consume inside the frame: StrictMode's throwaway first run cancels this rAF, so it must not clear the point.
     const boot = requestAnimationFrame(() => {
       const resume = consumeResume();
-      if (resume && resume.era < ERAS.length) {
+      if (resume && resume.era >= 0 && resume.era < ERAS.length) {
         audio.ensure();
         desk?.enterStory();
         const beat = Math.min(resume.beat, ERAS[resume.era].lines.length - 1);
         handOver({ era: resume.era, beat });
-      } else if (bootImmediately) startPower();
+      }
     });
 
     return () => {
@@ -312,6 +329,9 @@ export function PowerOn({ bootImmediately = false, onReplayIntro }: PowerOnProps
       window.removeEventListener("resize", onResize);
       window.removeEventListener("keydown", onKey, true);
       window.removeEventListener("pointerdown", onFirstGesture);
+      window.removeEventListener("wheel", onIntroWheel);
+      window.removeEventListener("touchstart", onIntroTouchStart);
+      window.removeEventListener("touchmove", onIntroTouchMove);
       document.removeEventListener("visibilitychange", onVisibility);
       host.removeEventListener("pointermove", onHostMove);
       host.removeEventListener("click", onHostClick);
@@ -353,14 +373,12 @@ export function PowerOn({ bootImmediately = false, onReplayIntro }: PowerOnProps
 
   return (
     <PowerOnContext.Provider value={ctx}>
-      <div ref={rootRef} className={"po-root" + (touch ? " po-touch" : "")} style={rootStyle} data-mode={mode}>
+      <div ref={rootRef} className={"po-root" + (touch ? " po-touch" : "") + (onBack ? " po-flow" : "")} style={rootStyle} data-mode={mode}>
         <div ref={glHost} className="po-glhost" />
         <div ref={noglRef} className="po-nogl" aria-hidden="true"><div className="po-crt"><div /></div></div>
         <div ref={trackRef} className="po-track" aria-hidden="true" />
 
-        {bootImmediately && mode === "intro" ? null : (
-          <Intro gone={introGone} hidden={mode === "story"} onPower={() => ctl.current?.startPower()} />
-        )}
+        <Intro gone={introGone} hidden={mode === "story"} onPower={() => ctl.current?.startPower()} onReplay={onReplayIntro} />
 
         <div ref={screenRef} className="po-screen" data-era={era.n} aria-live="off" onClick={onScreenClick}>
           <EraFx n={era.n} reduce={reduce} />

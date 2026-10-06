@@ -7,7 +7,8 @@
     "power": "按下電源",
     "powerAria": "按下電源，開始故事",
     "keysKb": "按 <kbd>⏎ Enter</kbd> 開機，或直接點",
-    "keysTouch": "點電源鍵開始"
+    "keysTouch": "點電源鍵開始",
+    "replay": "↺ 重播開場"
   },
   "eras": {
     "e1": {

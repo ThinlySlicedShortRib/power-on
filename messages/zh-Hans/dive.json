@@ -88,15 +88,6 @@
       "more": "Everything there is online about W3 is linked directly or indirectly to this document."
     }
   },
-  "desk": {
-    "label": "CERN，1989：桌上的一台 NeXT 电脑",
-    "top": "CERN · 日内瓦 · 1989 年 3 月",
-    "headline": "每个网站，都从<i>一台</i>电脑开始。",
-    "lead": "就是这台。开机吧。",
-    "power": "开机 →",
-    "replay": "↺ 重播开场",
-    "note": "This machine is a server. DO NOT POWER IT DOWN!!"
-  },
   "app": {
     "sections": "App 板块",
     "nav": {

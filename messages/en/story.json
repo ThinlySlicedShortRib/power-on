@@ -7,7 +7,8 @@
     "power": "Press power",
     "powerAria": "Press power to start the story",
     "keysKb": "Press <kbd>⏎ Enter</kbd> to power on, or click",
-    "keysTouch": "Tap the power button to start"
+    "keysTouch": "Tap the power button to start",
+    "replay": "↺ Replay intro"
   },
   "eras": {
     "e1": {

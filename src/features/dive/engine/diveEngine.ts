@@ -32,7 +32,6 @@ export interface DiveDom {
   rings: HTMLElement[];
   panels: { el: HTMLElement; tag: HTMLElement }[];
   year: HTMLElement;
-  sDesk: HTMLElement;
   progFill: HTMLElement;
   ticks: HTMLElement[];
   hint: HTMLElement;
@@ -62,7 +61,6 @@ export function collectDom(root: HTMLElement): DiveDom {
     rings: all(".world .ringz"),
     panels: all<HTMLElement>(".world .panel").map((el, i) => ({ el, tag: tags[i] })),
     year: one(".year"),
-    sDesk: one(".s-desk"),
     progFill: one(".prog .fill"),
     ticks: all(".prog .tk"),
     hint: one(".hint"),
@@ -76,6 +74,10 @@ export interface DiveEngineOptions {
   reduce: boolean;
   onCaption: (key: CaptionKey | null) => void;
   onAutoplay: (playing: boolean) => void;
+  /** The tunnel has landed in 1989: Power On's desk takes over from here. */
+  onEnd: () => void;
+  /** Open on the last tunnel beat (coming back up from the desk) instead of the top. */
+  startAtEnd: boolean;
 }
 
 export interface DiveEngine {
@@ -92,7 +94,7 @@ export interface DiveEngine {
  */
 export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
   const { dom, audio, reduce } = o;
-  const { root, track, sApp, browser, sLayers, layers, wire, wirePath, packet, sTunnel, world, rings, panels, year, sDesk } = o.dom;
+  const { root, track, sApp, browser, sLayers, layers, wire, wirePath, packet, sTunnel, world, rings, panels, year } = o.dom;
   const disposers: Array<() => void> = [];
   const on = <K extends keyof WindowEventMap>(type: K, fn: (e: WindowEventMap[K]) => void, opts?: AddEventListenerOptions) => {
     window.addEventListener(type, fn, opts);
@@ -234,11 +236,6 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
       lastWhoosh = 2;
     }
 
-    // scene 4: the desk
-    const dO = seg(p, T.deskA, T.deskA + 0.05);
-    vis(sDesk, dO);
-    setStyle(sDesk, "transform", reduce ? "" : `scale(${lerp(1.25, 1, ease(dO))})`);
-    setStyle(sDesk, "pointer-events", dO > 0.6 ? "auto" : "none");
     setStyle(sApp, "pointer-events", mode === "play" ? "auto" : "none");
   }
 
@@ -275,13 +272,21 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
       app?.releaseTarget();
       app?.setLive(true);
     }
-    render(toP(sc));
+    const p = toP(sc);
+    render(p);
+    // once the tunnel has faded out, hand over to the desk (once per arrival)
+    if (p >= T.end && !ended) {
+      ended = true;
+      stop();
+      o.onEnd();
+    } else if (p < T.end) ended = false;
     setStyle(dom.progFill, "width", `${s * 100}%`);
     dom.ticks.forEach((t, i) => t.classList.toggle("done", sc >= HOLD_AT[i] - 0.05));
     setStyle(dom.hint, "opacity", sc > 0.004 && sc < 1.2 ? "1" : "0");
   }
 
   let raf = 0;
+  let ended = false;
   const onScroll = () => {
     if (!raf)
       raf = requestAnimationFrame(() => {
@@ -381,6 +386,7 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
   layoutTunnel();
   sizeTrack();
   lastMax = track.offsetHeight - window.innerHeight;
+  if (o.startAtEnd) scrollToScreens(HOLD_AT[HOLD_AT.length - 2], false);
   if (screensNow() > 0.004) onScroll();
   else render(0);
 

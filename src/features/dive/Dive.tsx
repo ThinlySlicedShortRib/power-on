@@ -9,7 +9,6 @@ import { HOLD_AT, TOTAL, type CaptionKey } from "./engine/timeline";
 import { Murmur } from "./murmur/Murmur";
 import { Caption } from "./scenes/Caption";
 import { CodeLayers } from "./scenes/CodeLayers";
-import { Desk } from "./scenes/Desk";
 import { Tunnel } from "./scenes/Tunnel";
 import "./dive.css";
 
@@ -27,12 +26,12 @@ function readSound() {
 
 /**
  * The landing: "murmur", a playable modern social app, then a scroll-driven dive through its
- * like button → code layers → the wire → a time tunnel → the 1989 desk where Power On begins.
+ * like button → code layers → the wire → a time tunnel to 1989, where Power On's desk takes over (onEnd).
  *
  * React renders structure and text. The scroll timeline is driven imperatively by the dive engine
  * (engine/diveEngine.ts) which writes styles straight to the DOM in rAF.
  */
-export function Dive({ onPowerOn }: { onPowerOn: () => void }) {
+export function Dive({ onEnd, startAtEnd = false }: { onEnd: () => void; startAtEnd?: boolean }) {
   const t = useTranslations("dive");
   const rootRef = useRef<HTMLDivElement>(null);
   const appRef = useRef<AppBridge>(null);
@@ -43,6 +42,8 @@ export function Dive({ onPowerOn }: { onPowerOn: () => void }) {
   const [caption, setCaption] = useState<CaptionKey | null>(null);
   const [playing, setPlaying] = useState(false);
   const [sound, setSound] = useState(readSound);
+  const onEndRef = useRef(onEnd);
+  useEffect(() => { onEndRef.current = onEnd; });
 
   useEffect(() => {
     const root = rootRef.current;
@@ -59,6 +60,8 @@ export function Dive({ onPowerOn }: { onPowerOn: () => void }) {
       reduce,
       onCaption: setCaption,
       onAutoplay: setPlaying,
+      onEnd: () => onEndRef.current(),
+      startAtEnd,
     });
     engineRef.current = engine;
     return () => {
@@ -68,6 +71,8 @@ export function Dive({ onPowerOn }: { onPowerOn: () => void }) {
       audioRef.current = null;
       window.history.scrollRestoration = prevRestoration;
     };
+    // mount-only: startAtEnd is read once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reduce]);
 
   useEffect(() => {
@@ -111,38 +116,36 @@ export function Dive({ onPowerOn }: { onPowerOn: () => void }) {
         <button type="button" aria-pressed={sound} onClick={toggleSound}>
           {sound ? t("hud.soundOn") : t("hud.soundOff")}
         </button>
+        <LanguageSwitcher className="langsw" />
       </div>
 
       <div className="track">
         <div className="stage">
           {/* scene 1: title + modern app */}
+          {/* copy on the left, the app on the right (stacked on narrow screens) */}
           <section className="scene s-app" aria-label={t("title.sceneLabel")}>
             <header className="titlebar">
-              <div>
-                <h1>{t.rich("title.headline", { i })}</h1>
-                <p>{t("title.sub")}</p>
-              </div>
+              <h1>{t.rich("title.headline", { i })}</h1>
+              <p>{t("title.sub")}</p>
               <div className="tgo">
-                {!touch && <span className="kb">{t.rich("title.orPress", { kbd })}</span>}
-                <LanguageSwitcher className="langsw" />
                 <button className="showme" type="button" onClick={() => engineRef.current?.showMe()}>
                   {t("title.showMe")}
                 </button>
+                {!touch && <span className="kb">{t.rich("title.orPress", { kbd })}</span>}
+              </div>
+              <div className="cue">
+                <span>{t("cue")}</span>
+                <span className="arr">↓</span>
               </div>
             </header>
             <div className="browser">
               <Murmur ref={appRef} reduce={reduce} />
-            </div>
-            <div className="cue">
-              <span>{t("cue")}</span>
-              <span className="arr">↓</span>
             </div>
           </section>
 
           <CodeLayers />
           <Tunnel />
           <div className="year">2026</div>
-          <Desk onPowerOn={onPowerOn} onReplay={() => engineRef.current?.replay()} />
         </div>
       </div>
       <Caption value={caption} reduce={reduce} />

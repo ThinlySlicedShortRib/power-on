@@ -13,6 +13,9 @@ import {
 import { ease } from "./env";
 import type { FontStacks } from "./fonts";
 
+/** Intro framing: how far the picture shifts so the desk sits beside the copy (right) or above it (portrait). */
+const INTRO_SHIFT_X = 0.14, INTRO_SHIFT_Y = 0.27;
+
 /** Every string painted onto the 3D screens. Comes from story.desk.* messages. */
 export interface DeskText {
   boot: string[]; sticky: string[]; e1: string[];
@@ -415,9 +418,21 @@ export class Desk {
     if (this.disposed) return;
     this.renderer.setSize(innerWidth, innerHeight, false);
     this.computePoses();
+    this.frameK = -1;
   }
 
   private applyPose(p: Pose) { this.camera.position.copy(p.p); this.camera.lookAt(p.t); }
+
+  /** k = 1 frames the desk for the intro, 0 is centred (the story). Uses a view offset so the camera pose is untouched. */
+  private frameK = -1;
+  private applyFrame(k: number) {
+    if (Math.abs(k - this.frameK) < 1e-4) return;
+    this.frameK = k;
+    const w = innerWidth, h = innerHeight, cam = this.camera;
+    if (k <= 0) { cam.clearViewOffset(); return; }
+    const portrait = w / h < 0.9;
+    cam.setViewOffset(w, h, portrait ? 0 : -INTRO_SHIFT_X * w * k, portrait ? INTRO_SHIFT_Y * h * k : 0, w, h);
+  }
 
   // ---------- story control ----------
   startBoot() {
@@ -462,7 +477,9 @@ export class Desk {
     if (this.lost) return;
     const t = now / 1000, dt = Math.min(0.05, (now - this.lastNow) / 1000 || 0.016); this.lastNow = now;
     const r0 = this.rigs[0];
+    let frame = 0;
     if (this.mode === "intro") {
+      frame = 1;
       const o = r0.out, sway = this.reduce ? 0 : Math.sin(t * 0.25) * 0.18;
       this.applyPose({ p: o.p.clone().add(this.tmp.set(sway, Math.sin(t * 0.2) * 0.05, 0)), t: o.t });
       r0.power!.material.emissiveIntensity = 0.25 + (this.reduce ? 0 : (Math.sin(t * 3) * 0.5 + 0.5) * 0.9);
@@ -471,11 +488,13 @@ export class Desk {
       this.drawBoot(bt);
       this.screenLight.intensity = Math.min(1.1, bt * 1.2) * PI * 0.65;
       const camK = ease((bt - 2.9) / 1.9);
+      frame = this.reduce ? (bt > 2.9 ? 0 : 1) : 1 - camK;
       this.applyPose(lerpPose(this.bootFrom!, r0.inPose, this.reduce ? (bt > 2.9 ? 1 : 0) : camK));
       if (bt > 4.5 && !this.handed) { this.handed = true; this.onHandOver?.(); }
     } else if (this.pose) {
       this.applyPose(this.pose);
     }
+    this.applyFrame(frame);
     this.rigs.forEach((r, i) => {
       const vis = (i === this.rigA && !(this.rigB >= 0 && this.swapQ >= 1)) || (i === this.rigB && this.swapQ > 0);
       r.g.visible = vis;

@@ -20,6 +20,8 @@ export const T = {
   tunA: 0.58,
   tunB: 0.92,
   deskA: 0.9,
+  /** the tunnel is gone: hand over to Power On's desk */
+  end: 0.935,
 } as const;
 
 export type CaptionKey = "hook1" | "hook2" | "zoom" | "jsx" | "js" | "html" | "css" | "http" | "wire";
