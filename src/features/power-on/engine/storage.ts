@@ -36,6 +36,7 @@ export const KEYS = {
   predict: "poweron.predict",
   resume: "poweron.resume",
   speed: "poweron.speed",
+  gpuNote: "poweron.gpunote",
 } as const;
 
 /** A reader's position, saved right before a locale switch so the story can pick up where it was. */

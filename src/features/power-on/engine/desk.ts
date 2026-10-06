@@ -68,6 +68,8 @@ export class Desk {
   private handed = false;
   onHandOver: (() => void) | null = null;
   onContextLost: (() => void) | null = null;
+  /** WebGL works but without the GPU (the browser emulates it, slowly) */
+  readonly software: boolean;
 
   constructor(host: HTMLElement, private text: DeskText, private fonts: FontStacks, private reduce: boolean) {
     const canvas = document.createElement("canvas");
@@ -76,15 +78,19 @@ export class Desk {
     host.appendChild(canvas);
     this.canvas = canvas;
     const phone = innerWidth < 760;
+    // ask for the context ourselves first: when WebGL is blocked this fails quietly instead of three.js logging errors
+    const gl = canvas.getContext("webgl2", { antialias: true, powerPreference: "high-performance" });
+    if (!gl) { canvas.remove(); throw new Error("no webgl"); }
     let renderer: WebGLRenderer;
     try {
-      renderer = new WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" });
+      renderer = new WebGLRenderer({ canvas, context: gl, antialias: true, powerPreference: "high-performance" });
     } catch (e) {
       canvas.remove();
       throw e;
     }
     if (!renderer.getContext()) { renderer.dispose(); canvas.remove(); throw new Error("no webgl"); }
     this.renderer = renderer;
+    this.software = isSoftwareGl(renderer.getContext());
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, phone ? 1.5 : 2));
     renderer.setSize(innerWidth, innerHeight, false);
     renderer.outputColorSpace = SRGBColorSpace;
@@ -342,6 +348,24 @@ export class Desk {
 
   get contextLost() { return this.lost; }
 
+  /** Stop drawing and take the canvas off the page, keeping the GPU context for the next visit (see acquireDesk). */
+  park() {
+    cancelAnimationFrame(this.raf);
+    this.raf = 0;
+    this.onHandOver = null;
+    this.onContextLost = null;
+    this.canvas.remove();
+  }
+
+  /** Put a parked desk back on the page, reset to the dark intro. */
+  attach(host: HTMLElement, text: DeskText, fonts: FontStacks) {
+    host.appendChild(this.canvas);
+    this.powerOff();
+    this.resize();
+    this.repaint(text, fonts);
+    if (!this.raf) this.raf = requestAnimationFrame(this.tick);
+  }
+
   // ---------- canvas painting (texts come from messages) ----------
   private drawStickyNote(g: CanvasRenderingContext2D, w: number, h: number) {
     g.fillStyle = "#ffe86b"; g.fillRect(0, 0, w, h); g.fillStyle = "rgba(0,0,0,.06)"; g.fillRect(0, 0, w, 26);
@@ -504,6 +528,8 @@ export class Desk {
   };
 
   dispose() {
+    const g = globalThis as KeptDesk;
+    if (g[KEEP] === this) delete g[KEEP];
     this.disposed = true;
     cancelAnimationFrame(this.raf);
     this.canvas.removeEventListener("webglcontextlost", this.handleLost);
@@ -597,3 +623,31 @@ function drawPhoneScreen(n: number, g: CanvasRenderingContext2D, w: number, h: n
   }
 }
 
+/** True when the browser runs WebGL in software: the GPU is off or blocked, so 3D works but slowly. */
+function isSoftwareGl(gl: WebGLRenderingContext | WebGL2RenderingContext): boolean {
+  const ext = gl.getExtension("WEBGL_debug_renderer_info");
+  const name = ext ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : "";
+  return /swiftshader|llvmpipe|softpipe|software|basic render/i.test(name);
+}
+
+/*
+ * One desk for the whole visit. Creating and destroying a WebGL context on every remount (dive → desk → back up,
+ * React StrictMode, dev reloads) is the kind of churn that can make a browser give up on WebGL for the session,
+ * so the desk is parked between visits and re-attached. Kept on globalThis so a dev reload of this module
+ * replaces the old instance instead of leaking it.
+ */
+const KEEP = "__powerOnDesk";
+type KeptDesk = { [KEEP]?: Desk };
+
+export function acquireDesk(host: HTMLElement, text: DeskText, fonts: FontStacks, reduce: boolean): Desk {
+  const g = globalThis as KeptDesk;
+  const kept = g[KEEP];
+  if (kept instanceof Desk && !kept.contextLost) {
+    kept.attach(host, text, fonts);
+    return kept;
+  }
+  if (kept) { try { kept.dispose(); } catch { /* a stale instance from before a dev reload */ } }
+  const desk = new Desk(host, text, fonts, reduce);
+  g[KEEP] = desk;
+  return desk;
+}

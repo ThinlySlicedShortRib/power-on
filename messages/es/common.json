@@ -29,5 +29,10 @@
     "power": "Enciende",
     "space": "Espacio",
     "enter": "Enter"
+  },
+  "gpu": {
+    "title": "Tu navegador tiene los gráficos 3D desactivados.",
+    "tip": "Activa la aceleración por hardware en su configuración y reinícialo para la experiencia completa.",
+    "dismiss": "Cerrar"
   }
 }

@@ -6,6 +6,7 @@ import { Advance } from "@/features/controls/Advance";
 import { Controls } from "@/features/controls/Controls";
 import { PowerOnContext, type PowerOnCtx } from "./components/context";
 import { EraFx } from "./components/EraFx";
+import { GpuNotice } from "./components/GpuNotice";
 import { Hud } from "./components/Hud";
 import { Intro } from "./components/Intro";
 import { Narration, type StoryPos } from "./components/Narration";
@@ -13,7 +14,7 @@ import { Shortcuts } from "./components/Shortcuts";
 import { Stage } from "./components/Stage";
 import { TooltipLayer } from "./components/Tooltip";
 import { ERAS, TRANS_KEYS } from "./content/eras";
-import { Desk, lerpPose, type DeskText } from "./engine/desk";
+import { acquireDesk, Desk, lerpPose, type DeskText } from "./engine/desk";
 import { Dioramas } from "./engine/dioramas";
 import { clamp, ease, isTouch, prefersReducedMotion } from "./engine/env";
 import { loadCanvasFonts, resolveFonts } from "./engine/fonts";
@@ -57,6 +58,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   const [pos, setPos] = useState<StoryPos>({ era: 0, beat: -1, typed: false });
   const [transIdx, setTransIdx] = useState(0);
   const [keysOpen, setKeysOpen] = useState(false);
+  const [gpuOff, setGpuOff] = useState(false);
   const [soundOn, setSoundOn] = useState(audio.soundOn);
   const [musicOn, setMusicOn] = useState(music.on);
   const [vol, setVol] = useState(music.vol);
@@ -110,10 +112,11 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     // --- desk (WebGL) with CSS fallback
     let desk: Desk | null = null;
     let fonts = resolveFonts();
-    try { desk = new Desk(glHost.current!, deskTextRef.current, fonts, reduce); } catch { desk = null; }
+    try { desk = acquireDesk(glHost.current!, deskTextRef.current, fonts, reduce); } catch { desk = null; }
     const setNoGl = (on: boolean) => nogl.classList.toggle("po-on", on);
     if (!desk) setNoGl(true);
-    else desk.onContextLost = () => { desk?.dispose(); desk = null; c.desk = null; setNoGl(true); };
+    else desk.onContextLost = () => { desk?.dispose(); desk = null; c.desk = null; setNoGl(true); setGpuOff(true); };
+    setGpuOff(!desk || desk.software);
     loadCanvasFonts(fonts).then(() => { if (!alive) return; fonts = resolveFonts(); desk?.repaint(deskTextRef.current, fonts); });
 
     const setScreen = (o: number) => {
@@ -335,7 +338,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       host.removeEventListener("pointermove", onHostMove);
       host.removeEventListener("click", onHostClick);
       body.classList.remove("po-body", "po-locked");
-      desk?.dispose();
+      desk?.park(); // kept for the next visit; see acquireDesk
       dioramas.dispose();
       music.dispose();
       audio.dispose();
@@ -391,7 +394,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     <PowerOnContext.Provider value={ctx}>
       <div ref={rootRef} className={"po-root" + (touch ? " po-touch" : "") + (onBack ? " po-flow" : "")} style={rootStyle} data-mode={mode}>
         <div ref={glHost} className="po-glhost" />
-        <div ref={noglRef} className="po-nogl" aria-hidden="true"><div className="po-crt"><div /></div></div>
+        <div ref={noglRef} className="po-nogl" aria-hidden="true"><div /></div>
         <div ref={trackRef} className="po-track" aria-hidden="true" />
 
         <Intro gone={introGone} hidden={mode === "story"} touch={touch} onPower={() => ctl.current?.startPower()} onReplay={onReplayIntro} />
@@ -421,6 +424,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
         </div>
 
         <Hud on={mode === "story"} era={pos.era} />
+        <GpuNotice show={gpuOff} />
         <Controls era={mode === "story" ? era.n : 0} playing={playing} onPlay={() => setPlaying(!playing)} speed={speed} onSpeed={cycleSpeed}
           soundOn={soundOn} onSound={() => ctl.current?.toggleSound()} musicOn={musicOn} onMusic={() => ctl.current?.toggleMusic()}
           vol={vol} onVol={(v) => ctl.current?.setVolume(v)} onBeforeLocale={() => ctl.current?.beforeLocale()} />

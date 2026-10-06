@@ -29,5 +29,10 @@
     "power": "Power on",
     "space": "Space",
     "enter": "Enter"
+  },
+  "gpu": {
+    "title": "Your browser has 3D graphics turned off.",
+    "tip": "Turn on hardware acceleration in its settings and restart it for the full experience.",
+    "dismiss": "Dismiss"
   }
 }

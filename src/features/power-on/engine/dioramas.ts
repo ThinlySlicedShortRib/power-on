@@ -237,7 +237,9 @@ export class Dioramas {
     try {
       const c = document.createElement("canvas");
       c.className = "po-dio-cv";
-      const r = new WebGLRenderer({ canvas: c, antialias: true });
+      const gl = c.getContext("webgl2", { antialias: true }); // quiet failure when WebGL is blocked
+      if (!gl) throw new Error("no webgl");
+      const r = new WebGLRenderer({ canvas: c, context: gl, antialias: true });
       if (!r.getContext()) throw new Error("no ctx");
       r.outputColorSpace = SRGBColorSpace;
       c.addEventListener("webglcontextlost", (e) => { e.preventDefault(); this.failed = true; });
