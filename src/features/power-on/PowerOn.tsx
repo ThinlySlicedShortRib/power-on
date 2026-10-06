@@ -289,8 +289,9 @@ export function PowerOn({ bootImmediately = false, onReplayIntro }: PowerOnProps
     host.addEventListener("click", onHostClick);
 
     // --- entry: resume after a locale switch, boot straight away, or wait on the intro
-    const resume = consumeResume();
+    // Consume inside the frame: StrictMode's throwaway first run cancels this rAF, so it must not clear the point.
     const boot = requestAnimationFrame(() => {
+      const resume = consumeResume();
       if (resume && resume.era < ERAS.length) {
         audio.ensure();
         desk?.enterStory();
