@@ -1,9 +1,6 @@
 {
   "intro": {
-    "place": "CERN · 日内瓦",
-    "date": "1989 年 3 月",
-    "headline": "你上线的每个网站，都从<i>一台</i>电脑开始。",
-    "lede": "一个往下滚动的故事：网络如何从桌上的一个立方体，变成在数百座城市运行的代码。记得打开声音。",
+    "line": "1989 年 3 月。<em>CERN</em> 的一张桌子上，有一台电脑。",
     "replay": "↺ 重播开场"
   },
   "eras": {
@@ -45,16 +42,17 @@
     }
   },
   "lines": {
-    "e1l01": "1989 年 3 月。瑞士和法国边境下的一座物理实验室。",
-    "e1l02": "几千名科学家。文档散落在彼此不通的机器上。",
+    "e1l02": "一座物理实验室。几千名科学家，文档散落在彼此不通的机器上。",
     "e1l03": "<em><g_pTBL>Tim Berners-Lee</g_pTBL></em> 写了份备忘录：《信息管理：一个提案》。",
     "e1l04": "上司 <g_pSendall>Mike Sendall</g_pSendall> 在上面批了一句：<em>“含糊，但令人兴奋……”</em>",
     "e1l05": "1990 年圣诞节。<g_server>服务器</g_server>和名为 <g_wwwapp>WorldWideWeb</g_wwwapp> 的<g_browser>浏览器</g_browser>跑起来了。",
+    "e1swing": "记住这两个。工作会在它们之间来回摆动，像钟摆一样。",
     "e1l06": "三个点子：<em><g_html>HTML</g_html></em> 写网页，<em><g_http>HTTP</g_http></em> 取网页，<em><g_url>URL</g_url></em> 找网页。",
     "e1l07": "整个网络就住在 Tim 桌上的一台 <g_nextcube>NeXTcube</g_nextcube> 里。",
     "e1l08": "正面贴着一张警告。来，把它揭开。",
     "e1l09": "那个<g_browser>浏览器</g_browser>没几个人跑得动。<em><g_pPellow>Nicola Pellow</g_pPellow></em> 写了能在任何<g_terminal>终端</g_terminal>上用的<g_linemode>行模式浏览器</g_linemode>。",
     "e1l10": "试试看。输入数字，按回车。",
+    "e1like": "那时还没有点赞。喜欢一个网页？就链接到它。",
     "e1l11": "1991 年 8 月 6 日。Tim 把它发到 alt.hypertext <g_newsgroup>新闻组</g_newsgroup>。谁都能加入。",
     "e1l12": "1991 年，剑桥。<g_trojan>Trojan Room</g_trojan> 的咖啡壶太远了，于是他们架了台摄像头对着它。",
     "e1l13": "不是视频。是灰色小照片，大约每分钟三张。壶空了？那就别动。",
@@ -71,14 +69,14 @@
     "e2l09": "<g_netscape>Netscape</g_netscape> 对决 <g_ie>Internet Explorer</g_ie>。<g_browserwars>浏览器大战</g_browserwars>开打，各家自创标签。",
     "e2l10": "1996 年。<em><g_pLie>Håkon Wium Lie</g_pLie></em> 的 <g_css>CSS</g_css> 来了。我们照样用 '<'table> 和 '<'font>。",
     "e2l11": "网站住哪儿？办公室储物间里的一台米色主机。",
-    "e2l12": "一个 <g_geocities>GeoCities</g_geocities> 网页，一个<g_webring>网站环</g_webring>，一个<g_hitcounter>访客计数器</g_hitcounter>。来签个<g_guestbook>留言簿</g_guestbook>。",
+    "e2l12": "一个 <g_geocities>GeoCities</g_geocities> 网页。喜欢吗？签个<g_guestbook>留言簿</g_guestbook>，让<g_hitcounter>访客计数器</g_hitcounter>跳一下。",
     "e2l13": "<g_y2k>千年虫</g_y2k>悄悄过去。接着<g_dotcom>互联网泡沫</g_dotcom>破了，很多公司没能撑下来。",
     "e3l01": "2004 年 4 月 1 日。<g_gmail>Gmail</g_gmail> 上线，免费 <em>1 GB</em>。对手才几 MB。愚人节玩笑？",
     "e3l02": "打开邮件不用重载，全靠 <em><g_xhr>XMLHttpRequest</g_xhr></em>。微软 1999 年就加上了。",
     "e3l03": "2005 年。<em><g_pGarrett>Jesse James Garrett</g_pGarrett></em> 给这招取名 <g_ajax>Ajax</g_ajax>。它撑起了 <g_web20>Web 2.0</g_web20>。",
     "e3l04": "<g_gmaps>Google Maps</g_gmaps> 让你随手拖动整个地球。来，抓住它。",
     "e3l05": "各家<g_browser>浏览器</g_browser>处处不一样。2006 年：<em><g_pResig>John Resig</g_pResig></em> 的 <g_jquery>jQuery</g_jquery> 把乱摊子藏起来。",
-    "e3l06": "人人都有<g_blog>博客</g_blog>。给文章投一票：重新排序，不用重载。",
+    "e3l06": "人人都有<g_blog>博客</g_blog>。点赞变成了投票：重新排序，不用重载。",
     "e3l07": "<em><g_rails>Ruby on Rails</g_rails></em> 和 <g_django>Django</g_django> 让带数据库的网站变成周末小项目。",
     "e3l08": "网站住进租来的机柜：一台<g_lb>负载均衡器</g_lb>、几台<g_server>服务器</g_server>、一个大 <g_mysql>MySQL</g_mysql>。",
     "e3l09": "2006 年。<g_aws>AWS</g_aws> 按小时出租<g_server>服务器</g_server>。<em>别再买硬件了。</em>",
@@ -92,16 +90,17 @@
     "e4l07": "2014 年。<em><g_pYou>Evan You</g_pYou></em> 发布 <g_vue>Vue</g_vue>，同一思路的轻量版。",
     "e4l08": "代码放 <g_cdn>CDN</g_cdn>，<g_api>API</g_api> 放 <g_heroku>Heroku</g_heroku>。部署只要 <em><g_git>git push</g_git></em>。",
     "e4l09": "设计走向<g_flat>扁平</g_flat>和<g_responsive>响应式</g_responsive>。一套布局，从手机到桌面。",
-    "e4l10": "一切皆信息流，而且<g_infinite>永远刷不完</g_infinite>。试试看。",
+    "e4l10": "一切皆信息流，而且<g_infinite>永远刷不完</g_infinite>。一路点赞刷下去。",
     "e4l11": "2013 年：<g_docker>Docker</g_docker> 让<g_server>服务器</g_server>用完即弃。2014 年：<g_serverless>Lambda</g_serverless> 让它们<em>隐形</em>。",
     "e5l01": "2016 年。<em><g_pRauch>Guillermo Rauch</g_pRauch></em> 的团队发布 <g_nextjs>Next.js</g_nextjs>。<g_react>React</g_react> 又回到<g_server>服务器</g_server>上渲染。",
-    "e5l02": "钟摆又在<em><g_server>服务器</g_server></em>和<em><g_browser>浏览器</g_browser></em>之间荡了回来。",
+    "e5l02": "还记得钟摆吗？它刚荡回<em><g_server>服务器</g_server></em>。",
     "e5l03": "静态网站也回来了，<g_ssg>预先构建</g_ssg>好放在 <g_cdn>CDN</g_cdn> 上。这叫 <g_jamstack>JAMstack</g_jamstack>。",
     "e5l04": "<em><g_pHarris>Rich Harris</g_pHarris></em> 问：要是框架能把自己编译没了呢？<g_svelte>Svelte</g_svelte>。",
     "e5l05": "2017 年 2 月 28 日。一位工程师在 <g_useast>us-east-1</g_useast> 调试 <g_s3>S3</g_s3> 时，敲错了一条命令。",
     "e5l06": "网站瘫了四个小时。连状态页都挂了：它的图标就放在 <g_s3>S3</g_s3> 上。",
     "e5l07": "现在<g_server>服务器</g_server>先发外壳，其余部分<em>准备好就</em><g_streaming>流式</g_streaming>送达。",
     "e5l08": "有些组件只在<g_server>服务器</g_server>上运行，直接跟数据库对话。",
+    "e5like": "点个赞。数字在服务器回复<em>之前</em>就变了：<g_optimistic>乐观 UI</g_optimistic>。",
     "e5l09": "它住哪儿？到处都是。<g_edgefn>边缘函数</g_edgefn>在离你几毫秒的地方运行……",
     "e5l10": "……但数据还是放在一个地方。<g_latency>光速也有上限</g_latency>。",
     "e5l11": "今天的技术栈：<g_typescript>TypeScript</g_typescript>、<g_vite>Vite</g_vite>，常常再加一个包揽一切的<g_monorepo>单体仓库</g_monorepo>。",
@@ -114,6 +113,7 @@
     "e6l06": "下一步：<g_webmcp>WebMCP</g_webmcp> 给<g_agent>智能体</g_agent>真正的工具，不用再猜按钮。切换视图看看。",
     "e6l07": "<g_agent>智能体</g_agent>有了身份证和钱包：<g_x402>x402</g_x402>、<g_ap2>AP2</g_ap2>、<g_acp>ACP</g_acp>。还没有谁胜出。",
     "e6l08": "以下是推测。每个网站都会有<em>两类受众</em>：人，和人的<g_agent>智能体</g_agent>。",
+    "e6like": "那你的赞呢？也许由你的<g_agent>智能体</g_agent>代点。这样算数吗？",
     "e6l09": "钟摆多了第三极。重点不是在哪里渲染，而是<em>谁在读</em>。",
     "e6l10": "大胆猜想：<g_a2a>智能体跟智能体讨价还价</g_a2a>、用完即弃的应用、一场 <g_robots>robots.txt</g_robots> 大战。给它们打个分。",
     "e6l11": "六个时代，六张桌子。还是 1990 年那三个点子。<g_agent>智能体</g_agent>也说这门语言。"
@@ -146,6 +146,19 @@
       "from": "2026",
       "to": "?",
       "cap": "下一位读者，可能不是人类"
+    }
+  },
+  "swing": {
+    "server": "服务器",
+    "browser": "浏览器",
+    "reader": "谁在读？",
+    "where": {
+      "e1": "工作在服务器上",
+      "e2": "还在服务器上",
+      "e3": "漂向浏览器：Ajax",
+      "e4": "在浏览器里",
+      "e5": "回到服务器，在边缘",
+      "e6": "第三极：谁在读"
     }
   },
   "conf": {
@@ -196,8 +209,9 @@
     }
   },
   "fin": {
-    "headline": "从日内瓦的一个立方体，到<i>无处不在</i>。",
-    "body": "网络一直在服务器和浏览器之间来回摆动。下一步摆向哪里，取决于建造它的人。现在，这也包括你。",
+    "headline": "你上线的每个网站，都从<i>一台</i>电脑开始。",
+    "body": "你的赞刚刚落地，回到了起点。网络下一步摆向哪里，由你决定。",
+    "likeAria": "你的赞落地了：{count} 个赞",
     "again": "⏻ 关机并重新开始"
   },
   "fx": {
@@ -748,7 +762,7 @@
       "cancel": "取消",
       "pause": "涉及花钱或无法撤销的操作，智能体会先暂停。",
       "cancelled": "已取消。什么都没发出去。",
-      "auto": "正在自动演示第一件差事。随时可以换一件。",
+      "auto": "正在自动演示一件差事。随时可以换一件。",
       "f1": {
         "intent": "订一张周五的双人桌",
         "site": "Osteria Nove",
@@ -793,6 +807,20 @@
         "v3": "+21 天",
         "confirm": "把 3 本书续借到 10 月 26 日？",
         "done": "已续借。没有罚款。"
+      },
+      "f4": {
+        "intent": "帮我给 Mika 的上线帖点赞",
+        "url": "murmur.app",
+        "q": "mika 上线",
+        "pick": "Mika K. · 今晚上线了我的第一个 side project…",
+        "l1": "帖子",
+        "v1": "Mika 的上线帖",
+        "l2": "操作",
+        "v2": "♥ 赞",
+        "l3": "身份",
+        "v3": "你（通过智能体）",
+        "confirm": "以你的名义给这条帖子点赞？",
+        "done": "已点赞。Mika 看到的是你的名字，不是智能体的。"
       }
     },
     "views": {
@@ -882,6 +910,21 @@
       "decline": "拒绝",
       "approved": "已批准。你家人类现在会假装这是自己找到的。",
       "declined": "已拒绝。两个智能体都很失望，大约失望了 4 毫秒。"
+    },
+    "swing": {
+      "bar": "where_the_work_happens",
+      "aria": "服务器和浏览器之间的钟摆。1990 年，工作在服务器上进行。"
+    },
+    "optim": {
+      "bar": "murmur · 点赞按钮",
+      "span": "乐观 UI",
+      "like": "赞",
+      "screen": "界面",
+      "server": "服务器",
+      "hint": "点一下爱心。",
+      "instant": "已更新 · 0 毫秒",
+      "waiting": "等待中…",
+      "confirmed": "已确认 ✓ · {ms} 毫秒"
     }
   },
   "dio": {

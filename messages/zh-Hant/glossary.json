@@ -984,6 +984,12 @@
     "def": "在瀏覽器執行伺服器渲染頁面的 JavaScript，掛上事件處理器，讓頁面可以互動。",
     "kind": "term"
   },
+  "optimistic": {
+    "term": "樂觀 UI",
+    "year": "",
+    "def": "先顯示結果，不等伺服器確認；萬一請求失敗，再悄悄改回來。",
+    "kind": "term"
+  },
   "bundle": {
     "term": "Bundle（打包檔）",
     "year": "",

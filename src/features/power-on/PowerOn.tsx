@@ -4,11 +4,13 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react"
 import type { Autoplay } from "@/features/controls/autoplay";
 import { Advance } from "@/features/controls/Advance";
 import { Controls } from "@/features/controls/Controls";
+import { DEFAULT_LIKE, loadLike, type LikeCarry } from "@/features/experience/like";
 import { PowerOnContext, type PowerOnCtx } from "./components/context";
 import { EraFx } from "./components/EraFx";
 import { GpuNotice } from "./components/GpuNotice";
 import { Hud } from "./components/Hud";
 import { Intro } from "./components/Intro";
+import { FinLike } from "./components/FinLike";
 import { Narration, type StoryPos } from "./components/Narration";
 import { Shortcuts } from "./components/Shortcuts";
 import { Stage } from "./components/Stage";
@@ -23,6 +25,7 @@ import { ScrollTrack } from "./engine/scroll";
 import { AudioEngine } from "./engine/sfx";
 import { consumeResume, saveResume } from "./engine/storage";
 import { useStoryText } from "./i18n/rich";
+import { SWING, SwingMark, swingVars } from "./widgets/Swing";
 import "./styles/power-on.css";
 import "./styles/power-on-extra.css";
 
@@ -34,6 +37,8 @@ const BACK = new Set(["ArrowLeft", "ArrowUp", "PageUp"]);
 export interface PowerOnProps {
   /** shared with the landing so it carries on across the handoff */
   autoplay: Autoplay;
+  /** the reader's like from the landing; the ending lands it (+1). Standalone falls back to the saved one, then a default. */
+  like?: LikeCarry;
   /** scrolling up from the desk (intro) goes back into the landing's time tunnel */
   onBack?: () => void;
   /** "Replay intro" and "Power off & start again" hand back to the top of the landing instead of the local intro */
@@ -45,7 +50,7 @@ export interface PowerOnProps {
  * Three.js desk, WebAudio music and SFX, and scroll tracking run as imperative engines driven through refs;
  * React renders only when the line, era or mode changes.
  */
-export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
+export function PowerOn({ autoplay, like: likeProp, onBack, onReplayIntro }: PowerOnProps) {
   const text = useStoryText();
   const { t } = text;
 
@@ -62,6 +67,8 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   const [soundOn, setSoundOn] = useState(audio.soundOn);
   const [musicOn, setMusicOn] = useState(music.on);
   const [vol, setVol] = useState(music.vol);
+  const [savedLike] = useState(() => loadLike() ?? DEFAULT_LIKE);
+  const like = likeProp ?? savedLike;
 
   const rootRef = useRef<HTMLDivElement>(null);
   const glHost = useRef<HTMLDivElement>(null);
@@ -77,7 +84,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   useEffect(() => { posRef.current = pos; keysOpenRef.current = keysOpen; onBackRef.current = onBack; autoRef.current = autoplay; });
 
   const [dioramas] = useState(() => new Dioramas());
-  const ctx = useMemo<PowerOnCtx>(() => ({ audio, music, dioramas, reduce, touch }), [audio, music, dioramas, reduce, touch]);
+  const ctx = useMemo<PowerOnCtx>(() => ({ audio, music, dioramas, reduce, touch, like }), [audio, music, dioramas, reduce, touch, like]);
 
   const deskText = useMemo<DeskText>(() => {
     const L = (k: string) => t(`desk.${k}`);
@@ -152,6 +159,9 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
           desk.pose = p < 0.15 ? A.inPose : p < 0.4 ? lerpPose(A.inPose, A.out, ease((p - 0.15) / 0.25)) : p < 0.6 ? lerpPose(A.out, B.out, ease((p - 0.4) / 0.2)) : p < 0.85 ? lerpPose(B.out, B.inPose, ease((p - 0.6) / 0.25)) : B.inPose;
         }
         transO = clamp(1 - Math.abs(p - 0.5) / 0.26);
+        // the pendulum moves to where the next era does its work while the years are up
+        const k = reduce ? (p < 0.5 ? 0 : 1) : ease((p - 0.24) / 0.32);
+        for (const [prop, v] of Object.entries(swingVars(SWING[ERAS[a].n], SWING[ERAS[b].n], k))) trans.style.setProperty(prop, v);
         if (transNow !== a) { transNow = a; setTransIdx(a); }
       } else {
         const e = seg.e;
@@ -412,15 +422,18 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
           <div className="po-box">
             <div className="po-yrs">{t(`trans.${tr}.from`)} <span>→</span> {t(`trans.${tr}.to`)}</div>
             <div className="po-cap">{t(`trans.${tr}.cap`)}</div>
+            <SwingMark />
+            <div className="po-sw-where">{t(`swing.where.${ERAS[Math.min(transIdx + 1, ERAS.length - 1)].key}`)}</div>
           </div>
         </div>
         <div ref={finRef} className="po-fin">
-          <div>
+          <div className="po-fincopy">
             <h2>{text.rich("fin.headline")}</h2>
             <p>{t("fin.body")}</p>
             <button className="po-hud po-again" type="button" style={{ position: "static", display: "inline-flex", fontSize: ".85rem", padding: "12px 20px" }}
               onClick={() => ctl.current?.powerOff()}>{t("fin.again")}</button>
           </div>
+          <FinLike like={like} />
         </div>
 
         <Hud on={mode === "story"} era={pos.era} />

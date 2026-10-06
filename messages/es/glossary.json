@@ -984,6 +984,12 @@
     "def": "Ejecutar en el navegador el JavaScript de una página renderizada en el servidor para conectar sus manejadores de eventos y volverla interactiva.",
     "kind": "term"
   },
+  "optimistic": {
+    "term": "UI optimista",
+    "year": "",
+    "def": "Mostrar el resultado antes de que el servidor lo confirme y deshacerlo en silencio si la petición falla.",
+    "kind": "term"
+  },
   "bundle": {
     "term": "Bundle",
     "year": "",

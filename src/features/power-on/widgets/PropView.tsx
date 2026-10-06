@@ -16,12 +16,14 @@ import { JsxReveal } from "./JsxReveal";
 import { LeftPad } from "./LeftPad";
 import { MapDrag } from "./MapDrag";
 import { Modem } from "./Modem";
+import { Optimistic } from "./Optimistic";
 import { Outage } from "./Outage";
 import { Pendulum } from "./Pendulum";
 import { Person } from "./Person";
 import { SlowImage } from "./SlowImage";
 import { Sticker } from "./Sticker";
 import { Streaming } from "./Streaming";
+import { Swing } from "./Swing";
 import { TenDays } from "./TenDays";
 import { Terminal } from "./Terminal";
 import { ThreePoles } from "./ThreePoles";
@@ -46,6 +48,8 @@ import { Wars } from "./static/Wars";
 import { Zero } from "./static/Zero";
 
 type W = (p: { active: boolean }) => React.ReactNode;
+/** era 6's like line: the same errand widget, running "like this post for me" */
+const AgentLike: W = ({ active }) => <AgentErrand active={active} start={3} />;
 const COMPONENTS: Partial<Record<PropId, W>> = {
   "ph-cern": Cern, "ph-memo": Memo, "ph-usenet": Usenet, "ph-pd": PublicDomain, "ph-crash": Crash, "ph-wars": Wars, "ph-aws": Aws,
   "ph-phone": Phone2007, "ph-flat": Flat, "ph-boxes": Boxes, "ph-jam": Jam, "ph-stack": Stack, "ph-agents": Agents, "ph-checkout": Checkout,
@@ -53,7 +57,7 @@ const COMPONENTS: Partial<Record<PropId, W>> = {
   "w-sticker": Sticker, "w-term": Terminal, "w-coffee": Coffee, "w-modem": Modem, "w-slow": SlowImage, "w-tenday": TenDays, "w-guest": Guestbook,
   "w-gmail": Gmail, "w-map": MapDrag, "w-vote": Vote, "w-npm": LeftPad, "w-jsx": JsxReveal, "w-blank": BlankPage, "w-feed": Feed,
   "w-pend": Pendulum, "w-outage": Outage, "w-stream": Streaming, "w-deploy": Deploy, "w-agent": AgentErrand, "w-views": Views,
-  "w-genui": GenUI, "w-pend3": ThreePoles, "w-haggle": Haggle,
+  "w-genui": GenUI, "w-pend3": ThreePoles, "w-haggle": Haggle, "w-swing": Swing, "w-optim": Optimistic, "w-agentlike": AgentLike,
 };
 
 export function PropView({ id, active }: { id: PropId; active: boolean }) {

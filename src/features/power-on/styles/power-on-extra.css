@@ -20,3 +20,66 @@
 .po-root .po-gpu button:hover { background: rgba(255,255,255,.08); }
 @media (max-width: 760px) { .po-root .po-gpu { top: calc(52px + env(safe-area-inset-top, 0px)); } }
 
+
+/* ---------- the like that runs through the story ---------- */
+/* ending: murmur, 2026. The reader's like lands (+1) once .po-fin turns on; transitions live only on the "on" state, so leaving resets at once */
+@keyframes po-fpop { 40% { transform: scale(1.35); } }
+@keyframes po-fplus { 0% { opacity: 0; transform: translateY(10px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(-34px); } }
+.po-root .po-flike { --a-bg: #ffffff; --a-ink: #141822; --a-mute: #687089; --a-acc: #ff3d6e;
+  justify-self: center; display: grid; gap: 14px; justify-items: center; padding: clamp(20px, 4vw, 40px) clamp(36px, 6vw, 80px); border-radius: 36px;
+  background: var(--a-bg); color: var(--a-ink); font-family: var(--f-sans); box-shadow: 0 40px 120px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08); }
+.po-root .po-flike[data-theme="dark"] { --a-bg: #0f1218; --a-ink: #eef0f6; --a-mute: #8b93a8; --a-acc: #ff5c86; }
+.po-root .po-flike-top { display: flex; gap: 12px; align-items: baseline; font: .78rem var(--f-mono); letter-spacing: .14em; color: var(--a-mute); }
+.po-root .po-flogo { font: 1.5rem var(--f-serif); letter-spacing: -.01em; color: var(--a-ink); }
+.po-root .po-flogo b { color: var(--a-acc); font-weight: 400; font-style: italic; }
+.po-root .po-flike-btn { position: relative; display: inline-flex; align-items: center; gap: .3em; font-size: clamp(3rem, 7vw, 6rem); font-weight: 600; line-height: 1; color: var(--a-mute); font-variant-numeric: tabular-nums; }
+.po-root .po-flike-btn svg { width: 1.1em; height: 1.1em; flex: none; }
+.po-root .po-fn { display: inline-grid; overflow: hidden; }
+.po-root .po-fn > span { grid-area: 1 / 1; }
+.po-root .po-fn1 { transform: translateY(100%); opacity: 0; }
+.po-root .po-fplus { position: absolute; right: -.1em; top: -.35em; font-style: normal; font-size: .34em; color: var(--a-acc); opacity: 0; }
+.po-root .po-fin.po-on .po-flike-btn { color: var(--a-acc); transition: color .3s .7s; }
+.po-root .po-fin.po-on .po-flike-btn svg { fill: var(--a-acc); transition: fill .3s .7s; animation: po-fpop .5s .7s cubic-bezier(.2,1.6,.4,1) both; }
+.po-root .po-fin.po-on .po-fn > span { transition: transform .45s cubic-bezier(.2,.9,.3,1.2) .7s, opacity .3s .7s; }
+.po-root .po-fin.po-on .po-fn0 { transform: translateY(-100%); opacity: 0; }
+.po-root .po-fin.po-on .po-fn1 { transform: none; opacity: 1; }
+.po-root .po-fin.po-on .po-fplus { animation: po-fplus 1.3s .8s ease-out both; }
+@media (max-width: 760px) {
+  .po-root .po-fin { grid-template-columns: minmax(0, 1fr); align-content: center; align-items: start; gap: 24px; padding-top: 64px; padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+  .po-root .po-fin h2 { font-size: clamp(2rem, 9vw, 3rem); }
+  .po-root .po-flike { padding: 18px 32px; border-radius: 28px; }
+  .po-root .po-flike-btn { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+}
+
+/* the server ↔ browser pendulum (widgets/Swing): pose from --sw-a (deg, negative = server), --sw-lift (to the third pole), --sw-rd */
+.po-root .po-swing { display: block; width: min(100%, 240px); overflow: visible; font: 11px var(--f-mono); letter-spacing: .08em; }
+.po-root .po-swing text { fill: currentColor; }
+.po-root .po-sw-arm { transform-origin: 120px 46px; transform: rotate(calc(var(--sw-a, -38) * -1deg)); }
+.po-root .po-sw-arm line { opacity: calc(1 - var(--sw-lift, 0)); }
+.po-root .po-sw-bob { fill: var(--lamp); transform: translateY(calc(var(--sw-lift, 0) * -104px)); }
+.po-root .po-sw-rd { opacity: var(--sw-rd, 0); }
+.po-root .po-sw-where { font: .74rem var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--lamp); }
+.po-root .po-trans .po-swing { margin: 22px auto 6px; width: 220px; color: var(--room-ink); filter: drop-shadow(0 2px 10px #000); }
+.po-root .po-trans .po-sw-where { text-shadow: 0 2px 12px #000; }
+.po-root .po-swingw .po-body { justify-items: center; }
+.po-root .po-swingw .po-sw-bob { fill: var(--acc2); }
+.po-root .po-swingw .po-sw-where { margin: 0; color: var(--acc2); }
+
+/* era 5: optimistic UI (widgets/Optimistic) */
+@keyframes po-otick { from { transform: translateY(-8px); opacity: .3; } }
+@keyframes po-obar { to { transform: scaleX(1); } }
+.po-root .po-optim .po-body { justify-items: center; gap: 16px; }
+.po-root .po-oheart { display: inline-flex; align-items: center; gap: .3em; padding: 6px 16px; border: 0; border-radius: 999px; background: none; color: var(--muted);
+  font: 600 clamp(2.4rem, 5vw, 3.6rem)/1 var(--f-now); font-variant-numeric: tabular-nums; }
+.po-root .po-oheart:hover { background: rgba(255,255,255,.06); }
+.po-root .po-oheart svg { width: 1.1em; height: 1.1em; }
+.po-root .po-oheart > span { display: inline-block; animation: po-otick .3s; }
+.po-root .po-oheart.po-on { color: #ff3d6e; }
+.po-root .po-oheart.po-on svg { fill: #ff3d6e; animation: po-fpop .4s cubic-bezier(.2,1.6,.4,1); }
+.po-root .po-orows { margin: 0; width: 100%; display: grid; gap: 8px; font: .82rem var(--f-mono); }
+.po-root .po-orows > div { position: relative; display: flex; justify-content: space-between; gap: 12px; padding: 8px 12px; border-radius: 8px; overflow: hidden;
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
+.po-root .po-orows dt { color: var(--muted); }
+.po-root .po-orows dd { margin: 0; text-align: right; }
+.po-root .po-orows i { position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: var(--acc2); transform-origin: left; transform: scaleX(0); }
+.po-root .po-orows .po-wait i { animation: po-obar linear forwards; }

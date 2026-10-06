@@ -8,8 +8,13 @@ type Phase = "none" | "search" | "results" | "form" | "confirm" | "yes" | "no";
 interface S { flow: number; typed: string | null; st: "idle" | "working" | "typing" | "waiting"; phase: Phase; q: number; filled: number; log: string; sel: number }
 const INIT: S = { flow: 0, typed: null, st: "idle", phase: "none", q: 0, filled: 0, log: "pick", sel: -1 };
 
-/** An AI agent runs an errand on a website, and pauses before anything irreversible. Auto-plays the first errand. */
-export function AgentErrand({ active }: { active: boolean }) {
+const FLOWS = [0, 1, 2, 3];
+
+/**
+ * An AI agent runs an errand on a website, and pauses before anything irreversible. Auto-plays one errand on show:
+ * the first, or `start` (era 6's like line runs errand 4: like Mika's launch post for you).
+ */
+export function AgentErrand({ active, start = 0 }: { active: boolean; start?: number }) {
   const { t, rich } = useStoryText();
   const { audio, reduce } = usePowerOn();
   const uid = useId();
@@ -50,12 +55,12 @@ export function AgentErrand({ active }: { active: boolean }) {
   useOnShow(active, () => {
     if (running.current) return;
     timers.clear(); setInput("");
-    if (reduce) { setInput(f(0, "intent")); run(0, null); return; }
+    if (reduce) { setInput(f(start, "intent")); run(start, null); return; }
     running.current = true;
-    const intent = f(0, "intent");
-    setS({ ...INIT, st: "typing", log: "auto", sel: 0 });
+    const intent = f(start, "intent");
+    setS({ ...INIT, st: "typing", log: "auto", sel: start });
     for (let i = 1; i <= intent.length; i++) timers.set(() => setInput(intent.slice(0, i)), 350 + i * 38);
-    timers.set(() => run(0, null), 350 + intent.length * 38 + 350);
+    timers.set(() => run(start, null), 350 + intent.length * 38 + 350);
     // leaving the line stops the errand (also keeps StrictMode's mount/unmount/mount from wedging `running`)
     return () => { timers.clear(); running.current = false; };
   });
@@ -65,7 +70,7 @@ export function AgentErrand({ active }: { active: boolean }) {
     const v = input.trim();
     if (!v) return;
     const low = v.toLowerCase();
-    const fi = /shoe|buy|order|size/.test(low) ? 1 : /book|library|renew/.test(low) && !/table|dinner/.test(low) ? 2 : 0;
+    const fi = /like|heart|murmur|post/.test(low) ? 3 : /shoe|buy|order|size/.test(low) ? 1 : /book|library|renew/.test(low) && !/table|dinner/.test(low) ? 2 : 0;
     run(fi, v);
   };
   const decide = (yes: boolean) => { patch({ phase: yes ? "yes" : "no", st: "idle" }); ghostShow(0); audio.blip(yes ? 1400 : 300); };
@@ -78,7 +83,7 @@ export function AgentErrand({ active }: { active: boolean }) {
       <div className="po-bar"><span>{t("widgets.agent.bar")}</span><span>{t(`widgets.agent.${s.st}`)}</span></div>
       <div className="po-body">
         <div className="po-intents">
-          {[0, 1, 2].map((i) => (
+          {FLOWS.map((i) => (
             <button key={i} type="button" className={"po-chip" + (s.sel === i ? " po-sel" : "")} onClick={() => run(i, null)}>{f(i, "intent")}</button>
           ))}
         </div>

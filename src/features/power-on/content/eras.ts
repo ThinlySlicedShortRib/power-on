@@ -9,7 +9,7 @@ export type StaticId =
   | "agents" | "checkout" | "zero" | "gate" | "lineup";
 export type WidgetId =
   | "sticker" | "term" | "coffee" | "modem" | "slow" | "tenday" | "guest" | "gmail" | "map" | "vote" | "npm" | "jsx" | "blank" | "feed"
-  | "pend" | "outage" | "stream" | "deploy" | "agent" | "views" | "genui" | "pend3" | "haggle";
+  | "pend" | "outage" | "stream" | "deploy" | "agent" | "views" | "genui" | "pend3" | "haggle" | "swing" | "optim" | "agentlike";
 export type DioramaId = 1 | 2 | 3 | 4 | 5 | 6;
 
 /** What sits on the stage next to a narration line. */
@@ -45,9 +45,9 @@ const S = { story: true } as const;
 
 export const ERAS: EraDef[] = [
   { n: 1, key: "e1", lines: [
-    L("e1l01", "ph-cern"), L("e1l02", "ph-cern"), L("e1l03", "p-tbl"), L("e1l04", "ph-memo"), L("e1l05", "c-html"),
+    L("e1l02", "ph-cern"), L("e1l03", "p-tbl"), L("e1l04", "ph-memo"), L("e1l05", "c-html"), L("e1swing", "w-swing"),
     L("e1l06", "c-html"), L("e1l07", "dg1"), L("e1l08", "w-sticker", S), L("e1l09", "p-pellow"), L("e1l10", "w-term"),
-    L("e1l11", "ph-usenet"), L("e1l12", "w-coffee", S), L("e1l13", "w-coffee", S), L("e1l14", "ph-pd"), L("e1l15", "w-coffee", S),
+    L("e1like", "w-term"), L("e1l11", "ph-usenet"), L("e1l12", "w-coffee", S), L("e1l13", "w-coffee", S), L("e1l14", "ph-pd"), L("e1l15", "w-coffee", S),
   ] },
   { n: 2, key: "e2", lines: [
     L("e2l01", "p-andreessen"), L("e2l02", "w-modem"), L("e2l03", "w-slow"), L("e2l04", "c-cgi"), L("e2l05", "c-cgi"),
@@ -64,13 +64,14 @@ export const ERAS: EraDef[] = [
   ] },
   { n: 5, key: "e5", lines: [
     L("e5l01", "p-rauch"), L("e5l02", "w-pend"), L("e5l03", "ph-jam"), L("e5l04", "p-harris"), L("e5l05", "w-outage", S),
-    L("e5l06", "w-outage", S), L("e5l07", "w-stream"), L("e5l08", "c-rsc"), L("e5l09", "dg5"), L("e5l10", "dg5"),
+    L("e5l06", "w-outage", S), L("e5l07", "w-stream"), L("e5l08", "c-rsc"), L("e5like", "w-optim"), L("e5l09", "dg5"), L("e5l10", "dg5"),
     L("e5l11", "ph-stack"), L("e5l12", "w-deploy"),
   ] },
   { n: 6, key: "e6", lines: [
     L("e6l01", "ph-agents", { confidence: 0 }), L("e6l02", "w-agent", { confidence: 0 }), L("e6l03", "ph-checkout", { confidence: 0, story: true }),
     L("e6l04", "ph-zero", { confidence: 0 }), L("e6l05", "ph-gate", { confidence: 0 }), L("e6l06", "w-views", { confidence: 1 }),
-    L("e6l07", "dg6", { confidence: 1 }), L("e6l08", "w-genui", { confidence: 2 }), L("e6l09", "w-pend3", { confidence: 2 }),
+    L("e6l07", "dg6", { confidence: 1 }), L("e6l08", "w-genui", { confidence: 2 }), L("e6like", "w-agentlike", { confidence: 2 }),
+    L("e6l09", "w-pend3", { confidence: 2 }),
     L("e6l10", "w-haggle", { confidence: 3 }), L("e6l11", "ph-lineup", { confidence: 3 }),
   ] },
 ];

@@ -984,6 +984,12 @@
     "def": "Running a server-rendered page's JavaScript in the browser so it attaches event handlers and becomes interactive.",
     "kind": "term"
   },
+  "optimistic": {
+    "term": "Optimistic UI",
+    "year": "",
+    "def": "Show the result before the server confirms it, then quietly undo it if the request fails.",
+    "kind": "term"
+  },
   "bundle": {
     "term": "Bundle",
     "year": "",

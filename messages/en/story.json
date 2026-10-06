@@ -1,9 +1,6 @@
 {
   "intro": {
-    "place": "CERN · Geneva",
-    "date": "March 1989",
-    "headline": "Every website you ship started on <i>one</i> computer.",
-    "lede": "A scroll-through story of how the web got from a cube on a desk to code running in hundreds of cities. Turn your sound on.",
+    "line": "March 1989. One computer, on a desk at <em>CERN</em>.",
     "replay": "↺ Replay intro"
   },
   "eras": {
@@ -45,16 +42,17 @@
     }
   },
   "lines": {
-    "e1l01": "March 1989. A physics lab under the Swiss–French border.",
-    "e1l02": "Thousands of scientists. Their documents sit on machines that can't talk.",
+    "e1l02": "A physics lab. Thousands of scientists, their documents on machines that can't talk.",
     "e1l03": "<em><g_pTBL>Tim Berners-Lee</g_pTBL></em> writes a memo: “Information Management: A Proposal”.",
     "e1l04": "His boss, <g_pSendall>Mike Sendall</g_pSendall>, scribbles on it: <em>“Vague but exciting…”</em>",
     "e1l05": "Christmas 1990. A <g_server>server</g_server> and a <g_browser>browser</g_browser> called <g_wwwapp>WorldWideWeb</g_wwwapp> are running.",
+    "e1swing": "Remember those two. The work will swing between them, like a pendulum.",
     "e1l06": "Three ideas: <em><g_html>HTML</g_html></em> to write pages, <em><g_http>HTTP</g_http></em> to fetch them, <em><g_url>URLs</g_url></em> to find them.",
     "e1l07": "The whole web lives on one <g_nextcube>NeXTcube</g_nextcube>, on Tim's desk.",
     "e1l08": "Taped to the front: a warning. Go on, peel it back.",
     "e1l09": "Few can run that <g_browser>browser</g_browser>. <em><g_pPellow>Nicola Pellow</g_pPellow></em> writes a <g_linemode>line-mode browser</g_linemode> for any <g_terminal>terminal</g_terminal>.",
     "e1l10": "Try it. Type a number. Press Enter.",
+    "e1like": "No like button anywhere. Liked a page? You linked to it.",
     "e1l11": "6 August 1991. Tim posts it to the alt.hypertext <g_newsgroup>newsgroup</g_newsgroup>. Anyone can join.",
     "e1l12": "Cambridge, 1991. The <g_trojan>Trojan Room</g_trojan> coffee pot is a long walk away. So they point a camera at it.",
     "e1l13": "Not video. A tiny grey photo, about three times a minute. Empty? Stay put.",
@@ -71,14 +69,14 @@
     "e2l09": "<g_netscape>Netscape</g_netscape> versus <g_ie>Internet Explorer</g_ie>. The <g_browserwars>browser wars</g_browserwars> begin. Each invents its own tags.",
     "e2l10": "1996. <em><g_pLie>Håkon Wium Lie</g_pLie></em>'s <g_css>CSS</g_css> arrives. We keep using '<'table> and '<'font>.",
     "e2l11": "Where does a site live? A beige tower in the office closet.",
-    "e2l12": "A <g_geocities>GeoCities</g_geocities> page, a <g_webring>webring</g_webring>, a <g_hitcounter>hit counter</g_hitcounter>. Sign the <g_guestbook>guestbook</g_guestbook>.",
+    "e2l12": "A <g_geocities>GeoCities</g_geocities> page. Like it? Sign the <g_guestbook>guestbook</g_guestbook>, bump the <g_hitcounter>hit counter</g_hitcounter>.",
     "e2l13": "<g_y2k>Y2K</g_y2k> passes quietly. Then the <g_dotcom>dot-com bubble</g_dotcom> pops. Many companies don't survive.",
     "e3l01": "1 April 2004. <g_gmail>Gmail</g_gmail> launches with <em>1 GB</em> free. Rivals offer a few MB. A joke?",
     "e3l02": "Mail opens without reloading, thanks to <em><g_xhr>XMLHttpRequest</g_xhr></em>. Microsoft added it in 1999.",
     "e3l03": "2005. <em><g_pGarrett>Jesse James Garrett</g_pGarrett></em> names the trick <g_ajax>Ajax</g_ajax>. It powers <g_web20>Web 2.0</g_web20>.",
     "e3l04": "<g_gmaps>Google Maps</g_gmaps> lets you drag the planet around. Go on, grab it.",
     "e3l05": "<g_browser>Browsers</g_browser> disagree on everything. 2006: <em><g_pResig>John Resig</g_pResig></em>'s <g_jquery>jQuery</g_jquery> hides the mess.",
-    "e3l06": "Everyone has a <g_blog>blog</g_blog>. Vote on a story: it re-sorts, no reload.",
+    "e3l06": "Everyone has a <g_blog>blog</g_blog>. A like is a vote now: it re-sorts, no reload.",
     "e3l07": "<em><g_rails>Ruby on Rails</g_rails></em> and <g_django>Django</g_django> make a database-backed site a weekend project.",
     "e3l08": "Sites live in rented racks: a <g_lb>load balancer</g_lb>, some <g_server>servers</g_server>, one big <g_mysql>MySQL</g_mysql>.",
     "e3l09": "2006. <g_aws>AWS</g_aws> rents <g_server>servers</g_server> by the hour. <em>Stop buying hardware.</em>",
@@ -92,16 +90,17 @@
     "e4l07": "2014. <em><g_pYou>Evan You</g_pYou></em> releases <g_vue>Vue</g_vue>, a lighter take on the idea.",
     "e4l08": "Code sits on a <g_cdn>CDN</g_cdn>. The <g_api>API</g_api> sits on <g_heroku>Heroku</g_heroku>. Deploy with <em><g_git>git push</g_git></em>.",
     "e4l09": "Design <g_flat>goes flat</g_flat> and <g_responsive>responsive</g_responsive>. One layout, phone to desktop.",
-    "e4l10": "Everything is a feed, and <g_infinite>the feed never ends</g_infinite>. Try it.",
+    "e4l10": "Everything is a feed, and <g_infinite>the feed never ends</g_infinite>. Like your way down.",
     "e4l11": "2013: <g_docker>Docker</g_docker> makes <g_server>servers</g_server> disposable. 2014: <g_serverless>Lambda</g_serverless> makes them <em>invisible</em>.",
     "e5l01": "2016. <em><g_pRauch>Guillermo Rauch</g_pRauch></em>'s team releases <g_nextjs>Next.js</g_nextjs>. <g_react>React</g_react> renders on the <g_server>server</g_server> again.",
-    "e5l02": "The pendulum swings back between <em><g_server>server</g_server></em> and <em><g_browser>browser</g_browser></em>.",
+    "e5l02": "Remember the pendulum? It just swung back to the <em><g_server>server</g_server></em>.",
     "e5l03": "Static sites return too, <g_ssg>pre-built</g_ssg> on a <g_cdn>CDN</g_cdn>. Call it the <g_jamstack>JAMstack</g_jamstack>.",
     "e5l04": "<em><g_pHarris>Rich Harris</g_pHarris></em> asks: what if the framework compiled itself away? <g_svelte>Svelte</g_svelte>.",
     "e5l05": "28 February 2017. An engineer debugging <g_s3>S3</g_s3> in <g_useast>us-east-1</g_useast> mistypes one command.",
     "e5l06": "Four hours of broken sites. Even the status page breaks. Its icons live in <g_s3>S3</g_s3>.",
     "e5l07": "Now the <g_server>server</g_server> sends the shell first and <g_streaming>streams</g_streaming> the rest <em>as it's ready</em>.",
     "e5l08": "Some components run only on the <g_server>server</g_server>, talking straight to the database.",
+    "e5like": "Tap like. The count jumps <em>before</em> the server answers: <g_optimistic>optimistic UI</g_optimistic>.",
     "e5l09": "Where does it live? Everywhere. <g_edgefn>Edge functions</g_edgefn> run milliseconds from you…",
     "e5l10": "…but the data still lives in one place. <g_latency>Light only travels so fast</g_latency>.",
     "e5l11": "Today's stack: <g_typescript>TypeScript</g_typescript>, <g_vite>Vite</g_vite>, and often one <g_monorepo>monorepo</g_monorepo> for everything.",
@@ -114,6 +113,7 @@
     "e6l06": "Next: <g_webmcp>WebMCP</g_webmcp> hands <g_agent>agents</g_agent> real tools, not buttons to guess at. Flip the views.",
     "e6l07": "<g_agent>Agents</g_agent> get ID cards and wallets: <g_x402>x402</g_x402>, <g_ap2>AP2</g_ap2>, <g_acp>ACP</g_acp>. None has won yet.",
     "e6l08": "Speculation from here. Every site gets <em>two audiences</em>: people and their <g_agent>agents</g_agent>.",
+    "e6like": "And your like? Maybe your <g_agent>agent</g_agent> taps it for you. Does it count?",
     "e6l09": "The pendulum gets a third pole. Not where it renders, but <em>who's reading</em>.",
     "e6l10": "Wild guesses: <g_a2a>agents haggling with agents</g_a2a>, throwaway apps, a <g_robots>robots.txt</g_robots> war. Rate them.",
     "e6l11": "Six eras. Six desks. The same three ideas from 1990. <g_agent>Agents</g_agent> speak them too."
@@ -146,6 +146,19 @@
       "from": "2026",
       "to": "?",
       "cap": "The next reader might not be human"
+    }
+  },
+  "swing": {
+    "server": "server",
+    "browser": "browser",
+    "reader": "who's reading?",
+    "where": {
+      "e1": "The work happens on the server",
+      "e2": "Still on the server",
+      "e3": "Drifting to the browser: Ajax",
+      "e4": "In the browser",
+      "e5": "Back to the server, at the edge",
+      "e6": "A third pole: who's reading"
     }
   },
   "conf": {
@@ -196,8 +209,9 @@
     }
   },
   "fin": {
-    "headline": "From one cube in Geneva to <i>everywhere</i>.",
-    "body": "The web keeps swinging between the server and the browser. Where it swings next is up to the people who build it, which now includes you.",
+    "headline": "Every website you ship started on <i>one</i> computer.",
+    "body": "Your like just landed, back where you started. Where the web swings next is up to you.",
+    "likeAria": "Your like lands: {count} likes",
     "again": "⏻ Power off & start again"
   },
   "fx": {
@@ -748,7 +762,7 @@
       "cancel": "Cancel",
       "pause": "Agents pause before money or anything irreversible.",
       "cancelled": "Cancelled. Nothing was sent.",
-      "auto": "Auto-playing the first errand. Pick another any time.",
+      "auto": "Auto-playing an errand. Pick another any time.",
       "f1": {
         "intent": "Book a table for 2 on Friday",
         "site": "Osteria Nove",
@@ -793,6 +807,20 @@
         "v3": "+21 days",
         "confirm": "Renew 3 items until 26 Oct?",
         "done": "Renewed. No fees."
+      },
+      "f4": {
+        "intent": "Like Mika's launch post for me",
+        "url": "murmur.app",
+        "q": "mika launch",
+        "pick": "Mika K. · Shipped my first side project…",
+        "l1": "Post",
+        "v1": "Mika's launch",
+        "l2": "Action",
+        "v2": "♥ Like",
+        "l3": "As",
+        "v3": "You, via agent",
+        "confirm": "Like this post as you?",
+        "done": "Liked. Mika sees your name, not the agent's."
       }
     },
     "views": {
@@ -882,6 +910,21 @@
       "decline": "Decline",
       "approved": "Approved. Your human will now pretend they found this themselves.",
       "declined": "Declined. Both agents are disappointed, for about 4 ms."
+    },
+    "swing": {
+      "bar": "where_the_work_happens",
+      "aria": "A pendulum between server and browser. In 1990, the work happens on the server."
+    },
+    "optim": {
+      "bar": "murmur · like button",
+      "span": "optimistic UI",
+      "like": "Like",
+      "screen": "Screen",
+      "server": "Server",
+      "hint": "Tap the heart.",
+      "instant": "updated · 0 ms",
+      "waiting": "waiting…",
+      "confirmed": "confirmed ✓ · {ms} ms"
     }
   },
   "dio": {

@@ -984,6 +984,12 @@
     "def": "在浏览器运行服务器渲染页面的 JavaScript，挂上事件处理器，让页面可以交互。",
     "kind": "term"
   },
+  "optimistic": {
+    "term": "乐观 UI",
+    "year": "",
+    "def": "先显示结果，不等服务器确认；万一请求失败，再悄悄改回来。",
+    "kind": "term"
+  },
   "bundle": {
     "term": "Bundle（打包文件）",
     "year": "",

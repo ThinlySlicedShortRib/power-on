@@ -1,9 +1,6 @@
 {
   "intro": {
-    "place": "CERN · Ginebra",
-    "date": "Marzo de 1989",
-    "headline": "Cada sitio web que publicas empezó en <i>una</i> computadora.",
-    "lede": "Una historia para recorrer desplazándote: cómo la web pasó de un cubo sobre un escritorio a código que corre en cientos de ciudades. Activa el sonido.",
+    "line": "Marzo de 1989. Una computadora, sobre un escritorio del <em>CERN</em>.",
     "replay": "↺ Ver intro otra vez"
   },
   "eras": {
@@ -45,16 +42,17 @@
     }
   },
   "lines": {
-    "e1l01": "Marzo de 1989. Un laboratorio de física bajo la frontera franco-suiza.",
-    "e1l02": "Miles de científicos. Sus documentos viven en máquinas que no se hablan.",
+    "e1l02": "Un laboratorio de física. Miles de científicos, y documentos en máquinas que no se hablan.",
     "e1l03": "<em><g_pTBL>Tim Berners-Lee</g_pTBL></em> escribe un memo: “Gestión de la información: una propuesta”.",
     "e1l04": "Su jefe, <g_pSendall>Mike Sendall</g_pSendall>, anota encima: <em>“Vago, pero emocionante…”</em>",
     "e1l05": "Navidad de 1990. Ya funcionan un <g_server>servidor</g_server> y un <g_browser>navegador</g_browser> llamado <g_wwwapp>WorldWideWeb</g_wwwapp>.",
+    "e1swing": "Recuerda a esos dos. El trabajo oscilará entre ellos, como un péndulo.",
     "e1l06": "Tres ideas: <em><g_html>HTML</g_html></em> para escribir páginas, <em><g_http>HTTP</g_http></em> para traerlas, <em><g_url>URL</g_url></em> para encontrarlas.",
     "e1l07": "Toda la web vive en un solo <g_nextcube>NeXTcube</g_nextcube>, en el escritorio de Tim.",
     "e1l08": "Pegada al frente, una advertencia. Vamos, despégala.",
     "e1l09": "Pocos pueden usar ese <g_browser>navegador</g_browser>. <em><g_pPellow>Nicola Pellow</g_pPellow></em> escribe un <g_linemode>navegador en modo línea</g_linemode> para cualquier <g_terminal>terminal</g_terminal>.",
     "e1l10": "Pruébalo. Escribe un número. Presiona Enter.",
+    "e1like": "Aún no existe el me gusta. ¿Te gustó una página? La enlazabas.",
     "e1l11": "6 de agosto de 1991. Tim lo publica en el <g_newsgroup>grupo de noticias</g_newsgroup> alt.hypertext. Cualquiera puede sumarse.",
     "e1l12": "Cambridge, 1991. La cafetera de la <g_trojan>Trojan Room</g_trojan> queda lejos. Así que le apuntan con una cámara.",
     "e1l13": "No es video. Una foto gris diminuta, unas tres veces por minuto. ¿Vacía? Ni te muevas.",
@@ -71,14 +69,14 @@
     "e2l09": "<g_netscape>Netscape</g_netscape> contra <g_ie>Internet Explorer</g_ie>. Empieza la <g_browserwars>guerra de los navegadores</g_browserwars>. Cada uno inventa sus propias etiquetas.",
     "e2l10": "1996. Llega el <g_css>CSS</g_css> de <em><g_pLie>Håkon Wium Lie</g_pLie></em>. Seguimos usando '<'table> y '<'font>.",
     "e2l11": "¿Dónde vive un sitio? En una torre beige, en el armario de la oficina.",
-    "e2l12": "Una página en <g_geocities>GeoCities</g_geocities>, un <g_webring>webring</g_webring>, un <g_hitcounter>contador de visitas</g_hitcounter>. Firma el <g_guestbook>libro de visitas</g_guestbook>.",
+    "e2l12": "Una página en <g_geocities>GeoCities</g_geocities>. ¿Te gusta? Firma el <g_guestbook>libro de visitas</g_guestbook>, sube el <g_hitcounter>contador</g_hitcounter>.",
     "e2l13": "El <g_y2k>Y2K</g_y2k> pasa sin drama. Luego estalla la <g_dotcom>burbuja puntocom</g_dotcom>. Muchas empresas no sobreviven.",
     "e3l01": "1 de abril de 2004. <g_gmail>Gmail</g_gmail> llega con <em>1 GB</em> gratis. La competencia da unos pocos MB. ¿Es broma?",
     "e3l02": "El correo se abre sin recargar, gracias a <em><g_xhr>XMLHttpRequest</g_xhr></em>. Microsoft lo añadió en 1999.",
     "e3l03": "2005. <em><g_pGarrett>Jesse James Garrett</g_pGarrett></em> bautiza el truco como <g_ajax>Ajax</g_ajax>. Es el motor de la <g_web20>Web 2.0</g_web20>.",
     "e3l04": "<g_gmaps>Google Maps</g_gmaps> te deja arrastrar el planeta. Vamos, agárralo.",
     "e3l05": "Los <g_browser>navegadores</g_browser> no se ponen de acuerdo en nada. 2006: <g_jquery>jQuery</g_jquery>, de <em><g_pResig>John Resig</g_pResig></em>, esconde el desorden.",
-    "e3l06": "Todo el mundo tiene un <g_blog>blog</g_blog>. Vota una noticia: se reordena, sin recargar.",
+    "e3l06": "Todo el mundo tiene un <g_blog>blog</g_blog>. Un me gusta ahora es un voto: se reordena, sin recargar.",
     "e3l07": "<em><g_rails>Ruby on Rails</g_rails></em> y <g_django>Django</g_django> convierten un sitio con base de datos en un proyecto de fin de semana.",
     "e3l08": "Los sitios viven en racks alquilados: un <g_lb>balanceador de carga</g_lb>, varios <g_server>servidores</g_server>, un <g_mysql>MySQL</g_mysql> enorme.",
     "e3l09": "2006. <g_aws>AWS</g_aws> alquila <g_server>servidores</g_server> por hora. <em>Deja de comprar hardware.</em>",
@@ -92,16 +90,17 @@
     "e4l07": "2014. <em><g_pYou>Evan You</g_pYou></em> lanza <g_vue>Vue</g_vue>, una versión más ligera de la idea.",
     "e4l08": "El código vive en un <g_cdn>CDN</g_cdn>. La <g_api>API</g_api>, en <g_heroku>Heroku</g_heroku>. Despliegas con <em><g_git>git push</g_git></em>.",
     "e4l09": "El diseño se vuelve <g_flat>plano</g_flat> y <g_responsive>responsivo</g_responsive>. Un solo diseño, del teléfono a la computadora.",
-    "e4l10": "Todo es un feed, y <g_infinite>el feed nunca termina</g_infinite>. Pruébalo.",
+    "e4l10": "Todo es un feed, y <g_infinite>el feed nunca termina</g_infinite>. Baja dando me gusta.",
     "e4l11": "2013: <g_docker>Docker</g_docker> vuelve desechables los <g_server>servidores</g_server>. 2014: <g_serverless>Lambda</g_serverless> los vuelve <em>invisibles</em>.",
     "e5l01": "2016. El equipo de <em><g_pRauch>Guillermo Rauch</g_pRauch></em> lanza <g_nextjs>Next.js</g_nextjs>. <g_react>React</g_react> vuelve a renderizar en el <g_server>servidor</g_server>.",
-    "e5l02": "El péndulo vuelve a oscilar entre <em><g_server>servidor</g_server></em> y <em><g_browser>navegador</g_browser></em>.",
+    "e5l02": "¿Recuerdas el péndulo? Acaba de volver al <em><g_server>servidor</g_server></em>.",
     "e5l03": "Vuelven también los sitios estáticos, <g_ssg>pregenerados</g_ssg> en un <g_cdn>CDN</g_cdn>. Lo llaman <g_jamstack>JAMstack</g_jamstack>.",
     "e5l04": "<em><g_pHarris>Rich Harris</g_pHarris></em> pregunta: ¿y si el framework desapareciera al compilar? <g_svelte>Svelte</g_svelte>.",
     "e5l05": "28 de febrero de 2017. Un ingeniero que depura <g_s3>S3</g_s3> en <g_useast>us-east-1</g_useast> escribe mal un comando.",
     "e5l06": "Cuatro horas de sitios caídos. Hasta la página de estado falla: sus íconos viven en <g_s3>S3</g_s3>.",
     "e5l07": "Ahora el <g_server>servidor</g_server> envía primero el esqueleto y <g_streaming>transmite</g_streaming> el resto <em>a medida que está listo</em>.",
     "e5l08": "Algunos componentes corren solo en el <g_server>servidor</g_server> y hablan directo con la base de datos.",
+    "e5like": "Toca me gusta. El número sube <em>antes</em> de que responda el servidor: <g_optimistic>UI optimista</g_optimistic>.",
     "e5l09": "¿Dónde vive? En todas partes. Las <g_edgefn>funciones edge</g_edgefn> corren a milisegundos de ti…",
     "e5l10": "…pero los datos siguen en un solo lugar. <g_latency>La luz tiene un límite de velocidad</g_latency>.",
     "e5l11": "El stack de hoy: <g_typescript>TypeScript</g_typescript>, <g_vite>Vite</g_vite> y, a menudo, un solo <g_monorepo>monorepo</g_monorepo> para todo.",
@@ -114,6 +113,7 @@
     "e6l06": "Lo siguiente: <g_webmcp>WebMCP</g_webmcp> da a los <g_agent>agentes</g_agent> herramientas reales, no botones para adivinar. Cambia de vista.",
     "e6l07": "Los <g_agent>agentes</g_agent> reciben credenciales y billeteras: <g_x402>x402</g_x402>, <g_ap2>AP2</g_ap2>, <g_acp>ACP</g_acp>. Ninguno ha ganado aún.",
     "e6l08": "De aquí en adelante, especulación. Cada sitio tendrá <em>dos públicos</em>: las personas y sus <g_agent>agentes</g_agent>.",
+    "e6like": "¿Y tu me gusta? Quizá tu <g_agent>agente</g_agent> lo toque por ti. ¿Cuenta?",
     "e6l09": "El péndulo gana un tercer polo. No importa dónde se renderiza, sino <em>quién lee</em>.",
     "e6l10": "Apuestas locas: <g_a2a>agentes regateando con agentes</g_a2a>, apps desechables, una guerra por <g_robots>robots.txt</g_robots>. Califícalas.",
     "e6l11": "Seis eras. Seis escritorios. Las mismas tres ideas de 1990. Los <g_agent>agentes</g_agent> también las hablan."
@@ -146,6 +146,19 @@
       "from": "2026",
       "to": "?",
       "cap": "El próximo lector quizá no sea humano"
+    }
+  },
+  "swing": {
+    "server": "servidor",
+    "browser": "navegador",
+    "reader": "¿quién lee?",
+    "where": {
+      "e1": "El trabajo ocurre en el servidor",
+      "e2": "Sigue en el servidor",
+      "e3": "Rumbo al navegador: Ajax",
+      "e4": "En el navegador",
+      "e5": "De vuelta al servidor, en el edge",
+      "e6": "Un tercer polo: quién lee"
     }
   },
   "conf": {
@@ -196,8 +209,9 @@
     }
   },
   "fin": {
-    "headline": "De un cubo en Ginebra a <i>todas partes</i>.",
-    "body": "La web sigue oscilando entre el servidor y el navegador. Hacia dónde irá depende de quienes la construyen, y eso ahora te incluye a ti.",
+    "headline": "Cada sitio web que publicas empezó en <i>una</i> computadora.",
+    "body": "Tu me gusta acaba de llegar, de vuelta al inicio. Hacia dónde oscila la web ahora depende de ti.",
+    "likeAria": "Tu me gusta llegó: {count} me gusta",
     "again": "⏻ Apagar y empezar de nuevo"
   },
   "fx": {
@@ -748,7 +762,7 @@
       "cancel": "Cancelar",
       "pause": "Los agentes se detienen antes de gastar dinero o hacer algo irreversible.",
       "cancelled": "Cancelado. No se envió nada.",
-      "auto": "Reproduciendo el primer encargo. Elige otro cuando quieras.",
+      "auto": "Reproduciendo un encargo. Elige otro cuando quieras.",
       "f1": {
         "intent": "Reserva una mesa para 2 el viernes",
         "site": "Osteria Nove",
@@ -793,6 +807,20 @@
         "v3": "+21 días",
         "confirm": "¿Renovar 3 libros hasta el 26 de oct.?",
         "done": "Renovados. Sin multas."
+      },
+      "f4": {
+        "intent": "Dale me gusta al lanzamiento de Mika",
+        "url": "murmur.app",
+        "q": "mika lanzamiento",
+        "pick": "Mika K. · Esta noche lancé mi primer proyecto…",
+        "l1": "Publicación",
+        "v1": "Lanzamiento de Mika",
+        "l2": "Acción",
+        "v2": "♥ Me gusta",
+        "l3": "Como",
+        "v3": "Tú, vía agente",
+        "confirm": "¿Dar me gusta a esta publicación como tú?",
+        "done": "Listo. Mika ve tu nombre, no el del agente."
       }
     },
     "views": {
@@ -882,6 +910,21 @@
       "decline": "Rechazar",
       "approved": "Aprobado. Ahora tu humano fingirá que lo encontró solo.",
       "declined": "Rechazado. Ambos agentes están decepcionados, durante unos 4 ms."
+    },
+    "swing": {
+      "bar": "where_the_work_happens",
+      "aria": "Un péndulo entre servidor y navegador. En 1990, el trabajo ocurre en el servidor."
+    },
+    "optim": {
+      "bar": "murmur · botón me gusta",
+      "span": "UI optimista",
+      "like": "Me gusta",
+      "screen": "Pantalla",
+      "server": "Servidor",
+      "hint": "Toca el corazón.",
+      "instant": "actualizada · 0 ms",
+      "waiting": "esperando…",
+      "confirmed": "confirmado ✓ · {ms} ms"
     }
   },
   "dio": {
