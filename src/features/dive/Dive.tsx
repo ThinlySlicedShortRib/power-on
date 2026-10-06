@@ -109,6 +109,17 @@ export function Dive({ onEnd, startAtEnd = false }: { onEnd: () => void; startAt
           </>
         )}
       </div>
+      {/* bottom row, same on every screen: the next action on the left, controls on the right */}
+      <div className="dock">
+        <button className="showme" type="button" onClick={() => engineRef.current?.showMe()}>
+          {t("title.showMe")}
+        </button>
+        {touch ? (
+          <span className="cue">{t("cue")}</span>
+        ) : (
+          <span className="kb">{t.rich("title.orPress", { kbd })}</span>
+        )}
+      </div>
       <div className="hud" role="group" aria-label={t("hud.label")}>
         <button type="button" aria-pressed={playing} onClick={() => engineRef.current?.toggleAutoplay()}>
           {playing ? t("hud.pause") : t("hud.play")}
@@ -127,16 +138,6 @@ export function Dive({ onEnd, startAtEnd = false }: { onEnd: () => void; startAt
             <header className="titlebar">
               <h1>{t.rich("title.headline", { i })}</h1>
               <p>{t("title.sub")}</p>
-              <div className="tgo">
-                <button className="showme" type="button" onClick={() => engineRef.current?.showMe()}>
-                  {t("title.showMe")}
-                </button>
-                {!touch && <span className="kb">{t.rich("title.orPress", { kbd })}</span>}
-              </div>
-              <div className="cue">
-                <span>{t("cue")}</span>
-                <span className="arr">↓</span>
-              </div>
             </header>
             <div className="browser">
               <Murmur ref={appRef} reduce={reduce} />

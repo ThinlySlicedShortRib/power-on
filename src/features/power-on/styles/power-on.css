@@ -171,7 +171,7 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
   font-family: var(--f-mono); font-size: .74rem; letter-spacing: .08em; color: var(--room-ink); background: var(--hud-bg);
   border: 1px solid var(--hud-line); border-radius: 999px; padding: 6px 12px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 
-.po-root .po-hudEra { left: 16px; opacity: 0; transition: opacity .6s; }
+.po-root .po-hudEra { left: 16px; opacity: 0; transition: opacity .6s; pointer-events: none; }
 
 .po-root .po-hudEra.po-on { opacity: 1; }
 
@@ -196,7 +196,7 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 
 /* ---------- intro ---------- */
 .po-root .po-introbox { position: fixed; inset: 0; z-index: 4; display: flex; align-items: center; pointer-events: none; transition: opacity .9s;
-  padding: clamp(20px, 5vh, 48px) clamp(16px, 5vw, 64px) calc(72px + env(safe-area-inset-bottom, 0px));
+  padding: clamp(20px, 5vh, 48px) clamp(16px, 4vw, 64px) calc(96px + env(safe-area-inset-bottom, 0px));
   background: linear-gradient(90deg, rgba(13,11,9,.9) 0%, rgba(13,11,9,.7) 30%, rgba(13,11,9,0) 50%); }
 
 .po-root .po-introbox.po-gone { opacity: 0; }
@@ -213,7 +213,9 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 
 .po-root .po-introbox p { margin: 0; max-width: 40ch; font-size: 1rem; line-height: 1.5; color: rgba(241,230,208,.75); }
 
-.po-root .po-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 6px; }
+.po-root .po-introdock { position: fixed; left: clamp(16px, 4vw, 64px); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+
+.po-root .po-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
 
 .po-root .po-ghost { pointer-events: auto; border: 0; background: none; padding: 10px 6px; color: rgba(241,230,208,.7); font-family: var(--f-mono); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; }
 
@@ -226,11 +228,18 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 
 /* portrait: the desk sits in the top half, the copy below it */
 @media (max-aspect-ratio: 9/10) {
-  .po-root .po-introbox { align-items: flex-end; background: linear-gradient(0deg, rgba(13,11,9,.94) 0%, rgba(13,11,9,.8) 42%, rgba(13,11,9,0) 62%); }
+  .po-root .po-introbox { align-items: flex-end; padding-bottom: calc(132px + env(safe-area-inset-bottom, 0px)); background: linear-gradient(0deg, rgba(13,11,9,.94) 0%, rgba(13,11,9,.8) 42%, rgba(13,11,9,0) 62%); }
   .po-root .po-introcopy { width: 100%; gap: 14px; }
   .po-root .po-introbox h1 { font-size: clamp(2.1rem, 9.5vw, 3.6rem); }
   .po-root .po-introbox p { font-size: .95rem; }
+  .po-root .po-introdock { right: 16px; bottom: calc(62px + env(safe-area-inset-bottom, 0px)); }
+  .po-root .po-ctas { flex-wrap: nowrap; gap: 8px; }
+  .po-root .po-power { padding: 12px 18px 12px 14px; letter-spacing: .14em; }
+  .po-root .po-ghost { font-size: .7rem; letter-spacing: .08em; white-space: nowrap; }
 }
+
+/* the keyboard hint only fits beside the buttons on wide screens */
+@media (max-width: 1360px) { .po-root .po-introkeys { display: none; } }
 
 .po-root .po-power { pointer-events: auto; display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px 14px 16px; border-radius: 999px; border: 1px solid rgba(255,200,116,.5);
   background: rgba(255,200,116,.08); color: var(--lamp); font-family: var(--f-mono); font-size: .9rem; letter-spacing: .18em; text-transform: uppercase; }

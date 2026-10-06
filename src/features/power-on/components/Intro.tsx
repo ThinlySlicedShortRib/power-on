@@ -1,7 +1,7 @@
 "use client";
 import { useStoryText } from "../i18n/rich";
 
-/** The desk: copy on the left, the 3D desk framed on the right (see Desk's intro view offset). */
+/** The desk: copy on the left, the 3D desk framed on the right (see Desk's intro view offset), actions in the bottom row. */
 export function Intro({ gone, hidden, onPower, onReplay }: { gone: boolean; hidden: boolean; onPower: () => void; onReplay?: () => void }) {
   const { t, rich } = useStoryText();
   return (
@@ -10,6 +10,9 @@ export function Intro({ gone, hidden, onPower, onReplay }: { gone: boolean; hidd
         <div className="po-top"><span>{t("intro.place")}</span><span>{t("intro.date")}</span></div>
         <h1>{rich("intro.headline")}</h1>
         <p>{t("intro.lede")}</p>
+      </div>
+      {/* bottom row, same as the landing: the action on the left, the HUD controls on the right */}
+      <div className="po-introdock">
         <div className="po-ctas">
           <button className={"po-power" + (gone ? "" : " po-pulse")} type="button" aria-label={t("intro.powerAria")} onClick={onPower}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M12 3v8" /><path d="M6.3 6.6a8 8 0 1 0 11.4 0" /></svg>
