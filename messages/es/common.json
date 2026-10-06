@@ -22,5 +22,12 @@
     "musicOff": "Sin música",
     "musicAria": "Música",
     "volume": "Volumen de la música"
+  },
+  "advance": {
+    "start": "Muéstrame",
+    "next": "Siguiente",
+    "power": "Enciende",
+    "space": "Espacio",
+    "enter": "Enter"
   }
 }

@@ -31,7 +31,6 @@ export const KEYS = {
   sound: "poweron.sound",
   music: "poweron.music",
   mvol: "poweron.mvol",
-  adv: "poweron.adv",
   visits: "poweron.visits",
   guestbook: "poweron.guestbook",
   predict: "poweron.predict",

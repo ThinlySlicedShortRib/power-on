@@ -4,10 +4,6 @@
     "date": "1989 年 3 月",
     "headline": "你上线的每个网站，都从<i>一台</i>电脑开始。",
     "lede": "一个往下滚动的故事：网络如何从桌上的一个立方体，变成在数百座城市运行的代码。记得打开声音。",
-    "power": "按下电源",
-    "powerAria": "按下电源，开始故事",
-    "keysKb": "按 <kbd>⏎ Enter</kbd> 开机，或点击",
-    "keysTouch": "点按电源按钮开始",
     "replay": "↺ 重播开场"
   },
   "eras": {
@@ -158,13 +154,6 @@
     "plausible": "有可能",
     "wild": "大胆猜想",
     "aria": "可信度：{level}"
-  },
-  "adv": {
-    "kb1": "<k_next>'<'SPACE></k_next> <k_right>'<'→></k_right> 下一句 · <k_back>'<'←></k_back> 上一句",
-    "kb": "<k_next>空格键</k_next> <k_right>→</k_right> 下一句 · <k_back>←</k_back> 上一句 · <k_help>?</k_help> 快捷键",
-    "touch1": "点按继续 · 滑动前进",
-    "touch2": ">> 点这里！ '<<'",
-    "touch": "点按继续 · 滑动前进"
   },
   "hud": {
     "keysAria": "键盘快捷键",

@@ -2,8 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import type { Autoplay } from "@/features/controls/autoplay";
+import { Advance } from "@/features/controls/Advance";
 import { Controls } from "@/features/controls/Controls";
-import { AdvanceHint, flashKey } from "./components/AdvanceHint";
 import { PowerOnContext, type PowerOnCtx } from "./components/context";
 import { EraFx } from "./components/EraFx";
 import { Hud } from "./components/Hud";
@@ -20,14 +20,13 @@ import { loadCanvasFonts, resolveFonts } from "./engine/fonts";
 import { Music } from "./engine/music";
 import { ScrollTrack } from "./engine/scroll";
 import { AudioEngine } from "./engine/sfx";
-import { consumeResume, KEYS, load, save, saveResume } from "./engine/storage";
+import { consumeResume, saveResume } from "./engine/storage";
 import { useStoryText } from "./i18n/rich";
 import "./styles/power-on.css";
 import "./styles/power-on-extra.css";
 
 type Mode = "intro" | "booting" | "story";
 
-const KEYMAP: Record<string, string> = { " ": "next", Spacebar: "next", ArrowRight: "right", ArrowDown: "next", PageDown: "next", Enter: "next", ArrowLeft: "back", ArrowUp: "back", PageUp: "back", "?": "help" };
 const FWD = new Set([" ", "ArrowRight", "ArrowDown", "Enter", "PageDown"]);
 const BACK = new Set(["ArrowLeft", "ArrowUp", "PageUp"]);
 
@@ -69,7 +68,6 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   const screenRef = useRef<HTMLDivElement>(null);
   const transRef = useRef<HTMLDivElement>(null);
   const finRef = useRef<HTMLDivElement>(null);
-  const hintRef = useRef<HTMLDivElement>(null);
   const posRef = useRef(pos);
   const keysOpenRef = useRef(false);
   const onBackRef = useRef(onBack);
@@ -108,8 +106,6 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     let lastW = innerWidth;
     const timers = new Set<number>();
     const later = (fn: () => void, ms: number) => { const id = window.setTimeout(() => { timers.delete(id); if (alive) fn(); }, ms); timers.add(id); };
-    const flashTimer = { id: 0 };
-    let advUsed = load(KEYS.adv) === "1";
 
     // --- desk (WebGL) with CSS fallback
     let desk: Desk | null = null;
@@ -140,7 +136,6 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       if (modeNow !== "story") return;
       const { seg, p } = scroll.at(window.scrollY);
       let transO = 0, finO = 0;
-      hintRef.current?.classList.toggle("po-on", seg.k === "beat" && seg.b < 2);
       if (seg.k === "beat") {
         if (desk) { desk.rigA = seg.e; desk.rigB = -1; desk.swapQ = 0; desk.pose = desk.rigPoses(seg.e).inPose; }
         setBeat(seg.e, seg.b, seg.o); setScreen(1);
@@ -202,7 +197,6 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       setScreen(0);
       if (desk) desk.glNeeded = true;
       fin.style.opacity = "0"; fin.classList.remove("po-on"); trans.style.opacity = "0";
-      hintRef.current?.classList.remove("po-on");
       scroll.cancel();
       track.style.height = "0px";
       posKey = ""; lastOrder = -1;
@@ -214,7 +208,6 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     const advance = (dir: 1 | -1) => {
       if (modeNow !== "story") return false;
       const moved = scroll.advance(dir, reduce);
-      if (!advUsed) { advUsed = true; save(KEYS.adv, "1"); hintRef.current?.classList.remove("po-on"); }
       return moved;
     };
     // the reader taking over (scroll, swipe, keys, clicks) pauses autoplay
@@ -277,7 +270,6 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       if (modeNow !== "story") return;
       const activation = (e.key === " " || e.key === "Enter") && (tag === "button" || tag === "a" || tag === "summary" || tgt.classList?.contains("po-gl-term"));
       if (activation) return;
-      if (KEYMAP[e.key]) flashKey(hintRef.current, KEYMAP[e.key], flashTimer);
       if (FWD.has(e.key)) { e.preventDefault(); takeOver(); advance(1); }
       else if (BACK.has(e.key)) { e.preventDefault(); takeOver(); advance(-1); }
     };
@@ -329,7 +321,6 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       alive = false;
       cancelAnimationFrame(boot);
       timers.forEach((id) => clearTimeout(id));
-      clearTimeout(flashTimer.id);
       scroll.cancel();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("wheel", onCancel);
@@ -403,15 +394,14 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
         <div ref={noglRef} className="po-nogl" aria-hidden="true"><div className="po-crt"><div /></div></div>
         <div ref={trackRef} className="po-track" aria-hidden="true" />
 
-        <Intro gone={introGone} hidden={mode === "story"} onPower={() => ctl.current?.startPower()} onReplay={onReplayIntro} />
+        <Intro gone={introGone} hidden={mode === "story"} touch={touch} onPower={() => ctl.current?.startPower()} onReplay={onReplayIntro} />
 
         <div ref={screenRef} className="po-screen" data-era={era.n} aria-live="off" onClick={onScreenClick}>
           <EraFx n={era.n} reduce={reduce} />
           <div className="po-frame">
-            <Narration pos={pos} reduce={reduce} />
+            <Narration pos={pos} reduce={reduce} advance={mode === "story" ? <Advance era={era.n} kind="next" touch={touch} onClick={() => { setPlaying(false); ctl.current?.advance(1); }} /> : null} />
             <Stage active={mode === "story" ? (line?.prop ?? null) : null} />
           </div>
-          <AdvanceHint n={era.n} touch={touch} hintRef={hintRef} />
           <TooltipLayer />
         </div>
 

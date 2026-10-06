@@ -6,3 +6,6 @@
 .po-root .po-prop[hidden] { display: none !important; }
 .po-root .po-tip:not(.po-on) { visibility: hidden; }
 .po-root .po-keys .po-kbody dl > div { display: contents; }
+
+/* phones: the control bar takes the bottom row, so the era badge moves to the top */
+@media (max-width: 760px) { .po-root .po-hudEra { top: calc(14px + env(safe-area-inset-top, 0px)); bottom: auto; } }

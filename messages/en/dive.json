@@ -2,16 +2,7 @@
   "title": {
     "headline": "Do you know how this website is <i>built</i>?",
     "sub": "Play with it. Then look inside.",
-    "orPress": "or press <kbd>Space</kbd>",
-    "showMe": "Show me ↓",
     "sceneLabel": "murmur, a modern social app you can play with"
-  },
-  "cue": "Scroll to look inside",
-  "hint": {
-    "scroll": "Scroll to move ·",
-    "space": "Space",
-    "next": "next beat",
-    "touch": "Swipe outside the app to move"
   },
   "captions": {
     "hook1": "This app? <i>React</i>, JavaScript, HTML, CSS.",

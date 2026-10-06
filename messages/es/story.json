@@ -4,10 +4,6 @@
     "date": "Marzo de 1989",
     "headline": "Cada sitio web que publicas empezó en <i>una</i> computadora.",
     "lede": "Una historia para recorrer desplazándote: cómo la web pasó de un cubo sobre un escritorio a código que corre en cientos de ciudades. Activa el sonido.",
-    "power": "Enciende",
-    "powerAria": "Presiona el botón de encendido para empezar la historia",
-    "keysKb": "Presiona <kbd>⏎ Enter</kbd> para encender, o haz clic",
-    "keysTouch": "Toca el botón de encendido para empezar",
     "replay": "↺ Ver intro otra vez"
   },
   "eras": {
@@ -158,13 +154,6 @@
     "plausible": "Plausible",
     "wild": "Apuesta loca",
     "aria": "Confianza: {level}"
-  },
-  "adv": {
-    "kb1": "<k_next>'<'SPACE></k_next> <k_right>'<'→></k_right> SIGUIENTE · <k_back>'<'←></k_back> ATRÁS",
-    "kb": "<k_next>Espacio</k_next> <k_right>→</k_right> siguiente · <k_back>←</k_back> atrás · <k_help>?</k_help> teclas",
-    "touch1": "TOCA PARA SEGUIR · DESPLÁZATE PARA AVANZAR",
-    "touch2": ">> ¡Toca aquí! '<<'",
-    "touch": "Toca para seguir · desplázate para avanzar"
   },
   "hud": {
     "keysAria": "Atajos de teclado",

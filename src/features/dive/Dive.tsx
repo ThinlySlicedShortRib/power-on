@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { Autoplay } from "@/features/controls/autoplay";
+import { Advance } from "@/features/controls/Advance";
 import { Controls } from "@/features/controls/Controls";
 import { Music } from "@/features/power-on/engine/music";
 import { AudioEngine } from "@/features/power-on/engine/sfx";
@@ -16,7 +17,6 @@ import { Tunnel } from "./scenes/Tunnel";
 import "./dive.css";
 
 const i = (c: ReactNode) => <i>{c}</i>;
-const kbd = (c: ReactNode) => <kbd>{c}</kbd>;
 /** the landing is "today": it plays era 5's music */
 const LANDING_ERA_MUSIC = 5;
 
@@ -118,17 +118,6 @@ export function Dive({ onEnd, startAtEnd = false, autoplay }: { onEnd: () => voi
           <i key={h} className="tk" style={{ left: `${(h / TOTAL) * 100}%` }} />
         ))}
       </div>
-      <div className="hint">
-        {touch ? (
-          <span>{t("hint.touch")}</span>
-        ) : (
-          <>
-            <span className="long">{t("hint.scroll")}</span>
-            <kbd>{t("hint.space")}</kbd>
-            <span>{t("hint.next")}</span>
-          </>
-        )}
-      </div>
       <Controls era={0} playing={playing} onPlay={() => setPlaying(!playing)} speed={speed} onSpeed={cycleSpeed}
         soundOn={soundOn} onSound={toggleSound} musicOn={musicOn} onMusic={toggleMusic} vol={vol}
         onVol={(v) => { music.setVolume(v); setVol(music.vol); }} />
@@ -140,16 +129,7 @@ export function Dive({ onEnd, startAtEnd = false, autoplay }: { onEnd: () => voi
             <header className="titlebar">
               <h1>{t.rich("title.headline", { i })}</h1>
               <p>{t("title.sub")}</p>
-              <div className="tgo">
-                <button className="showme" type="button" onClick={() => engineRef.current?.showMe()}>
-                  {t("title.showMe")}
-                </button>
-                {!touch && <span className="kb">{t.rich("title.orPress", { kbd })}</span>}
-              </div>
-              <div className="cue">
-                <span>{t("cue")}</span>
-                <span className="arr">↓</span>
-              </div>
+              <Advance era={0} kind="start" touch={touch} onClick={() => engineRef.current?.showMe()} />
             </header>
             <div className="browser">
               <Murmur ref={appRef} reduce={reduce} />
@@ -161,7 +141,9 @@ export function Dive({ onEnd, startAtEnd = false, autoplay }: { onEnd: () => voi
           <div className="year">2026</div>
         </div>
       </div>
-      <Caption value={caption} reduce={reduce} />
+      <Caption value={caption} reduce={reduce}>
+        <Advance era={0} kind="next" touch={touch} onClick={() => { setPlaying(false); engineRef.current?.next(); }} />
+      </Caption>
     </div>
   );
 }

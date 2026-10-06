@@ -4,10 +4,6 @@
     "date": "1989 年 3 月",
     "headline": "你做的每個網站，都從<i>一台</i>電腦開始。",
     "lede": "一路往下捲，看網路怎麼從桌上的一顆方塊，變成在上百座城市執行的程式碼。記得開聲音。",
-    "power": "按下電源",
-    "powerAria": "按下電源，開始故事",
-    "keysKb": "按 <kbd>⏎ Enter</kbd> 開機，或直接點",
-    "keysTouch": "點電源鍵開始",
     "replay": "↺ 重播開場"
   },
   "eras": {
@@ -158,13 +154,6 @@
     "plausible": "有可能",
     "wild": "大膽亂猜",
     "aria": "可信度：{level}"
-  },
-  "adv": {
-    "kb1": "<k_next>'<'SPACE></k_next> <k_right>'<'→></k_right> 下一步 · <k_back>'<'←></k_back> 上一步",
-    "kb": "<k_next>空白鍵</k_next> <k_right>→</k_right> 下一步 · <k_back>←</k_back> 上一步 · <k_help>?</k_help> 快捷鍵",
-    "touch1": "點一下繼續 · 捲動前進",
-    "touch2": ">> 點這裡！'<<'",
-    "touch": "點一下繼續 · 捲動前進"
   },
   "hud": {
     "keysAria": "鍵盤快捷鍵",

@@ -22,5 +22,12 @@
     "musicOff": "音乐关",
     "musicAria": "音乐",
     "volume": "音乐音量"
+  },
+  "advance": {
+    "start": "带我看看",
+    "next": "下一句",
+    "power": "按下电源",
+    "space": "空格键",
+    "enter": "Enter"
   }
 }

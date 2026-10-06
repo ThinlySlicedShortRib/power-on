@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { CONF_KEYS, ERAS, type EraDef } from "../content/eras";
 import { useStoryText, type StoryText } from "../i18n/rich";
 
@@ -12,8 +12,8 @@ export interface StoryPos {
   typed: boolean;
 }
 
-/** Narration: era title, the current line typed in (streamed word by word in the future era), two fading older lines. */
-export function Narration({ pos, reduce }: { pos: StoryPos; reduce: boolean }) {
+/** Narration: era title, the current line typed in (streamed word by word in the future era), two fading older lines, then the Advance button. */
+export function Narration({ pos, reduce, advance }: { pos: StoryPos; reduce: boolean; advance?: ReactNode }) {
   const text = useStoryText();
   const era = ERAS[pos.era];
   const b = pos.beat;
@@ -45,6 +45,7 @@ export function Narration({ pos, reduce }: { pos: StoryPos; reduce: boolean }) {
           />
         ))}
       </div>
+      {advance}
       <p className="po-sr" aria-live="polite">{sr}</p>
     </div>
   );

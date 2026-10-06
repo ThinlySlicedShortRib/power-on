@@ -6,8 +6,8 @@ import type { CaptionKey } from "../engine/timeline";
 
 const i = (c: ReactNode) => <i>{c}</i>;
 
-/** The big caption at the bottom. Fades out, swaps text, fades back in. */
-export function Caption({ value, reduce }: { value: CaptionKey | null; reduce: boolean }) {
+/** The dive's narration line (in the copy column), with the Advance button under it. Fades out, swaps text, fades back in. */
+export function Caption({ value, reduce, children }: { value: CaptionKey | null; reduce: boolean; children?: ReactNode }) {
   const t = useTranslations("dive.captions");
   const [shown, setShown] = useState<CaptionKey | null>(null);
   const out = shown !== value || !shown;
@@ -18,6 +18,7 @@ export function Caption({ value, reduce }: { value: CaptionKey | null; reduce: b
   return (
     <div className="cap" aria-live="polite">
       <p className={out ? "out" : undefined}>{shown ? t.rich(shown, { i }) : null}</p>
+      {children}
     </div>
   );
 }

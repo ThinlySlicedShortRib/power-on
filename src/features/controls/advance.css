@@ -1,0 +1,49 @@
+/*
+ * The Advance button (Advance.tsx): same button, same place under the copy, on every screen. Only the costume
+ * changes with the era (data-era: 0 = the landing and the 1989 desk, 1–6 = the story's eras).
+ * Global stylesheet, so every rule is scoped under .adv; the base rule uses [data-era] to outrank the story's `.po-root button`.
+ */
+@keyframes adv-glow { 50% { box-shadow: 0 0 0 4px rgba(255,200,116,.12), 0 0 26px rgba(255,200,116,.25); } }
+@keyframes adv-bob { 50% { transform: translateY(3px); } }
+@keyframes adv-blink { 50% { opacity: 0; } }
+
+.adv[data-era] { pointer-events: auto; justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; cursor: pointer;
+  font: .84rem/1 var(--f-mono); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap;
+  color: #ffc874; background: rgba(255,200,116,.08); border: 1px solid rgba(255,200,116,.55); border-radius: 999px; animation: adv-glow 2.4s ease-in-out infinite; }
+.adv[data-era]:hover { background: rgba(255,200,116,.18); }
+.adv:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.adv svg { width: 22px; height: 22px; }
+.adv .adv-arr { display: inline-block; animation: adv-bob 1.6s ease-in-out infinite; }
+.adv .adv-key { font: inherit; font-size: .78em; letter-spacing: .04em; text-transform: none; padding: 2px 6px; border: 1px solid currentColor; border-bottom-width: 2px; border-radius: 5px; opacity: .7; }
+
+/* 1 · green phosphor: <NEXT ↓> <SPACE> */
+.adv[data-era="1"] { font: 1.3rem/1 var(--f-term); letter-spacing: .06em; color: #3dff72; background: transparent; border: 1px solid #3dff72; border-radius: 0; padding: 6px 12px;
+  text-shadow: 0 0 8px rgba(61,255,114,.6); animation: none; }
+.adv[data-era="1"]:hover { background: rgba(61,255,114,.12); }
+.adv[data-era="1"] .adv-key { border: 0; padding: 0; opacity: .8; }
+.adv[data-era="1"] .adv-key::before { content: "<"; } .adv[data-era="1"] .adv-key::after { content: ">"; }
+.adv[data-era="1"] .adv-arr { animation: adv-blink 1s steps(1) infinite; }
+/* 2 · 1995: a grey Windows button */
+.adv[data-era="2"] { font: 700 1rem/1 var(--f-90s); letter-spacing: 0; text-transform: none; color: #000; background: #c0c0c0; border: 3px outset #eee; border-radius: 0; padding: 6px 14px; animation: none; }
+.adv[data-era="2"]:hover { background: #d0d0d0; } .adv[data-era="2"]:active { border-style: inset; }
+.adv[data-era="2"] .adv-key { font-family: "Courier New", monospace; border-radius: 0; background: #fff; border: 2px inset #ddd; opacity: 1; }
+/* 3 · 2004: glossy orange pill */
+.adv[data-era="3"] { font: 700 .95rem/1 var(--f-aqua); letter-spacing: 0; text-transform: none; color: #fff; border: 1px solid #c75200; animation: none;
+  background: linear-gradient(#ffb15c, #ff7a00 50%, #f06400 51%, #ff9a2e); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 3px 8px rgba(0,0,0,.2); text-shadow: 0 -1px 0 rgba(0,0,0,.25); }
+.adv[data-era="3"]:hover { filter: brightness(1.06); }
+.adv[data-era="3"] .adv-key { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.6); border-radius: 8px; opacity: 1; }
+/* 4 · 2010: flat outline */
+.adv[data-era="4"] { font: 600 .8rem/1 var(--f-flat); letter-spacing: .14em; color: #1abc9c; background: transparent; border: 2px solid #1abc9c; border-radius: 2px; animation: none; }
+.adv[data-era="4"]:hover { background: #1abc9c; color: #fff; }
+.adv[data-era="4"] .adv-key { border-radius: 2px; border-bottom-width: 1px; }
+/* 5 · today: quiet dark glass */
+.adv[data-era="5"] { font: 500 .85rem/1 var(--f-now); letter-spacing: 0; text-transform: none; color: #ededed; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); border-radius: 10px; animation: none; }
+.adv[data-era="5"]:hover { background: rgba(255,255,255,.12); }
+.adv[data-era="5"] .adv-key { font-family: var(--f-mono); border-radius: 6px; border-bottom-width: 1px; }
+/* 6 · future: soft teal glow */
+.adv[data-era="6"] { font: 500 .85rem/1 var(--f-now); letter-spacing: 0; text-transform: none; color: #0b6f6f; background: #fff; border: 1px solid #bfe5e1; border-radius: 14px; animation: none;
+  box-shadow: 0 0 0 3px rgba(15,163,163,.10), 0 0 14px rgba(15,163,163,.25); }
+.adv[data-era="6"]:hover { box-shadow: 0 0 0 4px rgba(15,163,163,.16), 0 0 18px rgba(15,163,163,.35); }
+.adv[data-era="6"] .adv-key { border-radius: 8px; border-bottom-width: 1px; }
+
+@media (prefers-reduced-motion: reduce) { .adv, .adv * { animation: none !important; } }

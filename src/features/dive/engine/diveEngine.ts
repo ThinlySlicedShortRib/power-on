@@ -34,7 +34,6 @@ export interface DiveDom {
   year: HTMLElement;
   progFill: HTMLElement;
   ticks: HTMLElement[];
-  hint: HTMLElement;
 }
 
 /** Finds the engine's DOM nodes by class inside the dive root (the scenes render no refs). */
@@ -63,7 +62,6 @@ export function collectDom(root: HTMLElement): DiveDom {
     year: one(".year"),
     progFill: one(".prog .fill"),
     ticks: all(".prog .tk"),
-    hint: one(".hint"),
   };
 }
 
@@ -82,6 +80,8 @@ export interface DiveEngineOptions {
 
 export interface DiveEngine {
   showMe(): void;
+  /** the Advance button: glide to the next beat */
+  next(): void;
   replay(): void;
   /** hands-free glide (idempotent); the engine reports its own stops through onAutoplay(false) */
   setPlaying(on: boolean): void;
@@ -284,7 +284,6 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
     } else if (p < T.end) ended = false;
     setStyle(dom.progFill, "width", `${s * 100}%`);
     dom.ticks.forEach((t, i) => t.classList.toggle("done", sc >= HOLD_AT[i] - 0.05));
-    setStyle(dom.hint, "opacity", sc > 0.004 && sc < 1.2 ? "1" : "0");
   }
 
   let raf = 0;
@@ -394,6 +393,10 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
     showMe() {
       audio.ensure();
       scrollToScreens(HOLD_AT[0], true);
+    },
+    next() {
+      stop();
+      stepBeat(1);
     },
     replay() {
       stop();

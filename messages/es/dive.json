@@ -2,16 +2,7 @@
   "title": {
     "headline": "¿Sabes cómo está <i>hecho</i> este sitio web?",
     "sub": "Juega un rato. Luego mira por dentro.",
-    "orPress": "o presiona <kbd>Espacio</kbd>",
-    "showMe": "Muéstrame ↓",
     "sceneLabel": "murmur, una red social moderna con la que puedes jugar"
-  },
-  "cue": "Desplázate y mira dentro",
-  "hint": {
-    "scroll": "Desplázate para avanzar ·",
-    "space": "Espacio",
-    "next": "siguiente paso",
-    "touch": "Desliza fuera de la app para avanzar"
   },
   "captions": {
     "hook1": "¿Esta app? <i>React</i>, JavaScript, HTML, CSS.",

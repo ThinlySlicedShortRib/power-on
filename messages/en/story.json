@@ -4,10 +4,6 @@
     "date": "March 1989",
     "headline": "Every website you ship started on <i>one</i> computer.",
     "lede": "A scroll-through story of how the web got from a cube on a desk to code running in hundreds of cities. Turn your sound on.",
-    "power": "Press power",
-    "powerAria": "Press power to start the story",
-    "keysKb": "Press <kbd>⏎ Enter</kbd> to power on, or click",
-    "keysTouch": "Tap the power button to start",
     "replay": "↺ Replay intro"
   },
   "eras": {
@@ -158,13 +154,6 @@
     "plausible": "Plausible",
     "wild": "Wild guess",
     "aria": "Confidence: {level}"
-  },
-  "adv": {
-    "kb1": "<k_next>'<'SPACE></k_next> <k_right>'<'→></k_right> NEXT · <k_back>'<'←></k_back> BACK",
-    "kb": "<k_next>Space</k_next> <k_right>→</k_right> next · <k_back>←</k_back> back · <k_help>?</k_help> keys",
-    "touch1": "TAP TO CONTINUE · SCROLL TO MOVE",
-    "touch2": ">> Tap here! '<<'",
-    "touch": "Tap to continue · scroll to move"
   },
   "hud": {
     "keysAria": "Keyboard shortcuts",
