@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import type { Autoplay } from "@/features/controls/autoplay";
 import { Advance } from "@/features/controls/Advance";
 import { Controls } from "@/features/controls/Controls";
@@ -21,7 +21,7 @@ import { loadCanvasFonts, resolveFonts } from "./engine/fonts";
 import { Music } from "./engine/music";
 import { ScrollTrack } from "./engine/scroll";
 import { AudioEngine } from "./engine/sfx";
-import { consumeResume, saveResume } from "./engine/storage";
+import { consumeResume, peekResume, saveResume } from "./engine/storage";
 import { useStoryText } from "./i18n/rich";
 import "./styles/power-on.css";
 import "./styles/power-on-extra.css";
@@ -55,6 +55,11 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   const [music] = useState(() => new Music(audio));
   const [mode, setMode] = useState<Mode>("intro");
   const [introGone, setIntroGone] = useState(false);
+  // the opening shot's caption beat (0–2), or -1 once the desk is shown; a locale switch on the desk skips it
+  const [opening, setOpening] = useState(() => (peekResume() ? -1 : 0));
+  const openingRef = useRef(opening);
+  const openingManual = useRef(false);
+  const pullRef = useRef<{ start: number; dur: number } | null>(null);
   const [pos, setPos] = useState<StoryPos>({ era: 0, beat: -1, typed: false });
   const [transIdx, setTransIdx] = useState(0);
   const [keysOpen, setKeysOpen] = useState(false);
@@ -116,6 +121,9 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     const setNoGl = (on: boolean) => nogl.classList.toggle("po-on", on);
     if (!desk) setNoGl(true);
     else desk.onContextLost = () => { desk?.dispose(); desk = null; c.desk = null; setNoGl(true); setGpuOff(true); };
+    // the opening starts with the camera on the cube's note; without WebGL there is no shot, so go straight to the desk
+    if (desk) desk.closeUp = openingRef.current >= 0 ? 1 : 0;
+    else if (openingRef.current >= 0) { openingRef.current = -1; setOpening(-1); }
     setGpuOff(!desk || desk.software);
     loadCanvasFonts(fonts).then(() => { if (!alive) return; fonts = resolveFonts(); desk?.repaint(deskTextRef.current, fonts); });
 
@@ -265,6 +273,10 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       if (e.key === "?") { e.preventDefault(); e.stopImmediatePropagation(); setKeysOpen(true); return; }
       if (e.key === "m" || e.key === "M") { c.toggleMusic(); return; }
       if (e.key === "s" || e.key === "S") { c.toggleSound(); return; }
+      if (modeNow === "intro" && openingRef.current >= 0) {
+        if (FWD.has(e.key) && !((e.key === " " || e.key === "Enter") && tag === "button")) { e.preventDefault(); nextOpeningRef.current(true); }
+        return;
+      }
       if (modeNow === "intro") {
         if ((e.key === "Enter" || e.key === " ") && (document.activeElement === body || document.activeElement === root || !document.activeElement)) { e.preventDefault(); startPower(); }
         else if ((e.key === "ArrowUp" || e.key === "PageUp") && onBackRef.current) { e.preventDefault(); onBackRef.current(); }
@@ -281,18 +293,25 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       else if (modeNow !== "intro" || audio.humming) audio.resume();
     };
     const onFirstGesture = () => audio.resume();
-    // on the desk, scrolling or swiping up goes back into the landing's tunnel
-    let touchY = -1;
-    const onIntroWheel = (e: WheelEvent) => { if (modeNow === "intro" && e.deltaY < -4 && !keysOpenRef.current) onBackRef.current?.(); };
+    // in the opening, scrolling or swiping forward moves to the next beat (at most one beat per gesture)
+    let touchY = -1, lastWheel = 0;
+    const onIntroWheel = (e: WheelEvent) => {
+      if (modeNow !== "intro" || keysOpenRef.current) return;
+      if (openingRef.current >= 0 && e.deltaY > 4 && e.timeStamp - lastWheel > 700) { lastWheel = e.timeStamp; nextOpeningRef.current(true); }
+      else if (e.deltaY < -4) onBackRef.current?.();
+    };
     const onIntroTouchStart = (e: TouchEvent) => { touchY = modeNow === "intro" ? e.touches[0].clientY : -1; };
     const onIntroTouchMove = (e: TouchEvent) => {
       if (touchY < 0 || modeNow !== "intro" || keysOpenRef.current) return;
-      if (e.touches[0].clientY - touchY > 60) { touchY = -1; onBackRef.current?.(); }
+      const dy = e.touches[0].clientY - touchY;
+      if (dy < -60 && openingRef.current >= 0) { touchY = -1; nextOpeningRef.current(true); }
+      else if (dy > 60) { touchY = -1; onBackRef.current?.(); }
     };
     const host = glHost.current!;
     const onHostMove = (e: PointerEvent) => { if (desk) host.style.cursor = desk.hitPower(e.clientX, e.clientY) ? "pointer" : ""; };
     const onHostClick = (e: MouseEvent) => {
       if (modeNow === "story") { takeOver(); advance(1); return; }
+      if (openingRef.current >= 0) { nextOpeningRef.current(true); return; }
       if (desk?.hitPower(e.clientX, e.clientY)) startPower();
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -361,6 +380,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     const c = ctl.current;
     if (!c) return;
     if (mode === "intro") {
+      if (opening >= 0) return;
       const id = window.setTimeout(() => c.startPower(), 2600 / speed);
       return () => clearTimeout(id);
     }
@@ -368,7 +388,40 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     const ms = (pos.beat < 0 ? 3200 : 4600) / speed;
     const id = window.setTimeout(() => { if (!c.advance(1)) setPlaying(false); }, ms);
     return () => clearTimeout(id);
-  }, [playing, speed, mode, pos.era, pos.beat, keysOpen, setPlaying]);
+  }, [playing, speed, mode, pos.era, pos.beat, keysOpen, setPlaying, opening]);
+
+  // the opening plays on its own (about 4s a beat) until the reader takes over; beat 2 is the pull-back
+  const nextOpening = useCallback((manual: boolean) => {
+    if (manual) openingManual.current = true;
+    const o = openingRef.current;
+    if (o < 0) return;
+    if (o < 2) { openingRef.current = o + 1; setOpening(o + 1); return; }
+    // already pulling back: finish it quickly from where it is
+    const p = pullRef.current;
+    if (p && p.dur > 700) { const now = performance.now(), k = clamp((now - p.start) / p.dur); p.start = now - k * 700; p.dur = 700; }
+  }, []);
+  const nextOpeningRef = useRef(nextOpening);
+  useEffect(() => { openingRef.current = opening; });
+  useEffect(() => {
+    if (opening < 0 || opening > 1 || openingManual.current) return;
+    const id = window.setTimeout(() => nextOpening(false), opening === 0 ? 4200 : 3800);
+    return () => clearTimeout(id);
+  }, [opening, nextOpening]);
+  useEffect(() => {
+    if (opening !== 2) return;
+    const p = { start: performance.now(), dur: reduce ? 0 : 5200 };
+    pullRef.current = p;
+    let raf = 0;
+    const step = (now: number) => {
+      const k = p.dur ? clamp((now - p.start) / p.dur) : 1;
+      const desk = ctl.current?.desk;
+      if (desk) desk.closeUp = 1 - ease(k);
+      if (k < 1) raf = requestAnimationFrame(step);
+      else { pullRef.current = null; openingRef.current = -1; setOpening(-1); }
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [opening, reduce]);
 
   // music follows the era
   useEffect(() => {
@@ -397,7 +450,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
         <div ref={noglRef} className="po-nogl" aria-hidden="true"><div /></div>
         <div ref={trackRef} className="po-track" aria-hidden="true" />
 
-        <Intro gone={introGone} hidden={mode === "story"} touch={touch} onPower={() => ctl.current?.startPower()} onReplay={onReplayIntro} />
+        <Intro gone={introGone} hidden={mode === "story"} touch={touch} opening={opening} onNext={() => nextOpening(true)} onPower={() => ctl.current?.startPower()} />
 
         <div ref={screenRef} className="po-screen" data-era={era.n} aria-live="off" onClick={onScreenClick}>
           <EraFx n={era.n} reduce={reduce} />

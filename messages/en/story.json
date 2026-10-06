@@ -1,10 +1,12 @@
 {
   "intro": {
     "place": "CERN · Geneva",
-    "date": "March 1989",
-    "headline": "Every website you ship started on <i>one</i> computer.",
+    "date": "1990",
+    "headline": "Every website you see started on <i>one</i> computer.",
     "lede": "A scroll-through story of how the web got from a cube on a desk to code running in hundreds of cities. Turn your sound on.",
-    "replay": "↺ Replay intro"
+    "open1": "CERN, 1990. Someone taped this to a computer.",
+    "open2": "It wasn't just any computer.",
+    "open3": "It was the web's first server. All of it."
   },
   "eras": {
     "e1": {

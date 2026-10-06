@@ -61,6 +61,10 @@ export class Desk {
   rigB = -1;
   swapQ = 0;
   pose: Pose | null = null;
+  /** the opening shot: 1 = the camera close on the cube's note, 0 = the intro view of the desk (eased by the caller) */
+  closeUp = 0;
+  private noteMat: MeshStandardMaterial | null = null;
+  private notePose: Pose = { p: new Vector3(), t: new Vector3() };
   /** render only while the DOM screen isn't fully covering the canvas */
   glNeeded = true;
   private powerT0 = 0;
@@ -234,7 +238,9 @@ export class Desk {
       const blk = M(0x1b1b1e, 0.5, 0.35), blk2 = M(0x101012, 0.45, 0.3);
       box(0.95, 0.95, 0.95, blk, 1.5, 0.475, -0.15, g);
       const nt = canvasTex(256, 256, (ctx, w, h) => this.drawStickyNote(ctx, w, h));
-      const note = new Mesh(new PlaneGeometry(0.34, 0.34), new MeshStandardMaterial({ map: nt.tex, roughness: 0.9 }));
+      // emissive from its own texture: lit up for the opening close-up (see closeUp), off afterwards
+      this.noteMat = new MeshStandardMaterial({ map: nt.tex, roughness: 0.9, emissive: lin(0xffffff), emissiveMap: nt.tex, emissiveIntensity: 0 });
+      const note = new Mesh(new PlaneGeometry(0.34, 0.34), this.noteMat);
       note.position.set(1.42, 0.7, 0.33); note.rotation.z = 0.07; g.add(note);
       box(0.5, 0.06, 0.42, blk2, -0.1, 0.03, 0, g); box(0.16, 0.26, 0.16, blk2, -0.1, 0.19, -0.05, g);
       box(1.58, 1.26, 0.24, blk, -0.1, 0.96, 0, g); box(1.12, 0.94, 0.72, blk2, -0.1, 0.96, -0.46, g);
@@ -431,6 +437,11 @@ export class Desk {
       r.out = this.outPose(i); r.screenCenter = c;
       r.g.position.y = y0;
     });
+    // close on the note (rig 0, facing +z), framed off-centre so the caption column stays clear
+    const note = new Vector3(1.42, 0.7, 0.33), tv = Math.tan(MathUtils.degToRad(cam.fov) / 2), portrait = cam.aspect < 0.9;
+    const d = Math.max(0.34 / (portrait ? 0.62 : 0.56) / (2 * tv), 0.34 / (portrait ? 0.78 : 0.4) / (2 * tv * cam.aspect));
+    const shift = new Vector3(portrait ? 0 : -0.13 * 2 * tv * d * cam.aspect, portrait ? -0.14 * 2 * tv * d : 0, 0);
+    this.notePose = { p: note.clone().add(shift).setZ(note.z + d), t: note.clone().add(shift) };
   }
 
   rigPoses(i: number) { const r = this.rigs[i]; return { inPose: r.inPose, out: r.out }; }
@@ -488,7 +499,14 @@ export class Desk {
     const r0 = this.rigs[0];
     if (this.mode === "intro") {
       const o = r0.out, sway = this.reduce ? 0 : Math.sin(t * 0.25) * 0.18;
-      this.applyPose({ p: o.p.clone().add(this.tmp.set(sway, Math.sin(t * 0.2) * 0.05, 0)), t: o.t });
+      const desk = { p: o.p.clone().add(this.tmp.set(sway, Math.sin(t * 0.2) * 0.05, 0)), t: o.t };
+      if (this.closeUp > 0) {
+        // a slow drift toward the note while the camera holds on it
+        const n = this.notePose, drift = this.reduce ? 0 : Math.sin(t * 0.3) * 0.012;
+        const close = { p: n.p.clone().add(this.tmp.set(drift, drift * 0.6, 0)), t: n.t };
+        this.applyPose(lerpPose(desk, close, this.closeUp));
+      } else this.applyPose(desk);
+      if (this.noteMat) this.noteMat.emissiveIntensity = 0.55 * this.closeUp * this.closeUp;
       r0.power!.material.emissiveIntensity = 0.25 + (this.reduce ? 0 : (Math.sin(t * 3) * 0.5 + 0.5) * 0.9);
     } else if (this.mode === "booting") {
       const bt = ((now - this.powerT0) / 1000) * (this.reduce ? 2.2 : 1);

@@ -1,10 +1,12 @@
 {
   "intro": {
     "place": "CERN · Ginebra",
-    "date": "Marzo de 1989",
-    "headline": "Cada sitio web que publicas empezó en <i>una</i> computadora.",
+    "date": "1990",
+    "headline": "Cada sitio web que ves empezó en <i>una</i> computadora.",
     "lede": "Una historia para recorrer desplazándote: cómo la web pasó de un cubo sobre un escritorio a código que corre en cientos de ciudades. Activa el sonido.",
-    "replay": "↺ Ver intro otra vez"
+    "open1": "CERN, 1990. Alguien pegó esto en una computadora.",
+    "open2": "No era una computadora cualquiera.",
+    "open3": "Era el primer servidor de la web. Toda la web."
   },
   "eras": {
     "e1": {

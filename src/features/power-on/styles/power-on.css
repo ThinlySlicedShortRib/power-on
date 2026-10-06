@@ -204,6 +204,14 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 
 .po-root .po-introbox h1 i { color: var(--lamp); }
 
+/* the opening shot's captions: one line per beat over the close-up of the note */
+.po-root .po-introbox .po-openline { margin: 0; max-width: 14ch; font-family: var(--f-serif); font-weight: 400; font-size: clamp(2rem, 3.6vw, 3.4rem); line-height: 1.05;
+  color: var(--room-ink); text-wrap: balance; text-shadow: 0 2px 24px rgba(0,0,0,.7); }
+
+.po-root .po-opening .po-introcopy, .po-root .po-deskcopy { animation: po-openin .8s ease both; }
+
+@keyframes po-openin { from { opacity: 0; transform: translateY(8px); } }
+
 .po-root .po-introbox p { margin: 0; max-width: 40ch; font-size: 1rem; line-height: 1.5; color: rgba(241,230,208,.75); }
 
 .po-root .po-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 6px; }
