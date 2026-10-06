@@ -1,1077 +1,1077 @@
 {
-  "_person": "person",
+  "_person": "人物",
   "a2a": {
-    "term": "Agent2Agent (A2A)",
+    "term": "Agent2Agent（A2A）",
     "year": "2025",
-    "def": "Google's open protocol for AI agents to find and message each other. Introduced April 2025, now at the Linux Foundation.",
+    "def": "Google 的开放协议，让 AI 智能体互相发现、彼此发消息。2025 年 4 月推出，现由 Linux 基金会管理。",
     "kind": "term"
   },
   "signedoffer": {
-    "term": "Signed offer",
+    "term": "已签名报价",
     "year": "",
-    "def": "An offer both sides sign with keys, so the promise can be proved later. Illustrative; no standard yet.",
+    "def": "双方都用密钥签名的报价，日后能证明这项承诺。仅为示意，目前还没有标准。",
     "kind": "term"
   },
   "pKarpathy": {
     "term": "Andrej Karpathy",
     "year": "",
-    "def": "AI researcher, an OpenAI founding member and former head of AI at Tesla, who coined “vibe coding” in February 2025.",
+    "def": "AI 研究者，OpenAI 创始成员、前 Tesla AI 负责人，2025 年 2 月创造了“vibe coding”一词。",
     "kind": "person"
   },
   "pHoward": {
     "term": "Jeremy Howard",
     "year": "",
-    "def": "Co-founder of fast.ai and Answer.AI, who proposed llms.txt in September 2024.",
+    "def": "fast.ai 与 Answer.AI 联合创始人，2024 年 9 月提出 llms.txt。",
     "kind": "person"
   },
   "computeruse": {
     "term": "Computer use",
     "year": "2024",
-    "def": "An AI model operating a computer: reading the screen, clicking, typing. Anthropic, public beta, October 2024.",
+    "def": "AI 模型直接操作电脑：看屏幕、点击、打字。Anthropic，2024 年 10 月公开测试。",
     "kind": "term"
   },
   "operator": {
     "term": "Operator",
     "year": "2025",
-    "def": "OpenAI's browser-using agent, launched as a research preview on 23 January 2025.",
+    "def": "OpenAI 会使用浏览器的智能体，2025 年 1 月 23 日以研究预览版发布。",
     "kind": "term"
   },
   "webmcp": {
     "term": "WebMCP",
     "year": "2026",
-    "def": "Proposed standard letting a page hand agents named tools to call. Early preview in Chrome 146, origin trial in 149.",
+    "def": "提议中的标准，让网页交给智能体一组具名工具来调用。Chrome 146 抢先预览，149 开放源试用。",
     "kind": "term"
   },
   "mcp": {
     "term": "MCP",
     "year": "2024",
-    "def": "Model Context Protocol: Anthropic's open standard (Nov 2024) for plugging AI models into tools and data.",
+    "def": "Model Context Protocol：Anthropic 的开放标准（2024 年 11 月），让 AI 模型接入工具和数据。",
     "kind": "term"
   },
   "llmstxt": {
     "term": "llms.txt",
     "year": "2024",
-    "def": "A markdown map of a site for AI models, at /llms.txt. Proposed 2024; big AI firms haven't committed to it.",
+    "def": "写给 AI 模型看的网站 Markdown 地图，放在 /llms.txt。2024 年提出；大型 AI 公司都还没表态采用。",
     "kind": "term"
   },
   "aiov": {
-    "term": "AI Overviews",
+    "term": "AI 摘要（AI Overviews）",
     "year": "2024",
-    "def": "AI-written summaries at the top of Google results, rolled out to everyone in the US from 14 May 2024.",
+    "def": "Google 搜索结果顶部由 AI 撰写的摘要，2024 年 5 月 14 日起向全美用户开放。",
     "kind": "term"
   },
   "zeroclick": {
-    "term": "Zero-click search",
+    "term": "零点击搜索",
     "year": "",
-    "def": "A search that ends on the results page because the answer is already there, so no site gets a visit.",
+    "def": "答案已经在结果页上，搜索就到此为止，没有任何网站获得访问。",
     "kind": "term"
   },
   "acp": {
     "term": "Agentic Commerce Protocol",
     "year": "2025",
-    "def": "Agentic Commerce Protocol, from OpenAI and Stripe: lets an AI agent check out for you. Powers Instant Checkout.",
+    "def": "智能体商务协议，由 OpenAI 与 Stripe 推出：让 AI 智能体替你结账。Instant Checkout 就靠它运作。",
     "kind": "term"
   },
   "ap2": {
     "term": "AP2",
     "year": "2025",
-    "def": "Agent Payments Protocol, Google, September 2025. Signed “mandates” prove what you let an agent buy.",
+    "def": "智能体支付协议，Google，2025 年 9 月。已签名的“授权书”证明你允许智能体买什么。",
     "kind": "term"
   },
   "x402": {
     "term": "x402",
     "year": "2025",
-    "def": "Coinbase's protocol (May 2025) that revives HTTP 402 so agents can pay per request.",
+    "def": "Coinbase 的协议（2025 年 5 月），让 HTTP 402 重获新生，智能体可以按次付费。",
     "kind": "term"
   },
   "h402": {
     "term": "HTTP 402",
     "year": "1997",
-    "def": "“Payment Required”: an HTTP status code reserved since the 1990s and barely used, until now.",
+    "def": "“Payment Required”（需要付款）：20 世纪 90 年代就保留的 HTTP 状态码，一直几乎没人用，直到现在。",
     "kind": "term"
   },
   "webbotauth": {
     "term": "Web Bot Auth",
     "year": "2025",
-    "def": "Bots sign their requests with a published key, so sites can check who's really knocking.",
+    "def": "机器人用公开的密钥给请求签名，网站就能核实敲门的到底是谁。",
     "kind": "term"
   },
   "payperCrawl": {
     "term": "Pay per crawl",
     "year": "2025",
-    "def": "Cloudflare's private beta (1 July 2025) letting sites allow, block or charge AI crawlers, using HTTP 402 responses.",
+    "def": "Cloudflare 的非公开测试（2025 年 7 月 1 日），让网站允许、拦截 AI 爬虫或向它们收费，靠的是 HTTP 402 响应。",
     "kind": "term"
   },
   "robots": {
     "term": "robots.txt",
     "year": "1994",
-    "def": "A text file telling crawlers what they may fetch. A 1994 convention, an official standard since 2022.",
+    "def": "告诉爬虫哪些内容可以抓取的文本文件。1994 年起的惯例，2022 年成为正式标准。",
     "kind": "term"
   },
   "aicrawler": {
-    "term": "AI crawler",
+    "term": "AI 爬虫",
     "year": "",
-    "def": "A bot that downloads pages to train or feed AI models, not to send you visitors.",
+    "def": "下载网页来训练 AI 模型或给它提供数据的机器人，不会给你带来访客。",
     "kind": "term"
   },
   "ondevice": {
-    "term": "On-device model",
+    "term": "端侧模型",
     "year": "",
-    "def": "An AI model running on your own machine, so your data never leaves it.",
+    "def": "在你自己的设备上运行的 AI 模型，所以你的数据不会离开它。",
     "kind": "term"
   },
   "nano": {
     "term": "Gemini Nano",
     "year": "",
-    "def": "Google's smallest Gemini model, downloaded by Chrome to run its built-in AI APIs locally.",
+    "def": "Google 最小的 Gemini 模型，由 Chrome 下载，在本地运行内置 AI API。",
     "kind": "term"
   },
   "builtinai": {
-    "term": "Built-in AI APIs",
+    "term": "内置 AI API",
     "year": "2025",
-    "def": "Chrome APIs such as Summarizer, Translator and Language Detector, available in stable Chrome from version 138 (mid-2025).",
+    "def": "Chrome 的 API，如 Summarizer、Translator、Language Detector，138 版（2025 年年中）起在稳定版提供。",
     "kind": "term"
   },
   "genui": {
-    "term": "Generative UI",
+    "term": "生成式 UI",
     "year": "",
-    "def": "Screens assembled by a model on the fly, for one person and one task.",
+    "def": "由模型即时拼出来的界面，只为一个人、一项任务而生。",
     "kind": "term"
   },
   "vibecoding": {
-    "term": "Vibe coding",
+    "term": "Vibe coding（氛围编程）",
     "year": "2025",
-    "def": "Describing an app and letting AI write the code, mostly unread. Named by Andrej Karpathy, February 2025.",
+    "def": "描述你要的应用，让 AI 写代码，大多不看。2025 年 2 月由 Andrej Karpathy 命名。",
     "kind": "term"
   },
   "agent": {
-    "term": "AI agent",
+    "term": "AI 智能体",
     "year": "",
-    "def": "An AI that takes actions, not just answers: it plans, uses tools or a browser, and keeps going.",
+    "def": "会采取行动、不只是回答的 AI：它会规划、使用工具或浏览器，并持续做下去。",
     "kind": "term"
   },
   "llm": {
     "term": "LLM",
     "year": "",
-    "def": "Large language model: a neural network trained on huge amounts of text. The engine inside chatbots and agents.",
+    "def": "大语言模型：用海量文本训练的神经网络，是聊天机器人和智能体背后的引擎。",
     "kind": "term"
   },
   "aibrowser": {
-    "term": "AI browser",
+    "term": "AI 浏览器",
     "year": "2025",
-    "def": "A browser built around an assistant that can read the open tabs and act on pages for you.",
+    "def": "以助手为核心的浏览器，能读取你打开的标签页，替你在网页上操作。",
     "kind": "term"
   },
   "promptinj": {
-    "term": "Prompt injection",
+    "term": "提示词注入",
     "year": "",
-    "def": "Hidden text on a page that tries to give an AI agent new orders. Why agents ask before risky steps.",
+    "def": "网页上的隐藏文字，企图给 AI 智能体下新命令。所以智能体在高风险步骤前会先问你。",
     "kind": "term"
   },
   "a11ytree": {
-    "term": "Accessibility tree",
+    "term": "无障碍树",
     "year": "",
-    "def": "The browser's structured view of a page (roles, names, states) built for screen readers. Agents often read it too.",
+    "def": "浏览器为读屏软件构建的网页结构（角色、名称、状态）。智能体也常读它。",
     "kind": "term"
   },
   "origintrial": {
-    "term": "Origin trial",
+    "term": "源试用（Origin trial）",
     "year": "",
-    "def": "A way for sites to try an experimental Chrome feature in production for a limited time.",
+    "def": "让网站在生产环境中限时试用 Chrome 实验性功能的机制。",
     "kind": "term"
   },
   "instantcheckout": {
     "term": "Instant Checkout",
     "year": "2025",
-    "def": "Buying inside ChatGPT, launched 29 September 2025 for US users, starting with Etsy sellers. Built on the Agentic Commerce Protocol.",
+    "def": "在 ChatGPT 里直接购物，2025 年 9 月 29 日面向美国用户推出，先从 Etsy 卖家开始。基于 Agentic Commerce Protocol。",
     "kind": "term"
   },
   "comet": {
     "term": "Comet",
     "year": "2025",
-    "def": "Perplexity's AI browser, released 9 July 2025 for top-tier subscribers and made free for everyone on 2 October 2025.",
+    "def": "Perplexity 的 AI 浏览器，2025 年 7 月 9 日先给最高档订阅用户，2025 年 10 月 2 日起向所有人免费开放。",
     "kind": "term"
   },
   "atlas": {
     "term": "ChatGPT Atlas",
     "year": "2025",
-    "def": "OpenAI's AI browser, launched for macOS on 21 October 2025.",
+    "def": "OpenAI 的 AI 浏览器，2025 年 10 月 21 日推出 macOS 版。",
     "kind": "term"
   },
   "dia": {
     "term": "Dia",
     "year": "2025",
-    "def": "An AI browser from The Browser Company, early access from June 2025. Atlassian bought the company.",
+    "def": "The Browser Company 的 AI 浏览器，2025 年 6 月起开放抢先体验。这家公司已被 Atlassian 收购。",
     "kind": "term"
   },
   "autobrowse": {
     "term": "Auto browse",
     "year": "2026",
-    "def": "Gemini in Chrome's agent mode (2026). It clicks through sites in its own tab and pauses before buying.",
+    "def": "Chrome 版 Gemini 的智能体模式（2026）。它在自己的标签页里逐个点开网站，购买前会先暂停。",
     "kind": "term"
   },
   "claudechrome": {
     "term": "Claude in Chrome",
     "year": "2025",
-    "def": "Anthropic's extension that lets Claude read and act on web pages. Generally available since August 2026.",
+    "def": "Anthropic 的浏览器扩展，让 Claude 读取网页并在上面操作。2026 年 8 月起全面开放。",
     "kind": "term"
   },
   "anthropic": {
     "term": "Anthropic",
     "year": "2021",
-    "def": "An AI company that makes the Claude models; it introduced computer use and MCP.",
+    "def": "打造 Claude 模型的 AI 公司，推出了 computer use 和 MCP。",
     "kind": "term"
   },
   "openai": {
     "term": "OpenAI",
     "year": "2015",
-    "def": "The AI company behind ChatGPT; it launched Operator and Instant Checkout.",
+    "def": "ChatGPT 背后的 AI 公司，推出了 Operator 和 Instant Checkout。",
     "kind": "term"
   },
   "perplexity": {
     "term": "Perplexity",
     "year": "2022",
-    "def": "An AI answer-engine company; it makes the Comet browser.",
+    "def": "AI 答案引擎公司，打造了 Comet 浏览器。",
     "kind": "term"
   },
   "cloudflare": {
     "term": "Cloudflare",
     "year": "2009",
-    "def": "A huge network in front of millions of sites, so its defaults decide how bots get treated.",
+    "def": "挡在数百万个网站前面的庞大网络，所以它的默认设置决定了机器人会受到什么待遇。",
     "kind": "term"
   },
   "stripe": {
     "term": "Stripe",
     "year": "2010",
-    "def": "A payments company; it co-developed the Agentic Commerce Protocol with OpenAI.",
+    "def": "支付公司，与 OpenAI 共同开发了 Agentic Commerce Protocol。",
     "kind": "term"
   },
   "coinbase": {
     "term": "Coinbase",
     "year": "2012",
-    "def": "A cryptocurrency exchange; it published the x402 payment protocol in May 2025.",
+    "def": "加密货币交易所，2025 年 5 月发布了 x402 支付协议。",
     "kind": "term"
   },
   "pew": {
     "term": "Pew Research Center",
     "year": "",
-    "def": "A nonpartisan US research organisation. Its July 2025 study tracked 68,879 real Google searches by 900 adults.",
+    "def": "美国无党派研究机构。它 2025 年 7 月的研究，追踪了 900 名成年人的 68,879 次真实 Google 搜索。",
     "kind": "term"
   },
   "pTBL": {
     "term": "Tim Berners-Lee",
     "year": "",
-    "def": "British computer scientist who invented the web at CERN in 1989–90 and founded the W3C in 1994.",
+    "def": "英国计算机科学家，1989–90 年在 CERN 发明了万维网，1994 年创立 W3C。",
     "kind": "person"
   },
   "pSendall": {
     "term": "Mike Sendall",
     "year": "",
-    "def": "Tim's manager at CERN. He wrote “vague but exciting” on the proposal and let Tim build it anyway.",
+    "def": "Tim 在 CERN 的上司。他在提案上写下“模糊，但令人兴奋”，还是放手让 Tim 去做。",
     "kind": "person"
   },
   "pCailliau": {
     "term": "Robert Cailliau",
     "year": "",
-    "def": "Belgian engineer at CERN who co-wrote the 1990 web proposal and championed it inside the lab.",
+    "def": "CERN 的比利时工程师，与 Tim 合写了 1990 年的万维网提案，并在实验室内大力推动。",
     "kind": "person"
   },
   "pPellow": {
     "term": "Nicola Pellow",
     "year": "",
-    "def": "Maths student on placement at CERN who wrote the line-mode browser in 1990–91.",
+    "def": "在 CERN 实习的数学系学生，1990–91 年写出了行模式浏览器。",
     "kind": "person"
   },
   "pKunz": {
     "term": "Paul Kunz",
     "year": "",
-    "def": "SLAC physicist who set up the first web server in North America, in December 1991.",
+    "def": "SLAC 的物理学家，1991 年 12 月架起北美第一台网页服务器。",
     "kind": "person"
   },
   "pAndreessen": {
     "term": "Marc Andreessen",
     "year": "",
-    "def": "Co-wrote Mosaic at NCSA as a student, then co-founded Netscape. Later a venture capitalist.",
+    "def": "学生时代在 NCSA 合写了 Mosaic，之后联合创办 Netscape，后来成为风险投资人。",
     "kind": "person"
   },
   "pBina": {
     "term": "Eric Bina",
     "year": "",
-    "def": "NCSA programmer who co-wrote Mosaic with Marc Andreessen and then co-founded Netscape.",
+    "def": "NCSA 程序员，与 Marc Andreessen 合写 Mosaic，之后联合创办 Netscape。",
     "kind": "person"
   },
   "pLerdorf": {
     "term": "Rasmus Lerdorf",
     "year": "",
-    "def": "Danish-Canadian programmer who created PHP in 1995.",
+    "def": "丹麦裔加拿大程序员，1995 年创造了 PHP。",
     "kind": "person"
   },
   "pEich": {
     "term": "Brendan Eich",
     "year": "",
-    "def": "Created JavaScript at Netscape in 1995. Later co-founded Mozilla and Brave.",
+    "def": "1995 年在 Netscape 创造了 JavaScript，后来联合创办 Mozilla 和 Brave。",
     "kind": "person"
   },
   "pLie": {
     "term": "Håkon Wium Lie",
     "year": "",
-    "def": "Norwegian web pioneer who proposed CSS at CERN in 1994, later CTO of the Opera browser.",
+    "def": "挪威网络先驱，1994 年在 CERN 提出 CSS，后来担任 Opera 浏览器的首席技术官。",
     "kind": "person"
   },
   "pGarrett": {
     "term": "Jesse James Garrett",
     "year": "",
-    "def": "User-experience designer at Adaptive Path who named Ajax in a February 2005 essay.",
+    "def": "Adaptive Path 的用户体验设计师，在 2005 年 2 月的一篇文章中为 Ajax 命名。",
     "kind": "person"
   },
   "pResig": {
     "term": "John Resig",
     "year": "",
-    "def": "Created jQuery in 2006, then worked at Mozilla and Khan Academy.",
+    "def": "2006 年创造 jQuery，之后在 Mozilla 和 Khan Academy 工作。",
     "kind": "person"
   },
   "pDHH": {
     "term": "David Heinemeier Hansson",
     "year": "",
-    "def": "Danish programmer, known as DHH, who created Ruby on Rails at 37signals.",
+    "def": "丹麦程序员，人称 DHH，在 37signals 打造了 Ruby on Rails。",
     "kind": "person"
   },
   "pDahl": {
     "term": "Ryan Dahl",
     "year": "",
-    "def": "Created Node.js in 2009, then Deno in 2018 to fix what he regretted about Node.",
+    "def": "2009 年创造 Node.js，2018 年又做了 Deno，弥补他对 Node 的遗憾。",
     "kind": "person"
   },
   "pWalke": {
     "term": "Jordan Walke",
     "year": "",
-    "def": "Facebook engineer who created React.",
+    "def": "创造 React 的 Facebook 工程师。",
     "kind": "person"
   },
   "pYou": {
     "term": "Evan You",
     "year": "",
-    "def": "Independent developer who created Vue (2014) and the Vite build tool (2020).",
+    "def": "独立开发者，创造了 Vue（2014）和构建工具 Vite（2020）。",
     "kind": "person"
   },
   "pRauch": {
     "term": "Guillermo Rauch",
     "year": "",
-    "def": "Created Socket.IO and founded Vercel, the company behind Next.js.",
+    "def": "创造了 Socket.IO，并创办了 Next.js 背后的公司 Vercel。",
     "kind": "person"
   },
   "pHarris": {
     "term": "Rich Harris",
     "year": "",
-    "def": "Created Svelte and the Rollup bundler while building interactive news graphics.",
+    "def": "在制作交互式新闻图表时，创造了 Svelte 和打包工具 Rollup。",
     "kind": "person"
   },
   "pQSF": {
     "term": "Quentin Stafford-Fraser",
     "year": "",
-    "def": "Cambridge computer scientist who, with Paul Jardetzky, wired up the Trojan Room coffee-pot camera in 1991.",
+    "def": "剑桥的计算机科学家，1991 年与 Paul Jardetzky 架起 Trojan Room 咖啡壶摄像头。",
     "kind": "person"
   },
   "homepage": {
-    "term": "Homepage",
+    "term": "个人主页",
     "year": "",
-    "def": "A personal website, usually a few hand-written HTML pages about you, your pets and your favourite links.",
+    "def": "个人网站，通常是几页手写的 HTML，介绍你、你的宠物和你最喜欢的链接。",
     "kind": "term"
   },
   "sharedhost": {
-    "term": "Shared hosting",
+    "term": "共享主机",
     "year": "",
-    "def": "One server shared by hundreds of sites, each in a folder. Cheap, and home to most 90s pages.",
+    "def": "一台服务器由数百个网站共用，各占一个文件夹。便宜，90 年代大多数网页都住在这里。",
     "kind": "term"
   },
   "crawler": {
-    "term": "Search crawler",
+    "term": "搜索引擎爬虫",
     "year": "",
-    "def": "A search engine's program that downloads pages to index them. Early crawlers didn't run JavaScript, so client-rendered pages looked empty.",
+    "def": "搜索引擎下载网页、建立索引的程序。早期爬虫不执行 JavaScript，所以客户端渲染的网页看上去一片空白。",
     "kind": "term"
   },
   "infinite": {
-    "term": "Infinite scroll",
+    "term": "无限滚动",
     "year": "",
-    "def": "Loading more items automatically as you near the bottom, so the page never ends. Everywhere from about 2010.",
+    "def": "快到底部时自动加载更多内容，页面永远没有尽头。大约 2010 年起随处可见。",
     "kind": "term"
   },
   "production": {
-    "term": "Production",
+    "term": "生产环境",
     "year": "",
-    "def": "The live environment real users hit, as opposed to a staging or preview deployment.",
+    "def": "真实用户实际访问的线上环境，有别于预发布（staging）或预览部署。",
     "kind": "term"
   },
   "trojan": {
-    "term": "Trojan Room coffee pot",
+    "term": "Trojan Room 咖啡壶",
     "year": "1991",
-    "def": "A coffee pot at Cambridge University's Computer Lab. On camera from 1991, on the web 1993–2001.",
+    "def": "剑桥大学计算机实验室的一个咖啡壶。1991 年起上了镜头，1993–2001 年挂在网上。",
     "kind": "term"
   },
   "webcam": {
-    "term": "Webcam",
+    "term": "网络摄像头",
     "year": "",
-    "def": "A camera that publishes images to the web. The Trojan Room coffee pot is usually called the first famous one.",
+    "def": "把图像发布到网上的摄像头。Trojan Room 咖啡壶通常被称为第一个出名的。",
     "kind": "term"
   },
   "nextstep": {
     "term": "NeXTSTEP",
     "year": "1989",
-    "def": "The operating system on NeXT computers. It later became the core of Mac OS X.",
+    "def": "NeXT 电脑上的操作系统，后来成为 Mac OS X 的核心。",
     "kind": "term"
   },
   "nextcube": {
     "term": "NeXTcube",
     "year": "1990",
-    "def": "A black workstation from NeXT, Steve Jobs' company after Apple. The first web server ran on one.",
+    "def": "NeXT 的黑色工作站，NeXT 是 Steve Jobs 离开 Apple 后创立的公司。第一台网页服务器就运行在它上面。",
     "kind": "term"
   },
   "wwwapp": {
-    "term": "WorldWideWeb (the app)",
+    "term": "WorldWideWeb（应用程序）",
     "year": "1990",
-    "def": "The first browser, which could also edit pages. Written by Tim Berners-Lee in 1990.",
+    "def": "第一个浏览器，也能编辑网页。由 Tim Berners-Lee 在 1990 年写成。",
     "kind": "term"
   },
   "linemode": {
-    "term": "Line-mode browser",
+    "term": "行模式浏览器",
     "year": "1991",
-    "def": "A text-only browser by Nicola Pellow that ran on any terminal. Links were numbers you typed.",
+    "def": "Nicola Pellow 写的纯文本浏览器，任何终端都能运行。链接是你要输入的数字。",
     "kind": "term"
   },
   "terminal": {
-    "term": "Terminal",
+    "term": "终端",
     "year": "",
-    "def": "A screen and keyboard with no real computer inside. It showed text from a shared machine.",
+    "def": "只有屏幕和键盘、里面没有真正电脑的设备，显示共享主机传来的文字。",
     "kind": "term"
   },
   "cern": {
     "term": "CERN",
     "year": "1954",
-    "def": "The European Organization for Nuclear Research, the particle physics lab near Geneva where the web was invented.",
+    "def": "欧洲核子研究组织，位于日内瓦附近的粒子物理实验室，万维网就在这里诞生。",
     "kind": "term"
   },
   "slac": {
     "term": "SLAC",
     "year": "",
-    "def": "Stanford Linear Accelerator Center in California. It ran the first web server outside Europe, from December 1991.",
+    "def": "加州的斯坦福直线加速器中心。1991 年 12 月起运行欧洲以外的第一台网页服务器。",
     "kind": "term"
   },
   "w3c": {
     "term": "W3C",
     "year": "1994",
-    "def": "The World Wide Web Consortium, founded by Tim Berners-Lee to write the web's standards.",
+    "def": "万维网联盟，由 Tim Berners-Lee 创立，负责制定万维网标准。",
     "kind": "term"
   },
   "arpanet": {
     "term": "ARPANET",
     "year": "1969",
-    "def": "The US research network that grew into the internet. It sent its first message in 1969.",
+    "def": "后来发展成互联网的美国研究网络，1969 年发出第一条消息。",
     "kind": "term"
   },
   "httpd": {
     "term": "httpd",
     "year": "1990",
-    "def": "HTTP daemon: the web server program. CERN httpd came first; NCSA HTTPd followed and Apache grew out of it.",
+    "def": "HTTP 守护进程，也就是网页服务器程序。先有 CERN httpd，再有 NCSA HTTPd，Apache 由它发展而来。",
     "kind": "term"
   },
   "ncsa": {
     "term": "NCSA",
     "year": "",
-    "def": "National Center for Supercomputing Applications at the University of Illinois. It built Mosaic and the NCSA HTTPd server.",
+    "def": "伊利诺伊大学的国家超级计算应用中心，打造了 Mosaic 和 NCSA HTTPd 服务器。",
     "kind": "term"
   },
   "netscape": {
     "term": "Netscape Navigator",
     "year": "1994",
-    "def": "The browser that ruled the mid-90s. Netscape's 1995 IPO kicked off the dot-com boom.",
+    "def": "90 年代中期称霸的浏览器。Netscape 1995 年的 IPO 掀起了互联网热潮。",
     "kind": "term"
   },
   "ie": {
     "term": "Internet Explorer",
     "year": "1995",
-    "def": "Microsoft's browser. Bundled with Windows, it won the first browser war, then stood still for years. Retired in 2022.",
+    "def": "Microsoft 的浏览器。与 Windows 捆绑，赢了第一次浏览器大战，之后停滞多年。2022 年退役。",
     "kind": "term"
   },
   "browserwars": {
-    "term": "Browser wars",
+    "term": "浏览器大战",
     "year": "1995",
-    "def": "Netscape against Internet Explorer, roughly 1995–2001. Both raced to add incompatible features; IE won by shipping with Windows.",
+    "def": "Netscape 对阵 Internet Explorer，约 1995–2001 年。双方抢加互不兼容的功能；IE 靠随 Windows 附送胜出。",
     "kind": "term"
   },
   "sun": {
     "term": "Sun Microsystems",
     "year": "",
-    "def": "Sun Microsystems, maker of Java. The JavaScript name came from a deal with Sun.",
+    "def": "Sun Microsystems，Java 的开发公司。JavaScript 这个名字来自与 Sun 的一项协议。",
     "kind": "term"
   },
   "geocities": {
     "term": "GeoCities",
     "year": "1994",
-    "def": "Free homepages sorted into themed “neighbourhoods”. Yahoo bought it in 1999 and shut it down in 2009.",
+    "def": "免费个人主页，按主题分成一个个“社区”。Yahoo 1999 年收购，2009 年关闭。",
     "kind": "term"
   },
   "webring": {
-    "term": "Webring",
+    "term": "网站环",
     "year": "",
-    "def": "A loop of sites on one topic, linked by prev and next buttons. 90s discovery, before good search.",
+    "def": "同一主题的网站串成一圈，靠“上一站”“下一站”按钮相连。好用的搜索出现前，90 年代靠它找网站。",
     "kind": "term"
   },
   "guestbook": {
-    "term": "Guestbook",
+    "term": "留言簿",
     "year": "",
-    "def": "A page where visitors left a public message, usually run by a CGI script.",
+    "def": "让访客留下公开留言的页面，通常由 CGI 脚本运行。",
     "kind": "term"
   },
   "hitcounter": {
-    "term": "Hit counter",
+    "term": "访客计数器",
     "year": "",
-    "def": "A CGI script that counted page loads and showed the total as odometer digits.",
+    "def": "统计网页加载次数的 CGI 脚本，用里程表式的数字显示总数。",
     "kind": "term"
   },
   "y2k": {
-    "term": "Y2K",
+    "term": "千年虫（Y2K）",
     "year": "2000",
-    "def": "The fear that two-digit years would break software on 1 January 2000. Years of fixes meant little did.",
+    "def": "担心两位数年份会让软件在 2000 年 1 月 1 日出错。多年的修补下来，几乎没出什么事。",
     "kind": "term"
   },
   "dotcom": {
-    "term": "Dot-com bubble",
+    "term": "互联网泡沫",
     "year": "2000",
-    "def": "The late-90s internet investment frenzy. Tech stocks peaked in March 2000, then lost about 78%.",
+    "def": "90 年代末的互联网投资狂热。科技股在 2000 年 3 月见顶，之后跌去约 78%。",
     "kind": "term"
   },
   "flash": {
     "term": "Flash",
     "year": "1996",
-    "def": "A browser plug-in for animation, games and video, huge in the 2000s. Adobe ended support at the end of 2020.",
+    "def": "做动画、游戏和视频的浏览器插件，2000 年代红极一时。Adobe 在 2020 年底终止支持。",
     "kind": "term"
   },
   "gmail": {
     "term": "Gmail",
     "year": "2004",
-    "def": "Google's webmail, launched 1 April 2004 with 1 GB of storage and a no-reload interface.",
+    "def": "Google 的网页邮箱，2004 年 4 月 1 日推出，有 1 GB 空间，界面不用刷新。",
     "kind": "term"
   },
   "gmaps": {
     "term": "Google Maps",
     "year": "2005",
-    "def": "Google's 2005 map you could drag smoothly, loading tiles in the background with Ajax.",
+    "def": "Google 2005 年推出的地图，可以流畅拖动，用 Ajax 在后台加载图块。",
     "kind": "term"
   },
   "web20": {
     "term": "Web 2.0",
     "year": "2004",
-    "def": "A label, popularised by Tim O'Reilly's 2004 conference, for sites built on user content, sharing and rich in-browser interaction.",
+    "def": "因 Tim O'Reilly 2004 年的大会而流行的标签，指以用户内容、分享和丰富的浏览器内交互为核心的网站。",
     "kind": "term"
   },
   "beta": {
-    "term": "Perpetual beta",
+    "term": "永久测试版",
     "year": "",
-    "def": "In the 2000s products stayed labelled “beta” for years. Gmail only dropped the badge in July 2009.",
+    "def": "2000 年代的产品常常挂着“beta”好几年。Gmail 直到 2009 年 7 月才摘掉这个标签。",
     "kind": "term"
   },
   "blog": {
-    "term": "Blog",
+    "term": "博客",
     "year": "1999",
-    "def": "Short for weblog: a personal site of dated posts, newest first.",
+    "def": "weblog 的简称：按日期发文的个人网站，最新的排在最上面。",
     "kind": "term"
   },
   "rss": {
     "term": "RSS",
     "year": "1999",
-    "def": "An XML feed of a site's latest posts that readers could subscribe to in a feed reader.",
+    "def": "列出网站最新文章的 XML 订阅源，读者可以用阅读器订阅。",
     "kind": "term"
   },
   "django": {
     "term": "Django",
     "year": "2005",
-    "def": "A Python web framework built at the Lawrence Journal-World newspaper in Kansas.",
+    "def": "Python Web 框架，诞生于堪萨斯州的《Lawrence Journal-World》报社。",
     "kind": "term"
   },
   "aws": {
     "term": "AWS",
     "year": "2006",
-    "def": "Amazon Web Services: renting Amazon's infrastructure by the hour. S3 and EC2 launched in 2006.",
+    "def": "Amazon Web Services：按小时租用 Amazon 的基础设施。S3 和 EC2 在 2006 年推出。",
     "kind": "term"
   },
   "useast": {
     "term": "us-east-1",
     "year": "",
-    "def": "AWS's oldest, busiest region, in Virginia. When it has a bad day, the internet notices.",
+    "def": "AWS 最老、最繁忙的区域，位于弗吉尼亚州。它一出问题，整个互联网都能感觉到。",
     "kind": "term"
   },
   "iphone": {
     "term": "iPhone",
     "year": "2007",
-    "def": "Apple's 2007 phone with a full web browser. It made the mobile web mainstream, and never supported Flash.",
+    "def": "Apple 2007 年的手机，内置完整的网页浏览器。它让移动网页成为主流，而且从不支持 Flash。",
     "kind": "term"
   },
   "heroku": {
     "term": "Heroku",
     "year": "2007",
-    "def": "A platform where deploying meant running git push heroku master. It made PaaS popular.",
+    "def": "部署只需运行 git push heroku master 的平台，让 PaaS 流行起来。",
     "kind": "term"
   },
   "backbone": {
     "term": "Backbone.js",
     "year": "2010",
-    "def": "A small library by Jeremy Ashkenas that gave browser apps models, views and a router.",
+    "def": "Jeremy Ashkenas 写的小型库，为浏览器应用提供模型、视图和路由。",
     "kind": "term"
   },
   "angularjs": {
     "term": "AngularJS",
     "year": "2010",
-    "def": "Google's framework with two-way data binding and templates full of '{{' '}}'. Rewritten from scratch as Angular in 2016.",
+    "def": "Google 的框架，有双向数据绑定，模板里满是 '{{' '}}'。2016 年以 Angular 之名彻底重写。",
     "kind": "term"
   },
   "jsconf": {
     "term": "JSConf",
     "year": "2009",
-    "def": "A community-run series of JavaScript conferences, where Node.js and React were both first shown.",
+    "def": "由社区主办的 JavaScript 系列大会，Node.js 和 React 都在这里首次亮相。",
     "kind": "term"
   },
   "jsx": {
     "term": "JSX",
     "year": "2013",
-    "def": "React's syntax for writing HTML-like tags inside JavaScript. It compiles to plain function calls.",
+    "def": "React 的语法，可以在 JavaScript 里写类似 HTML 的标签，编译后就是普通的函数调用。",
     "kind": "term"
   },
   "leftpad": {
     "term": "left-pad",
     "year": "2016",
-    "def": "An 11-line npm package. Unpublished in March 2016, it broke thousands of builds.",
+    "def": "只有 11 行的 npm 包。2016 年 3 月被撤下，搞垮了数千个构建。",
     "kind": "term"
   },
   "responsive": {
-    "term": "Responsive design",
+    "term": "响应式设计",
     "year": "2010",
-    "def": "One layout that adapts to any screen with CSS media queries. Named by Ethan Marcotte in 2010.",
+    "def": "一套布局靠 CSS 媒体查询适配任何屏幕。2010 年由 Ethan Marcotte 命名。",
     "kind": "term"
   },
   "flat": {
-    "term": "Flat design",
+    "term": "扁平化设计",
     "year": "",
-    "def": "The early-2010s move from glossy, realistic textures to plain shapes and colour. Google's Material Design (2014) added paper-like shadows back.",
+    "def": "2010 年代初，从光亮拟真的质感转向简单的形状和色彩。Google 的 Material Design（2014）又加回纸张般的阴影。",
     "kind": "term"
   },
   "kubernetes": {
     "term": "Kubernetes",
     "year": "2014",
-    "def": "Google's open-source system for running containers across a cluster: scheduling, restarts and scaling.",
+    "def": "Google 的开源系统，在集群上运行容器：负责调度、重启和扩缩容。",
     "kind": "term"
   },
   "deno": {
     "term": "Deno",
     "year": "2018",
-    "def": "A JavaScript and TypeScript runtime by Ryan Dahl: secure by default, with TypeScript built in.",
+    "def": "Ryan Dahl 打造的 JavaScript 与 TypeScript 运行时：默认安全，内置 TypeScript。",
     "kind": "term"
   },
   "vue": {
     "term": "Vue",
     "year": "2014",
-    "def": "A front-end framework by Evan You: HTML templates plus reactive data, adoptable one page at a time.",
+    "def": "Evan You 的前端框架：HTML 模板加上响应式数据，可以一页一页逐步采用。",
     "kind": "term"
   },
   "nextjs": {
     "term": "Next.js",
     "year": "2016",
-    "def": "Vercel's React framework for server rendering, routing and static generation.",
+    "def": "Vercel 的 React 框架，提供服务器渲染、路由和静态生成。",
     "kind": "term"
   },
   "svelte": {
     "term": "Svelte",
     "year": "2016",
-    "def": "A framework by Rich Harris that compiles components to plain JavaScript at build time, with no runtime library.",
+    "def": "Rich Harris 的框架，在构建时把组件编译成纯 JavaScript，不需要运行时库。",
     "kind": "term"
   },
   "socketio": {
     "term": "Socket.IO",
     "year": "2010",
-    "def": "A library by Guillermo Rauch for real-time two-way messages between browser and server.",
+    "def": "Guillermo Rauch 的库，让浏览器和服务器实时双向通信。",
     "kind": "term"
   },
   "rollup": {
     "term": "Rollup",
     "year": "2015",
-    "def": "A JavaScript module bundler by Rich Harris, known for tree-shaking unused code.",
+    "def": "Rich Harris 的 JavaScript 模块打包工具，以 tree-shaking 去除没用到的代码闻名。",
     "kind": "term"
   },
   "vite": {
     "term": "Vite",
     "year": "2020",
-    "def": "Evan You's build tool (2020) with a near-instant dev server.",
+    "def": "Evan You 的构建工具（2020），开发服务器几乎瞬间启动。",
     "kind": "term"
   },
   "typescript": {
     "term": "TypeScript",
     "year": "2012",
-    "def": "Microsoft's typed superset of JavaScript. It compiles to plain JS and became the default for large front-end codebases.",
+    "def": "Microsoft 推出的 JavaScript 类型超集。编译成普通 JS，成为大型前端项目的默认选择。",
     "kind": "term"
   },
   "monorepo": {
-    "term": "Monorepo",
+    "term": "单体仓库（Monorepo）",
     "year": "",
-    "def": "One repository holding many apps and packages, so they share code and change together.",
+    "def": "一个仓库装着许多应用和包，彼此共享代码、一起修改。",
     "kind": "term"
   },
   "jamstack": {
     "term": "JAMstack",
     "year": "2015",
-    "def": "JavaScript, APIs and Markup: pre-built pages on a CDN, with dynamic parts handled by APIs. Coined at Netlify.",
+    "def": "JavaScript、API 和 Markup（标记）：预先构建的网页放在 CDN 上，动态部分交给 API。由 Netlify 提出。",
     "kind": "term"
   },
   "postgres": {
     "term": "Postgres",
     "year": "1996",
-    "def": "PostgreSQL, an open-source relational database descended from Berkeley's POSTGRES project.",
+    "def": "PostgreSQL，开源的关系型数据库，源自伯克利的 POSTGRES 项目。",
     "kind": "term"
   },
   "edgefn": {
-    "term": "Edge function",
+    "term": "边缘函数",
     "year": "",
-    "def": "A small serverless function deployed to many locations at once, run in whichever one is closest to the user.",
+    "def": "部署到许多地点的小型无服务器函数，在离用户最近的地点运行。",
     "kind": "term"
   },
   "rsc": {
-    "term": "Server Components",
+    "term": "服务器组件（Server Components）",
     "year": "2020s",
-    "def": "React components that run only on the server and ship none of their own code to the browser.",
+    "def": "只在服务器上运行的 React 组件，自身代码一点也不会发送到浏览器。",
     "kind": "term"
   },
   "xhr": {
     "term": "XMLHttpRequest",
     "year": "1999",
-    "def": "The browser API behind Ajax. Microsoft shipped it in Internet Explorer 5; the other browsers copied it.",
+    "def": "Ajax 背后的浏览器 API。Microsoft 在 Internet Explorer 5 率先推出，其他浏览器随后跟进。",
     "kind": "term"
   },
   "tcpip": {
     "term": "TCP/IP",
     "year": "1983",
-    "def": "The internet's base protocols: IP moves packets, TCP makes them a reliable stream. Standard since 1983.",
+    "def": "互联网的基础协议：IP 搬运数据包，TCP 把它们变成可靠的数据流。1983 年起成为标准。",
     "kind": "term"
   },
   "lamp": {
     "term": "LAMP",
     "year": "1998",
-    "def": "Linux, Apache, MySQL and PHP (or Perl, or Python). The free default stack for 2000s websites.",
+    "def": "Linux、Apache、MySQL 和 PHP（或 Perl，或 Python）。2000 年代网站默认的免费技术栈。",
     "kind": "term"
   },
   "node": {
     "term": "Node.js",
     "year": "2009",
-    "def": "JavaScript outside the browser, on Chrome's V8 engine, with non-blocking I/O. One language on both sides of the wire.",
+    "def": "在浏览器之外运行的 JavaScript，基于 Chrome 的 V8 引擎，采用非阻塞 I/O。网线两端用同一种语言。",
     "kind": "term"
   },
   "rails": {
     "term": "Ruby on Rails",
     "year": "2004",
-    "def": "A full-stack MVC framework in Ruby. Made “convention over configuration” and database migrations mainstream.",
+    "def": "用 Ruby 写的全栈 MVC 框架，让“约定优于配置”和数据库迁移成为主流。",
     "kind": "term"
   },
   "jquery": {
     "term": "jQuery",
     "year": "2006",
-    "def": "A library that hid browser differences behind one $() function for selecting elements, events, animation and Ajax.",
+    "def": "用一个 $() 函数抹平浏览器差异的库：选取元素、事件、动画和 Ajax 都靠它。",
     "kind": "term"
   },
   "js": {
     "term": "JavaScript",
     "year": "1995",
-    "def": "The browser's scripting language, written by Brendan Eich at Netscape. Standardised as ECMAScript in 1997.",
+    "def": "浏览器的脚本语言，由 Brendan Eich 在 Netscape 写成。1997 年标准化为 ECMAScript。",
     "kind": "term"
   },
   "ajax": {
     "term": "Ajax",
     "year": "2005",
-    "def": "Asynchronous JavaScript and XML: fetch data in the background and update part of the page without a full reload.",
+    "def": "异步 JavaScript 与 XML：在后台获取数据，只更新页面的一部分，不必整页刷新。",
     "kind": "term"
   },
   "json": {
     "term": "JSON",
     "year": "~2001",
-    "def": "A small text format for data, popularised by Douglas Crockford. It replaced XML for most APIs.",
+    "def": "一种轻巧的数据文本格式，由 Douglas Crockford 推广。多数 API 都用它取代了 XML。",
     "kind": "term"
   },
   "rest": {
     "term": "REST",
     "year": "2000",
-    "def": "A style for APIs: resources live at URLs, and you act on them with GET, POST and DELETE.",
+    "def": "一种 API 风格：资源放在 URL 上，用 GET、POST、DELETE 来操作。",
     "kind": "term"
   },
   "http": {
     "term": "HTTP",
     "year": "1991",
-    "def": "HyperText Transfer Protocol. How browsers and servers talk: GET a URL, get back a status code, headers and a body.",
+    "def": "超文本传输协议。浏览器和服务器的对话方式：GET 一个 URL，拿回状态码、头部和正文。",
     "kind": "term"
   },
   "html": {
     "term": "HTML",
     "year": "1991",
-    "def": "HyperText Markup Language. Plain text with tags like '<'h1> and '<'a> that give a page its structure and its links.",
+    "def": "超文本标记语言。纯文本加上 '<'h1>、'<'a> 这类标签，赋予网页结构和链接。",
     "kind": "term"
   },
   "url": {
     "term": "URL",
     "year": "1990",
-    "def": "Uniform Resource Locator. An address like https://example.com/page: the protocol, the host, then the path.",
+    "def": "统一资源定位符。像 https://example.com/page 这样的网址：协议、主机，然后是路径。",
     "kind": "term"
   },
   "hypertext": {
-    "term": "Hypertext",
+    "term": "Hypertext（超文本）",
     "year": "1965",
-    "def": "Text with links you can follow to other text. Ted Nelson coined the word; the web made it global.",
+    "def": "含有链接、可以跳到其他文本的文本。Ted Nelson 创造了这个词，万维网让它走向全球。",
     "kind": "term"
   },
   "newsgroup": {
-    "term": "Newsgroup",
+    "term": "新闻组",
     "year": "1980",
-    "def": "A Usenet discussion group, the internet's message boards since 1980. alt.hypertext was one of thousands.",
+    "def": "Usenet 的讨论组，1980 年起就是互联网上的留言板。alt.hypertext 是成千上万个之一。",
     "kind": "term"
   },
   "mosaic": {
     "term": "Mosaic",
     "year": "1993",
-    "def": "The 1993 NCSA browser that put images inline with text and made the web popular.",
+    "def": "NCSA 1993 年的浏览器，让图片和文字一起显示，带动了万维网的普及。",
     "kind": "term"
   },
   "cgi": {
     "term": "CGI",
     "year": "1993",
-    "def": "Common Gateway Interface. The web server starts a program for each request and sends back whatever it prints.",
+    "def": "通用网关接口。每来一个请求，网页服务器就启动一个程序，再把它输出的内容发回去。",
     "kind": "term"
   },
   "perl": {
     "term": "Perl",
     "year": "1987",
-    "def": "Larry Wall's text-processing language, the default choice for CGI scripts in the 90s.",
+    "def": "Larry Wall 的文本处理语言，90 年代写 CGI 脚本的首选。",
     "kind": "term"
   },
   "php": {
     "term": "PHP",
     "year": "1995",
-    "def": "Rasmus Lerdorf's 1995 language: code mixed into HTML, run by the server on every request.",
+    "def": "Rasmus Lerdorf 1995 年的语言：代码混在 HTML 里，每个请求都由服务器执行。",
     "kind": "term"
   },
   "isp": {
     "term": "ISP",
     "year": "",
-    "def": "Internet service provider. The company whose modems you dialled into to get online.",
+    "def": "互联网服务提供商。你拨号连进它的调制解调器、才能上网的那家公司。",
     "kind": "term"
   },
   "dialup": {
-    "term": "Dial-up",
+    "term": "拨号上网",
     "year": "",
-    "def": "Getting online with a phone call. Nobody could use the phone while you surfed.",
+    "def": "打一通电话来上网。你上网时，谁都不能用电话。",
     "kind": "term"
   },
   "baud": {
     "term": "kbps / baud",
     "year": "",
-    "def": "Kilobits per second. A 28.8k modem moved about 3.6 KB a second, on a good day.",
+    "def": "每秒千比特。28.8k 调制解调器每秒约传 3.6 KB，还得是运气好的时候。",
     "kind": "term"
   },
   "modem": {
-    "term": "Modem",
+    "term": "调制解调器",
     "year": "",
-    "def": "Modulator-demodulator. Turns digital data into audio tones that travel down a phone line, and back again.",
+    "def": "调制解调器。把数字数据转成能在电话线上传送的声音，再转回来。",
     "kind": "term"
   },
   "colo": {
-    "term": "Colocation",
+    "term": "服务器托管",
     "year": "",
-    "def": "Renting rack space, power and bandwidth in someone else's data center for servers you bought and own.",
+    "def": "在别人的数据中心租用机柜空间、电力和带宽，放你自己买的服务器。",
     "kind": "term"
   },
   "apache": {
     "term": "Apache",
     "year": "1995",
-    "def": "Grew out of patches to the NCSA web server and was the most-used web server from 1996 into the 2010s.",
+    "def": "源自 NCSA 网页服务器的补丁，从 1996 年到 2010 年代都是使用最广的网页服务器。",
     "kind": "term"
   },
   "mysql": {
     "term": "MySQL",
     "year": "1995",
-    "def": "A fast, free relational database. The M in LAMP.",
+    "def": "快速、免费的关系型数据库。LAMP 里的 M。",
     "kind": "term"
   },
   "memcached": {
     "term": "memcached",
     "year": "2003",
-    "def": "An in-memory key-value cache written for LiveJournal. It saves the database from answering the same query again and again.",
+    "def": "为 LiveJournal 写的内存键值缓存，省得数据库一遍遍回答同样的查询。",
     "kind": "term"
   },
   "lb": {
-    "term": "Load balancer",
+    "term": "负载均衡器",
     "year": "",
-    "def": "A box or program that spreads incoming requests across several identical servers.",
+    "def": "把进来的请求分散到多台相同服务器上的设备或程序。",
     "kind": "term"
   },
   "css": {
     "term": "CSS",
     "year": "1996",
-    "def": "Cascading Style Sheets: rules for how HTML should look, kept apart from the content. Proposed in 1994, CSS1 in 1996.",
+    "def": "层叠样式表：规定 HTML 外观的规则，与内容分开。1994 年提出，1996 年推出 CSS1。",
     "kind": "term"
   },
   "mvc": {
     "term": "MVC",
     "year": "1979",
-    "def": "Model–View–Controller. Split an app into data, display, and the code connecting them. From Smalltalk.",
+    "def": "模型–视图–控制器。把应用分成数据、显示和连接两者的代码。源自 Smalltalk。",
     "kind": "term"
   },
   "vps": {
     "term": "VPS",
     "year": "",
-    "def": "Virtual private server. One physical machine split into several virtual ones, each with its own OS and root access.",
+    "def": "虚拟专用服务器。一台物理机切成几台虚拟机，各有自己的操作系统和 root 权限。",
     "kind": "term"
   },
   "ec2": {
     "term": "EC2",
     "year": "2006",
-    "def": "Amazon's rentable virtual servers, started with an API call. Launched 2006.",
+    "def": "Amazon 可租用的虚拟服务器，一个 API 调用就能启动。2006 年推出。",
     "kind": "term"
   },
   "s3": {
     "term": "S3",
     "year": "2006",
-    "def": "Amazon Simple Storage Service. Put any file at a URL and pay per gigabyte. Launched March 2006.",
+    "def": "Amazon Simple Storage Service。任何文件都能放到一个 URL 上，按 GB 付费。2006 年 3 月推出。",
     "kind": "term"
   },
   "paas": {
     "term": "PaaS",
     "year": "",
-    "def": "Platform as a service: you push code, the platform runs it. Heroku made it famous.",
+    "def": "平台即服务：你推送代码，平台负责运行。Heroku 让它出了名。",
     "kind": "term"
   },
   "cdn": {
     "term": "CDN",
     "year": "",
-    "def": "Content delivery network: copies of your files around the world, served from the closest one.",
+    "def": "内容分发网络：你的文件在世界各地都有副本，从最近的一份发出。",
     "kind": "term"
   },
   "spa": {
     "term": "SPA",
     "year": "",
-    "def": "Single-page app: one HTML page whose JavaScript draws every screen and fetches its own data.",
+    "def": "单页应用：只有一个 HTML 页面，由 JavaScript 绘制每个界面、自行获取数据。",
     "kind": "term"
   },
   "csr": {
     "term": "CSR",
     "year": "",
-    "def": "Client-side rendering: the browser builds the page with JavaScript. Fast later, slow to start.",
+    "def": "客户端渲染：浏览器用 JavaScript 拼出页面。之后很快，启动很慢。",
     "kind": "term"
   },
   "ssr": {
     "term": "SSR",
     "year": "",
-    "def": "Server-side rendering: the server sends finished HTML. Fast first paint, easy for search engines.",
+    "def": "服务端渲染：服务器发出完成的 HTML。首次绘制快，搜索引擎也好读。",
     "kind": "term"
   },
   "ssg": {
     "term": "SSG",
     "year": "",
-    "def": "Static site generation. Pages are rendered to HTML files at build time and served from a CDN.",
+    "def": "静态站点生成。构建时就把页面渲染成 HTML 文件，从 CDN 发出。",
     "kind": "term"
   },
   "isr": {
     "term": "ISR",
     "year": "2020",
-    "def": "Incremental static regeneration. Static pages rebuilt in the background after a time limit or on demand, without a full redeploy.",
+    "def": "增量静态再生成。静态页面在时限到了或按需时于后台重建，不必整体重新部署。",
     "kind": "term"
   },
   "hydration": {
-    "term": "Hydration",
+    "term": "水合（Hydration）",
     "year": "",
-    "def": "Running a server-rendered page's JavaScript in the browser so it attaches event handlers and becomes interactive.",
+    "def": "在浏览器运行服务器渲染页面的 JavaScript，挂上事件处理器，让页面可以交互。",
     "kind": "term"
   },
   "bundle": {
-    "term": "Bundle",
+    "term": "Bundle（打包文件）",
     "year": "",
-    "def": "All of an app's JavaScript squashed into a few files by a build tool.",
+    "def": "构建工具把应用所有的 JavaScript 压成少数几个文件。",
     "kind": "term"
   },
   "npm": {
     "term": "npm",
     "year": "2010",
-    "def": "The Node package manager and registry. One command installs a package and everything it depends on.",
+    "def": "Node 的包管理器与包仓库。一条命令就能安装一个包和它依赖的一切。",
     "kind": "term"
   },
   "v8": {
     "term": "V8",
     "year": "2008",
-    "def": "Chrome's JavaScript engine. It compiles JS to machine code, which made JavaScript fast enough for big apps and servers.",
+    "def": "Chrome 的 JavaScript 引擎。它把 JS 编译成机器码，让 JavaScript 快到能撑起大型应用和服务器。",
     "kind": "term"
   },
   "react": {
     "term": "React",
     "year": "2013",
-    "def": "A UI library from Facebook. Describe the UI for a given state and React works out the DOM changes.",
+    "def": "Facebook 的 UI 库。描述某个状态下的 UI，React 自己算出 DOM 要怎么改。",
     "kind": "term"
   },
   "docker": {
-    "term": "Containers / Docker",
+    "term": "容器／Docker",
     "year": "2013",
-    "def": "Packages an app with its whole environment into an image that runs the same on any machine.",
+    "def": "把应用连同整个环境打包成镜像，在任何机器上运行都一样。",
     "kind": "term"
   },
   "serverless": {
-    "term": "Serverless / Lambda",
+    "term": "无服务器／Lambda",
     "year": "2014",
-    "def": "Upload a function; the platform runs it per request and bills per call. Servers still exist, unseen.",
+    "def": "上传一个函数，平台每次请求就运行它、按调用次数计费。服务器还在，只是你看不到。",
     "kind": "term"
   },
   "git": {
     "term": "git push / CI",
     "year": "2005",
-    "def": "Sending commits to a shared repository. Platforms hook in so every push triggers a build, tests and a deploy.",
+    "def": "把 commit 推送到共享的仓库。平台挂上钩子，每次推送都会触发构建、测试和部署。",
     "kind": "term"
   },
   "api": {
     "term": "API",
     "year": "",
-    "def": "A defined way for one program to ask another for data or actions. On the web, usually HTTP.",
+    "def": "应用程序接口：一个程序向另一个程序要数据或请它做事的既定方式。在 Web 上通常走 HTTP。",
     "kind": "term"
   },
   "dns": {
     "term": "DNS",
     "year": "1983",
-    "def": "Domain Name System. Turns names like example.com into IP addresses via a worldwide hierarchy of servers.",
+    "def": "域名系统。通过遍布全球的分层服务器，把 example.com 这类名称转成 IP 地址。",
     "kind": "term"
   },
   "ttfb": {
     "term": "TTFB",
     "year": "",
-    "def": "Time to first byte: how long after the request the first byte of the response arrives.",
+    "def": "首字节时间：发出请求后，响应的第一个字节要多久才到。",
     "kind": "term"
   },
   "latency": {
-    "term": "Latency",
+    "term": "延迟",
     "year": "",
-    "def": "How long a round trip takes. Light in fibre covers about 200 km per millisecond, so distance always costs something.",
+    "def": "一次往返要花多久。光在光纤中每毫秒约走 200 公里，所以距离总有代价。",
     "kind": "term"
   },
   "streaming": {
-    "term": "Streaming",
+    "term": "流式传输",
     "year": "",
-    "def": "Sending a response in pieces as they're ready, so the browser can show the first parts early.",
+    "def": "响应准备好一块就发一块，让浏览器能提早显示最前面的部分。",
     "kind": "term"
   },
   "edge": {
-    "term": "Edge",
+    "term": "边缘",
     "year": "",
-    "def": "Running code in data centers close to users, instead of in one central region.",
+    "def": "在离用户近的数据中心运行代码，而不是集中在单一区域。",
     "kind": "term"
   },
   "browser": {
-    "term": "Browser",
+    "term": "浏览器",
     "year": "1990",
-    "def": "The program that fetches pages over HTTP and draws them. The first one, WorldWideWeb, was also an editor.",
+    "def": "通过 HTTP 获取网页并画出来的程序。第一个浏览器 WorldWideWeb 同时也是编辑器。",
     "kind": "term"
   },
   "server": {
-    "term": "Server",
+    "term": "服务器",
     "year": "1990",
-    "def": "A program, and the machine running it, that answers requests. The first web server was CERN httpd.",
+    "def": "响应请求的程序，以及运行它的机器。第一台网页服务器是 CERN httpd。",
     "kind": "term"
   }
 }

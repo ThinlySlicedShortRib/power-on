@@ -1,1077 +1,1077 @@
 {
-  "_person": "person",
+  "_person": "persona",
   "a2a": {
     "term": "Agent2Agent (A2A)",
     "year": "2025",
-    "def": "Google's open protocol for AI agents to find and message each other. Introduced April 2025, now at the Linux Foundation.",
+    "def": "Protocolo abierto de Google para que los agentes de IA se encuentren y se envíen mensajes. Presentado en abril de 2025, hoy en la Linux Foundation.",
     "kind": "term"
   },
   "signedoffer": {
-    "term": "Signed offer",
+    "term": "Oferta firmada",
     "year": "",
-    "def": "An offer both sides sign with keys, so the promise can be proved later. Illustrative; no standard yet.",
+    "def": "Una oferta que ambas partes firman con claves, para poder probar la promesa más adelante. Ilustrativo; aún no hay estándar.",
     "kind": "term"
   },
   "pKarpathy": {
     "term": "Andrej Karpathy",
     "year": "",
-    "def": "AI researcher, an OpenAI founding member and former head of AI at Tesla, who coined “vibe coding” in February 2025.",
+    "def": "Investigador de IA, miembro fundador de OpenAI y exjefe de IA en Tesla, que acuñó “vibe coding” en febrero de 2025.",
     "kind": "person"
   },
   "pHoward": {
     "term": "Jeremy Howard",
     "year": "",
-    "def": "Co-founder of fast.ai and Answer.AI, who proposed llms.txt in September 2024.",
+    "def": "Cofundador de fast.ai y Answer.AI, que propuso llms.txt en septiembre de 2024.",
     "kind": "person"
   },
   "computeruse": {
     "term": "Computer use",
     "year": "2024",
-    "def": "An AI model operating a computer: reading the screen, clicking, typing. Anthropic, public beta, October 2024.",
+    "def": "Un modelo de IA que maneja una computadora: lee la pantalla, hace clic, escribe. Anthropic, beta pública, octubre de 2024.",
     "kind": "term"
   },
   "operator": {
     "term": "Operator",
     "year": "2025",
-    "def": "OpenAI's browser-using agent, launched as a research preview on 23 January 2025.",
+    "def": "El agente de OpenAI que usa un navegador, lanzado como vista previa de investigación el 23 de enero de 2025.",
     "kind": "term"
   },
   "webmcp": {
     "term": "WebMCP",
     "year": "2026",
-    "def": "Proposed standard letting a page hand agents named tools to call. Early preview in Chrome 146, origin trial in 149.",
+    "def": "Estándar propuesto para que una página dé a los agentes herramientas con nombre que pueden llamar. Vista previa en Chrome 146, prueba de origen en 149.",
     "kind": "term"
   },
   "mcp": {
     "term": "MCP",
     "year": "2024",
-    "def": "Model Context Protocol: Anthropic's open standard (Nov 2024) for plugging AI models into tools and data.",
+    "def": "Model Context Protocol: el estándar abierto de Anthropic (nov. de 2024) para conectar modelos de IA con herramientas y datos.",
     "kind": "term"
   },
   "llmstxt": {
     "term": "llms.txt",
     "year": "2024",
-    "def": "A markdown map of a site for AI models, at /llms.txt. Proposed 2024; big AI firms haven't committed to it.",
+    "def": "Un mapa en Markdown de un sitio para modelos de IA, en /llms.txt. Propuesto en 2024; las grandes empresas de IA no se han comprometido.",
     "kind": "term"
   },
   "aiov": {
-    "term": "AI Overviews",
+    "term": "Resúmenes de IA (AI Overviews)",
     "year": "2024",
-    "def": "AI-written summaries at the top of Google results, rolled out to everyone in the US from 14 May 2024.",
+    "def": "Resúmenes escritos por IA arriba de los resultados de Google, disponibles para todos en EE. UU. desde el 14 de mayo de 2024.",
     "kind": "term"
   },
   "zeroclick": {
-    "term": "Zero-click search",
+    "term": "Búsqueda sin clics",
     "year": "",
-    "def": "A search that ends on the results page because the answer is already there, so no site gets a visit.",
+    "def": "Una búsqueda que termina en la página de resultados porque la respuesta ya está ahí, así que ningún sitio recibe la visita.",
     "kind": "term"
   },
   "acp": {
     "term": "Agentic Commerce Protocol",
     "year": "2025",
-    "def": "Agentic Commerce Protocol, from OpenAI and Stripe: lets an AI agent check out for you. Powers Instant Checkout.",
+    "def": "Protocolo de comercio agéntico de OpenAI y Stripe: permite que un agente de IA pague la compra por ti. Impulsa Instant Checkout.",
     "kind": "term"
   },
   "ap2": {
     "term": "AP2",
     "year": "2025",
-    "def": "Agent Payments Protocol, Google, September 2025. Signed “mandates” prove what you let an agent buy.",
+    "def": "Agent Payments Protocol, de Google, septiembre de 2025. Unos “mandatos” firmados prueban qué le permitiste comprar a un agente.",
     "kind": "term"
   },
   "x402": {
     "term": "x402",
     "year": "2025",
-    "def": "Coinbase's protocol (May 2025) that revives HTTP 402 so agents can pay per request.",
+    "def": "Protocolo de Coinbase (mayo de 2025) que revive el HTTP 402 para que los agentes paguen por petición.",
     "kind": "term"
   },
   "h402": {
     "term": "HTTP 402",
     "year": "1997",
-    "def": "“Payment Required”: an HTTP status code reserved since the 1990s and barely used, until now.",
+    "def": "“Payment Required” (pago requerido): un código de estado HTTP reservado desde los años noventa y casi sin uso, hasta ahora.",
     "kind": "term"
   },
   "webbotauth": {
     "term": "Web Bot Auth",
     "year": "2025",
-    "def": "Bots sign their requests with a published key, so sites can check who's really knocking.",
+    "def": "Los bots firman sus peticiones con una clave publicada, para que los sitios comprueben quién está llamando a la puerta de verdad.",
     "kind": "term"
   },
   "payperCrawl": {
     "term": "Pay per crawl",
     "year": "2025",
-    "def": "Cloudflare's private beta (1 July 2025) letting sites allow, block or charge AI crawlers, using HTTP 402 responses.",
+    "def": "Beta privada de Cloudflare (1 de julio de 2025): los sitios permiten, bloquean o cobran a los rastreadores de IA con respuestas HTTP 402.",
     "kind": "term"
   },
   "robots": {
     "term": "robots.txt",
     "year": "1994",
-    "def": "A text file telling crawlers what they may fetch. A 1994 convention, an official standard since 2022.",
+    "def": "Un archivo de texto que indica a los rastreadores qué pueden descargar. Convención de 1994, estándar oficial desde 2022.",
     "kind": "term"
   },
   "aicrawler": {
-    "term": "AI crawler",
+    "term": "Rastreador de IA",
     "year": "",
-    "def": "A bot that downloads pages to train or feed AI models, not to send you visitors.",
+    "def": "Un bot que descarga páginas para entrenar o alimentar modelos de IA, no para enviarte visitantes.",
     "kind": "term"
   },
   "ondevice": {
-    "term": "On-device model",
+    "term": "Modelo en el dispositivo",
     "year": "",
-    "def": "An AI model running on your own machine, so your data never leaves it.",
+    "def": "Un modelo de IA que corre en tu propia máquina, así tus datos nunca salen de ella.",
     "kind": "term"
   },
   "nano": {
     "term": "Gemini Nano",
     "year": "",
-    "def": "Google's smallest Gemini model, downloaded by Chrome to run its built-in AI APIs locally.",
+    "def": "El modelo Gemini más pequeño de Google, que Chrome descarga para ejecutar localmente sus APIs de IA integradas.",
     "kind": "term"
   },
   "builtinai": {
-    "term": "Built-in AI APIs",
+    "term": "APIs de IA integradas",
     "year": "2025",
-    "def": "Chrome APIs such as Summarizer, Translator and Language Detector, available in stable Chrome from version 138 (mid-2025).",
+    "def": "APIs de Chrome como Summarizer, Translator y Language Detector, disponibles en Chrome estable desde la versión 138 (mediados de 2025).",
     "kind": "term"
   },
   "genui": {
-    "term": "Generative UI",
+    "term": "Interfaz generativa",
     "year": "",
-    "def": "Screens assembled by a model on the fly, for one person and one task.",
+    "def": "Pantallas que un modelo arma sobre la marcha, para una persona y una tarea.",
     "kind": "term"
   },
   "vibecoding": {
     "term": "Vibe coding",
     "year": "2025",
-    "def": "Describing an app and letting AI write the code, mostly unread. Named by Andrej Karpathy, February 2025.",
+    "def": "Describir una app y dejar que la IA escriba el código, casi sin leerlo. Nombrado por Andrej Karpathy, febrero de 2025.",
     "kind": "term"
   },
   "agent": {
-    "term": "AI agent",
+    "term": "Agente de IA",
     "year": "",
-    "def": "An AI that takes actions, not just answers: it plans, uses tools or a browser, and keeps going.",
+    "def": "Una IA que actúa, no solo responde: planifica, usa herramientas o un navegador, y sigue adelante.",
     "kind": "term"
   },
   "llm": {
     "term": "LLM",
     "year": "",
-    "def": "Large language model: a neural network trained on huge amounts of text. The engine inside chatbots and agents.",
+    "def": "Modelo de lenguaje grande: una red neuronal entrenada con enormes cantidades de texto. El motor de los chatbots y los agentes.",
     "kind": "term"
   },
   "aibrowser": {
-    "term": "AI browser",
+    "term": "Navegador con IA",
     "year": "2025",
-    "def": "A browser built around an assistant that can read the open tabs and act on pages for you.",
+    "def": "Un navegador construido en torno a un asistente que puede leer tus pestañas abiertas y actuar en las páginas por ti.",
     "kind": "term"
   },
   "promptinj": {
-    "term": "Prompt injection",
+    "term": "Inyección de prompts",
     "year": "",
-    "def": "Hidden text on a page that tries to give an AI agent new orders. Why agents ask before risky steps.",
+    "def": "Texto oculto en una página que intenta dar nuevas órdenes a un agente de IA. Por eso los agentes preguntan antes de pasos riesgosos.",
     "kind": "term"
   },
   "a11ytree": {
-    "term": "Accessibility tree",
+    "term": "Árbol de accesibilidad",
     "year": "",
-    "def": "The browser's structured view of a page (roles, names, states) built for screen readers. Agents often read it too.",
+    "def": "La vista estructurada de una página (roles, nombres, estados) que arma el navegador para los lectores de pantalla. Los agentes también suelen leerla.",
     "kind": "term"
   },
   "origintrial": {
-    "term": "Origin trial",
+    "term": "Prueba de origen (origin trial)",
     "year": "",
-    "def": "A way for sites to try an experimental Chrome feature in production for a limited time.",
+    "def": "Una forma de que los sitios prueben en producción una función experimental de Chrome por tiempo limitado.",
     "kind": "term"
   },
   "instantcheckout": {
     "term": "Instant Checkout",
     "year": "2025",
-    "def": "Buying inside ChatGPT, launched 29 September 2025 for US users, starting with Etsy sellers. Built on the Agentic Commerce Protocol.",
+    "def": "Comprar dentro de ChatGPT, lanzado el 29 de septiembre de 2025 en EE. UU., empezando por vendedores de Etsy. Se basa en el Agentic Commerce Protocol.",
     "kind": "term"
   },
   "comet": {
     "term": "Comet",
     "year": "2025",
-    "def": "Perplexity's AI browser, released 9 July 2025 for top-tier subscribers and made free for everyone on 2 October 2025.",
+    "def": "El navegador con IA de Perplexity: desde el 9 de julio de 2025 para el plan más alto y gratis para todos desde el 2 de octubre de 2025.",
     "kind": "term"
   },
   "atlas": {
     "term": "ChatGPT Atlas",
     "year": "2025",
-    "def": "OpenAI's AI browser, launched for macOS on 21 October 2025.",
+    "def": "El navegador con IA de OpenAI, lanzado para macOS el 21 de octubre de 2025.",
     "kind": "term"
   },
   "dia": {
     "term": "Dia",
     "year": "2025",
-    "def": "An AI browser from The Browser Company, early access from June 2025. Atlassian bought the company.",
+    "def": "Un navegador con IA de The Browser Company, con acceso anticipado desde junio de 2025. Atlassian compró la empresa.",
     "kind": "term"
   },
   "autobrowse": {
     "term": "Auto browse",
     "year": "2026",
-    "def": "Gemini in Chrome's agent mode (2026). It clicks through sites in its own tab and pauses before buying.",
+    "def": "El modo agente de Gemini en Chrome (2026). Recorre sitios haciendo clic en su propia pestaña y se detiene antes de comprar.",
     "kind": "term"
   },
   "claudechrome": {
     "term": "Claude in Chrome",
     "year": "2025",
-    "def": "Anthropic's extension that lets Claude read and act on web pages. Generally available since August 2026.",
+    "def": "La extensión de Anthropic que permite a Claude leer páginas web y actuar en ellas. Disponible para todos desde agosto de 2026.",
     "kind": "term"
   },
   "anthropic": {
     "term": "Anthropic",
     "year": "2021",
-    "def": "An AI company that makes the Claude models; it introduced computer use and MCP.",
+    "def": "Una empresa de IA que crea los modelos Claude; presentó computer use y MCP.",
     "kind": "term"
   },
   "openai": {
     "term": "OpenAI",
     "year": "2015",
-    "def": "The AI company behind ChatGPT; it launched Operator and Instant Checkout.",
+    "def": "La empresa de IA detrás de ChatGPT; lanzó Operator e Instant Checkout.",
     "kind": "term"
   },
   "perplexity": {
     "term": "Perplexity",
     "year": "2022",
-    "def": "An AI answer-engine company; it makes the Comet browser.",
+    "def": "Una empresa de motores de respuesta con IA; crea el navegador Comet.",
     "kind": "term"
   },
   "cloudflare": {
     "term": "Cloudflare",
     "year": "2009",
-    "def": "A huge network in front of millions of sites, so its defaults decide how bots get treated.",
+    "def": "Una red enorme frente a millones de sitios, así que sus opciones por defecto deciden cómo se trata a los bots.",
     "kind": "term"
   },
   "stripe": {
     "term": "Stripe",
     "year": "2010",
-    "def": "A payments company; it co-developed the Agentic Commerce Protocol with OpenAI.",
+    "def": "Una empresa de pagos; desarrolló el Agentic Commerce Protocol junto con OpenAI.",
     "kind": "term"
   },
   "coinbase": {
     "term": "Coinbase",
     "year": "2012",
-    "def": "A cryptocurrency exchange; it published the x402 payment protocol in May 2025.",
+    "def": "Una plataforma de intercambio de criptomonedas; publicó el protocolo de pagos x402 en mayo de 2025.",
     "kind": "term"
   },
   "pew": {
     "term": "Pew Research Center",
     "year": "",
-    "def": "A nonpartisan US research organisation. Its July 2025 study tracked 68,879 real Google searches by 900 adults.",
+    "def": "Una organización de investigación estadounidense y apartidista. Su estudio de julio de 2025 siguió 68 879 búsquedas reales en Google de 900 adultos.",
     "kind": "term"
   },
   "pTBL": {
     "term": "Tim Berners-Lee",
     "year": "",
-    "def": "British computer scientist who invented the web at CERN in 1989–90 and founded the W3C in 1994.",
+    "def": "Científico de la computación británico que inventó la web en el CERN en 1989–90 y fundó el W3C en 1994.",
     "kind": "person"
   },
   "pSendall": {
     "term": "Mike Sendall",
     "year": "",
-    "def": "Tim's manager at CERN. He wrote “vague but exciting” on the proposal and let Tim build it anyway.",
+    "def": "El jefe de Tim en el CERN. Anotó “vago, pero emocionante” en la propuesta y aun así dejó que Tim la construyera.",
     "kind": "person"
   },
   "pCailliau": {
     "term": "Robert Cailliau",
     "year": "",
-    "def": "Belgian engineer at CERN who co-wrote the 1990 web proposal and championed it inside the lab.",
+    "def": "Ingeniero belga del CERN que coescribió la propuesta de la web de 1990 y la defendió dentro del laboratorio.",
     "kind": "person"
   },
   "pPellow": {
     "term": "Nicola Pellow",
     "year": "",
-    "def": "Maths student on placement at CERN who wrote the line-mode browser in 1990–91.",
+    "def": "Estudiante de matemáticas en prácticas en el CERN que escribió el navegador en modo línea en 1990–91.",
     "kind": "person"
   },
   "pKunz": {
     "term": "Paul Kunz",
     "year": "",
-    "def": "SLAC physicist who set up the first web server in North America, in December 1991.",
+    "def": "Físico de SLAC que montó el primer servidor web de Norteamérica, en diciembre de 1991.",
     "kind": "person"
   },
   "pAndreessen": {
     "term": "Marc Andreessen",
     "year": "",
-    "def": "Co-wrote Mosaic at NCSA as a student, then co-founded Netscape. Later a venture capitalist.",
+    "def": "Coescribió Mosaic en NCSA cuando era estudiante y luego cofundó Netscape. Más tarde, inversor de capital de riesgo.",
     "kind": "person"
   },
   "pBina": {
     "term": "Eric Bina",
     "year": "",
-    "def": "NCSA programmer who co-wrote Mosaic with Marc Andreessen and then co-founded Netscape.",
+    "def": "Programador de NCSA que coescribió Mosaic con Marc Andreessen y luego cofundó Netscape.",
     "kind": "person"
   },
   "pLerdorf": {
     "term": "Rasmus Lerdorf",
     "year": "",
-    "def": "Danish-Canadian programmer who created PHP in 1995.",
+    "def": "Programador danés-canadiense que creó PHP en 1995.",
     "kind": "person"
   },
   "pEich": {
     "term": "Brendan Eich",
     "year": "",
-    "def": "Created JavaScript at Netscape in 1995. Later co-founded Mozilla and Brave.",
+    "def": "Creó JavaScript en Netscape en 1995. Más tarde cofundó Mozilla y Brave.",
     "kind": "person"
   },
   "pLie": {
     "term": "Håkon Wium Lie",
     "year": "",
-    "def": "Norwegian web pioneer who proposed CSS at CERN in 1994, later CTO of the Opera browser.",
+    "def": "Pionero noruego de la web que propuso CSS en el CERN en 1994; luego fue CTO del navegador Opera.",
     "kind": "person"
   },
   "pGarrett": {
     "term": "Jesse James Garrett",
     "year": "",
-    "def": "User-experience designer at Adaptive Path who named Ajax in a February 2005 essay.",
+    "def": "Diseñador de experiencia de usuario en Adaptive Path que bautizó Ajax en un ensayo de febrero de 2005.",
     "kind": "person"
   },
   "pResig": {
     "term": "John Resig",
     "year": "",
-    "def": "Created jQuery in 2006, then worked at Mozilla and Khan Academy.",
+    "def": "Creó jQuery en 2006; luego trabajó en Mozilla y en Khan Academy.",
     "kind": "person"
   },
   "pDHH": {
     "term": "David Heinemeier Hansson",
     "year": "",
-    "def": "Danish programmer, known as DHH, who created Ruby on Rails at 37signals.",
+    "def": "Programador danés, conocido como DHH, que creó Ruby on Rails en 37signals.",
     "kind": "person"
   },
   "pDahl": {
     "term": "Ryan Dahl",
     "year": "",
-    "def": "Created Node.js in 2009, then Deno in 2018 to fix what he regretted about Node.",
+    "def": "Creó Node.js en 2009 y luego Deno en 2018, para corregir lo que lamentaba de Node.",
     "kind": "person"
   },
   "pWalke": {
     "term": "Jordan Walke",
     "year": "",
-    "def": "Facebook engineer who created React.",
+    "def": "Ingeniero de Facebook que creó React.",
     "kind": "person"
   },
   "pYou": {
     "term": "Evan You",
     "year": "",
-    "def": "Independent developer who created Vue (2014) and the Vite build tool (2020).",
+    "def": "Desarrollador independiente que creó Vue (2014) y la herramienta de compilación Vite (2020).",
     "kind": "person"
   },
   "pRauch": {
     "term": "Guillermo Rauch",
     "year": "",
-    "def": "Created Socket.IO and founded Vercel, the company behind Next.js.",
+    "def": "Creó Socket.IO y fundó Vercel, la empresa detrás de Next.js.",
     "kind": "person"
   },
   "pHarris": {
     "term": "Rich Harris",
     "year": "",
-    "def": "Created Svelte and the Rollup bundler while building interactive news graphics.",
+    "def": "Creó Svelte y el empaquetador Rollup mientras hacía gráficos interactivos para noticias.",
     "kind": "person"
   },
   "pQSF": {
     "term": "Quentin Stafford-Fraser",
     "year": "",
-    "def": "Cambridge computer scientist who, with Paul Jardetzky, wired up the Trojan Room coffee-pot camera in 1991.",
+    "def": "Científico de la computación de Cambridge que, con Paul Jardetzky, montó la cámara de la cafetera de la Trojan Room en 1991.",
     "kind": "person"
   },
   "homepage": {
-    "term": "Homepage",
+    "term": "Página personal",
     "year": "",
-    "def": "A personal website, usually a few hand-written HTML pages about you, your pets and your favourite links.",
+    "def": "Un sitio web personal: casi siempre unas pocas páginas HTML escritas a mano sobre ti, tus mascotas y tus enlaces favoritos.",
     "kind": "term"
   },
   "sharedhost": {
-    "term": "Shared hosting",
+    "term": "Hosting compartido",
     "year": "",
-    "def": "One server shared by hundreds of sites, each in a folder. Cheap, and home to most 90s pages.",
+    "def": "Un servidor compartido por cientos de sitios, cada uno en una carpeta. Barato, y hogar de la mayoría de las páginas de los 90.",
     "kind": "term"
   },
   "crawler": {
-    "term": "Search crawler",
+    "term": "Rastreador de buscadores",
     "year": "",
-    "def": "A search engine's program that downloads pages to index them. Early crawlers didn't run JavaScript, so client-rendered pages looked empty.",
+    "def": "El programa de un buscador que descarga páginas para indexarlas. Los primeros no ejecutaban JavaScript, así que las páginas renderizadas en el cliente se veían vacías.",
     "kind": "term"
   },
   "infinite": {
-    "term": "Infinite scroll",
+    "term": "Scroll infinito",
     "year": "",
-    "def": "Loading more items automatically as you near the bottom, so the page never ends. Everywhere from about 2010.",
+    "def": "Cargar más elementos automáticamente al acercarte al final, para que la página nunca termine. Omnipresente desde 2010, más o menos.",
     "kind": "term"
   },
   "production": {
-    "term": "Production",
+    "term": "Producción",
     "year": "",
-    "def": "The live environment real users hit, as opposed to a staging or preview deployment.",
+    "def": "El entorno en vivo que usan los usuarios reales, a diferencia de un despliegue de staging o de vista previa.",
     "kind": "term"
   },
   "trojan": {
-    "term": "Trojan Room coffee pot",
+    "term": "Cafetera de la Trojan Room",
     "year": "1991",
-    "def": "A coffee pot at Cambridge University's Computer Lab. On camera from 1991, on the web 1993–2001.",
+    "def": "Una cafetera del Laboratorio de Computación de la Universidad de Cambridge. En cámara desde 1991, en la web de 1993 a 2001.",
     "kind": "term"
   },
   "webcam": {
     "term": "Webcam",
     "year": "",
-    "def": "A camera that publishes images to the web. The Trojan Room coffee pot is usually called the first famous one.",
+    "def": "Una cámara que publica imágenes en la web. La cafetera de la Trojan Room suele considerarse la primera famosa.",
     "kind": "term"
   },
   "nextstep": {
     "term": "NeXTSTEP",
     "year": "1989",
-    "def": "The operating system on NeXT computers. It later became the core of Mac OS X.",
+    "def": "El sistema operativo de las computadoras NeXT. Más tarde se convirtió en el núcleo de Mac OS X.",
     "kind": "term"
   },
   "nextcube": {
     "term": "NeXTcube",
     "year": "1990",
-    "def": "A black workstation from NeXT, Steve Jobs' company after Apple. The first web server ran on one.",
+    "def": "Una estación de trabajo negra de NeXT, la empresa de Steve Jobs después de Apple. El primer servidor web corría en una.",
     "kind": "term"
   },
   "wwwapp": {
-    "term": "WorldWideWeb (the app)",
+    "term": "WorldWideWeb (la app)",
     "year": "1990",
-    "def": "The first browser, which could also edit pages. Written by Tim Berners-Lee in 1990.",
+    "def": "El primer navegador, que también podía editar páginas. Escrito por Tim Berners-Lee en 1990.",
     "kind": "term"
   },
   "linemode": {
-    "term": "Line-mode browser",
+    "term": "Navegador en modo línea",
     "year": "1991",
-    "def": "A text-only browser by Nicola Pellow that ran on any terminal. Links were numbers you typed.",
+    "def": "Un navegador solo de texto, de Nicola Pellow, que funcionaba en cualquier terminal. Los enlaces eran números que escribías.",
     "kind": "term"
   },
   "terminal": {
     "term": "Terminal",
     "year": "",
-    "def": "A screen and keyboard with no real computer inside. It showed text from a shared machine.",
+    "def": "Una pantalla y un teclado sin una computadora de verdad adentro. Mostraba texto de una máquina compartida.",
     "kind": "term"
   },
   "cern": {
     "term": "CERN",
     "year": "1954",
-    "def": "The European Organization for Nuclear Research, the particle physics lab near Geneva where the web was invented.",
+    "def": "La Organización Europea para la Investigación Nuclear, el laboratorio de física de partículas cerca de Ginebra donde se inventó la web.",
     "kind": "term"
   },
   "slac": {
     "term": "SLAC",
     "year": "",
-    "def": "Stanford Linear Accelerator Center in California. It ran the first web server outside Europe, from December 1991.",
+    "def": "Stanford Linear Accelerator Center, en California. Desde diciembre de 1991 tuvo el primer servidor web fuera de Europa.",
     "kind": "term"
   },
   "w3c": {
     "term": "W3C",
     "year": "1994",
-    "def": "The World Wide Web Consortium, founded by Tim Berners-Lee to write the web's standards.",
+    "def": "El World Wide Web Consortium, fundado por Tim Berners-Lee para escribir los estándares de la web.",
     "kind": "term"
   },
   "arpanet": {
     "term": "ARPANET",
     "year": "1969",
-    "def": "The US research network that grew into the internet. It sent its first message in 1969.",
+    "def": "La red de investigación de EE. UU. que dio origen a internet. Envió su primer mensaje en 1969.",
     "kind": "term"
   },
   "httpd": {
     "term": "httpd",
     "year": "1990",
-    "def": "HTTP daemon: the web server program. CERN httpd came first; NCSA HTTPd followed and Apache grew out of it.",
+    "def": "HTTP daemon: el programa servidor web. Primero llegó CERN httpd; luego NCSA HTTPd, del que surgió Apache.",
     "kind": "term"
   },
   "ncsa": {
     "term": "NCSA",
     "year": "",
-    "def": "National Center for Supercomputing Applications at the University of Illinois. It built Mosaic and the NCSA HTTPd server.",
+    "def": "National Center for Supercomputing Applications, en la Universidad de Illinois. Creó Mosaic y el servidor NCSA HTTPd.",
     "kind": "term"
   },
   "netscape": {
     "term": "Netscape Navigator",
     "year": "1994",
-    "def": "The browser that ruled the mid-90s. Netscape's 1995 IPO kicked off the dot-com boom.",
+    "def": "El navegador que dominó a mediados de los 90. La salida a bolsa de Netscape en 1995 desató el auge puntocom.",
     "kind": "term"
   },
   "ie": {
     "term": "Internet Explorer",
     "year": "1995",
-    "def": "Microsoft's browser. Bundled with Windows, it won the first browser war, then stood still for years. Retired in 2022.",
+    "def": "El navegador de Microsoft. Incluido con Windows, ganó la primera guerra de los navegadores y luego se estancó por años. Retirado en 2022.",
     "kind": "term"
   },
   "browserwars": {
-    "term": "Browser wars",
+    "term": "Guerra de los navegadores",
     "year": "1995",
-    "def": "Netscape against Internet Explorer, roughly 1995–2001. Both raced to add incompatible features; IE won by shipping with Windows.",
+    "def": "Netscape contra Internet Explorer, aproximadamente de 1995 a 2001. Ambos corrieron a sumar funciones incompatibles; IE ganó por venir con Windows.",
     "kind": "term"
   },
   "sun": {
     "term": "Sun Microsystems",
     "year": "",
-    "def": "Sun Microsystems, maker of Java. The JavaScript name came from a deal with Sun.",
+    "def": "Sun Microsystems, creadora de Java. El nombre JavaScript surgió de un acuerdo con Sun.",
     "kind": "term"
   },
   "geocities": {
     "term": "GeoCities",
     "year": "1994",
-    "def": "Free homepages sorted into themed “neighbourhoods”. Yahoo bought it in 1999 and shut it down in 2009.",
+    "def": "Páginas personales gratis, ordenadas en “vecindarios” temáticos. Yahoo la compró en 1999 y la cerró en 2009.",
     "kind": "term"
   },
   "webring": {
     "term": "Webring",
     "year": "",
-    "def": "A loop of sites on one topic, linked by prev and next buttons. 90s discovery, before good search.",
+    "def": "Un círculo de sitios sobre un tema, unidos por botones de anterior y siguiente. Así se descubrían sitios en los 90, antes de los buenos buscadores.",
     "kind": "term"
   },
   "guestbook": {
-    "term": "Guestbook",
+    "term": "Libro de visitas",
     "year": "",
-    "def": "A page where visitors left a public message, usually run by a CGI script.",
+    "def": "Una página donde los visitantes dejaban un mensaje público, casi siempre manejada por un script CGI.",
     "kind": "term"
   },
   "hitcounter": {
-    "term": "Hit counter",
+    "term": "Contador de visitas",
     "year": "",
-    "def": "A CGI script that counted page loads and showed the total as odometer digits.",
+    "def": "Un script CGI que contaba las cargas de la página y mostraba el total con dígitos de odómetro.",
     "kind": "term"
   },
   "y2k": {
     "term": "Y2K",
     "year": "2000",
-    "def": "The fear that two-digit years would break software on 1 January 2000. Years of fixes meant little did.",
+    "def": "El temor a que los años de dos dígitos rompieran el software el 1 de enero de 2000. Tras años de arreglos, casi nada falló.",
     "kind": "term"
   },
   "dotcom": {
-    "term": "Dot-com bubble",
+    "term": "Burbuja puntocom",
     "year": "2000",
-    "def": "The late-90s internet investment frenzy. Tech stocks peaked in March 2000, then lost about 78%.",
+    "def": "El frenesí inversor en internet de fines de los 90. Las tecnológicas tocaron techo en marzo de 2000 y luego cayeron cerca del 78 %.",
     "kind": "term"
   },
   "flash": {
     "term": "Flash",
     "year": "1996",
-    "def": "A browser plug-in for animation, games and video, huge in the 2000s. Adobe ended support at the end of 2020.",
+    "def": "Un plug-in del navegador para animaciones, juegos y video, enorme en los 2000. Adobe dejó de darle soporte a fines de 2020.",
     "kind": "term"
   },
   "gmail": {
     "term": "Gmail",
     "year": "2004",
-    "def": "Google's webmail, launched 1 April 2004 with 1 GB of storage and a no-reload interface.",
+    "def": "El correo web de Google, lanzado el 1 de abril de 2004 con 1 GB de almacenamiento y una interfaz sin recargas.",
     "kind": "term"
   },
   "gmaps": {
     "term": "Google Maps",
     "year": "2005",
-    "def": "Google's 2005 map you could drag smoothly, loading tiles in the background with Ajax.",
+    "def": "El mapa de Google de 2005 que podías arrastrar con fluidez, cargando mosaicos en segundo plano con Ajax.",
     "kind": "term"
   },
   "web20": {
     "term": "Web 2.0",
     "year": "2004",
-    "def": "A label, popularised by Tim O'Reilly's 2004 conference, for sites built on user content, sharing and rich in-browser interaction.",
+    "def": "Una etiqueta, popularizada por la conferencia de Tim O'Reilly de 2004, para sitios basados en contenido de usuarios, compartir e interacción rica en el navegador.",
     "kind": "term"
   },
   "beta": {
-    "term": "Perpetual beta",
+    "term": "Beta perpetua",
     "year": "",
-    "def": "In the 2000s products stayed labelled “beta” for years. Gmail only dropped the badge in July 2009.",
+    "def": "En los 2000, los productos seguían marcados como “beta” durante años. Gmail no quitó esa etiqueta hasta julio de 2009.",
     "kind": "term"
   },
   "blog": {
     "term": "Blog",
     "year": "1999",
-    "def": "Short for weblog: a personal site of dated posts, newest first.",
+    "def": "Abreviatura de weblog: un sitio personal con entradas fechadas, la más reciente primero.",
     "kind": "term"
   },
   "rss": {
     "term": "RSS",
     "year": "1999",
-    "def": "An XML feed of a site's latest posts that readers could subscribe to in a feed reader.",
+    "def": "Un feed XML con las últimas entradas de un sitio, al que podías suscribirte desde un lector de feeds.",
     "kind": "term"
   },
   "django": {
     "term": "Django",
     "year": "2005",
-    "def": "A Python web framework built at the Lawrence Journal-World newspaper in Kansas.",
+    "def": "Un framework web de Python creado en el periódico Lawrence Journal-World, en Kansas.",
     "kind": "term"
   },
   "aws": {
     "term": "AWS",
     "year": "2006",
-    "def": "Amazon Web Services: renting Amazon's infrastructure by the hour. S3 and EC2 launched in 2006.",
+    "def": "Amazon Web Services: alquilar la infraestructura de Amazon por hora. S3 y EC2 se lanzaron en 2006.",
     "kind": "term"
   },
   "useast": {
     "term": "us-east-1",
     "year": "",
-    "def": "AWS's oldest, busiest region, in Virginia. When it has a bad day, the internet notices.",
+    "def": "La región más antigua y concurrida de AWS, en Virginia. Cuando tiene un mal día, internet lo nota.",
     "kind": "term"
   },
   "iphone": {
     "term": "iPhone",
     "year": "2007",
-    "def": "Apple's 2007 phone with a full web browser. It made the mobile web mainstream, and never supported Flash.",
+    "def": "El teléfono de Apple de 2007, con un navegador web completo. Hizo masiva la web móvil, y nunca fue compatible con Flash.",
     "kind": "term"
   },
   "heroku": {
     "term": "Heroku",
     "year": "2007",
-    "def": "A platform where deploying meant running git push heroku master. It made PaaS popular.",
+    "def": "Una plataforma donde desplegar era ejecutar git push heroku master. Popularizó el PaaS.",
     "kind": "term"
   },
   "backbone": {
     "term": "Backbone.js",
     "year": "2010",
-    "def": "A small library by Jeremy Ashkenas that gave browser apps models, views and a router.",
+    "def": "Una pequeña biblioteca de Jeremy Ashkenas que dio a las apps del navegador modelos, vistas y un enrutador.",
     "kind": "term"
   },
   "angularjs": {
     "term": "AngularJS",
     "year": "2010",
-    "def": "Google's framework with two-way data binding and templates full of '{{' '}}'. Rewritten from scratch as Angular in 2016.",
+    "def": "El framework de Google con enlace de datos bidireccional y plantillas llenas de '{{' '}}'. Reescrito desde cero como Angular en 2016.",
     "kind": "term"
   },
   "jsconf": {
     "term": "JSConf",
     "year": "2009",
-    "def": "A community-run series of JavaScript conferences, where Node.js and React were both first shown.",
+    "def": "Una serie de conferencias de JavaScript organizadas por la comunidad, donde se presentaron por primera vez Node.js y React.",
     "kind": "term"
   },
   "jsx": {
     "term": "JSX",
     "year": "2013",
-    "def": "React's syntax for writing HTML-like tags inside JavaScript. It compiles to plain function calls.",
+    "def": "La sintaxis de React para escribir etiquetas tipo HTML dentro de JavaScript. Se compila a simples llamadas a funciones.",
     "kind": "term"
   },
   "leftpad": {
     "term": "left-pad",
     "year": "2016",
-    "def": "An 11-line npm package. Unpublished in March 2016, it broke thousands of builds.",
+    "def": "Un paquete de npm de 11 líneas. Al retirarse en marzo de 2016, rompió miles de compilaciones.",
     "kind": "term"
   },
   "responsive": {
-    "term": "Responsive design",
+    "term": "Diseño responsivo",
     "year": "2010",
-    "def": "One layout that adapts to any screen with CSS media queries. Named by Ethan Marcotte in 2010.",
+    "def": "Un solo diseño que se adapta a cualquier pantalla con media queries de CSS. Nombrado por Ethan Marcotte en 2010.",
     "kind": "term"
   },
   "flat": {
-    "term": "Flat design",
+    "term": "Diseño plano",
     "year": "",
-    "def": "The early-2010s move from glossy, realistic textures to plain shapes and colour. Google's Material Design (2014) added paper-like shadows back.",
+    "def": "El paso, a inicios de los 2010, de texturas brillantes y realistas a formas y colores planos. Material Design de Google (2014) recuperó sombras tipo papel.",
     "kind": "term"
   },
   "kubernetes": {
     "term": "Kubernetes",
     "year": "2014",
-    "def": "Google's open-source system for running containers across a cluster: scheduling, restarts and scaling.",
+    "def": "El sistema de código abierto de Google para ejecutar contenedores en un clúster: planificación, reinicios y escalado.",
     "kind": "term"
   },
   "deno": {
     "term": "Deno",
     "year": "2018",
-    "def": "A JavaScript and TypeScript runtime by Ryan Dahl: secure by default, with TypeScript built in.",
+    "def": "Un entorno de ejecución de JavaScript y TypeScript de Ryan Dahl: seguro por defecto, con TypeScript integrado.",
     "kind": "term"
   },
   "vue": {
     "term": "Vue",
     "year": "2014",
-    "def": "A front-end framework by Evan You: HTML templates plus reactive data, adoptable one page at a time.",
+    "def": "Un framework de front-end de Evan You: plantillas HTML con datos reactivos, adoptable página por página.",
     "kind": "term"
   },
   "nextjs": {
     "term": "Next.js",
     "year": "2016",
-    "def": "Vercel's React framework for server rendering, routing and static generation.",
+    "def": "El framework de React de Vercel para renderizado en el servidor, enrutamiento y generación estática.",
     "kind": "term"
   },
   "svelte": {
     "term": "Svelte",
     "year": "2016",
-    "def": "A framework by Rich Harris that compiles components to plain JavaScript at build time, with no runtime library.",
+    "def": "Un framework de Rich Harris que compila los componentes a JavaScript simple al compilar, sin biblioteca en tiempo de ejecución.",
     "kind": "term"
   },
   "socketio": {
     "term": "Socket.IO",
     "year": "2010",
-    "def": "A library by Guillermo Rauch for real-time two-way messages between browser and server.",
+    "def": "Una biblioteca de Guillermo Rauch para mensajes bidireccionales en tiempo real entre navegador y servidor.",
     "kind": "term"
   },
   "rollup": {
     "term": "Rollup",
     "year": "2015",
-    "def": "A JavaScript module bundler by Rich Harris, known for tree-shaking unused code.",
+    "def": "Un empaquetador de módulos de JavaScript de Rich Harris, conocido por eliminar código sin usar con tree-shaking.",
     "kind": "term"
   },
   "vite": {
     "term": "Vite",
     "year": "2020",
-    "def": "Evan You's build tool (2020) with a near-instant dev server.",
+    "def": "La herramienta de compilación de Evan You (2020), con un servidor de desarrollo casi instantáneo.",
     "kind": "term"
   },
   "typescript": {
     "term": "TypeScript",
     "year": "2012",
-    "def": "Microsoft's typed superset of JavaScript. It compiles to plain JS and became the default for large front-end codebases.",
+    "def": "El superconjunto tipado de JavaScript de Microsoft. Compila a JS simple y se volvió lo habitual en grandes proyectos front-end.",
     "kind": "term"
   },
   "monorepo": {
     "term": "Monorepo",
     "year": "",
-    "def": "One repository holding many apps and packages, so they share code and change together.",
+    "def": "Un solo repositorio con muchas apps y paquetes, que comparten código y cambian juntos.",
     "kind": "term"
   },
   "jamstack": {
     "term": "JAMstack",
     "year": "2015",
-    "def": "JavaScript, APIs and Markup: pre-built pages on a CDN, with dynamic parts handled by APIs. Coined at Netlify.",
+    "def": "JavaScript, APIs y Markup: páginas pregeneradas en un CDN, con las partes dinámicas a cargo de APIs. Término acuñado en Netlify.",
     "kind": "term"
   },
   "postgres": {
     "term": "Postgres",
     "year": "1996",
-    "def": "PostgreSQL, an open-source relational database descended from Berkeley's POSTGRES project.",
+    "def": "PostgreSQL, una base de datos relacional de código abierto que desciende del proyecto POSTGRES de Berkeley.",
     "kind": "term"
   },
   "edgefn": {
-    "term": "Edge function",
+    "term": "Función edge",
     "year": "",
-    "def": "A small serverless function deployed to many locations at once, run in whichever one is closest to the user.",
+    "def": "Una pequeña función serverless desplegada en muchas ubicaciones a la vez, que se ejecuta en la más cercana al usuario.",
     "kind": "term"
   },
   "rsc": {
     "term": "Server Components",
     "year": "2020s",
-    "def": "React components that run only on the server and ship none of their own code to the browser.",
+    "def": "Componentes de React que corren solo en el servidor y no envían nada de su propio código al navegador.",
     "kind": "term"
   },
   "xhr": {
     "term": "XMLHttpRequest",
     "year": "1999",
-    "def": "The browser API behind Ajax. Microsoft shipped it in Internet Explorer 5; the other browsers copied it.",
+    "def": "La API del navegador detrás de Ajax. Microsoft la incluyó en Internet Explorer 5; los demás navegadores la copiaron.",
     "kind": "term"
   },
   "tcpip": {
     "term": "TCP/IP",
     "year": "1983",
-    "def": "The internet's base protocols: IP moves packets, TCP makes them a reliable stream. Standard since 1983.",
+    "def": "Los protocolos base de internet: IP mueve paquetes y TCP los convierte en un flujo confiable. Estándar desde 1983.",
     "kind": "term"
   },
   "lamp": {
     "term": "LAMP",
     "year": "1998",
-    "def": "Linux, Apache, MySQL and PHP (or Perl, or Python). The free default stack for 2000s websites.",
+    "def": "Linux, Apache, MySQL y PHP (o Perl, o Python). El stack gratuito por defecto de los sitios web de los 2000.",
     "kind": "term"
   },
   "node": {
     "term": "Node.js",
     "year": "2009",
-    "def": "JavaScript outside the browser, on Chrome's V8 engine, with non-blocking I/O. One language on both sides of the wire.",
+    "def": "JavaScript fuera del navegador, sobre el motor V8 de Chrome, con E/S no bloqueante. Un solo lenguaje a ambos lados del cable.",
     "kind": "term"
   },
   "rails": {
     "term": "Ruby on Rails",
     "year": "2004",
-    "def": "A full-stack MVC framework in Ruby. Made “convention over configuration” and database migrations mainstream.",
+    "def": "Un framework MVC full-stack en Ruby. Popularizó “convención sobre configuración” y las migraciones de base de datos.",
     "kind": "term"
   },
   "jquery": {
     "term": "jQuery",
     "year": "2006",
-    "def": "A library that hid browser differences behind one $() function for selecting elements, events, animation and Ajax.",
+    "def": "Una biblioteca que ocultaba las diferencias entre navegadores tras una sola función $() para seleccionar elementos, eventos, animaciones y Ajax.",
     "kind": "term"
   },
   "js": {
     "term": "JavaScript",
     "year": "1995",
-    "def": "The browser's scripting language, written by Brendan Eich at Netscape. Standardised as ECMAScript in 1997.",
+    "def": "El lenguaje de scripts del navegador, escrito por Brendan Eich en Netscape. Estandarizado como ECMAScript en 1997.",
     "kind": "term"
   },
   "ajax": {
     "term": "Ajax",
     "year": "2005",
-    "def": "Asynchronous JavaScript and XML: fetch data in the background and update part of the page without a full reload.",
+    "def": "JavaScript y XML asíncronos: traer datos en segundo plano y actualizar parte de la página sin recargarla entera.",
     "kind": "term"
   },
   "json": {
     "term": "JSON",
     "year": "~2001",
-    "def": "A small text format for data, popularised by Douglas Crockford. It replaced XML for most APIs.",
+    "def": "Un pequeño formato de texto para datos, popularizado por Douglas Crockford. Reemplazó a XML en la mayoría de las APIs.",
     "kind": "term"
   },
   "rest": {
     "term": "REST",
     "year": "2000",
-    "def": "A style for APIs: resources live at URLs, and you act on them with GET, POST and DELETE.",
+    "def": "Un estilo de API: los recursos viven en URLs y actúas sobre ellos con GET, POST y DELETE.",
     "kind": "term"
   },
   "http": {
     "term": "HTTP",
     "year": "1991",
-    "def": "HyperText Transfer Protocol. How browsers and servers talk: GET a URL, get back a status code, headers and a body.",
+    "def": "Protocolo de transferencia de hipertexto. Así hablan navegadores y servidores: GET a una URL y vuelven un código de estado, encabezados y un cuerpo.",
     "kind": "term"
   },
   "html": {
     "term": "HTML",
     "year": "1991",
-    "def": "HyperText Markup Language. Plain text with tags like '<'h1> and '<'a> that give a page its structure and its links.",
+    "def": "Lenguaje de marcado de hipertexto. Texto plano con etiquetas como '<'h1> y '<'a> que dan a la página su estructura y sus enlaces.",
     "kind": "term"
   },
   "url": {
     "term": "URL",
     "year": "1990",
-    "def": "Uniform Resource Locator. An address like https://example.com/page: the protocol, the host, then the path.",
+    "def": "Localizador uniforme de recursos. Una dirección como https://example.com/page: el protocolo, el host y luego la ruta.",
     "kind": "term"
   },
   "hypertext": {
-    "term": "Hypertext",
+    "term": "Hipertexto",
     "year": "1965",
-    "def": "Text with links you can follow to other text. Ted Nelson coined the word; the web made it global.",
+    "def": "Texto con enlaces que puedes seguir hacia otros textos. Ted Nelson acuñó la palabra; la web lo volvió global.",
     "kind": "term"
   },
   "newsgroup": {
-    "term": "Newsgroup",
+    "term": "Grupo de noticias",
     "year": "1980",
-    "def": "A Usenet discussion group, the internet's message boards since 1980. alt.hypertext was one of thousands.",
+    "def": "Un grupo de discusión de Usenet, los foros de internet desde 1980. alt.hypertext era uno entre miles.",
     "kind": "term"
   },
   "mosaic": {
     "term": "Mosaic",
     "year": "1993",
-    "def": "The 1993 NCSA browser that put images inline with text and made the web popular.",
+    "def": "El navegador de NCSA de 1993 que mostró imágenes junto al texto e hizo popular la web.",
     "kind": "term"
   },
   "cgi": {
     "term": "CGI",
     "year": "1993",
-    "def": "Common Gateway Interface. The web server starts a program for each request and sends back whatever it prints.",
+    "def": "Common Gateway Interface. El servidor web inicia un programa por cada petición y devuelve lo que este imprime.",
     "kind": "term"
   },
   "perl": {
     "term": "Perl",
     "year": "1987",
-    "def": "Larry Wall's text-processing language, the default choice for CGI scripts in the 90s.",
+    "def": "El lenguaje de procesamiento de texto de Larry Wall, la opción por defecto para scripts CGI en los 90.",
     "kind": "term"
   },
   "php": {
     "term": "PHP",
     "year": "1995",
-    "def": "Rasmus Lerdorf's 1995 language: code mixed into HTML, run by the server on every request.",
+    "def": "El lenguaje de Rasmus Lerdorf de 1995: código mezclado con HTML, que el servidor ejecuta en cada petición.",
     "kind": "term"
   },
   "isp": {
     "term": "ISP",
     "year": "",
-    "def": "Internet service provider. The company whose modems you dialled into to get online.",
+    "def": "Proveedor de servicios de internet. La empresa a cuyos módems llamabas para conectarte.",
     "kind": "term"
   },
   "dialup": {
-    "term": "Dial-up",
+    "term": "Acceso telefónico",
     "year": "",
-    "def": "Getting online with a phone call. Nobody could use the phone while you surfed.",
+    "def": "Conectarse a internet con una llamada telefónica. Mientras navegabas, nadie podía usar el teléfono.",
     "kind": "term"
   },
   "baud": {
-    "term": "kbps / baud",
+    "term": "kbps / baudios",
     "year": "",
-    "def": "Kilobits per second. A 28.8k modem moved about 3.6 KB a second, on a good day.",
+    "def": "Kilobits por segundo. Un módem de 28.8k movía unos 3.6 KB por segundo, en un buen día.",
     "kind": "term"
   },
   "modem": {
-    "term": "Modem",
+    "term": "Módem",
     "year": "",
-    "def": "Modulator-demodulator. Turns digital data into audio tones that travel down a phone line, and back again.",
+    "def": "Modulador-demodulador. Convierte datos digitales en tonos de audio que viajan por la línea telefónica, y viceversa.",
     "kind": "term"
   },
   "colo": {
-    "term": "Colocation",
+    "term": "Coubicación",
     "year": "",
-    "def": "Renting rack space, power and bandwidth in someone else's data center for servers you bought and own.",
+    "def": "Alquilar espacio en rack, energía y ancho de banda en el centro de datos de otro, para servidores que compraste y son tuyos.",
     "kind": "term"
   },
   "apache": {
     "term": "Apache",
     "year": "1995",
-    "def": "Grew out of patches to the NCSA web server and was the most-used web server from 1996 into the 2010s.",
+    "def": "Surgió de parches al servidor web de NCSA y fue el servidor web más usado desde 1996 hasta entrados los 2010.",
     "kind": "term"
   },
   "mysql": {
     "term": "MySQL",
     "year": "1995",
-    "def": "A fast, free relational database. The M in LAMP.",
+    "def": "Una base de datos relacional rápida y gratuita. La M de LAMP.",
     "kind": "term"
   },
   "memcached": {
     "term": "memcached",
     "year": "2003",
-    "def": "An in-memory key-value cache written for LiveJournal. It saves the database from answering the same query again and again.",
+    "def": "Una caché clave-valor en memoria escrita para LiveJournal. Evita que la base de datos responda la misma consulta una y otra vez.",
     "kind": "term"
   },
   "lb": {
-    "term": "Load balancer",
+    "term": "Balanceador de carga",
     "year": "",
-    "def": "A box or program that spreads incoming requests across several identical servers.",
+    "def": "Un equipo o programa que reparte las peticiones entrantes entre varios servidores idénticos.",
     "kind": "term"
   },
   "css": {
     "term": "CSS",
     "year": "1996",
-    "def": "Cascading Style Sheets: rules for how HTML should look, kept apart from the content. Proposed in 1994, CSS1 in 1996.",
+    "def": "Hojas de estilo en cascada: reglas sobre cómo debe verse el HTML, separadas del contenido. Propuesto en 1994, CSS1 en 1996.",
     "kind": "term"
   },
   "mvc": {
     "term": "MVC",
     "year": "1979",
-    "def": "Model–View–Controller. Split an app into data, display, and the code connecting them. From Smalltalk.",
+    "def": "Modelo–Vista–Controlador. Divide una app en datos, presentación y el código que los conecta. Viene de Smalltalk.",
     "kind": "term"
   },
   "vps": {
     "term": "VPS",
     "year": "",
-    "def": "Virtual private server. One physical machine split into several virtual ones, each with its own OS and root access.",
+    "def": "Servidor privado virtual. Una máquina física dividida en varias virtuales, cada una con su propio sistema operativo y acceso root.",
     "kind": "term"
   },
   "ec2": {
     "term": "EC2",
     "year": "2006",
-    "def": "Amazon's rentable virtual servers, started with an API call. Launched 2006.",
+    "def": "Los servidores virtuales de alquiler de Amazon, que se inician con una llamada a la API. Lanzado en 2006.",
     "kind": "term"
   },
   "s3": {
     "term": "S3",
     "year": "2006",
-    "def": "Amazon Simple Storage Service. Put any file at a URL and pay per gigabyte. Launched March 2006.",
+    "def": "Amazon Simple Storage Service. Pon cualquier archivo en una URL y paga por gigabyte. Lanzado en marzo de 2006.",
     "kind": "term"
   },
   "paas": {
     "term": "PaaS",
     "year": "",
-    "def": "Platform as a service: you push code, the platform runs it. Heroku made it famous.",
+    "def": "Plataforma como servicio: tú subes el código y la plataforma lo ejecuta. Heroku la hizo famosa.",
     "kind": "term"
   },
   "cdn": {
     "term": "CDN",
     "year": "",
-    "def": "Content delivery network: copies of your files around the world, served from the closest one.",
+    "def": "Red de distribución de contenido: copias de tus archivos por todo el mundo, servidas desde la más cercana.",
     "kind": "term"
   },
   "spa": {
     "term": "SPA",
     "year": "",
-    "def": "Single-page app: one HTML page whose JavaScript draws every screen and fetches its own data.",
+    "def": "Aplicación de una sola página: un solo HTML cuyo JavaScript dibuja cada pantalla y trae sus propios datos.",
     "kind": "term"
   },
   "csr": {
     "term": "CSR",
     "year": "",
-    "def": "Client-side rendering: the browser builds the page with JavaScript. Fast later, slow to start.",
+    "def": "Renderizado del lado del cliente: el navegador arma la página con JavaScript. Rápido después, lento al arrancar.",
     "kind": "term"
   },
   "ssr": {
     "term": "SSR",
     "year": "",
-    "def": "Server-side rendering: the server sends finished HTML. Fast first paint, easy for search engines.",
+    "def": "Renderizado del lado del servidor: el servidor envía el HTML terminado. Primer pintado rápido y fácil para los buscadores.",
     "kind": "term"
   },
   "ssg": {
     "term": "SSG",
     "year": "",
-    "def": "Static site generation. Pages are rendered to HTML files at build time and served from a CDN.",
+    "def": "Generación de sitios estáticos. Las páginas se renderizan como archivos HTML al compilar y se sirven desde un CDN.",
     "kind": "term"
   },
   "isr": {
     "term": "ISR",
     "year": "2020",
-    "def": "Incremental static regeneration. Static pages rebuilt in the background after a time limit or on demand, without a full redeploy.",
+    "def": "Regeneración estática incremental. Páginas estáticas que se reconstruyen en segundo plano tras un plazo o a pedido, sin volver a desplegar todo.",
     "kind": "term"
   },
   "hydration": {
-    "term": "Hydration",
+    "term": "Hidratación",
     "year": "",
-    "def": "Running a server-rendered page's JavaScript in the browser so it attaches event handlers and becomes interactive.",
+    "def": "Ejecutar en el navegador el JavaScript de una página renderizada en el servidor para conectar sus manejadores de eventos y volverla interactiva.",
     "kind": "term"
   },
   "bundle": {
     "term": "Bundle",
     "year": "",
-    "def": "All of an app's JavaScript squashed into a few files by a build tool.",
+    "def": "Todo el JavaScript de una app compactado en unos pocos archivos por una herramienta de compilación.",
     "kind": "term"
   },
   "npm": {
     "term": "npm",
     "year": "2010",
-    "def": "The Node package manager and registry. One command installs a package and everything it depends on.",
+    "def": "El gestor y registro de paquetes de Node. Un solo comando instala un paquete y todo aquello de lo que depende.",
     "kind": "term"
   },
   "v8": {
     "term": "V8",
     "year": "2008",
-    "def": "Chrome's JavaScript engine. It compiles JS to machine code, which made JavaScript fast enough for big apps and servers.",
+    "def": "El motor de JavaScript de Chrome. Compila JS a código máquina, lo que hizo a JavaScript lo bastante rápido para grandes apps y servidores.",
     "kind": "term"
   },
   "react": {
     "term": "React",
     "year": "2013",
-    "def": "A UI library from Facebook. Describe the UI for a given state and React works out the DOM changes.",
+    "def": "Una biblioteca de UI de Facebook. Describes la UI para un estado dado y React calcula los cambios en el DOM.",
     "kind": "term"
   },
   "docker": {
-    "term": "Containers / Docker",
+    "term": "Contenedores / Docker",
     "year": "2013",
-    "def": "Packages an app with its whole environment into an image that runs the same on any machine.",
+    "def": "Empaqueta una app con todo su entorno en una imagen que corre igual en cualquier máquina.",
     "kind": "term"
   },
   "serverless": {
     "term": "Serverless / Lambda",
     "year": "2014",
-    "def": "Upload a function; the platform runs it per request and bills per call. Servers still exist, unseen.",
+    "def": "Subes una función; la plataforma la ejecuta en cada petición y cobra por llamada. Los servidores siguen ahí, sin que los veas.",
     "kind": "term"
   },
   "git": {
     "term": "git push / CI",
     "year": "2005",
-    "def": "Sending commits to a shared repository. Platforms hook in so every push triggers a build, tests and a deploy.",
+    "def": "Enviar commits a un repositorio compartido. Las plataformas se conectan para que cada push dispare una compilación, pruebas y un despliegue.",
     "kind": "term"
   },
   "api": {
     "term": "API",
     "year": "",
-    "def": "A defined way for one program to ask another for data or actions. On the web, usually HTTP.",
+    "def": "Una forma definida en que un programa le pide datos o acciones a otro. En la web, por lo general mediante HTTP.",
     "kind": "term"
   },
   "dns": {
     "term": "DNS",
     "year": "1983",
-    "def": "Domain Name System. Turns names like example.com into IP addresses via a worldwide hierarchy of servers.",
+    "def": "Sistema de nombres de dominio. Convierte nombres como example.com en direcciones IP mediante una jerarquía mundial de servidores.",
     "kind": "term"
   },
   "ttfb": {
     "term": "TTFB",
     "year": "",
-    "def": "Time to first byte: how long after the request the first byte of the response arrives.",
+    "def": "Tiempo hasta el primer byte: cuánto tarda en llegar el primer byte de la respuesta después de la petición.",
     "kind": "term"
   },
   "latency": {
-    "term": "Latency",
+    "term": "Latencia",
     "year": "",
-    "def": "How long a round trip takes. Light in fibre covers about 200 km per millisecond, so distance always costs something.",
+    "def": "Lo que tarda un viaje de ida y vuelta. La luz en la fibra recorre unos 200 km por milisegundo: la distancia siempre cuesta.",
     "kind": "term"
   },
   "streaming": {
     "term": "Streaming",
     "year": "",
-    "def": "Sending a response in pieces as they're ready, so the browser can show the first parts early.",
+    "def": "Enviar una respuesta por partes a medida que están listas, para que el navegador muestre antes las primeras.",
     "kind": "term"
   },
   "edge": {
     "term": "Edge",
     "year": "",
-    "def": "Running code in data centers close to users, instead of in one central region.",
+    "def": "Ejecutar código en centros de datos cerca de los usuarios, en lugar de en una sola región central.",
     "kind": "term"
   },
   "browser": {
-    "term": "Browser",
+    "term": "Navegador",
     "year": "1990",
-    "def": "The program that fetches pages over HTTP and draws them. The first one, WorldWideWeb, was also an editor.",
+    "def": "El programa que trae páginas por HTTP y las dibuja. El primero, WorldWideWeb, también era un editor.",
     "kind": "term"
   },
   "server": {
-    "term": "Server",
+    "term": "Servidor",
     "year": "1990",
-    "def": "A program, and the machine running it, that answers requests. The first web server was CERN httpd.",
+    "def": "Un programa, y la máquina que lo ejecuta, que responde peticiones. El primer servidor web fue CERN httpd.",
     "kind": "term"
   }
 }
