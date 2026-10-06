@@ -21,8 +21,8 @@ const i = (c: ReactNode) => <i>{c}</i>;
 const LANDING_ERA_MUSIC = 5;
 
 /**
- * The landing: "murmur", a playable modern social app, then a scroll-driven dive through its
- * like button → code layers → the wire → a time tunnel to 1989, where Power On's desk takes over (onEnd).
+ * The landing: "murmur", a playable modern social app, then a scroll-driven dive: its
+ * like button alone on the canvas → code layers → the wire → a time tunnel to 1989, where Power On's desk takes over (onEnd).
  *
  * React renders structure and text. The scroll timeline is driven imperatively by the dive engine
  * (engine/diveEngine.ts) which writes styles straight to the DOM in rAF. Sound, music and volume share
@@ -133,6 +133,13 @@ export function Dive({ onEnd, startAtEnd = false, autoplay }: { onEnd: () => voi
             </header>
             <div className="browser">
               <Murmur ref={appRef} reduce={reduce} />
+            </div>
+          </section>
+
+          {/* "Let's open the like button": just that button, filled in by the engine from the one last tapped */}
+          <section className="scene s-like" aria-hidden="true">
+            <div className="app-wrap likecard">
+              <div className="likebig" />
             </div>
           </section>
 

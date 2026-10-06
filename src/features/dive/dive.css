@@ -243,6 +243,16 @@
   &[data-mode="play"] .cap .adv { visibility: hidden; }
   &[data-mode="dive"] .app-wrap { pointer-events: none; }
 
+  /* ---------- scene 1b: just the like button ---------- */
+  .s-like { opacity: 0; visibility: hidden; }
+  .likecard { position: relative; display: grid; place-items: center; padding: clamp(28px, 5vw, 56px) clamp(40px, 7vw, 88px); border-radius: 36px;
+    box-shadow: 0 40px 120px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08); will-change: transform; }
+  .likebig { display: inline-flex; align-items: center; gap: .3em; font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 600; line-height: 1; color: var(--a-mute); font-variant-numeric: tabular-nums; }
+  .likebig .ic { width: 1.1em; height: 1.1em; }
+  .likebig.on { color: var(--a-acc); }
+  .likebig.on .ic { fill: var(--a-acc); }
+  .likebig .spark { display: none; }
+
   /* ---------- scene 2: code layers ---------- */
   .s-layers { perspective: 900px; opacity: 0; visibility: hidden; }
   .layer { position: absolute; width: min(92vw, 640px); border-radius: 14px; background: var(--code-bg); color: var(--code-ink); box-shadow: 0 30px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08); overflow: hidden; opacity: 0; }
@@ -321,7 +331,7 @@
   @media (min-width: 901px) {
     .cap { left: clamp(16px, 4vw, 64px); right: auto; top: 50%; bottom: auto; transform: translateY(-50%); width: min(28vw, 420px); padding-inline: 0; justify-items: start; }
     .cap p { text-align: left; max-width: none; font-size: clamp(1.8rem, 3.2vw, 3.2rem); padding: 8px 16px 12px; }
-    .s-layers { left: 33%; }
+    .s-layers, .s-like { left: 33%; }
     .s-tunnel { perspective-origin: 66.5% 50%; }
     .world, .year { left: 66.5%; }
   }

@@ -21,7 +21,6 @@ export interface DiveDom {
   root: HTMLElement;
   track: HTMLElement;
   sApp: HTMLElement;
-  browser: HTMLElement;
   sLayers: HTMLElement;
   layers: HTMLElement[];
   wire: HTMLElement;
@@ -32,6 +31,9 @@ export interface DiveDom {
   rings: HTMLElement[];
   panels: { el: HTMLElement; tag: HTMLElement }[];
   year: HTMLElement;
+  sLike: HTMLElement;
+  likeCard: HTMLElement;
+  likeBig: HTMLElement;
   progFill: HTMLElement;
   ticks: HTMLElement[];
 }
@@ -49,7 +51,6 @@ export function collectDom(root: HTMLElement): DiveDom {
     root,
     track: one(".track"),
     sApp: one(".s-app"),
-    browser: one(".browser"),
     sLayers: one(".s-layers"),
     layers: all(".s-layers .layer"),
     wire: one(".wire"),
@@ -60,6 +61,9 @@ export function collectDom(root: HTMLElement): DiveDom {
     rings: all(".world .ringz"),
     panels: all<HTMLElement>(".world .panel").map((el, i) => ({ el, tag: tags[i] })),
     year: one(".year"),
+    sLike: one(".s-like"),
+    likeCard: one(".s-like .likecard"),
+    likeBig: one(".s-like .likebig"),
     progFill: one(".prog .fill"),
     ticks: all(".prog .tk"),
   };
@@ -96,7 +100,7 @@ export interface DiveEngine {
  */
 export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
   const { dom, audio, reduce } = o;
-  const { root, track, sApp, browser, sLayers, layers, wire, wirePath, packet, sTunnel, world, rings, panels, year } = o.dom;
+  const { root, track, sApp, sLayers, layers, wire, wirePath, packet, sTunnel, world, rings, panels, year, sLike, likeCard, likeBig } = o.dom;
   const disposers: Array<() => void> = [];
   const on = <K extends keyof WindowEventMap>(type: K, fn: (e: WindowEventMap[K]) => void, opts?: AddEventListenerOptions) => {
     window.addEventListener(type, fn, opts);
@@ -119,7 +123,6 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
 
   let mode: "play" | "dive" = "play";
   let hero: HTMLElement | null = o.getApp()?.defaultHero() ?? null;
-  let origin: { x: number; y: number } | null = null;
   let lastWhoosh = -1;
   let lastPanel = -1;
   let lastCaption: CaptionKey | null | undefined;
@@ -145,8 +148,19 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
   function currentHero(): HTMLElement | null {
     if (hero && hero.isConnected) return hero;
     hero = o.getApp()?.defaultHero() ?? null;
-    origin = null;
     return hero;
+  }
+
+  /** The canvas shows just the like button the reader last tapped: same heart, count, state and app theme. */
+  let shownLike: HTMLElement | null = null;
+  function showLike(h: HTMLElement | null) {
+    if (!h || h === shownLike) return;
+    shownLike = h;
+    likeBig.innerHTML = h.innerHTML;
+    likeBig.classList.toggle("on", h.classList.contains("on"));
+    const theme = h.closest<HTMLElement>(".app-wrap")?.dataset.theme;
+    if (theme) likeCard.dataset.theme = theme;
+    else delete likeCard.dataset.theme;
   }
 
   /* ---------- render one timeline position ---------- */
@@ -157,37 +171,20 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
       o.onCaption(cap);
     }
 
-    // scene 1 → zoom into the like button
+    // scene 1 → the app gives way to just its like button
     const h = currentHero();
-    if (h) h.toggleAttribute("data-aim", p > T.aim && p < T.zoomB);
-    const z = ease(seg(p, T.zoomA, T.zoomB));
-    if (reduce) {
-      vis(sApp, 1 - seg(p, T.zoomA, T.zoomB));
-      setStyle(browser, "transform", "");
-    } else {
-      if (h && (!origin || z < 0.001)) {
-        // measure the origin with the zoom removed
-        const keep = browser.style.transform;
-        browser.style.transform = "none";
-        const br = browser.getBoundingClientRect();
-        const hr = h.getBoundingClientRect();
-        if (br.width && br.height) {
-          origin = {
-            x: ((hr.left + hr.width * 0.3 - br.left) / br.width) * 100,
-            y: ((hr.top + hr.height / 2 - br.top) / br.height) * 100,
-          };
-        }
-        browser.style.transform = keep;
-      }
-      if (origin) setStyle(browser, "transform-origin", `${origin.x}% ${origin.y}%`);
-      setStyle(browser, "transform", z < 0.0001 ? "" : `scale(${lerp(1, 40, z * z)})`);
-      vis(sApp, 1 - seg(p, T.zoomB - 0.03, T.zoomB));
-    }
-    if (z > 0.15 && lastWhoosh < 1) {
+    if (h) h.toggleAttribute("data-aim", p > T.aim && p < T.zoomA + 0.01);
+    if (p > T.aim) showLike(h);
+    vis(sApp, 1 - seg(p, T.aim, T.zoomA + 0.01));
+    const likeIn = ease(seg(p, T.aim + 0.005, T.zoomA + 0.015));
+    const likeOut = ease(seg(p, T.zoomB - 0.025, T.zoomB));
+    vis(sLike, Math.min(likeIn, 1 - likeOut));
+    setStyle(likeCard, "transform", reduce ? "" : `scale(${lerp(0.85, 1, likeIn) + likeOut * 0.4})`);
+    if (likeIn > 0.5 && lastWhoosh < 1) {
       audio.whoosh(1.1, 300, 2400);
       lastWhoosh = 1;
     }
-    if (p < T.zoomA) lastWhoosh = 0;
+    if (p < T.aim) lastWhoosh = 0;
 
     // scene 2: fly through code layers
     const lp = seg(p, T.layA, T.layB);
@@ -263,14 +260,11 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
       setMode("dive");
       app?.setLive(false);
       hero = app?.lockTarget() ?? currentHero();
-      origin = null;
+      shownLike = null;
     } else if (!diving && mode === "dive") {
       setMode("play");
       render(0);
       hero?.removeAttribute("data-aim");
-      browser.style.transform = "";
-      last.get(browser)?.delete("transform");
-      origin = null;
       app?.releaseTarget();
       app?.setLive(true);
     }
@@ -303,7 +297,6 @@ export function createDiveEngine(o: DiveEngineOptions): DiveEngine {
     sizeTrack();
     lastMax = track.offsetHeight - window.innerHeight;
     window.scrollTo(0, Math.round(frac * lastMax));
-    origin = null;
     if (sideOffset(window.innerWidth) !== panelSide) layoutTunnel();
     onScroll();
   });
