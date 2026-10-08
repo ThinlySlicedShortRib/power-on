@@ -97,7 +97,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
 
   /** imperative controller, built once per mount; JSX handlers call through this ref */
   const ctl = useRef<{
-    startPower: () => void; powerOff: () => void; advance: (d: 1 | -1) => boolean; toggleSound: () => void; toggleMusic: () => void;
+    startPower: () => void; powerOff: () => void; advance: (d: 1 | -1) => boolean; jump: (era: number) => void; toggleSound: () => void; toggleMusic: () => void;
     setVolume: (v: number) => void; desk: Desk | null; beforeLocale: () => void;
   } | null>(null);
 
@@ -223,6 +223,16 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     };
     // the reader taking over (scroll, swipe, keys) pauses autoplay
     const takeOver = () => { if (modeNow === "story") autoRef.current.setPlaying(false); };
+    // the era navigator: to an era's title card. The cut fades the screen, the year card and the closing card rather than popping them.
+    const jump = (era: number) => {
+      if (modeNow !== "story") return;
+      takeOver();
+      if (!scroll.jump(era, reduce)) return;
+      lastOrder = -1;
+      if (reduce) return;
+      screen.style.transition = trans.style.transition = fin.style.transition = "opacity .5s, visibility .5s";
+      later(() => { screen.style.transition = trans.style.transition = fin.style.transition = ""; }, 2500);
+    };
 
     const c = {
       desk,
@@ -232,6 +242,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
         powerOffLocal();
       },
       advance,
+      jump,
       toggleSound: () => { audio.ensure(); audio.setSound(!audio.soundOn); setSoundOn(audio.soundOn); music.applyLevel(); },
       toggleMusic: () => {
         audio.ensure();
@@ -283,6 +294,8 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
         return;
       }
       if (modeNow !== "story") return;
+      // the era navigator handles its own keys (arrows move through its list)
+      if (tgt.closest?.(".po-hudEra")) return;
       const activation = (e.key === " " || e.key === "Enter") && (tag === "button" || tag === "a" || tag === "summary" || tgt.classList?.contains("po-gl-term"));
       if (activation) return;
       if (FWD.has(e.key)) { e.preventDefault(); takeOver(); advance(1); }
@@ -475,7 +488,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
           </div>
         </div>
 
-        <Hud on={mode === "story"} era={pos.era} />
+        <Hud on={mode === "story"} era={pos.era} onJump={(e) => ctl.current?.jump(e)} />
         <GpuNotice show={gpuOff} />
         <Controls era={mode === "story" ? era.n : 0} playing={playing} onPlay={() => setPlaying(!playing)} speed={speed} onSpeed={cycleSpeed}
           soundOn={soundOn} onSound={() => ctl.current?.toggleSound()} musicOn={musicOn} onMusic={() => ctl.current?.toggleMusic()}

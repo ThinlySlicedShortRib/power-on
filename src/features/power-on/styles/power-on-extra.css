@@ -7,9 +7,6 @@
 .po-root .po-tip:not(.po-on) { visibility: hidden; }
 .po-root .po-keys .po-kbody dl > div { display: contents; }
 
-/* phones: the control bar takes the bottom row, so the era badge moves to the top */
-@media (max-width: 760px) { .po-root .po-hudEra { top: calc(14px + env(safe-area-inset-top, 0px)); bottom: auto; } }
-
 /* "3D is off in your browser" notice (GpuNotice), top centre, above everything but the shortcuts panel */
 .po-root .po-gpu { position: fixed; z-index: 20; top: calc(14px + env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%); width: min(calc(100vw - 32px), 520px);
   display: flex; align-items: center; gap: 14px; padding: 10px 12px 10px 16px; border-radius: 14px; font: .82rem/1.4 var(--f-now); color: #f1e6d0;
@@ -18,5 +15,6 @@
 .po-root .po-gpu b { color: #ffc874; font-weight: 600; }
 .po-root .po-gpu button { flex: none; border: 1px solid rgba(241,230,208,.3); background: none; border-radius: 999px; padding: 5px 12px; font: inherit; color: inherit; cursor: pointer; }
 @media (hover: hover) and (pointer: fine) { .po-root .po-gpu button:hover { background: rgba(255,255,255,.08); } }
-@media (max-width: 760px) { .po-root .po-gpu { top: calc(52px + env(safe-area-inset-top, 0px)); } }
+/* phones: below the era navigator (44px tall, top-left) */
+@media (max-width: 760px) { .po-root .po-gpu { top: calc(66px + env(safe-area-inset-top, 0px)); } }
 

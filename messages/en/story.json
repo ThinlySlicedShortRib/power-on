@@ -159,7 +159,10 @@
   },
   "hud": {
     "keysAria": "Keyboard shortcuts",
-    "eraAria": "Current era"
+    "eraAria": "Current era",
+    "navAria": "Eras",
+    "jump": "Jump to era",
+    "toggleAria": "{name}, {span}. Jump to another era"
   },
   "keys": {
     "titleKb": "Keyboard shortcuts",

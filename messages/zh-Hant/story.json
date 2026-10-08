@@ -159,7 +159,10 @@
   },
   "hud": {
     "keysAria": "鍵盤快捷鍵",
-    "eraAria": "目前時代"
+    "eraAria": "目前時代",
+    "navAria": "時代",
+    "jump": "跳到時代",
+    "toggleAria": "{name}，{span}。跳到其他時代"
   },
   "keys": {
     "titleKb": "鍵盤快捷鍵",
