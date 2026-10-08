@@ -84,7 +84,8 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 
 .po-root .po-stage { position: relative; min-width: 0; height: min(68vh, 620px); display: grid; place-items: center; }
 
-.po-root .po-prop { position: absolute; inset: 0; display: grid; place-items: center; transition: opacity .5s, transform .6s cubic-bezier(.2,.8,.2,1); }
+/* minmax(0,1fr): a prop wider than the stage (the no-WebGL diagram's 460px svg) must not stretch the column and shove itself right */
+.po-root .po-prop { position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; transition: opacity .5s, transform .6s cubic-bezier(.2,.8,.2,1); }
 
 .po-root .po-prop.po-out { opacity: 0; transform: translateY(24px) scale(.96); pointer-events: none; }
 
@@ -747,6 +748,11 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 .po-root .po-ls1 { display: none; }
 
 .po-root .po-trans .po-box { transform: translateY(-20vh); }
+
+/* the key graphic sits straight on phones: no tilt on any prop root (memo, public-domain stamp) or the CERN sticker.
+   Only the prop's own transform goes; .po-prop keeps its enter/exit move, keyframe animations still win, and the
+   peeled sticker (.po-peel.po-off) outranks this. Small inner tilts (scrawl, TRUE STORY stamp) stay. */
+.po-root .po-prop > *, .po-root .po-note3d { transform: none; }
 
 }
 
