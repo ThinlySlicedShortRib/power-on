@@ -292,7 +292,9 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       if (document.hidden) audio.suspend();
       else if (modeNow !== "intro" || audio.humming) audio.resume();
     };
-    const onFirstGesture = () => audio.resume();
+    // a gesture is what lets a stalled context (iOS after the app was backgrounded) start again
+    const onGesture = () => audio.resume();
+    const onPageShow = (e: PageTransitionEvent) => { if (e.persisted && modeNow !== "intro") audio.resume(); };
     // in the opening, scrolling or swiping forward moves to the next beat (at most one beat per gesture)
     let touchY = -1, lastWheel = 0;
     const onIntroWheel = (e: WheelEvent) => {
@@ -319,7 +321,10 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     window.addEventListener("touchstart", onCancel, { passive: true });
     window.addEventListener("resize", onResize);
     window.addEventListener("keydown", onKey, true);
-    window.addEventListener("pointerdown", onFirstGesture, { passive: true });
+    window.addEventListener("pointerdown", onGesture, { passive: true });
+    window.addEventListener("touchend", onGesture, { passive: true });
+    window.addEventListener("keydown", onGesture);
+    window.addEventListener("pageshow", onPageShow);
     window.addEventListener("wheel", onIntroWheel, { passive: true });
     window.addEventListener("touchstart", onIntroTouchStart, { passive: true });
     window.addEventListener("touchmove", onIntroTouchMove, { passive: true });
@@ -349,7 +354,10 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       window.removeEventListener("touchstart", onCancel);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("keydown", onKey, true);
-      window.removeEventListener("pointerdown", onFirstGesture);
+      window.removeEventListener("pointerdown", onGesture);
+      window.removeEventListener("touchend", onGesture);
+      window.removeEventListener("keydown", onGesture);
+      window.removeEventListener("pageshow", onPageShow);
       window.removeEventListener("wheel", onIntroWheel);
       window.removeEventListener("touchstart", onIntroTouchStart);
       window.removeEventListener("touchmove", onIntroTouchMove);

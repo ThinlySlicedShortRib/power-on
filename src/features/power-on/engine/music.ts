@@ -230,6 +230,8 @@ export class Music {
     });
     for (const tr of this.tracks) {
       const def = this.defs[tr.n], sd = 60 / def.bpm / 4;
+      // after the context was stalled (background tab, iOS interruption) don't fire the missed steps in one burst
+      if (tr.next < ac.currentTime - sd) tr.next = ac.currentTime + 0.05;
       while (tr.next < horizon) {
         def.step(this, tr, tr.step, tr.next, tr.bar, sd);
         tr.next += sd;
@@ -304,11 +306,16 @@ export class Music {
     this.applyLevel(0.08);
   }
 
+  /** The AudioEngine closes its context on dispose, so drop every node built on it: a remount builds a fresh graph. */
   dispose() {
     clearInterval(this.timer);
     clearTimeout(this.stopTimer);
     this.timer = 0;
     this.tracks.forEach((tr) => { try { tr.gain.disconnect(); } catch { /* noop */ } });
     this.tracks = [];
+    this.started = false;
+    this.cur = 0;
+    this.bus = this.duckG = this.rev = null;
+    this.noiseBuf = null;
   }
 }

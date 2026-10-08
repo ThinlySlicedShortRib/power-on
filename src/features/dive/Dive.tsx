@@ -65,6 +65,7 @@ export function Dive({ onEnd, startAtEnd = false, autoplay }: { onEnd: () => voi
     };
     window.addEventListener("pointerdown", onGesture, { passive: true });
     window.addEventListener("keydown", onGesture);
+    window.addEventListener("touchend", onGesture, { passive: true });
     const engine = createDiveEngine({
       dom: collectDom(root),
       getApp: () => appRef.current,
@@ -79,6 +80,7 @@ export function Dive({ onEnd, startAtEnd = false, autoplay }: { onEnd: () => voi
     return () => {
       window.removeEventListener("pointerdown", onGesture);
       window.removeEventListener("keydown", onGesture);
+      window.removeEventListener("touchend", onGesture);
       engine.destroy();
       audio.dispose();
       music.dispose();

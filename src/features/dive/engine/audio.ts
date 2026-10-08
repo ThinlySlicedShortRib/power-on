@@ -18,7 +18,9 @@ export class DiveAudio {
         this.ac = null;
       }
     }
-    if (this.ac && this.ac.state === "suspended") void this.ac.resume().catch(() => {});
+    // iOS Safari reports "interrupted" after backgrounding; resume anything that isn't running or closed
+    const st = this.ac?.state as string | undefined;
+    if (this.ac && st !== "running" && st !== "closed") void this.ac.resume().catch(() => {});
   }
 
   whoosh(dur: number, f0: number, f1: number) {

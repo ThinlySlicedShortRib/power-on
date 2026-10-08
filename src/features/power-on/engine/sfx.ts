@@ -34,7 +34,7 @@ export class AudioEngine {
         return null;
       }
     }
-    if (this.ac.state === "suspended") this.ac.resume().catch(() => {});
+    this.resume();
     return this.ac;
   }
 
@@ -206,8 +206,11 @@ export class AudioEngine {
     this.ac?.suspend().catch(() => {});
   }
 
+  /** Wake the context. iOS Safari parks it as "interrupted" (not "suspended") after the app is backgrounded,
+   *  so anything short of running or closed gets a resume; browsers may still want a gesture for it to stick. */
   resume() {
-    if (this.ac && this.ac.state === "suspended") this.ac.resume().catch(() => {});
+    const st = this.ac?.state as string | undefined;
+    if (this.ac && st !== "running" && st !== "closed") this.ac.resume().catch(() => {});
   }
 
   dispose() {
