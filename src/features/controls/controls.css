@@ -13,7 +13,6 @@
 }
 .ctl button { display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px; border: 0; border-radius: var(--ctl-radius); background: none;
   font: inherit; letter-spacing: inherit; color: inherit; cursor: pointer; white-space: nowrap; }
-.ctl button:hover { background: var(--ctl-hover); }
 .ctl button[aria-pressed="false"] { opacity: .55; }
 .ctl button[aria-pressed="true"]:first-child { color: var(--ctl-acc); }
 .ctl .ctl-speed { min-width: 3.4em; justify-content: center; font-variant-numeric: tabular-nums; }
@@ -24,8 +23,12 @@
 .ctl .ctl-lang, .ctl .ctl-langsw { display: inline-flex; align-items: center; }
 .ctl .ctl-langsw select { appearance: none; -webkit-appearance: none; max-width: 9.5em; padding: 4px 10px; cursor: pointer;
   font: inherit; letter-spacing: inherit; color: inherit; background: transparent; border: 1px solid var(--ctl-line); border-radius: var(--ctl-radius); }
-.ctl .ctl-langsw select:hover { background: var(--ctl-hover); }
 .ctl .ctl-langsw option { color: #111; background: #f1e6d0; }
+/* hover only where a pointer really hovers (touch browsers leave :hover stuck after a tap) */
+@media (hover: hover) and (pointer: fine) {
+  .ctl button:hover { background: var(--ctl-hover); }
+  .ctl .ctl-langsw select:hover { background: var(--ctl-hover); }
+}
 
 /* era costumes */
 .ctl[data-era="1"] { --ctl-bg: rgba(2,8,3,.85); --ctl-fg: #3dff72; --ctl-line: rgba(61,255,114,.4); --ctl-acc: #b6ffca; --ctl-hover: rgba(61,255,114,.12);

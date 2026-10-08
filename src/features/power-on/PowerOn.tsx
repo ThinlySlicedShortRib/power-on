@@ -221,7 +221,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       const moved = scroll.advance(dir, reduce);
       return moved;
     };
-    // the reader taking over (scroll, swipe, keys, clicks) pauses autoplay
+    // the reader taking over (scroll, swipe, keys) pauses autoplay
     const takeOver = () => { if (modeNow === "story") autoRef.current.setPlaying(false); };
 
     const c = {
@@ -311,9 +311,9 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     };
     const host = glHost.current!;
     const onHostMove = (e: PointerEvent) => { if (desk) host.style.cursor = desk.hitPower(e.clientX, e.clientY) ? "pointer" : ""; };
+    // only the 3D power button is a control; tapping the rest of the scene never advances (the Advance button does)
     const onHostClick = (e: MouseEvent) => {
-      if (modeNow === "story") { takeOver(); advance(1); return; }
-      if (openingRef.current >= 0) { nextOpeningRef.current(true); return; }
+      if (modeNow === "story" || openingRef.current >= 0) return;
       if (desk?.hitPower(e.clientX, e.clientY)) startPower();
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -440,15 +440,6 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   const line = pos.beat >= 0 ? era.lines[pos.beat] : null;
   const tr = TRANS_KEYS[Math.min(transIdx, TRANS_KEYS.length - 1)];
 
-  const onScreenClick = (e: React.MouseEvent) => {
-    if (mode !== "story") return;
-    const el = e.target as Element;
-    if (el.closest("a, button, input, textarea, select, label, .po-gl-term, .po-tip, [data-interactive]")) return;
-    if (String(window.getSelection?.() ?? "")) return;
-    autoplay.setPlaying(false);
-    ctl.current?.advance(1);
-  };
-
   const rootStyle = { "--po-beta-label": JSON.stringify(t("fx.beta")), "--po-gen-label": JSON.stringify(t("fx.generated")) } as CSSProperties;
 
   return (
@@ -460,7 +451,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
 
         <Intro gone={introGone} hidden={mode === "story"} touch={touch} opening={opening} onNext={() => nextOpening(true)} onPower={() => ctl.current?.startPower()} />
 
-        <div ref={screenRef} className="po-screen" data-era={era.n} aria-live="off" onClick={onScreenClick}>
+        <div ref={screenRef} className="po-screen" data-era={era.n} aria-live="off">
           <EraFx n={era.n} reduce={reduce} />
           <div className="po-frame">
             <Narration pos={pos} reduce={reduce} advance={mode === "story" ? <Advance era={era.n} kind="next" touch={touch} onClick={() => { setPlaying(false); ctl.current?.advance(1); }} /> : null} />

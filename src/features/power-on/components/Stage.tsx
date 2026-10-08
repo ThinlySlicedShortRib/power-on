@@ -34,9 +34,8 @@ function PropSlot({ id, active }: { id: PropId; active: boolean }) {
     const t = window.setTimeout(() => { if (el.classList.contains("po-out")) el.hidden = true; }, 600);
     return () => clearTimeout(t);
   }, [active]);
-  const interactive = id.startsWith("w-") || id.startsWith("dg");
   return (
-    <div ref={ref} className="po-prop po-out" data-interactive={interactive ? "1" : undefined} aria-hidden={active ? undefined : true} inert={!active}>
+    <div ref={ref} className="po-prop po-out" aria-hidden={active ? undefined : true} inert={!active}>
       <PropView id={id} active={active} />
     </div>
   );

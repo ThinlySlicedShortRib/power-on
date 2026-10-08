@@ -17,6 +17,6 @@
 .po-root .po-gpu p { margin: 0; flex: 1; }
 .po-root .po-gpu b { color: #ffc874; font-weight: 600; }
 .po-root .po-gpu button { flex: none; border: 1px solid rgba(241,230,208,.3); background: none; border-radius: 999px; padding: 5px 12px; font: inherit; color: inherit; cursor: pointer; }
-.po-root .po-gpu button:hover { background: rgba(255,255,255,.08); }
+@media (hover: hover) and (pointer: fine) { .po-root .po-gpu button:hover { background: rgba(255,255,255,.08); } }
 @media (max-width: 760px) { .po-root .po-gpu { top: calc(52px + env(safe-area-inset-top, 0px)); } }
 
