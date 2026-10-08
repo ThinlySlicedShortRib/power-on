@@ -218,7 +218,7 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 
 .po-root .po-ghost { pointer-events: auto; border: 0; background: none; padding: 10px 6px; color: rgba(241,230,208,.7); font-family: var(--f-mono); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; }
 
-.po-root .po-ghost:hover { color: var(--room-ink); }
+@media (hover: hover) and (pointer: fine) { .po-root .po-ghost:hover { color: var(--room-ink); } }
 
 /* arriving from the landing's tunnel: fade the room in */
 .po-root.po-flow { animation: po-flowin .9s ease both; }
@@ -385,7 +385,7 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 
 .po-root .po-screen[data-era="4"] .po-btn { text-transform: uppercase; letter-spacing: .08em; font-weight: 600; font-size: .85rem; }
 
-.po-root .po-screen[data-era="4"] .po-btn:hover { background: #1abc9c; color: #fff; }
+@media (hover: hover) and (pointer: fine) { .po-root .po-screen[data-era="4"] .po-btn:hover { background: #1abc9c; color: #fff; } }
 
 .po-root .po-flatnav { top: 0; left: 0; right: 0; height: 52px; background: #2c3e50; display: flex; align-items: center; padding-inline: clamp(16px, 5vw, 80px); gap: 14px; color: #ecf0f1; font: 600 1rem var(--f-flat); }
 
@@ -642,7 +642,8 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 /* ---------- v2: glossary terms + tooltip ---------- */
 .po-root .po-gl-term { border-bottom: 1px dotted currentColor; cursor: help; text-decoration: none; }
 
-.po-root .po-gl-term:hover, .po-root .po-gl-term:focus-visible { border-bottom-style: solid; }
+.po-root .po-gl-term:focus-visible { border-bottom-style: solid; }
+@media (hover: hover) and (pointer: fine) { .po-root .po-gl-term:hover { border-bottom-style: solid; } }
 
 .po-root .po-gl-term:focus-visible { outline: 2px solid var(--acc2); outline-offset: 2px; }
 
@@ -1016,7 +1017,7 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 
 .po-root .po-agentw .po-chip { font: .78rem var(--f-now); padding: 6px 12px; border-radius: 999px; border: 1px solid #d5ddd8; background: #fff; color: #141a17; }
 
-.po-root .po-agentw .po-chip:hover { border-color: #0fa3a3; }
+@media (hover: hover) and (pointer: fine) { .po-root .po-agentw .po-chip:hover { border-color: #0fa3a3; } }
 
 .po-root .po-agentw .po-ask { display: flex; gap: 6px; }
  .po-root .po-agentw .po-ask input { flex: 1; min-width: 0; font: .85rem var(--f-now); padding: 7px 12px; border-radius: 999px; border: 1px solid #d5ddd8; background: #fff; color: #141a17; }
