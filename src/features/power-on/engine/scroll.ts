@@ -63,6 +63,22 @@ export class ScrollTrack {
     a.raf = requestAnimationFrame(step);
   }
 
+  /**
+   * Go to an era's title card from anywhere. Gliding there would replay every line and transition in between,
+   * so cut into the middle of the transition that leads into the era (its year card) and glide the rest of the way.
+   * Era 1 has no transition before it, and reduced motion cuts straight to the card.
+   */
+  jump(era: number, reduce: boolean): boolean {
+    const j = this.segs.findIndex((x) => x.k === "beat" && x.e === era && x.b === -1);
+    if (j < 0 || (!this.anim && this.at(window.scrollY).i === j)) return false;
+    const into = this.segs[j - 1], target = this.yFor(era, -1);
+    const glide = !reduce && into?.k === "trans";
+    this.cancel();
+    if (glide) window.scrollTo(0, (into.s + into.l * 0.52) * this.vh);
+    this.animate(target, glide ? 1900 : 0, j);
+    return true;
+  }
+
   /** Move one line forward/back, skipping over transitions (which then play as a long glide). */
   advance(dir: 1 | -1, reduce: boolean): boolean {
     if (!this.segs.length) return false;

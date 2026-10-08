@@ -159,7 +159,10 @@
   },
   "hud": {
     "keysAria": "Atajos de teclado",
-    "eraAria": "Era actual"
+    "eraAria": "Era actual",
+    "navAria": "Eras",
+    "jump": "Ir a una era",
+    "toggleAria": "{name}, {span}. Ir a otra era"
   },
   "keys": {
     "titleKb": "Atajos de teclado",
