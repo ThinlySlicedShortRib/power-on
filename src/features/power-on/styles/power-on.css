@@ -727,7 +727,10 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 
 /* ---------- phone ---------- */
 @media (max-width: 760px) {
-.po-root .po-frame { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); align-items: start; gap: 14px; padding-top: 64px; padding-bottom: 70px; }
+.po-root .po-frame { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); align-items: start; gap: 14px; padding-top: 64px; padding-bottom: calc(118px + env(safe-area-inset-bottom, 0px)); }
+
+/* the control bar's Back/Next row replaces the Next under the copy */
+.po-root .po-narr > .adv { display: none; }
 
 .po-root .po-narr { align-self: start; gap: 10px; }
 

@@ -21,7 +21,9 @@
     "musicOn": "音樂開",
     "musicOff": "音樂關",
     "musicAria": "音樂",
-    "volume": "音樂音量"
+    "volume": "音樂音量",
+    "back": "上一步",
+    "next": "下一步"
   },
   "advance": {
     "start": "帶我看",

@@ -20,9 +20,12 @@ export interface ControlsProps {
   onVol: (percent: number) => void;
   /** runs before the language switch navigates (to remember the reader's place) */
   onBeforeLocale?: () => void;
+  /** Back/Next for the story; on phones they take a second row of the bar (and replace the Next under the copy) */
+  onPrev?: () => void;
+  onNext?: () => void;
 }
 
-/** The one control bar, bottom-right on every screen: autoplay, speed, sound, music, volume, language. */
+/** The one control bar, bottom-right on every screen (full width on phones): autoplay, speed, sound, music, volume, language. */
 export function Controls(p: ControlsProps) {
   const t = useTranslations("common.controls");
   return (
@@ -58,6 +61,12 @@ export function Controls(p: ControlsProps) {
       <span className="ctl-lang" onChangeCapture={p.onBeforeLocale}>
         <LanguageSwitcher className="ctl-langsw" />
       </span>
+      {p.onPrev && p.onNext && (
+        <span className="ctl-nav">
+          <button type="button" className="ctl-back" onClick={p.onPrev}><span aria-hidden="true">↑</span>{t("back")}</button>
+          <button type="button" className="ctl-next" onClick={p.onNext}>{t("next")}<span aria-hidden="true">↓</span></button>
+        </span>
+      )}
     </div>
   );
 }

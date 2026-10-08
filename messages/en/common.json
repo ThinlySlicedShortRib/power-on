@@ -21,7 +21,9 @@
     "musicOn": "Music on",
     "musicOff": "Music off",
     "musicAria": "Music",
-    "volume": "Music volume"
+    "volume": "Music volume",
+    "back": "Back",
+    "next": "Next"
   },
   "advance": {
     "start": "Show me",

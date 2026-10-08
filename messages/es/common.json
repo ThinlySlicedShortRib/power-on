@@ -21,7 +21,9 @@
     "musicOn": "Con música",
     "musicOff": "Sin música",
     "musicAria": "Música",
-    "volume": "Volumen de la música"
+    "volume": "Volumen de la música",
+    "back": "Atrás",
+    "next": "Siguiente"
   },
   "advance": {
     "start": "Muéstrame",

@@ -37,14 +37,14 @@ export function Hud({ on, era: i, onJump }: { on: boolean; era: number; onJump: 
   return (
     <nav className={"po-hudEra" + (on ? " po-on" : "") + (open ? " po-open" : "")} data-era={era.n} aria-label={t("hud.navAria")} inert={!on}
       onKeyDown={(e) => { if (e.key === "Escape" && open) { e.preventDefault(); close(true); } }}
-      onBlur={(e) => { if (open && !e.currentTarget.contains(e.relatedTarget as Node | null)) setOpen(false); }}>
+      // Tab out closes it. A tap that blurs without moving focus anywhere (iOS/Safari don't focus tapped buttons, relatedTarget is null)
+      // must not: closing there hides the list before the tap's click lands on the era. Outside taps are the scrim's job.
+      onBlur={(e) => { const to = e.relatedTarget as Node | null; if (open && to && !e.currentTarget.contains(to)) setOpen(false); }}>
       {/* outside taps close the list without reaching the story underneath (which would advance it) */}
       <div className="po-hudScrim" hidden={!open} onClick={() => close(false)} />
       <button ref={toggle} type="button" className="po-hudBtn" aria-expanded={open} aria-controls="po-eralist"
         aria-label={t("hud.toggleAria", { name: t(`eras.${era.key}.name`), span: t(`eras.${era.key}.span`) })}
         onClick={() => (open ? close(true) : setOpen(true))}
-        // keep focus in the list while it's open, so Safari's blur (it doesn't focus clicked buttons) can't close it first and the click reopen it
-        onMouseDown={(e) => { if (open) e.preventDefault(); }}
         onKeyDown={(e) => { if (!open && (e.key === "ArrowDown" || e.key === "ArrowUp")) { e.preventDefault(); setOpen(true); } }}>
         <span className="po-yr">{t(`eras.${era.key}.span`)}</span>
         <span className="po-hudName">{t(`eras.${era.key}.name`)}</span>

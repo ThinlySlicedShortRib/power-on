@@ -492,7 +492,9 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
         <GpuNotice show={gpuOff} />
         <Controls era={mode === "story" ? era.n : 0} playing={playing} onPlay={() => setPlaying(!playing)} speed={speed} onSpeed={cycleSpeed}
           soundOn={soundOn} onSound={() => ctl.current?.toggleSound()} musicOn={musicOn} onMusic={() => ctl.current?.toggleMusic()}
-          vol={vol} onVol={(v) => ctl.current?.setVolume(v)} onBeforeLocale={() => ctl.current?.beforeLocale()} />
+          vol={vol} onVol={(v) => ctl.current?.setVolume(v)} onBeforeLocale={() => ctl.current?.beforeLocale()}
+          onPrev={mode === "story" ? () => { setPlaying(false); ctl.current?.advance(-1); } : undefined}
+          onNext={mode === "story" ? () => { setPlaying(false); ctl.current?.advance(1); } : undefined} />
         <Shortcuts open={keysOpen} era={era.n} intro={mode !== "story"} touch={touch} onClose={() => setKeysOpen(false)} />
       </div>
     </PowerOnContext.Provider>
