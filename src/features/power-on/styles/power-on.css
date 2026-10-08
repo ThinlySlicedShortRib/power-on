@@ -179,6 +179,8 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
   --nv-bg: var(--hud-bg); --nv-fg: var(--room-ink); --nv-line: var(--hud-line); --nv-acc: var(--lamp); --nv-font: var(--f-mono);
   --nv-r: 999px; --nv-pr: 14px; --nv-cur-bg: rgba(255,200,116,.14); --nv-cur-fg: var(--lamp); --nv-mark: "●"; --nv-hover: rgba(255,255,255,.08);
   --nv-shadow: 0 16px 40px rgba(0,0,0,.4); --nv-blur: blur(10px);
+  /* the open list sits over the narration, so it is near-opaque even where the badge is see-through */
+  --nv-panel: rgba(16,13,10,.96);
   position: fixed; z-index: 5; left: max(16px, env(safe-area-inset-left, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px));
   font: .74rem/1.2 var(--nv-font); letter-spacing: .08em; color: var(--nv-fg); opacity: 0; visibility: hidden; transition: opacity .6s, visibility .6s; }
 
@@ -210,7 +212,7 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 
 .po-root .po-eras { position: absolute; left: 0; bottom: calc(100% + 8px); width: min(21rem, calc(100vw - 32px)); padding: 6px; overflow: auto; overscroll-behavior: contain;
   max-height: calc(100dvh - 84px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
-  background: var(--nv-bg); border: 1px solid var(--nv-line); border-radius: var(--nv-pr); box-shadow: var(--nv-shadow); backdrop-filter: var(--nv-blur); -webkit-backdrop-filter: var(--nv-blur); }
+  background: var(--nv-panel); border: 1px solid var(--nv-line); border-radius: var(--nv-pr); box-shadow: var(--nv-shadow); backdrop-filter: var(--nv-blur); -webkit-backdrop-filter: var(--nv-blur); }
 
 .po-root .po-erasHead { display: block; padding: 6px 10px 8px; font-weight: 400; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; opacity: .7; }
 
@@ -250,7 +252,7 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 @media (prefers-reduced-motion: reduce) { .po-root .po-hudCaret { transition: none; } }
 
 /* 1 · green phosphor: the current era is the inverted line under the cursor */
-.po-root .po-hudEra[data-era="1"] { --nv-bg: rgba(2,8,3,.9); --nv-fg: #3dff72; --nv-line: rgba(61,255,114,.45); --nv-acc: #b6ffca; --nv-font: var(--f-term);
+.po-root .po-hudEra[data-era="1"] { --nv-bg: rgba(2,8,3,.9); --nv-panel: rgba(2,8,3,.98); --nv-fg: #3dff72; --nv-line: rgba(61,255,114,.45); --nv-acc: #b6ffca; --nv-font: var(--f-term);
   --nv-r: 0; --nv-pr: 0; --nv-cur-bg: #3dff72; --nv-cur-fg: #031006; --nv-mark: ">"; --nv-hover: rgba(61,255,114,.14); --nv-shadow: 0 0 24px rgba(61,255,114,.18);
   font-size: .95rem; letter-spacing: .04em; text-shadow: 0 0 6px rgba(61,255,114,.5); }
 
@@ -261,7 +263,7 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 .po-root .po-hudEra[data-era="1"] .po-erasHead::before { content: "$ "; }
 
 /* 2 · 1995: a grey window with a title bar; the current era is the selected (navy) menu item */
-.po-root .po-hudEra[data-era="2"] { --nv-bg: #c0c0c0; --nv-fg: #000; --nv-line: #808080; --nv-acc: #000080; --nv-font: var(--f-90s);
+.po-root .po-hudEra[data-era="2"] { --nv-bg: #c0c0c0; --nv-panel: #c0c0c0; --nv-fg: #000; --nv-line: #808080; --nv-acc: #000080; --nv-font: var(--f-90s);
   --nv-r: 0; --nv-pr: 0; --nv-cur-bg: #000080; --nv-cur-fg: #fff; --nv-mark: "•"; --nv-hover: #d4d4d4; --nv-shadow: 2px 2px 0 #000; --nv-blur: none;
   font-weight: 700; letter-spacing: 0; }
 
@@ -276,7 +278,7 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 .po-root .po-hudEra[data-era="2"] .po-pips i { border-radius: 0; height: 5px; }
 
 /* 3 · 2004: glossy white panel, the current era a glossy aqua pill */
-.po-root .po-hudEra[data-era="3"] { --nv-bg: linear-gradient(#ffffff, #e2eef9); --nv-fg: #17324d; --nv-line: #a9c4dd; --nv-acc: #ff6a00; --nv-font: var(--f-aqua);
+.po-root .po-hudEra[data-era="3"] { --nv-bg: linear-gradient(#ffffff, #e2eef9); --nv-panel: linear-gradient(#ffffff, #e2eef9); --nv-fg: #17324d; --nv-line: #a9c4dd; --nv-acc: #ff6a00; --nv-font: var(--f-aqua);
   --nv-pr: 14px; --nv-cur-bg: linear-gradient(#7cbcf5, #2a7cc8 50%, #1f6bb5 51%, #4f9de3); --nv-cur-fg: #fff; --nv-hover: rgba(42,124,200,.1);
   --nv-shadow: 0 6px 18px rgba(23,50,77,.22), inset 0 1px 0 #fff; --nv-blur: none; letter-spacing: 0; }
 
@@ -291,20 +293,20 @@ body.po-body { overscroll-behavior: none; background: #0d0b09; }
 .po-root .po-hudEra[data-era="3"] .po-pips i.po-on { background: linear-gradient(#ffb15c, #ff7a00 50%, #f06400 51%); }
 
 /* 4 · 2010: flat midnight blue, the current era a solid turquoise block */
-.po-root .po-hudEra[data-era="4"] { --nv-bg: #2c3e50; --nv-fg: #ecf0f1; --nv-line: rgba(236,240,241,.25); --nv-acc: #1abc9c; --nv-font: var(--f-flat);
+.po-root .po-hudEra[data-era="4"] { --nv-bg: #2c3e50; --nv-panel: #2c3e50; --nv-fg: #ecf0f1; --nv-line: rgba(236,240,241,.25); --nv-acc: #1abc9c; --nv-font: var(--f-flat);
   --nv-r: 2px; --nv-pr: 2px; --nv-cur-bg: #1abc9c; --nv-cur-fg: #fff; --nv-mark: ""; --nv-hover: rgba(26,188,156,.18); --nv-shadow: none; --nv-blur: none;
   font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
 
 .po-root .po-hudEra[data-era="4"] .po-pips i { border-radius: 0; }
 
 /* 5 · today: quiet dark glass, an orange dot on the current era */
-.po-root .po-hudEra[data-era="5"] { --nv-bg: rgba(20,20,24,.72); --nv-fg: #ededed; --nv-line: rgba(255,255,255,.14); --nv-acc: #ff9a4d; --nv-font: var(--f-now);
+.po-root .po-hudEra[data-era="5"] { --nv-bg: rgba(20,20,24,.72); --nv-panel: rgba(20,20,24,.96); --nv-fg: #ededed; --nv-line: rgba(255,255,255,.14); --nv-acc: #ff9a4d; --nv-font: var(--f-now);
   --nv-r: 12px; --nv-pr: 14px; --nv-cur-bg: rgba(255,255,255,.1); --nv-cur-fg: #fff; letter-spacing: 0; }
 
 .po-root .po-hudEra[data-era="5"] .po-eras li button[aria-current]::before { color: #ff9a4d; }
 
 /* 6 · future: soft white with a teal glow */
-.po-root .po-hudEra[data-era="6"] { --nv-bg: rgba(255,255,255,.92); --nv-fg: #141a17; --nv-line: #d5ddd8; --nv-acc: #0fa3a3; --nv-font: var(--f-now);
+.po-root .po-hudEra[data-era="6"] { --nv-bg: rgba(255,255,255,.92); --nv-panel: rgba(255,255,255,.98); --nv-fg: #141a17; --nv-line: #d5ddd8; --nv-acc: #0fa3a3; --nv-font: var(--f-now);
   --nv-r: 14px; --nv-pr: 18px; --nv-cur-bg: rgba(15,163,163,.12); --nv-cur-fg: #0b6f6f; --nv-hover: rgba(15,163,163,.08);
   --nv-shadow: 0 0 0 3px rgba(15,163,163,.08), 0 10px 30px rgba(20,26,23,.12); letter-spacing: 0; }
 
