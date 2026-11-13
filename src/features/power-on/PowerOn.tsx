@@ -10,11 +10,14 @@ import { GpuNotice } from "./components/GpuNotice";
 import { Hud } from "./components/Hud";
 import { Intro } from "./components/Intro";
 import { Narration, type StoryPos } from "./components/Narration";
+import { Narrator, type NarratorHandle } from "./components/Narrator";
 import { Shortcuts } from "./components/Shortcuts";
 import { StartCard, type StartChoice } from "./components/StartCard";
 import { Stage } from "./components/Stage";
 import { TooltipLayer } from "./components/Tooltip";
 import { ERAS, TRANS_KEYS } from "./content/eras";
+import { useNarratorEnabled } from "./content/flags";
+import { clipHere } from "./content/narration";
 import { acquireDesk, Desk, lerpPose, type DeskText } from "./engine/desk";
 import { Dioramas } from "./engine/dioramas";
 import { clamp, ease, isTouch, prefersReducedMotion } from "./engine/env";
@@ -22,7 +25,7 @@ import { loadCanvasFonts, resolveFonts } from "./engine/fonts";
 import { Music } from "./engine/music";
 import { ScrollTrack } from "./engine/scroll";
 import { AudioEngine } from "./engine/sfx";
-import { consumeResume, peekResume, saveResume } from "./engine/storage";
+import { consumeResume, KEYS, loadNarrator, peekResume, save, saveResume } from "./engine/storage";
 import { useStoryText } from "./i18n/rich";
 import "./styles/power-on.css";
 import "./styles/power-on-extra.css";
@@ -61,7 +64,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   const openingRef = useRef(opening);
   const openingManual = useRef(false);
   const pullRef = useRef<{ start: number; dur: number } | null>(null);
-  // Nothing starts (the opening's captions and camera, autoplay) until the start card's choice, the
+  // Nothing starts (the opening's captions and camera, autoplay, the narrator) until the start card's choice, the
   // gesture that lets the page make a sound. A resume after a locale switch from the control bar skips the card.
   const [started, setStarted] = useState(() => !!peekResume());
   const [cardUp, setCardUp] = useState(!started);
@@ -73,6 +76,28 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   const [soundOn, setSoundOn] = useState(audio.soundOn);
   const [musicOn, setMusicOn] = useState(music.on);
   const [vol, setVol] = useState(music.vol);
+  // video narrator (Narrator.tsx), behind a feature flag (content/flags.ts). Off, none of it exists: no frame, no
+  // controls or start-card switch, no R key, no autoplay hold, no music ducking.
+  const narratorFeature = useNarratorEnabled();
+  const narratorFeatureRef = useRef(narratorFeature);
+  useEffect(() => { narratorFeatureRef.current = narratorFeature; });
+  // on/off is remembered (only the switch changes it; the frame's ✕ just closes the clip); `narrating` holds autoplay
+  // while a clip is on
+  const [narratorOn, setNarratorOn] = useState(() => narratorFeature && loadNarrator());
+  const [narrating, setNarrating] = useState(false);
+  const setNarrator = useCallback((on: boolean) => { save(KEYS.narrator, on ? "on" : "off"); setNarratorOn(on); }, []);
+  // "Replay narrator" (the controls and the R key): only where there's an available clip
+  const narratorRef = useRef<NarratorHandle>(null);
+  const canReplay = narratorFeature && !!clipHere(mode, pos.era);
+  const canReplayRef = useRef(canReplay);
+  useEffect(() => { canReplayRef.current = canReplay; });
+  // the controls' switch: turning him on plays the clip for where the reader is from the start, right away (inside the
+  // click, so the browser lets him speak), which is also the feedback that it worked
+  const toggleNarrator = () => {
+    const on = !narratorOn;
+    setNarrator(on);
+    if (on && canReplay) narratorRef.current?.replay();
+  };
 
   const rootRef = useRef<HTMLDivElement>(null);
   const glHost = useRef<HTMLDivElement>(null);
@@ -268,6 +293,8 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     // --- input
     const onScroll = () => requestAnimationFrame(update);
     const onCancel = () => { scroll.cancel(); takeOver(); };
+    // a tap on the control bar isn't the reader taking over: its buttons do their own thing (Replay mustn't pause autoplay)
+    const onTouchCancel = (e: TouchEvent) => { if (!(e.target as Element | null)?.closest?.(".ctl")) onCancel(); };
     const onResize = () => {
       desk?.resize();
       if (modeNow === "story" && (innerWidth !== lastW || Math.abs(innerHeight - scroll.vh) > 140)) {
@@ -291,6 +318,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       if (e.key === "?") { e.preventDefault(); e.stopImmediatePropagation(); setKeysOpen(true); return; }
       if (e.key === "m" || e.key === "M") { c.toggleMusic(); return; }
       if (e.key === "s" || e.key === "S") { c.toggleSound(); return; }
+      if (narratorFeatureRef.current && (e.key === "r" || e.key === "R")) { if (canReplayRef.current) narratorRef.current?.replay(); return; }
       if (modeNow === "intro" && openingRef.current >= 0) {
         if (FWD.has(e.key) && !((e.key === " " || e.key === "Enter") && tag === "button")) { e.preventDefault(); nextOpeningRef.current(true); }
         return;
@@ -338,7 +366,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("wheel", onCancel, { passive: true });
-    window.addEventListener("touchstart", onCancel, { passive: true });
+    window.addEventListener("touchstart", onTouchCancel, { passive: true });
     window.addEventListener("resize", onResize);
     window.addEventListener("keydown", onKey, true);
     window.addEventListener("pointerdown", onGesture, { passive: true });
@@ -371,7 +399,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       scroll.cancel();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("wheel", onCancel);
-      window.removeEventListener("touchstart", onCancel);
+      window.removeEventListener("touchstart", onTouchCancel);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("keydown", onKey, true);
       window.removeEventListener("pointerdown", onGesture);
@@ -401,10 +429,11 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     ctl.current?.desk?.repaint(deskText);
   }, [deskText]);
 
-  // autoplay: on the desk, press power after a beat; in the story, read one line at a time
+  // autoplay: on the desk, press power after a beat; in the story, read one line at a time.
+  // It waits while a narrator clip is on, then starts its count again.
   const { playing, setPlaying, speed, cycleSpeed } = autoplay;
   useEffect(() => {
-    if (!started || !playing || keysOpen) return;
+    if (!started || !playing || keysOpen || narrating) return;
     const c = ctl.current;
     if (!c) return;
     if (mode === "intro") {
@@ -416,7 +445,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     const ms = (pos.beat < 0 ? 3200 : 4600) / speed;
     const id = window.setTimeout(() => { if (!c.advance(1)) setPlaying(false); }, ms);
     return () => clearTimeout(id);
-  }, [started, playing, speed, mode, pos.era, pos.beat, keysOpen, setPlaying, opening]);
+  }, [started, playing, speed, mode, pos.era, pos.beat, keysOpen, setPlaying, opening, narrating]);
 
   // the opening plays on its own (about 4s a beat) until the reader takes over; beat 2 is the pull-back
   const nextOpening = useCallback((manual: boolean) => {
@@ -452,7 +481,8 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   }, [opening, reduce]);
 
   // the start card's choice, inside its click (the user gesture): unlock WebAudio, set Sound ("dismiss", from Escape or
-  // the backdrop, leaves it as it is), then let the opening run. Focus goes to the opening's Next.
+  // the backdrop, leaves it as it is), start the narrator's intro right here so the browser lets it speak, then let the
+  // opening run. Focus goes to the opening's Next.
   const begin = (choice: StartChoice) => {
     audio.ensure();
     if (choice !== "dismiss") {
@@ -461,6 +491,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       setSoundOn(on);
       music.applyLevel();
     }
+    narratorRef.current?.begin(choice === "sound");
     startedRef.current = true;
     setStarted(true);
     rootRef.current?.querySelector<HTMLElement>(".po-introbox .adv")?.focus({ preventScroll: true });
@@ -513,13 +544,17 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
 
         <Hud on={mode === "story"} era={pos.era} onJump={(e) => ctl.current?.jump(e)} />
         <GpuNotice show={gpuOff} />
+        {narratorFeature && <Narrator ref={narratorRef} ready={started} mode={mode} opening={opening} era={pos.era} beat={pos.beat} on={narratorOn}
+          soundOn={soundOn} onHold={setNarrating} />}
         <Controls era={mode === "story" ? era.n : 0} playing={playing} onPlay={() => setPlaying(!playing)} speed={speed} onSpeed={cycleSpeed}
           soundOn={soundOn} onSound={() => ctl.current?.toggleSound()} musicOn={musicOn} onMusic={() => ctl.current?.toggleMusic()}
-          vol={vol} onVol={(v) => ctl.current?.setVolume(v)} onBeforeLocale={() => ctl.current?.beforeLocale()}
+          vol={vol} onVol={(v) => ctl.current?.setVolume(v)}
+          {...(narratorFeature && { narratorOn, onNarrator: toggleNarrator, onReplay: () => narratorRef.current?.replay(), replayReady: canReplay })}
+          onBeforeLocale={() => ctl.current?.beforeLocale()}
           onPrev={mode === "story" ? () => { setPlaying(false); ctl.current?.advance(-1); } : undefined}
           onNext={mode === "story" ? () => { setPlaying(false); ctl.current?.advance(1); } : undefined} />
-        <Shortcuts open={keysOpen} era={era.n} intro={mode !== "story"} touch={touch} onClose={() => setKeysOpen(false)} />
-        {cardUp && <StartCard onChoose={begin} onGone={cardGone} />}
+        <Shortcuts open={keysOpen} era={era.n} intro={mode !== "story"} touch={touch} narrator={narratorFeature} onClose={() => setKeysOpen(false)} />
+        {cardUp && <StartCard onChoose={begin} onGone={cardGone} {...(narratorFeature && { narratorOn, onNarrator: setNarrator })} />}
       </div>
     </PowerOnContext.Provider>
   );

@@ -21,6 +21,16 @@
     "musicOn": "音樂開",
     "musicOff": "音樂關",
     "musicAria": "音樂",
+    "narratorOn": "旁白開",
+    "narratorOff": "旁白關",
+    "narratorAria": "影片旁白",
+    "narrator": "旁白",
+    "stateOn": "開",
+    "stateOff": "關",
+    "narratorClose": "關閉這段旁白",
+    "narratorReplay": "重播",
+    "narratorReplayAria": "重播旁白",
+    "narratorReplayNone": "這裡沒有旁白片段",
     "volume": "音樂音量",
     "back": "上一步",
     "next": "下一步"
@@ -42,6 +52,9 @@
     "sound": "這個故事有旁白、音效和音樂。",
     "soundOn": "開啟聲音",
     "soundOff": "不開聲音繼續",
-    "language": "語言："
+    "language": "語言：",
+    "narrator": "影片旁白",
+    "on": "開",
+    "off": "關"
   }
 }

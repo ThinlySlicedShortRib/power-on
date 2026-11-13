@@ -7,14 +7,17 @@ export type StartChoice = "sound" | "quiet" | "dismiss";
 
 /**
  * The first thing on every page load: a centred card over the dimmed opening shot. Its click is the gesture the browser
- * needs before anything can make a sound, so the opening waits for it (PowerOn holds the captions, the camera and autoplay
- * until `onChoose`). "Turn sound on" / "Continue without sound" set Sound; Escape or a click on the
+ * needs before anything can make a sound, so the opening waits for it (PowerOn holds the captions, the camera, autoplay
+ * and the narrator until `onChoose`). "Turn sound on" / "Continue without sound" set Sound; Escape or a click on the
  * backdrop just dismiss ("dismiss": Sound left as it is). The language picker reloads the page in that locale, where
- * the card shows again.
+ * the card shows again. The narrator switch sets the remembered narrator setting (it decides whether the intro plays).
  * A modal dialog: the rest of the page is inert while it's up and Tab stays inside it.
  */
-export function StartCard({ onChoose, onGone }: {
+export function StartCard({ onChoose, onGone, narratorOn, onNarrator }: {
   onChoose: (c: StartChoice) => void; onGone: () => void;
+  /** the narrator setting (the same one as the controls' switch); flipping it here doesn't close the card. Leave out
+   *  `onNarrator` (narrator feature flag off) and there's no switch. */
+  narratorOn?: boolean; onNarrator?: (on: boolean) => void;
 }) {
   const t = useTranslations("common.welcome");
   const back = useRef<HTMLDivElement>(null);
@@ -77,6 +80,13 @@ export function StartCard({ onChoose, onGone }: {
           {t("soundOn")}
         </button>
         <button type="button" className="po-startOff" onClick={() => choose("quiet")}>{t("soundOff")}</button>
+        {onNarrator && (
+          <button type="button" role="switch" className="po-startNarr" aria-checked={!!narratorOn} aria-label={t("narrator")} onClick={() => onNarrator(!narratorOn)}>
+            <span>{t("narrator")}</span>
+            <span className="po-startSw" aria-hidden="true"><i /></span>
+            <span className="po-startState" aria-hidden="true">{narratorOn ? t("on") : t("off")}</span>
+          </button>
+        )}
         <div className="po-startLang">
           <span aria-hidden="true">{t("language")}</span>
           <LanguageSwitcher className="po-startLangsw" id="po-start-language" />

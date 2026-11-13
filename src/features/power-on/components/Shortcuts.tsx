@@ -3,7 +3,12 @@ import { useEffect, useRef } from "react";
 import { useStoryText } from "../i18n/rich";
 
 /** "?" panel: keyboard shortcuts (or gestures on touch), costumed for the current era. */
-export function Shortcuts({ open, era, intro, touch, onClose }: { open: boolean; era: number; intro: boolean; touch: boolean; onClose: () => void }) {
+export function Shortcuts({ open, era, intro, touch, narrator = false, onClose }: {
+  open: boolean; era: number; intro: boolean; touch: boolean;
+  /** the video narrator is on (its feature flag): adds the R row */
+  narrator?: boolean;
+  onClose: () => void;
+}) {
   const { t, rich } = useStoryText();
   const closeBtn = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -23,6 +28,7 @@ export function Shortcuts({ open, era, intro, touch, onClose }: { open: boolean;
       [K("esc", t("keys.kb.esc")), t("keys.kb.escDesc")],
       [K("m", "M"), t("keys.kb.mDesc")],
       [K("s", "S"), t("keys.kb.sDesc")],
+      ...(narrator ? [[K("r", "R"), t("keys.kb.rDesc")] as [React.ReactNode, React.ReactNode]] : []),
       [K("help", "?"), t("keys.kb.helpDesc")],
       [<span className="po-kn" key="b">{t("keys.kb.browser")}</span>, rich("keys.kb.browserDesc")],
       [<span className="po-kn" key="e">{t("keys.kb.errand")}</span>, rich("keys.kb.errandDesc")],

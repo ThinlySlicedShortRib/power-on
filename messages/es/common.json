@@ -21,6 +21,16 @@
     "musicOn": "Con música",
     "musicOff": "Sin música",
     "musicAria": "Música",
+    "narratorOn": "Con narrador",
+    "narratorOff": "Sin narrador",
+    "narratorAria": "Narrador en vídeo",
+    "narrator": "Narrador",
+    "stateOn": "Sí",
+    "stateOff": "No",
+    "narratorClose": "Cerrar este clip",
+    "narratorReplay": "Repetir",
+    "narratorReplayAria": "Repetir el narrador",
+    "narratorReplayNone": "Aquí no hay clip del narrador",
     "volume": "Volumen de la música",
     "back": "Atrás",
     "next": "Siguiente"
@@ -42,6 +52,9 @@
     "sound": "Esta historia se cuenta con narración, sonido y música.",
     "soundOn": "Activar el sonido",
     "soundOff": "Continuar sin sonido",
-    "language": "Idioma:"
+    "language": "Idioma:",
+    "narrator": "Narrador en vídeo",
+    "on": "Sí",
+    "off": "No"
   }
 }

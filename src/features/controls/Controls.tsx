@@ -18,6 +18,12 @@ export interface ControlsProps {
   /** music volume, 0..1 */
   vol: number;
   onVol: (percent: number) => void;
+  /** the video narrator (Power On only; its group is left out without these): an on/off switch */
+  narratorOn?: boolean;
+  onNarrator?: () => void;
+  /** replay the narrator's clip for where the reader is: always shown with the switch, disabled where there's no clip */
+  onReplay?: () => void;
+  replayReady?: boolean;
   /** runs before the language switch navigates (to remember the reader's place) */
   onBeforeLocale?: () => void;
   /** Back/Next for the story; on phones they take a second row of the bar (and replace the Next under the copy) */
@@ -25,7 +31,7 @@ export interface ControlsProps {
   onNext?: () => void;
 }
 
-/** The one control bar, bottom-right on every screen (full width on phones): autoplay, speed, sound, music, volume, language. */
+/** The one control bar, bottom-right on every screen (full width on phones): autoplay, speed, sound, music, volume, narrator (and its replay), language. */
 export function Controls(p: ControlsProps) {
   const t = useTranslations("common.controls");
   return (
@@ -57,6 +63,29 @@ export function Controls(p: ControlsProps) {
       <label className="visually-hidden" htmlFor="ctl-vol">{t("volume")}</label>
       <input id="ctl-vol" className="ctl-vol" type="range" min={0} max={100} step={5} value={Math.round(p.vol * 100)}
         disabled={!p.soundOn || !p.musicOn} onChange={(e) => p.onVol(Number(e.target.value))} />
+      {p.onNarrator && (
+        <span className="ctl-narr" role="group" aria-label={t("narratorAria")}>
+          <button type="button" role="switch" className="ctl-narrsw" aria-checked={!!p.narratorOn} aria-label={t("narrator")}
+            title={p.narratorOn ? t("narratorOn") : t("narratorOff")} onClick={p.onNarrator}>
+            <svg className="ctl-narrico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="2.5" y="4" width="19" height="16" rx="2.5" /><circle cx="12" cy="10.5" r="2.8" /><path d="M6.8 20a5.6 5.6 0 0 1 10.4 0" />
+              {!p.narratorOn && <path className="ctl-slash" d="M3 2.5l18 19" />}
+            </svg>
+            <span className="ctl-lbl">{t("narrator")}</span>
+            <span className="ctl-sw" aria-hidden="true"><i /></span>
+            <span className="ctl-lbl ctl-state" aria-hidden="true">{p.narratorOn ? t("stateOn") : t("stateOff")}</span>
+          </button>
+          {p.onReplay && (
+            <button type="button" className="ctl-replay" aria-label={t("narratorReplayAria")} aria-disabled={!p.replayReady || undefined}
+              title={p.replayReady ? `${t("narratorReplayAria")} (R)` : t("narratorReplayNone")} onClick={p.replayReady ? p.onReplay : undefined}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" />
+              </svg>
+              <span className="ctl-lbl">{t("narratorReplay")}</span>
+            </button>
+          )}
+        </span>
+      )}
       <i className="ctl-sep" aria-hidden="true" />
       <span className="ctl-lang" onChangeCapture={p.onBeforeLocale}>
         <LanguageSwitcher className="ctl-langsw" />

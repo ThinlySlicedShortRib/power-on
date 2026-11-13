@@ -100,6 +100,9 @@ function makeTracks(): Record<number, TrackDef> {
   };
 }
 
+/** −10 dB under the video narrator */
+const NARRATOR_DUCK = 0.316;
+
 export class Music {
   on: boolean;
   vol: number;
@@ -113,6 +116,8 @@ export class Music {
   private noiseBuf: AudioBuffer | null = null;
   private defs = makeTracks();
   private stopTimer = 0;
+  /** the video narrator is talking (Narrator.tsx): sit ~10 dB under him */
+  private narrating = false;
 
   constructor(private audio: AudioEngine) {
     this.on = load(KEYS.music) !== "off";
@@ -245,7 +250,14 @@ export class Music {
     const ac = this.audio.ac;
     if (!this.bus || !ac) return;
     const on = this.on && this.audio.soundOn && this.started;
-    this.bus.gain.setTargetAtTime(on ? this.vol * 0.9 : 0, ac.currentTime, sec);
+    this.bus.gain.setTargetAtTime(on ? this.vol * 0.9 * (this.narrating ? NARRATOR_DUCK : 1) : 0, ac.currentTime, sec);
+  }
+
+  /** narrator clip audible or not: duck quickly, come back up over ~0.5 s */
+  narrate(on: boolean) {
+    if (this.narrating === on) return;
+    this.narrating = on;
+    this.applyLevel(on ? 0.08 : 0.17);
   }
 
   era(n: number) {

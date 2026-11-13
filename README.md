@@ -20,6 +20,16 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Feature flags
+
+| Variable | Default | What it does |
+| --- | --- | --- |
+| `NEXT_PUBLIC_FEATURE_NARRATOR` | off | `1` or `true` turns on the video narrator (the clip frame, its Narrator switch and Replay in the controls and on the start card, the `R` shortcut, the autoplay hold and music ducking). Read at build time (`src/features/power-on/content/flags.ts`), so set it in the Vercel project's environment variables and redeploy. |
+
+To preview the narrator on a build where it's off, open the site with `?narrator=1`: it stays on for that tab (sessionStorage, so it survives a language switch). `?narrator=0` clears it.
+
+The clips in `public/narration/` ship with every build, so `/narration/intro-open.mp4` is publicly reachable even with the flag off.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

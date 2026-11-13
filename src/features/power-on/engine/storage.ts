@@ -37,7 +37,18 @@ export const KEYS = {
   resume: "poweron.resume",
   speed: "poweron.speed",
   gpuNote: "poweron.gpunote",
+  /** the narrator on/off switch ("on" | "off"). v2: the old key could hold an "off" set by the frame's ✕, so it's dropped */
+  narrator: "poweron.narrator.v2",
 } as const;
+
+/** Keys no longer read; cleared once so an old "off" (or the once-per-session clip list) can't linger. */
+const LEGACY = [["poweron.narrator", "local"], ["poweron.narrated", "session"]] as const;
+
+/** The narrator setting: on unless switched off with the v2 switch (the pre-v2 value is ignored and removed). */
+export function loadNarrator(): boolean {
+  LEGACY.forEach(([k, area]) => { if (load(k, area) !== null) save(k, null, area); });
+  return load(KEYS.narrator) !== "off";
+}
 
 /** A reader's position, saved right before a locale switch so the story can pick up where it was. */
 export interface ResumePoint { era: number; beat: number; at: number }

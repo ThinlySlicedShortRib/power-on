@@ -21,6 +21,16 @@
     "musicOn": "Music on",
     "musicOff": "Music off",
     "musicAria": "Music",
+    "narratorOn": "Narrator on",
+    "narratorOff": "Narrator off",
+    "narratorAria": "Video narrator",
+    "narrator": "Narrator",
+    "stateOn": "On",
+    "stateOff": "Off",
+    "narratorClose": "Close this clip",
+    "narratorReplay": "Replay",
+    "narratorReplayAria": "Replay the narrator",
+    "narratorReplayNone": "No narrator clip here",
     "volume": "Music volume",
     "back": "Back",
     "next": "Next"
@@ -42,6 +52,9 @@
     "sound": "This story is told with narration, sound and music.",
     "soundOn": "Turn sound on",
     "soundOff": "Continue without sound",
-    "language": "Language:"
+    "language": "Language:",
+    "narrator": "Video narrator",
+    "on": "On",
+    "off": "Off"
   }
 }

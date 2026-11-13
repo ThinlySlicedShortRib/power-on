@@ -35,7 +35,14 @@
 .po-root .po-startOn svg { flex: none; }
 .po-root .po-startOff { min-height: 44px; padding: 8px 14px; border: 0; background: none; cursor: pointer; font: .88rem/1.2 var(--f-now); color: rgba(241,230,208,.66);
   text-decoration: underline; text-decoration-color: rgba(241,230,208,.25); text-underline-offset: 4px; transition: color .15s, text-decoration-color .15s; }
+/* the narrator switch: the same setting as the control bar's */
+.po-root .po-startNarr { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 6px 14px; border: 1px solid rgba(241,230,208,.22); border-radius: 999px;
   background: none; cursor: pointer; font: .88rem/1.2 var(--f-now); color: var(--room-ink); transition: background-color .15s, border-color .15s; }
+.po-root .po-startSw { position: relative; flex: none; width: 32px; height: 18px; border-radius: 999px; border: 1px solid rgba(241,230,208,.35); transition: background-color .18s, border-color .18s; }
+.po-root .po-startSw i { position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 50%; background: rgba(241,230,208,.6); transition: transform .18s, background-color .18s; }
+.po-root .po-startNarr[aria-checked="true"] .po-startSw { background: var(--lamp); border-color: var(--lamp); }
+.po-root .po-startNarr[aria-checked="true"] .po-startSw i { transform: translateX(14px); background: #1d1408; }
+.po-root .po-startState { min-width: 2.4em; text-align: left; font: .72rem/1 var(--f-mono); letter-spacing: .08em; color: rgba(241,230,208,.7); }
 .po-root .po-startLang { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 10px; width: 100%; margin-top: 4px; padding-top: 14px;
   border-top: 1px solid rgba(241,230,208,.12); font: .72rem/1 var(--f-mono); letter-spacing: .08em; color: rgba(241,230,208,.55); }
 .po-root .po-startLangsw { display: inline-flex; }
@@ -47,6 +54,7 @@
   .po-root .po-startOn:hover { background: #ffd595; box-shadow: 0 0 0 1px rgba(255,200,116,.7), 0 10px 34px rgba(255,200,116,.38); }
   .po-root .po-startOff:hover { color: var(--room-ink); text-decoration-color: currentColor; }
   .po-root .po-startLangsw select:hover { background: rgba(255,255,255,.08); }
+  .po-root .po-startNarr:hover { background: rgba(255,255,255,.06); border-color: rgba(241,230,208,.4); }
 }
 .po-root .po-startOn:active { transform: scale(.98); }
 @media (pointer: coarse) { .po-root .po-startLangsw select { padding: 12px 16px; } }
@@ -55,7 +63,141 @@
 @keyframes po-startin { from { opacity: 0; transform: translateY(14px) scale(.97); } }
 @media (prefers-reduced-motion: reduce) {
   .po-root .po-start, .po-root .po-start[data-leaving], .po-root .po-startCard { animation: none; }
-  .po-root .po-startOn { transition: none; }
+  .po-root .po-startOn, .po-root .po-startSw, .po-root .po-startSw i { transition: none; }
   .po-root .po-startOn:active { transform: none; }
 }
 
+
+/* video narrator (Narrator.tsx): a small square video frame that pops in for a clip and shrinks away when it ends, dressed
+   as the era the reader is in (data-era: 0 = the opening and the desk, 1–6 = the story, like the control bar; the
+   tokens are the era costumes' in power-on.css and controls.css). It trails the mouse, or docks bottom-right above the
+   controls (touch, reduced motion); useBubbleFollow measures the frame, chrome included, and positions it with
+   transforms only. Click-through except the ✕ (the title bar's close box where the era has one) and, docked, the tap
+   into picture-in-picture. Under the open era list. */
+.po-root .po-narrator { position: fixed; left: 0; top: 0; z-index: 9; pointer-events: none; will-change: transform; --nr-t: .35s ease; }
+.po-root .po-narrator[hidden] { display: none; }
+.po-root .po-narrator[data-pip] { visibility: hidden; }
+.po-root .po-narratorPop { position: relative; animation: po-narratorin .25s cubic-bezier(.34,1.56,.64,1) both; }
+.po-root .po-narrator[data-phase="out"] .po-narratorPop { animation: po-narratorout .3s cubic-bezier(.5,0,.75,0) both; }
+.po-root .po-narratorWin { position: relative; display: flex; flex-direction: column; padding: 0; border: 0 solid transparent; border-radius: 0; background: #000;
+  transition: padding var(--nr-t), border-radius var(--nr-t), border-color var(--nr-t), border-width var(--nr-t), box-shadow var(--nr-t), background-color var(--nr-t); }
+.po-root .po-narratorBar { position: relative; flex: none; display: flex; align-items: center; gap: 4px; height: 0; overflow: hidden; white-space: nowrap;
+  font: 600 .6rem/1 var(--f-now); transition: height var(--nr-t), margin var(--nr-t), background-color var(--nr-t), color var(--nr-t); }
+.po-root .po-narratorBar span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.po-root .po-narratorBar i { flex: none; display: none; }
+.po-root .po-narratorBub { position: relative; flex: none; width: var(--po-narrator-size, 150px); height: var(--po-narrator-size, 150px); overflow: hidden; background: #100d0a;
+  border: 0 solid transparent; transition: border-radius var(--nr-t), border-color var(--nr-t); }
+.po-root .po-narratorBub video { display: block; width: 100%; height: 100%; object-fit: cover; transition: filter var(--nr-t); }
+.po-root .po-narratorBub::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity var(--nr-t); }
+.po-root .po-narrator[data-tap] .po-narratorBub { pointer-events: auto; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.po-root .po-narratorTag { display: none; }
+.po-root .po-narratorX { position: absolute; top: 6px; right: 6px; display: grid; place-items: center; width: 24px; height: 24px; padding: 0; pointer-events: auto;
+  color: #f1e6d0; background: rgba(16,13,10,.85); border: 1px solid rgba(255,200,116,.5); border-radius: 50%;
+  transition: top var(--nr-t), right var(--nr-t), width var(--nr-t), height var(--nr-t), border-radius var(--nr-t), background-color var(--nr-t), color var(--nr-t); }
+.po-root .po-narratorX svg { width: 11px; height: 11px; }
+.po-root .po-narratorX:focus-visible { outline: 2px solid var(--lamp); outline-offset: 2px; }
+/* touch: the box stays the era's size, the hit area is 44 px */
+@media (pointer: coarse) { .po-root .po-narratorX::after { content: ""; position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); } }
+
+/* 0 · the opening and the desk: a NeXTSTEP window (the era-1 .po-next card): grey frame, black title bar, centred title,
+   miniaturise box left and close box right, bevelled */
+.po-root .po-narrator[data-era="0"] .po-narratorWin { padding: 0 3px 3px; background-color: #a8a8a8; border: 1px solid #000; box-shadow: 4px 4px 0 rgba(0,0,0,.55), 0 14px 36px rgba(0,0,0,.5); }
+.po-root .po-narrator[data-era="0"] .po-narratorBar { height: 15px; margin: 0 -3px 3px; padding: 0 2px; color: #fff; background-color: #000; text-align: center; letter-spacing: .02em; }
+.po-root .po-narrator[data-era="0"] .po-narratorMin { display: block; width: 11px; height: 11px; background: #a8a8a8; border: 1px solid; border-color: #fff #555 #555 #fff; }
+.po-root .po-narrator[data-era="0"] .po-narratorMax { display: block; width: 11px; }
+.po-root .po-narrator[data-era="0"] .po-narratorBub { border-width: 1px; border-color: #555 #fff #fff #555; }
+.po-root .po-narrator[data-era="0"] .po-narratorX { top: 3px; right: 3px; width: 11px; height: 11px; color: #000; background: #a8a8a8; border: 1px solid; border-color: #fff #555 #555 #fff; border-radius: 0; }
+.po-root .po-narrator[data-era="0"] .po-narratorX svg { width: 9px; height: 9px; stroke-width: 3; }
+
+/* 1 · CERN: the green phosphor terminal (.po-term): one green rule, a prompt line for a title, scanlines, monochrome */
+.po-root .po-narrator[data-era="1"] .po-narratorWin { background-color: #020602; border: 1px solid #3dff72; box-shadow: 0 0 24px rgba(61,255,114,.22), 0 14px 36px rgba(0,0,0,.5); }
+.po-root .po-narrator[data-era="1"] .po-narratorBar { height: 17px; padding: 0 30px 0 5px; color: #3dff72; background-color: #020602; border-bottom: 1px solid #1f9a45;
+  font: .95rem/1 var(--f-term); text-shadow: 0 0 6px rgba(61,255,114,.6); }
+.po-root .po-narrator[data-era="1"] .po-narratorBar span::before { content: "> "; }
+.po-root .po-narrator[data-era="1"] .po-narratorBar span::after { content: "_"; animation: po-narratorblink 1s steps(1) infinite; }
+.po-root .po-narrator[data-era="1"] .po-narratorBub video { filter: grayscale(1) contrast(1.15) brightness(1.05); }
+.po-root .po-narrator[data-era="1"] .po-narratorBub::after { opacity: 1; mix-blend-mode: multiply;
+  background: repeating-linear-gradient(rgba(0,0,0,.3) 0 1px, transparent 1px 3px), linear-gradient(#3dff72, #3dff72); }
+.po-root .po-narrator[data-era="1"] .po-narratorX { top: 1px; right: 2px; width: 26px; height: 17px; color: #3dff72; background: none; border: 0; border-radius: 0; }
+.po-root .po-narrator[data-era="1"] .po-narratorX svg { display: none; }
+.po-root .po-narrator[data-era="1"] .po-narratorX::before { content: "[x]"; font: .95rem/1 var(--f-term); text-shadow: 0 0 6px rgba(61,255,114,.6); }
+@keyframes po-narratorblink { 50% { opacity: 0; } }
+
+/* 2 · homepages: a Windows 95 window: grey outset bevel, navy-to-blue title bar, ─ □ ✕ boxes; it opens like a window */
+.po-root .po-narrator[data-era="2"] .po-narratorWin { padding: 2px; background-color: #c0c0c0; border: 2px outset #eee; box-shadow: 2px 2px 0 #000; }
+.po-root .po-narrator[data-era="2"] .po-narratorBar { height: 18px; margin-bottom: 2px; padding: 0 22px 0 4px; gap: 2px; color: #fff; background: linear-gradient(90deg, #000080, #1084d0);
+  font: 700 .7rem/1 var(--f-90s); }
+.po-root .po-narrator[data-era="2"] .po-narratorBar i, .po-root .po-narrator[data-era="2"] .po-narratorX { box-sizing: border-box; width: 16px; height: 14px; background: #c0c0c0;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf; }
+.po-root .po-narrator[data-era="2"] .po-narratorBar i { display: block; position: relative; order: 2; }
+.po-root .po-narrator[data-era="2"] .po-narratorMin::before { content: ""; position: absolute; left: 4px; bottom: 3px; width: 6px; height: 2px; background: #000; }
+.po-root .po-narrator[data-era="2"] .po-narratorMax::before { content: ""; position: absolute; left: 3px; top: 2px; width: 9px; height: 8px; box-sizing: border-box; border: 1px solid #000; border-top-width: 2px; }
+.po-root .po-narrator[data-era="2"] .po-narratorBub { border: 2px inset #e0e0e0; }
+.po-root .po-narrator[data-era="2"] .po-narratorX { top: 6px; right: 6px; color: #000; border: 0; border-radius: 0; }
+.po-root .po-narrator[data-era="2"] .po-narratorX svg { width: 8px; height: 8px; stroke-width: 3.6; stroke-linecap: square; }
+.po-root .po-narrator[data-era="2"] .po-narratorX:active { box-shadow: inset 1px 1px #0a0a0a, inset -1px -1px #fff, inset 2px 2px #808080, inset -2px -2px #dfdfdf; }
+.po-root .po-narrator[data-era="2"] .po-narratorPop { transform-origin: 0 0; animation: po-narratoropen .3s steps(5, end) both; }
+.po-root .po-narrator[data-era="2"][data-phase="out"] .po-narratorPop { animation: po-narratorclose .3s steps(5, end) both; }
+@keyframes po-narratoropen { from { transform: scale(.08); opacity: .6; } }
+@keyframes po-narratorclose { to { transform: scale(.08); opacity: 0; } }
+
+/* 3 · web 2.0: glossy: rounded, an aqua-white gradient, a drop shadow, a shine over the top half, a "beta" starburst */
+.po-root .po-narrator[data-era="3"] .po-narratorWin { padding: 4px; border-radius: 14px; background: linear-gradient(#ffffff, #e2eef9); border: 1px solid #a9c4dd;
+  box-shadow: 0 10px 30px rgba(23,50,77,.28), inset 0 1px 0 #fff; }
+.po-root .po-narrator[data-era="3"] .po-narratorBub { border-radius: 10px; }
+.po-root .po-narrator[data-era="3"] .po-narratorBub::after { opacity: 1; background: linear-gradient(rgba(255,255,255,.26), rgba(255,255,255,.06) 44%, rgba(255,255,255,0) 50%); }
+.po-root .po-narrator[data-era="3"] .po-narratorTag { display: grid; place-items: center; position: absolute; left: -12px; bottom: -10px; width: 42px; height: 42px; transform: rotate(-12deg);
+  background: #ff6a00; font: 700 .6rem/1 var(--f-aqua); color: #fff; text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+  clip-path: polygon(50% 0, 61% 14%, 79% 8%, 80% 27%, 98% 32%, 88% 49%, 98% 66%, 80% 71%, 79% 90%, 61% 85%, 50% 100%, 39% 85%, 21% 90%, 20% 71%, 2% 66%, 12% 49%, 2% 32%, 20% 27%, 21% 8%, 39% 14%); }
+.po-root .po-narrator[data-era="3"] .po-narratorTag::before { content: var(--po-beta-label, "beta"); }
+.po-root .po-narrator[data-era="3"] .po-narratorX { top: -7px; right: -7px; width: 22px; height: 22px; color: #fff; border: 1px solid #1f5f9e;
+  background: linear-gradient(#7cbcf5, #2a7cc8 50%, #1f6bb5 51%, #4f9de3); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 2px 5px rgba(23,50,77,.35); }
+.po-root .po-narrator[data-era="3"] .po-narratorX svg { width: 10px; height: 10px; filter: drop-shadow(0 -1px 0 rgba(0,0,0,.25)); }
+
+/* 4 · apps in the browser: flat: a white card, a thin midnight rule, a teal accent stripe, a square flat ✕ */
+.po-root .po-narrator[data-era="4"] .po-narratorWin { padding: 3px 3px 0; border-radius: 2px; background-color: #fff; border: 1px solid #2c3e50; border-bottom: 5px solid #1abc9c;
+  box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24); }
+.po-root .po-narrator[data-era="4"] .po-narratorX { top: 4px; right: 4px; width: 24px; height: 24px; color: #fff; background: #2c3e50; border: 0; border-radius: 2px; }
+
+/* 5 · everywhere: dark glass: a hairline border, 16 px radius, backdrop blur, a deep soft shadow */
+.po-root .po-narrator[data-era="5"] .po-narratorWin { padding: 4px; border-radius: 16px; background-color: rgba(20,20,24,.6); border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.po-root .po-narrator[data-era="5"] .po-narratorBub { border-radius: 12px; }
+.po-root .po-narrator[data-era="5"] .po-narratorX { top: 9px; right: 9px; width: 22px; height: 22px; color: #ededed; background: rgba(20,20,24,.55); border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+
+/* 6 · what's next: the light, half-generated interface: a white card, a teal ring that breathes while the agent talks,
+   and the era's "generated" label */
+.po-root .po-narrator[data-era="6"] .po-narratorWin { padding: 4px; border-radius: 18px; background-color: #fff; border: 1px solid #d5ddd8;
+  box-shadow: 0 0 0 3px rgba(15,163,163,.1), 0 10px 30px rgba(20,26,23,.14); animation: po-narratorthink 2.4s ease-in-out infinite; }
+.po-root .po-narrator[data-era="6"] .po-narratorBub { border-radius: 14px; }
+.po-root .po-narrator[data-era="6"] .po-narratorTag { display: flex; align-items: center; gap: 5px; position: absolute; left: 10px; bottom: 10px; padding: 3px 7px 3px 6px;
+  border-radius: 999px; background: rgba(255,255,255,.88); color: #0b6f6f; font: .5rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.po-root .po-narrator[data-era="6"] .po-narratorTag::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #0fa3a3; box-shadow: 0 0 6px #0fa3a3; }
+.po-root .po-narrator[data-era="6"] .po-narratorTag::after { content: var(--po-gen-label, "generated"); }
+.po-root .po-narrator[data-era="6"] .po-narratorX { top: 9px; right: 9px; width: 22px; height: 22px; color: #141a17; background: rgba(255,255,255,.9); border: 1px solid #d5ddd8;
+  box-shadow: 0 2px 8px rgba(20,26,23,.12); }
+.po-root .po-narrator[data-era="6"] .po-narratorX:focus-visible { outline-color: #0fa3a3; }
+@keyframes po-narratorthink { 50% { box-shadow: 0 0 0 3px rgba(15,163,163,.18), 0 0 16px rgba(15,163,163,.2), 0 10px 30px rgba(20,26,23,.14); } }
+
+@media (hover: hover) and (pointer: fine) {
+  .po-root .po-narrator[data-era="0"] .po-narratorX:hover { background: #c4c4c4; }
+  .po-root .po-narrator[data-era="1"] .po-narratorX:hover { color: #031006; background: #3dff72; }
+  .po-root .po-narrator[data-era="1"] .po-narratorX:hover::before { text-shadow: none; }
+  .po-root .po-narrator[data-era="2"] .po-narratorX:hover { background: #d4d4d4; }
+  .po-root .po-narrator[data-era="3"] .po-narratorX:hover { background: linear-gradient(#ffb15c, #ff7a00 50%, #f06400 51%, #ff9a2e); border-color: #c75200; }
+  .po-root .po-narrator[data-era="4"] .po-narratorX:hover { background: #1abc9c; }
+  .po-root .po-narrator[data-era="5"] .po-narratorX:hover { background: rgba(255,255,255,.16); }
+  .po-root .po-narrator[data-era="6"] .po-narratorX:hover { color: #0b6f6f; border-color: #0fa3a3; }
+}
+@keyframes po-narratorin { from { transform: scale(0); } }
+@keyframes po-narratorout { to { transform: scale(0); opacity: 0; } }
+@keyframes po-narratorfadein { from { opacity: 0; } }
+@keyframes po-narratorfadeout { to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .po-root .po-narrator { --nr-t: 0s; }
+  .po-root .po-narrator .po-narratorPop, .po-root .po-narrator[data-era] .po-narratorPop { animation: po-narratorfadein .3s ease both; }
+  .po-root .po-narrator[data-phase="out"] .po-narratorPop, .po-root .po-narrator[data-era][data-phase="out"] .po-narratorPop { animation: po-narratorfadeout .3s ease both; }
+  .po-root .po-narrator[data-era="1"] .po-narratorBar span::after, .po-root .po-narrator[data-era="6"] .po-narratorWin { animation: none; }
+}

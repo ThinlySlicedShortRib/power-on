@@ -14,6 +14,7 @@
 .ctl button { display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px; border: 0; border-radius: var(--ctl-radius); background: none;
   font: inherit; letter-spacing: inherit; color: inherit; cursor: pointer; white-space: nowrap; }
 .ctl button[aria-pressed="false"] { opacity: .55; }
+.ctl button:disabled { opacity: .35; cursor: default; }
 .ctl button[aria-pressed="true"]:first-child { color: var(--ctl-acc); }
 .ctl .ctl-speed { min-width: 3.4em; justify-content: center; font-variant-numeric: tabular-nums; }
 .ctl .ctl-sep { width: 1px; height: 16px; margin: 0 4px; background: var(--ctl-line); }
@@ -24,11 +25,25 @@
 .ctl .ctl-langsw select { appearance: none; -webkit-appearance: none; max-width: 9.5em; padding: 4px 10px; cursor: pointer;
   font: inherit; letter-spacing: inherit; color: inherit; background: transparent; border: 1px solid var(--ctl-line); border-radius: var(--ctl-radius); }
 .ctl .ctl-langsw option { color: #111; background: #f1e6d0; }
+/* the narrator group: a pill holding the on/off switch and Replay */
+.ctl .ctl-narr { display: inline-flex; align-items: center; gap: 0; margin: 0 2px; padding: 1px; border: 1px solid var(--ctl-line); border-radius: var(--ctl-radius); }
+.ctl .ctl-narrsw { gap: 7px; }
+.ctl .ctl-narrsw[aria-checked="false"] .ctl-narrico, .ctl .ctl-narrsw[aria-checked="false"] .ctl-state { opacity: .6; }
+.ctl .ctl-sw { position: relative; flex: none; width: 26px; height: 14px; border: 1px solid var(--ctl-line); border-radius: var(--ctl-radius);
+  background: transparent; transition: background-color .18s, border-color .18s; }
+.ctl .ctl-sw i { position: absolute; top: 2px; left: 2px; width: 8px; height: 8px; border-radius: var(--ctl-radius); background: var(--ctl-fg); opacity: .6;
+  transition: transform .18s, opacity .18s; }
+.ctl .ctl-narrsw[aria-checked="true"] .ctl-sw { background: var(--ctl-acc); border-color: var(--ctl-acc); }
+.ctl .ctl-narrsw[aria-checked="true"] .ctl-sw i { transform: translateX(12px); background: var(--ctl-on-acc, #100d0a); opacity: 1; }
+.ctl .ctl-state { min-width: 2.2em; }
+.ctl .ctl-replay { border-left: 1px solid var(--ctl-line); border-radius: 0 var(--ctl-radius) var(--ctl-radius) 0; }
+.ctl button[aria-disabled="true"] { opacity: .4; cursor: default; }
+@media (prefers-reduced-motion: reduce) { .ctl .ctl-sw, .ctl .ctl-sw i { transition: none; } }
 /* Back/Next: phones only (desktop has the Next under the copy and the keyboard) */
 .ctl .ctl-nav { display: none; }
 /* hover only where a pointer really hovers (touch browsers leave :hover stuck after a tap) */
 @media (hover: hover) and (pointer: fine) {
-  .ctl button:hover { background: var(--ctl-hover); }
+  .ctl button:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--ctl-hover); }
   .ctl .ctl-langsw select:hover { background: var(--ctl-hover); }
 }
 
@@ -54,6 +69,13 @@
   .ctl .ctl-nav button { flex: 1; justify-content: center; min-height: 44px; gap: 8px; font-size: .9rem; border: 1px solid var(--ctl-line); }
   .ctl .ctl-nav .ctl-next { color: var(--ctl-on-acc, #100d0a); background: var(--ctl-acc); border-color: var(--ctl-acc); font-weight: 700; }
   .ctl .ctl-lbl { display: none; }
+  .ctl .ctl-narr { margin: 0 1px; }
+  .ctl .ctl-narrsw { gap: 5px; padding: 5px 4px 5px 6px; }
+  .ctl .ctl-replay { padding: 5px 6px; }
+  .ctl .ctl-speed { min-width: 2.6em; padding: 5px 4px; }
+  .ctl .ctl-sw { width: 22px; height: 12px; }
+  .ctl .ctl-sw i { width: 6px; height: 6px; }
+  .ctl .ctl-narrsw[aria-checked="true"] .ctl-sw i { transform: translateX(10px); }
   .ctl .ctl-vol { width: 44px; }
   .ctl .ctl-sep { margin: 0 2px; }
   .ctl .ctl-langsw select { max-width: 6.5em; padding: 3px 6px; }
