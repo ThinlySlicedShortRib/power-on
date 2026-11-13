@@ -18,3 +18,44 @@
 /* phones: below the era navigator (44px tall, top-left) */
 @media (max-width: 760px) { .po-root .po-gpu { top: calc(66px + env(safe-area-inset-top, 0px)); } }
 
+/* the start card (StartCard.tsx): centred over the opening shot, which is dimmed and softly blurred behind it, on every
+   page load. Above everything (the shortcuts panel can't open while it's up). Fades out once answered. */
+.po-root .po-start { position: fixed; inset: 0; z-index: 45; display: grid; place-items: center; overflow: auto;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: rgba(8,6,4,.5); backdrop-filter: blur(3px); animation: po-startfade .45s ease both; }
+.po-root .po-start[data-leaving] { pointer-events: none; animation: po-startout .25s ease both; }
+.po-root .po-startCard { width: min(100%, 420px); display: grid; justify-items: center; gap: 14px; padding: 30px 28px 20px; text-align: center; border-radius: 18px;
+  font: .95rem/1.45 var(--f-now); color: var(--room-ink); background: rgba(16,13,10,.92); border: 1px solid rgba(255,200,116,.35);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 30px 80px rgba(0,0,0,.6), 0 0 60px rgba(255,200,116,.07); animation: po-startin .55s .08s cubic-bezier(.2,.8,.2,1) both; }
+.po-root .po-startCard h2 { margin: 0; font: 400 clamp(1.7rem, 5vw, 2.2rem)/1.05 var(--f-serif); letter-spacing: -.01em; color: var(--room-ink); text-wrap: balance; }
+.po-root .po-startCard p { margin: 0 0 6px; max-width: 30ch; color: rgba(241,230,208,.78); text-wrap: pretty; }
+.po-root .po-startOn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; width: 100%; max-width: 300px; padding: 12px 26px;
+  border: 0; border-radius: 999px; cursor: pointer; font: 600 1.05rem/1.1 var(--f-now); color: #1d1408; background: var(--lamp);
+  box-shadow: 0 0 0 1px rgba(255,200,116,.5), 0 8px 28px rgba(255,200,116,.28); transition: background-color .15s, box-shadow .15s, transform .15s; }
+.po-root .po-startOn svg { flex: none; }
+.po-root .po-startOff { min-height: 44px; padding: 8px 14px; border: 0; background: none; cursor: pointer; font: .88rem/1.2 var(--f-now); color: rgba(241,230,208,.66);
+  text-decoration: underline; text-decoration-color: rgba(241,230,208,.25); text-underline-offset: 4px; transition: color .15s, text-decoration-color .15s; }
+  background: none; cursor: pointer; font: .88rem/1.2 var(--f-now); color: var(--room-ink); transition: background-color .15s, border-color .15s; }
+.po-root .po-startLang { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 10px; width: 100%; margin-top: 4px; padding-top: 14px;
+  border-top: 1px solid rgba(241,230,208,.12); font: .72rem/1 var(--f-mono); letter-spacing: .08em; color: rgba(241,230,208,.55); }
+.po-root .po-startLangsw { display: inline-flex; }
+.po-root .po-startLangsw select { appearance: none; -webkit-appearance: none; padding: 6px 12px; cursor: pointer; font: inherit; letter-spacing: inherit;
+  color: var(--room-ink); background: transparent; border: 1px solid rgba(241,230,208,.3); border-radius: 999px; }
+.po-root .po-startLangsw option { color: #111; background: #f1e6d0; }
+.po-root .po-start :focus-visible { outline: 2px solid var(--lamp); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .po-root .po-startOn:hover { background: #ffd595; box-shadow: 0 0 0 1px rgba(255,200,116,.7), 0 10px 34px rgba(255,200,116,.38); }
+  .po-root .po-startOff:hover { color: var(--room-ink); text-decoration-color: currentColor; }
+  .po-root .po-startLangsw select:hover { background: rgba(255,255,255,.08); }
+}
+.po-root .po-startOn:active { transform: scale(.98); }
+@media (pointer: coarse) { .po-root .po-startLangsw select { padding: 12px 16px; } }
+@keyframes po-startfade { from { opacity: 0; } }
+@keyframes po-startout { to { opacity: 0; } }
+@keyframes po-startin { from { opacity: 0; transform: translateY(14px) scale(.97); } }
+@media (prefers-reduced-motion: reduce) {
+  .po-root .po-start, .po-root .po-start[data-leaving], .po-root .po-startCard { animation: none; }
+  .po-root .po-startOn { transition: none; }
+  .po-root .po-startOn:active { transform: none; }
+}
+

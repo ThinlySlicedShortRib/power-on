@@ -11,6 +11,7 @@ import { Hud } from "./components/Hud";
 import { Intro } from "./components/Intro";
 import { Narration, type StoryPos } from "./components/Narration";
 import { Shortcuts } from "./components/Shortcuts";
+import { StartCard, type StartChoice } from "./components/StartCard";
 import { Stage } from "./components/Stage";
 import { TooltipLayer } from "./components/Tooltip";
 import { ERAS, TRANS_KEYS } from "./content/eras";
@@ -60,6 +61,11 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   const openingRef = useRef(opening);
   const openingManual = useRef(false);
   const pullRef = useRef<{ start: number; dur: number } | null>(null);
+  // Nothing starts (the opening's captions and camera, autoplay) until the start card's choice, the
+  // gesture that lets the page make a sound. A resume after a locale switch from the control bar skips the card.
+  const [started, setStarted] = useState(() => !!peekResume());
+  const [cardUp, setCardUp] = useState(!started);
+  const startedRef = useRef(started);
   const [pos, setPos] = useState<StoryPos>({ era: 0, beat: -1, typed: false });
   const [transIdx, setTransIdx] = useState(0);
   const [keysOpen, setKeysOpen] = useState(false);
@@ -273,6 +279,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
       update();
     };
     const onKey = (e: KeyboardEvent) => {
+      if (!startedRef.current) return; // the start card has the keys
       const tgt = e.target as HTMLElement, tag = (tgt.tagName || "").toLowerCase();
       const typing = tag === "input" || tag === "textarea" || tag === "select" || tgt.isContentEditable;
       if (keysOpenRef.current) {
@@ -311,13 +318,13 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     // in the opening, scrolling or swiping forward moves to the next beat (at most one beat per gesture)
     let touchY = -1, lastWheel = 0;
     const onIntroWheel = (e: WheelEvent) => {
-      if (modeNow !== "intro" || keysOpenRef.current) return;
+      if (modeNow !== "intro" || keysOpenRef.current || !startedRef.current) return;
       if (openingRef.current >= 0 && e.deltaY > 4 && e.timeStamp - lastWheel > 700) { lastWheel = e.timeStamp; nextOpeningRef.current(true); }
       else if (e.deltaY < -4) onBackRef.current?.();
     };
     const onIntroTouchStart = (e: TouchEvent) => { touchY = modeNow === "intro" ? e.touches[0].clientY : -1; };
     const onIntroTouchMove = (e: TouchEvent) => {
-      if (touchY < 0 || modeNow !== "intro" || keysOpenRef.current) return;
+      if (touchY < 0 || modeNow !== "intro" || keysOpenRef.current || !startedRef.current) return;
       const dy = e.touches[0].clientY - touchY;
       if (dy < -60 && openingRef.current >= 0) { touchY = -1; nextOpeningRef.current(true); }
       else if (dy > 60) { touchY = -1; onBackRef.current?.(); }
@@ -326,7 +333,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     const onHostMove = (e: PointerEvent) => { if (desk) host.style.cursor = desk.hitPower(e.clientX, e.clientY) ? "pointer" : ""; };
     // only the 3D power button is a control; tapping the rest of the scene never advances (the Advance button does)
     const onHostClick = (e: MouseEvent) => {
-      if (modeNow === "story" || openingRef.current >= 0) return;
+      if (modeNow === "story" || openingRef.current >= 0 || !startedRef.current) return;
       if (desk?.hitPower(e.clientX, e.clientY)) startPower();
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -397,7 +404,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   // autoplay: on the desk, press power after a beat; in the story, read one line at a time
   const { playing, setPlaying, speed, cycleSpeed } = autoplay;
   useEffect(() => {
-    if (!playing || keysOpen) return;
+    if (!started || !playing || keysOpen) return;
     const c = ctl.current;
     if (!c) return;
     if (mode === "intro") {
@@ -409,7 +416,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     const ms = (pos.beat < 0 ? 3200 : 4600) / speed;
     const id = window.setTimeout(() => { if (!c.advance(1)) setPlaying(false); }, ms);
     return () => clearTimeout(id);
-  }, [playing, speed, mode, pos.era, pos.beat, keysOpen, setPlaying, opening]);
+  }, [started, playing, speed, mode, pos.era, pos.beat, keysOpen, setPlaying, opening]);
 
   // the opening plays on its own (about 4s a beat) until the reader takes over; beat 2 is the pull-back
   const nextOpening = useCallback((manual: boolean) => {
@@ -424,10 +431,10 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
   const nextOpeningRef = useRef(nextOpening);
   useEffect(() => { openingRef.current = opening; });
   useEffect(() => {
-    if (opening < 0 || opening > 1 || openingManual.current) return;
+    if (!started || opening < 0 || opening > 1 || openingManual.current) return;
     const id = window.setTimeout(() => nextOpening(false), opening === 0 ? 4200 : 3800);
     return () => clearTimeout(id);
-  }, [opening, nextOpening]);
+  }, [started, opening, nextOpening]);
   useEffect(() => {
     if (opening !== 2) return;
     const p = { start: performance.now(), dur: reduce ? 0 : 5200 };
@@ -443,6 +450,22 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
   }, [opening, reduce]);
+
+  // the start card's choice, inside its click (the user gesture): unlock WebAudio, set Sound ("dismiss", from Escape or
+  // the backdrop, leaves it as it is), then let the opening run. Focus goes to the opening's Next.
+  const begin = (choice: StartChoice) => {
+    audio.ensure();
+    if (choice !== "dismiss") {
+      const on = choice === "sound";
+      if (audio.soundOn !== on) audio.setSound(on);
+      setSoundOn(on);
+      music.applyLevel();
+    }
+    startedRef.current = true;
+    setStarted(true);
+    rootRef.current?.querySelector<HTMLElement>(".po-introbox .adv")?.focus({ preventScroll: true });
+  };
+  const cardGone = useCallback(() => setCardUp(false), []);
 
   // music follows the era
   useEffect(() => {
@@ -496,6 +519,7 @@ export function PowerOn({ autoplay, onBack, onReplayIntro }: PowerOnProps) {
           onPrev={mode === "story" ? () => { setPlaying(false); ctl.current?.advance(-1); } : undefined}
           onNext={mode === "story" ? () => { setPlaying(false); ctl.current?.advance(1); } : undefined} />
         <Shortcuts open={keysOpen} era={era.n} intro={mode !== "story"} touch={touch} onClose={() => setKeysOpen(false)} />
+        {cardUp && <StartCard onChoose={begin} onGone={cardGone} />}
       </div>
     </PowerOnContext.Provider>
   );

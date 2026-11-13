@@ -36,5 +36,12 @@
     "title": "Tu navegador tiene los gráficos 3D desactivados.",
     "tip": "Activa la aceleración por hardware en su configuración y reinícialo para la experiencia completa.",
     "dismiss": "Cerrar"
+  },
+  "welcome": {
+    "title": "Antes de empezar",
+    "sound": "Esta historia se cuenta con narración, sonido y música.",
+    "soundOn": "Activar el sonido",
+    "soundOff": "Continuar sin sonido",
+    "language": "Idioma:"
   }
 }

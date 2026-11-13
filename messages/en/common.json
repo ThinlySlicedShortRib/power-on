@@ -36,5 +36,12 @@
     "title": "Your browser has 3D graphics turned off.",
     "tip": "Turn on hardware acceleration in its settings and restart it for the full experience.",
     "dismiss": "Dismiss"
+  },
+  "welcome": {
+    "title": "Before you start",
+    "sound": "This story is told with narration, sound and music.",
+    "soundOn": "Turn sound on",
+    "soundOff": "Continue without sound",
+    "language": "Language:"
   }
 }
